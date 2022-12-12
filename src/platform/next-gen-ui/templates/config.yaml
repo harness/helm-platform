@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: next-gen-ui
+  namespace: {{ .Release.Namespace }}
+data:
+  API_URL: '{{ .Values.global.loadbalancerURL }}/gateway'
+  DEPLOYMENT_TYPE: ON_PREM
+  HARNESS_ENABLE_NG_AUTH_UI_PLACEHOLDER: "true"

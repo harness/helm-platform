@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: change-data-capture
+  namespace: {{ .Release.Namespace }}
+data:
+  DEPLOY_MODE: "KUBERNETES"
+  MEMORY: {{ .Values.java.memory | quote }}
+  MONGO_TAG_NAME: "none"
+  MONGO_TAG_VALUE: "none"
