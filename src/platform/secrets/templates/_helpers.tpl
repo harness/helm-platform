@@ -14,7 +14,7 @@
     PATRONI_REPLICATION_PASSWORD: {{ $timescaledbStandbyPassword }}
     PATRONI_admin_PASSWORD: {{ $timescaledbAdminPassword }}
 {{ if .Values.global.ngcustomdashboard.enabled }}
-    lookerLicenseKey: {{ .Values.cdb.lookerLicenseKey | quote }}
+    lookerLicenseKey: {{ include "common.secrets.passwords.manage" (dict "secret" "harness-secrets" "key" "lookerLicenseKey" "providedValues" (list "cdb.lookerLicenseKey") "length" 16 "context" $) }}
     lookerMasterKey: {{ include "common.secrets.passwords.manage" (dict "secret" "harness-secrets" "key" "lookerMasterKey" "providedValues" (list "cdb.lookerMasterKey") "length" 32 "context" $) }}
     redshiftPassword: {{ include "common.secrets.passwords.manage" (dict "secret" "harness-secrets" "key" "redshiftPassword" "providedValues" (list "cdb.redshiftPassword") "length" 16 "context" $) }}
 {{- end }}
