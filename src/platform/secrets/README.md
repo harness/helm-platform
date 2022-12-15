@@ -17,7 +17,7 @@ A Helm chart to create Harness secrets
 | cdb.lookerClientId | string | `""` |  |
 | cdb.lookerClientSecret | string | `""` |  |
 | cdb.lookerEmbedSecret | string | `""` |  |
-| cdb.lookerLicenseKey | string | `"ZW52U3BlY2lmaWM="` |  |
+| cdb.lookerLicenseKey | string | `""` |  |
 | cdb.lookerMasterKey | string | `""` |  |
 | cdb.lookerSignupUrl | string | `""` |  |
 | cdb.redshiftPassword | string | `""` |  |
