@@ -40,7 +40,7 @@ dependencies:
   version: 0.2.2
 - name: ng-manager
   repository: file://ng-manager
-  version: 0.2.26
+  version: 0.2.27
 - name: pipeline-service
   repository: file://pipeline-service
   version: 0.2.15
@@ -62,5 +62,5 @@ dependencies:
 - name: timescaledb
   repository: https://harness.github.io/helm-timescaledb
   version: 0.2.14
-digest: sha256:9127e303d44f7561aa85c1a6ff2bacc7ff66e82afe707d8da3dfd486686d9e04
-generated: "2022-12-12T19:13:11.602771+05:30"
+digest: sha256:8284aaf4eb8006b56f3bd4d0fe5ddaf453ebe4af8b2e30759194511cd193c0ab
+generated: "2022-12-15T08:33:26.820095-05:00"
