@@ -116,7 +116,8 @@ Create the name of the delegate upgrader image to use
 {{- if .Values.global.saml.autoaccept }}
 {{- $flags = printf "%s,%s" $flags .Values.featureFlags.SAMLAutoAccept }}
 {{- end }}
-{{- if .Values.global.license.enabled }}
+{{ $length := len .Values.global.license.ng }}
+{{- if gt $length 0}}
 {{- $flags = printf "%s,%s" $flags .Values.featureFlags.LICENSE }}
 {{- end }}
 {{- $flags = printf "%s,%s" $flags .Values.featureFlags.ADD }}

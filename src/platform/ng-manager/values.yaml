@@ -4,8 +4,8 @@
 global:
   loadbalancerURL: ""
   license:
-    enabled: false
-    licensekey: 'anexamplelicensekey'
+    cg: ''
+    ng: ''
   ccm:
     enabled: false
   opa:
