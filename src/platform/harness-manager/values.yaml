@@ -5,7 +5,8 @@ global:
   loadbalancerURL: ""
   mongoSSL: false
   license:
-    enabled: false
+    cg: ''
+    ng: ''
   ingress:
     useSelfSignedCert: false
   cd:

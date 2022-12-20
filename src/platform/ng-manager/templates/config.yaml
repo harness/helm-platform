@@ -52,10 +52,11 @@ data:
   CURRENT_GEN_UI_URL: '{{ .Values.global.loadbalancerURL }}/#/'
   HARNESS_ENABLE_NG_AUTH_UI_PLACEHOLDER: "true"
   MONGO_TRANSACTIONS_ALLOWED: "false"
-  {{- if .Values.global.license.enabled }}
-  ENABLE_SMP_LICENSING: '{{ .Values.global.license.enabled }}'
-  SMP_LICENSE: '{{ .Values.global.license.licensekey }}'
-  {{- end }}
+  {{ $length := len .Values.global.license.ng }}
+  {{- if gt $length 0}}
+  ENABLE_SMP_LICENSING: 'true'
+  SMP_LICENSE: '{{ .Values.global.license.ng }}'
+  {{- end}}
   {{- if .Values.global.opa.enabled }}
   OPA_SERVER_BASEURL: 'http://policy-mgmt.{{ .Release.Namespace }}.svc.cluster.local:3000/'
   OPA_SERVER_SECRET: 'dOkdsVqdRPPRJG31XU0qY4MPqmBBMk0PTAGIKM6O7TGqhjyxScIdJe80mwh5Yb5zF3KxYBHw6B3Lfzlq'
