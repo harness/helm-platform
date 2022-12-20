@@ -25,10 +25,7 @@ spec:
         app: change-data-capture
         {{- include "change-data-capture.selectorLabels" . | nindent 8 }}
     spec:
-      {{- with .Values.imagePullSecrets }}
-      imagePullSecrets:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
+      {{ include "change-data-capture.chart.pullSecrets" . | nindent 6 }}
       serviceAccountName: {{ include "change-data-capture.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}

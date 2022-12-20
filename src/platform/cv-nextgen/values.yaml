@@ -4,6 +4,8 @@
 global:
   loadbalancerURL: ""
   ha: false
+  imagePullSecrets: []
+
 replicaCount: 1
 maxSurge: 1
 maxUnavailable: 0
@@ -15,6 +17,7 @@ image:
   # Overrides the image tag whose default is the chart appVersion.
   tag: "76019"
   digest: ""
+  imagePullSecrets: []
 
 mongoSecrets:
   userName:
