@@ -116,15 +116,16 @@ Create the name of the delegate upgrader image to use
 {{- if .Values.global.saml.autoaccept }}
 {{- $flags = printf "%s,%s" $flags .Values.featureFlags.SAMLAutoAccept }}
 {{- end }}
-{{ $length := len .Values.global.license.ng }}
+{{- $length := len .Values.global.license.ng }}
 {{- if gt $length 0}}
 {{- $flags = printf "%s,%s" $flags .Values.featureFlags.LICENSE }}
 {{- end }}
-{{- $flags = printf "%s,%s" $flags .Values.featureFlags.ADD }}
+{{- $length2 := len .Values.featureFlags.ADDITIONAL }}
+{{- if gt $length2 0}}
+{{- $flags = printf "%s,%s" $flags .Values.featureFlags.ADDITIONAL }}
+{{- end }}
 {{- printf "%s" $flags }}
 {{- end }}
-
-
 
 {{- define "harness-manager.pullSecrets" -}}
 {{ include "common.images.pullSecrets" (dict "images" (list .Values.image .Values.waitForInitContainer.image) "global" .Values.global ) }}
