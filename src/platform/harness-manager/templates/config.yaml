@@ -65,6 +65,7 @@ data:
   ENABLE_ITERATORS: 'true'
   ITERATOR_CONFIG_PATH: '/opt/harness/config'
   LICENSE_INFO: '{{ .Values.global.license.cg }}'
+  TIMESCALEDB_SSL_MODE: 'prefer'
 
 ---
 apiVersion: v1
