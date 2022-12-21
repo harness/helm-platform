@@ -1,31 +1,31 @@
 dependencies:
 - name: access-control
-  repository: file://access-control
+  repository: file://../access-control
   version: 0.2.10
 - name: change-data-capture
-  repository: file://change-data-capture
-  version: 0.2.10
+  repository: file://../change-data-capture
+  version: 0.2.11
 - name: cv-nextgen
-  repository: file://cv-nextgen
-  version: 0.2.17
+  repository: file://../cv-nextgen
+  version: 0.2.18
 - name: gateway
-  repository: file://gateway
-  version: 0.2.9
+  repository: file://../gateway
+  version: 0.2.10
 - name: harness-secrets
-  repository: file://secrets
+  repository: file://../secrets
   version: 0.2.5
 - name: harness-manager
-  repository: file://harness-manager
+  repository: file://../harness-manager
   version: 0.2.40
 - name: delegate-proxy
-  repository: file://delegate-proxy
-  version: 0.2.5
+  repository: file://../delegate-proxy
+  version: 0.2.6
 - name: le-nextgen
-  repository: file://le-nextgen
-  version: 0.2.3
+  repository: file://../le-nextgen
+  version: 0.2.4
 - name: log-service
-  repository: file://log-service
-  version: 0.2.11
+  repository: file://../log-service
+  version: 0.2.12
 - name: minio
   repository: https://charts.bitnami.com/bitnami
   version: 11.9.1
@@ -33,34 +33,34 @@ dependencies:
   repository: https://charts.bitnami.com/bitnami
   version: 13.1.2
 - name: next-gen-ui
-  repository: file://next-gen-ui
-  version: 0.2.6
+  repository: file://../next-gen-ui
+  version: 0.2.7
 - name: ng-auth-ui
-  repository: file://ng-auth-ui
-  version: 0.2.2
+  repository: file://../ng-auth-ui
+  version: 0.2.3
 - name: ng-manager
-  repository: file://ng-manager
+  repository: file://../ng-manager
   version: 0.2.28
 - name: pipeline-service
-  repository: file://pipeline-service
-  version: 0.2.15
+  repository: file://../pipeline-service
+  version: 0.2.16
 - name: platform-service
-  repository: file://platform-service
-  version: 0.2.10
+  repository: file://../platform-service
+  version: 0.2.11
 - name: redis
   repository: https://harness.github.io/helm-redis
   version: 0.2.2
 - name: scm-service
-  repository: file://scm-service
-  version: 0.2.1
+  repository: file://../scm-service
+  version: 0.2.2
 - name: template-service
-  repository: file://template-service
-  version: 0.2.14
+  repository: file://../template-service
+  version: 0.2.15
 - name: ti-service
-  repository: file://ti-service
-  version: 0.2.10
+  repository: file://../ti-service
+  version: 0.2.11
 - name: timescaledb
   repository: https://harness.github.io/helm-timescaledb
   version: 0.2.14
-digest: sha256:ef7dbc8f84093d2324e1da5d43c676cb3f2f81dbdb4f2cb4ada5a0bef29ad5ed
-generated: "2022-12-20T12:50:08.72664+05:30"
+digest: sha256:84d35c6a6e01d114a601429c5a349ca87c32d48e5a4b2b531812b4387379e979
+generated: "2022-12-21T10:15:54.973044-05:00"
