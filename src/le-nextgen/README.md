@@ -1,6 +1,6 @@
-# log-service
+# le-nextgen
 
-![Version: 0.2.11](https://img.shields.io/badge/Version-0.2.11-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
+![Version: 0.2.4](https://img.shields.io/badge/Version-0.2.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
 
 A Helm chart for Kubernetes
 
@@ -15,19 +15,21 @@ A Helm chart for Kubernetes
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` |  |
+| appLogLevel | string | `"INFO"` |  |
+| autoscaling.enabled | bool | `true` |  |
+| autoscaling.maxReplicas | int | `100` |  |
+| autoscaling.minReplicas | int | `1` |  |
+| autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
 | fullnameOverride | string | `""` |  |
-| global.ingress.useSelfSignedCert | bool | `false` |  |
+| global.imagePullSecrets | list | `[]` |  |
 | global.loadbalancerURL | string | `""` |  |
 | image.digest | string | `""` |  |
+| image.imagePullSecrets | list | `[]` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.registry | string | `"docker.io"` |  |
-| image.repository | string | `"harness/log-service-signed"` |  |
-| image.tag | string | `"release-18"` |  |
+| image.repository | string | `"harness/le-nextgen-signed"` |  |
+| image.tag | string | `"66501"` |  |
 | imagePullSecrets | object | `{}` |  |
-| logServiceS3AccessKeyID.key | string | `"root-user"` |  |
-| logServiceS3AccessKeyID.name | string | `"minio"` |  |
-| logServiceS3SecretAccessKey.key | string | `"root-password"` |  |
-| logServiceS3SecretAccessKey.name | string | `"minio"` |  |
 | maxSurge | int | `1` |  |
 | maxUnavailable | int | `0` |  |
 | nameOverride | string | `""` |  |
@@ -36,17 +38,11 @@ A Helm chart for Kubernetes
 | podSecurityContext | object | `{}` |  |
 | replicaCount | int | `1` |  |
 | resources.limits.cpu | int | `1` |  |
-| resources.limits.memory | string | `"3072Mi"` |  |
+| resources.limits.memory | string | `"6144Mi"` |  |
 | resources.requests.cpu | int | `1` |  |
-| resources.requests.memory | string | `"3072Mi"` |  |
-| s3.accessKeyId | string | `""` |  |
-| s3.bucketName | string | `"logs"` |  |
-| s3.endpoint | string | `""` |  |
-| s3.region | string | `"us-east-1"` |  |
-| s3.secretAccessKey | string | `""` |  |
+| resources.requests.memory | string | `"6144Mi"` |  |
 | securityContext.runAsNonRoot | bool | `true` |  |
-| securityContext.runAsUser | int | `65534` |  |
-| service.port | int | `8079` |  |
+| service.port | int | `8108` |  |
 | service.type | string | `"ClusterIP"` |  |
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.create | bool | `false` |  |

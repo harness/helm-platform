@@ -15,7 +15,7 @@ type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 0.3.4
+version: 0.3.5
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
@@ -26,39 +26,39 @@ appVersion: "1.16.0"
 dependencies:
   - name: access-control
     version: 0.2.x
-    repository: "file://access-control"
+    repository: "file://../access-control"
 
   - name: change-data-capture
     version: 0.2.x
-    repository: "file://change-data-capture"
+    repository: "file://../change-data-capture"
 
   - name: cv-nextgen
     version: 0.2.x
-    repository: "file://cv-nextgen"
+    repository: "file://../cv-nextgen"
 
   - name: gateway
     version: 0.2.x
-    repository: "file://gateway"
+    repository: "file://../gateway"
 
   - name: harness-secrets
     version: 0.2.x
-    repository: "file://secrets"
+    repository: "file://../secrets"
 
   - name: harness-manager
     version: 0.2.x
-    repository: "file://harness-manager"
+    repository: "file://../harness-manager"
 
   - name: delegate-proxy
     version: 0.2.x
-    repository: "file://delegate-proxy"
+    repository: "file://../delegate-proxy"
 
   - name: le-nextgen
     version: 0.2.x
-    repository: "file://le-nextgen"
+    repository: "file://../le-nextgen"
 
   - name: log-service
     version: 0.2.x
-    repository: "file://log-service"
+    repository: "file://../log-service"
 
   - name: minio
     version: 11.9.1
@@ -70,23 +70,23 @@ dependencies:
 
   - name: next-gen-ui
     version: 0.2.x
-    repository: "file://next-gen-ui"
+    repository: "file://../next-gen-ui"
 
   - name: ng-auth-ui
     version: 0.2.x
-    repository: "file://ng-auth-ui"
+    repository: "file://../ng-auth-ui"
 
   - name: ng-manager
     version: 0.2.x
-    repository: "file://ng-manager"
+    repository: "file://../ng-manager"
 
   - name: pipeline-service
     version: 0.2.x
-    repository: "file://pipeline-service"
+    repository: "file://../pipeline-service"
 
   - name: platform-service
     version: 0.2.x
-    repository: "file://platform-service"
+    repository: "file://../platform-service"
 
   - name: redis
     version: 0.2.x
@@ -94,15 +94,15 @@ dependencies:
 
   - name: scm-service
     version: 0.2.x
-    repository: "file://scm-service"
+    repository: "file://../scm-service"
 
   - name: template-service
     version: 0.2.x
-    repository: "file://template-service"
+    repository: "file://../template-service"
 
   - name: ti-service
     version: 0.2.x
-    repository: "file://ti-service"
+    repository: "file://../ti-service"
 
   - name: timescaledb
     condition: timescaledb.enabled

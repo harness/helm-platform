@@ -1,6 +1,6 @@
-# pipeline-service
+# cv-nextgen
 
-![Version: 0.2.15](https://img.shields.io/badge/Version-0.2.15-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
+![Version: 0.2.18](https://img.shields.io/badge/Version-0.2.18-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
 
 A Helm chart for Kubernetes
 
@@ -21,15 +21,16 @@ A Helm chart for Kubernetes
 | autoscaling.minReplicas | int | `1` |  |
 | autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
 | fullnameOverride | string | `""` |  |
+| global.ha | bool | `false` |  |
+| global.imagePullSecrets | list | `[]` |  |
 | global.loadbalancerURL | string | `""` |  |
-| global.opa.enabled | bool | `false` |  |
 | image.digest | string | `""` |  |
+| image.imagePullSecrets | list | `[]` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.registry | string | `"docker.io"` |  |
-| image.repository | string | `"harness/pipeline-service-signed"` |  |
+| image.repository | string | `"harness/cv-nextgen-signed"` |  |
 | image.tag | string | `"76019"` |  |
-| imagePullSecrets | object | `{}` |  |
-| java.memory | string | `"4096m"` |  |
+| java.memory | int | `4096` |  |
 | maxSurge | int | `1` |  |
 | maxUnavailable | int | `0` |  |
 | mongoSecrets.password.key | string | `"mongodb-root-password"` |  |
@@ -40,21 +41,6 @@ A Helm chart for Kubernetes
 | nodeSelector | object | `{}` |  |
 | podAnnotations | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
-| probes.livenessProbe.failureThreshold | int | `5` |  |
-| probes.livenessProbe.httpGet.path | string | `"/api/health"` |  |
-| probes.livenessProbe.httpGet.port | string | `"http-pms"` |  |
-| probes.livenessProbe.periodSeconds | int | `10` |  |
-| probes.livenessProbe.timeoutSeconds | int | `2` |  |
-| probes.readinessProbe.failureThreshold | int | `5` |  |
-| probes.readinessProbe.httpGet.path | string | `"/api/health"` |  |
-| probes.readinessProbe.httpGet.port | string | `"http-pms"` |  |
-| probes.readinessProbe.periodSeconds | int | `5` |  |
-| probes.readinessProbe.timeoutSeconds | int | `2` |  |
-| probes.startupProbe.failureThreshold | int | `25` |  |
-| probes.startupProbe.httpGet.path | string | `"/api/health"` |  |
-| probes.startupProbe.httpGet.port | string | `"http-pms"` |  |
-| probes.startupProbe.periodSeconds | int | `10` |  |
-| probes.startupProbe.timeoutSeconds | int | `2` |  |
 | replicaCount | int | `1` |  |
 | resources.limits.cpu | int | `1` |  |
 | resources.limits.memory | string | `"6144Mi"` |  |
@@ -62,16 +48,12 @@ A Helm chart for Kubernetes
 | resources.requests.memory | string | `"6144Mi"` |  |
 | securityContext.runAsNonRoot | bool | `true` |  |
 | securityContext.runAsUser | int | `65534` |  |
-| service.gitsyncgrpcport | int | `14002` |  |
-| service.grpcport | int | `12011` |  |
-| service.port | int | `12001` |  |
-| service.protocol | string | `"TCP"` |  |
+| service.grpcport | int | `9979` |  |
+| service.port | int | `6060` |  |
 | service.type | string | `"ClusterIP"` |  |
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.create | bool | `false` |  |
 | serviceAccount.name | string | `"harness-default"` |  |
-| timescaleSecret.password.key | string | `"timescaledbPostgresPassword"` |  |
-| timescaleSecret.password.name | string | `"harness-secrets"` |  |
 | tolerations | list | `[]` |  |
 | waitForInitContainer.image.digest | string | `""` |  |
 | waitForInitContainer.image.pullPolicy | string | `"IfNotPresent"` |  |

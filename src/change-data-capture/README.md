@@ -1,6 +1,6 @@
-# next-gen-ui
+# change-data-capture
 
-![Version: 0.2.6](https://img.shields.io/badge/Version-0.2.6-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
+![Version: 0.2.11](https://img.shields.io/badge/Version-0.2.11-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
 
 A Helm chart for Kubernetes
 
@@ -15,52 +15,64 @@ A Helm chart for Kubernetes
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` |  |
+| appLogLevel | string | `"INFO"` |  |
 | autoscaling.enabled | bool | `true` |  |
 | autoscaling.maxReplicas | int | `100` |  |
 | autoscaling.minReplicas | int | `1` |  |
 | autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
 | fullnameOverride | string | `""` |  |
+| global.ha | bool | `false` |  |
+| global.imagePullSecrets | list | `[]` |  |
 | global.loadbalancerURL | string | `""` |  |
 | image.digest | string | `""` |  |
+| image.imagePullSecrets | list | `[]` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.registry | string | `"docker.io"` |  |
-| image.repository | string | `"harness/nextgenui-signed"` |  |
-| image.tag | string | `"0.312.15"` |  |
-| imagePullSecrets | object | `{}` |  |
+| image.repository | string | `"harness/cdcdata-signed"` |  |
+| image.tag | string | `"75618"` |  |
+| java.memory | int | `2048` |  |
 | maxSurge | int | `1` |  |
 | maxUnavailable | int | `0` |  |
+| mongoSecrets.password.key | string | `"mongodb-root-password"` |  |
+| mongoSecrets.password.name | string | `"mongodb-replicaset-chart"` |  |
+| mongoSecrets.userName.key | string | `"mongodbUsername"` |  |
+| mongoSecrets.userName.name | string | `"harness-secrets"` |  |
 | nameOverride | string | `""` |  |
 | nodeSelector | object | `{}` |  |
 | podAnnotations | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
 | probes.livenessProbe.failureThreshold | int | `5` |  |
 | probes.livenessProbe.httpGet.path | string | `"/health"` |  |
-| probes.livenessProbe.httpGet.port | string | `"ng-ui-port"` |  |
+| probes.livenessProbe.httpGet.port | int | `8190` |  |
 | probes.livenessProbe.periodSeconds | int | `10` |  |
+| probes.livenessProbe.timeoutSeconds | int | `2` |  |
 | probes.readinessProbe.failureThreshold | int | `5` |  |
 | probes.readinessProbe.httpGet.path | string | `"/health"` |  |
-| probes.readinessProbe.httpGet.port | string | `"ng-ui-port"` |  |
+| probes.readinessProbe.httpGet.port | int | `8190` |  |
 | probes.readinessProbe.periodSeconds | int | `10` |  |
-| probes.startupProbe.failureThreshold | int | `30` |  |
+| probes.readinessProbe.timeoutSeconds | int | `2` |  |
+| probes.startupProbe.failureThreshold | int | `25` |  |
 | probes.startupProbe.httpGet.path | string | `"/health"` |  |
-| probes.startupProbe.httpGet.port | string | `"ng-ui-port"` |  |
+| probes.startupProbe.httpGet.port | int | `8190` |  |
 | probes.startupProbe.periodSeconds | int | `10` |  |
+| probes.startupProbe.timeoutSeconds | int | `2` |  |
 | replicaCount | int | `1` |  |
-| resources.limits.cpu | float | `0.2` |  |
-| resources.limits.memory | string | `"200Mi"` |  |
-| resources.requests.cpu | float | `0.2` |  |
-| resources.requests.memory | string | `"200Mi"` |  |
+| resources.limits.cpu | int | `1` |  |
+| resources.limits.memory | string | `"2880Mi"` |  |
+| resources.requests.cpu | int | `1` |  |
+| resources.requests.memory | string | `"2880Mi"` |  |
 | securityContext.runAsNonRoot | bool | `true` |  |
 | securityContext.runAsUser | int | `65534` |  |
-| service.port | int | `80` |  |
-| service.protocol | string | `"TCP"` |  |
-| service.targetport | int | `8080` |  |
+| service.port | int | `8190` |  |
 | service.type | string | `"ClusterIP"` |  |
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.create | bool | `false` |  |
 | serviceAccount.name | string | `"harness-default"` |  |
+| timescaleSecret.password.key | string | `"timescaledbPostgresPassword"` |  |
+| timescaleSecret.password.name | string | `"harness-secrets"` |  |
 | tolerations | list | `[]` |  |
 | waitForInitContainer.image.digest | string | `""` |  |
+| waitForInitContainer.image.imagePullSecrets | list | `[]` |  |
 | waitForInitContainer.image.pullPolicy | string | `"IfNotPresent"` |  |
 | waitForInitContainer.image.registry | string | `"docker.io"` |  |
 | waitForInitContainer.image.repository | string | `"harness/helm-init-container"` |  |

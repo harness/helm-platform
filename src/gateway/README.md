@@ -1,6 +1,6 @@
-# template-service
+# gateway
 
-![Version: 0.2.14](https://img.shields.io/badge/Version-0.2.14-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
+![Version: 0.2.10](https://img.shields.io/badge/Version-0.2.10-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
 
 A Helm chart for Kubernetes
 
@@ -15,20 +15,22 @@ A Helm chart for Kubernetes
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` |  |
-| appLogLevel | string | `"INFO"` |  |
 | autoscaling.enabled | bool | `true` |  |
 | autoscaling.maxReplicas | int | `100` |  |
 | autoscaling.minReplicas | int | `1` |  |
 | autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
 | fullnameOverride | string | `""` |  |
-| global.loadbalancerURL | string | `""` |  |
+| global.ha | bool | `false` |  |
+| global.imagePullSecrets | list | `[]` |  |
+| global.loadbalancerURL | string | `"http://test/abc"` |  |
 | image.digest | string | `""` |  |
+| image.imagePullSecrets | list | `[]` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.registry | string | `"docker.io"` |  |
-| image.repository | string | `"harness/template-service-signed"` |  |
-| image.tag | string | `"76019"` |  |
+| image.repository | string | `"harness/gateway-signed"` |  |
+| image.tag | string | `"1000138"` |  |
 | imagePullSecrets | object | `{}` |  |
-| java.memory | string | `"1024m"` |  |
+| java.memory | int | `512` |  |
 | maxSurge | int | `1` |  |
 | maxUnavailable | int | `0` |  |
 | mongoSecrets.password.key | string | `"mongodb-root-password"` |  |
@@ -40,24 +42,20 @@ A Helm chart for Kubernetes
 | podAnnotations | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
 | replicaCount | int | `1` |  |
-| resources.limits.cpu | int | `1` |  |
-| resources.limits.memory | string | `"1400Mi"` |  |
-| resources.requests.cpu | int | `1` |  |
-| resources.requests.memory | string | `"1400Mi"` |  |
+| resources.limits.cpu | float | `0.4` |  |
+| resources.limits.memory | string | `"1024Mi"` |  |
+| resources.requests.cpu | float | `0.2` |  |
+| resources.requests.memory | string | `"512Mi"` |  |
 | securityContext.runAsNonRoot | bool | `true` |  |
 | securityContext.runAsUser | int | `65534` |  |
-| service.gitsyncgrpcport | int | `16002` |  |
-| service.grpcport | int | `15011` |  |
-| service.port | int | `15002` |  |
-| service.protocol | string | `"TCP"` |  |
+| service.port | int | `8080` |  |
 | service.type | string | `"ClusterIP"` |  |
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.create | bool | `false` |  |
 | serviceAccount.name | string | `"harness-default"` |  |
-| timescaleSecret.password.key | string | `"timescaledbPostgresPassword"` |  |
-| timescaleSecret.password.name | string | `"harness-secrets"` |  |
 | tolerations | list | `[]` |  |
 | waitForInitContainer.image.digest | string | `""` |  |
+| waitForInitContainer.image.imagePullSecrets | list | `[]` |  |
 | waitForInitContainer.image.pullPolicy | string | `"IfNotPresent"` |  |
 | waitForInitContainer.image.registry | string | `"docker.io"` |  |
 | waitForInitContainer.image.repository | string | `"harness/helm-init-container"` |  |

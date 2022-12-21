@@ -1,6 +1,6 @@
-# ti-service
+# template-service
 
-![Version: 0.2.10](https://img.shields.io/badge/Version-0.2.10-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
+![Version: 0.2.15](https://img.shields.io/badge/Version-0.2.15-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
 
 A Helm chart for Kubernetes
 
@@ -15,27 +15,22 @@ A Helm chart for Kubernetes
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` |  |
+| appLogLevel | string | `"INFO"` |  |
 | autoscaling.enabled | bool | `true` |  |
 | autoscaling.maxReplicas | int | `100` |  |
 | autoscaling.minReplicas | int | `1` |  |
 | autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
 | fullnameOverride | string | `""` |  |
+| global.imagePullSecrets | list | `[]` |  |
 | global.loadbalancerURL | string | `""` |  |
 | image.digest | string | `""` |  |
+| image.imagePullSecrets | list | `[]` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.registry | string | `"docker.io"` |  |
-| image.repository | string | `"harness/ti-service-signed"` |  |
-| image.tag | string | `"release-77"` |  |
+| image.repository | string | `"harness/template-service-signed"` |  |
+| image.tag | string | `"76019"` |  |
 | imagePullSecrets | object | `{}` |  |
-| jobresources.limits.cpu | int | `1` |  |
-| jobresources.limits.memory | string | `"3072Mi"` |  |
-| jobresources.requests.cpu | int | `1` |  |
-| jobresources.requests.memory | string | `"3072Mi"` |  |
-| jobs.migrate.image.digest | string | `""` |  |
-| jobs.migrate.image.pullPolicy | string | `"IfNotPresent"` |  |
-| jobs.migrate.image.registry | string | `"docker.io"` |  |
-| jobs.migrate.image.repository | string | `"harness/ti-service-signed"` |  |
-| jobs.migrate.image.tag | string | `"release-77"` |  |
+| java.memory | string | `"1024m"` |  |
 | maxSurge | int | `1` |  |
 | maxUnavailable | int | `0` |  |
 | mongoSecrets.password.key | string | `"mongodb-root-password"` |  |
@@ -48,20 +43,22 @@ A Helm chart for Kubernetes
 | podSecurityContext | object | `{}` |  |
 | replicaCount | int | `1` |  |
 | resources.limits.cpu | int | `1` |  |
-| resources.limits.memory | string | `"3072Mi"` |  |
+| resources.limits.memory | string | `"1400Mi"` |  |
 | resources.requests.cpu | int | `1` |  |
-| resources.requests.memory | string | `"3072Mi"` |  |
+| resources.requests.memory | string | `"1400Mi"` |  |
 | securityContext.runAsNonRoot | bool | `true` |  |
 | securityContext.runAsUser | int | `65534` |  |
-| service.port | int | `8078` |  |
+| service.gitsyncgrpcport | int | `16002` |  |
+| service.grpcport | int | `15011` |  |
+| service.port | int | `15002` |  |
+| service.protocol | string | `"TCP"` |  |
 | service.type | string | `"ClusterIP"` |  |
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.create | bool | `false` |  |
 | serviceAccount.name | string | `"harness-default"` |  |
-| tiServiceTimescaleSecret.password.key | string | `"timescaledbPostgresPassword"` |  |
-| tiServiceTimescaleSecret.password.name | string | `"harness-secrets"` |  |
+| timescaleSecret.password.key | string | `"timescaledbPostgresPassword"` |  |
+| timescaleSecret.password.name | string | `"harness-secrets"` |  |
 | tolerations | list | `[]` |  |
-| useSSL | bool | `false` |  |
 | waitForInitContainer.image.digest | string | `""` |  |
 | waitForInitContainer.image.pullPolicy | string | `"IfNotPresent"` |  |
 | waitForInitContainer.image.registry | string | `"docker.io"` |  |
