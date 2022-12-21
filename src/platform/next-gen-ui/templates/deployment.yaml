@@ -26,10 +26,7 @@ spec:
       labels:
         {{- include "next-gen-ui.selectorLabels" . | nindent 8 }}
     spec:
-      {{- with .Values.imagePullSecrets }}
-      imagePullSecrets:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
+      {{ include "next-gen-ui.pullSecrets" . | nindent 6 }}
       serviceAccountName: {{ include "next-gen-ui.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}

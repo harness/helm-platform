@@ -3,6 +3,7 @@
 # Declare variables to be passed into your templates.
 global:
   loadbalancerURL: ""
+  imagePullSecrets: []
   opa:
     enabled: false
 replicaCount: 1
@@ -16,6 +17,7 @@ image:
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: "76019"
+  imagePullSecrets: []
 
 waitForInitContainer:
   image:
@@ -24,6 +26,7 @@ waitForInitContainer:
     pullPolicy: IfNotPresent
     tag: "latest"
     digest: ""
+    imagePullSecrets: []
 
 mongoSecrets:
   userName:

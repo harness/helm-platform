@@ -108,4 +108,3 @@ dependencies:
     condition: timescaledb.enabled
     version: 0.2.x
     repository: "https://harness.github.io/helm-timescaledb"
-

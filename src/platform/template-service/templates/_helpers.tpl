@@ -60,3 +60,7 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
+
+{{- define "template-service.pullSecrets" -}}
+{{ include "common.images.pullSecrets" (dict "images" (list .Values.image) "global" .Values.global ) }}
+{{- end -}}

@@ -22,10 +22,7 @@ spec:
         {{- include "log-service.selectorLabels" . | nindent 8 }}
     spec:
       terminationGracePeriodSeconds: 30
-      {{- with .Values.imagePullSecrets }}
-      imagePullSecrets:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
+      {{ include "log-service.pullSecrets" . | nindent 6 }}
       serviceAccountName: {{ include "log-service.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}

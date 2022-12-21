@@ -3,6 +3,7 @@
 # Declare variables to be passed into your templates.
 global:
   loadbalancerURL: ""
+  imagePullSecrets: []
   ingress:
     useSelfSignedCert: false
 
@@ -25,6 +26,7 @@ image:
   # Overrides the image tag whose default is the chart appVersion.
   tag: "release-18"
   digest: ""
+  imagePullSecrets: []
 
 logServiceS3AccessKeyID:
   name: minio

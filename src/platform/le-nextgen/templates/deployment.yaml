@@ -26,10 +26,7 @@ spec:
       labels:
         {{- include "le-nextgen.selectorLabels" . | nindent 8 }}
     spec:
-      {{- with .Values.imagePullSecrets }}
-      imagePullSecrets:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
+      {{ include "le-nextgen.pullSecrets" . | nindent 6 }}
       containers:
         - envFrom:
             - configMapRef:
