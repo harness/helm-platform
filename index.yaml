@@ -212,6 +212,81 @@ entries:
   platform:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2022-12-28T18:25:27.961286135Z"
+    dependencies:
+    - name: access-control
+      repository: file://../access-control
+      version: 0.2.x
+    - name: change-data-capture
+      repository: file://../change-data-capture
+      version: 0.2.x
+    - name: cv-nextgen
+      repository: file://../cv-nextgen
+      version: 0.2.x
+    - name: gateway
+      repository: file://../gateway
+      version: 0.2.x
+    - name: harness-secrets
+      repository: file://../secrets
+      version: 0.2.x
+    - name: harness-manager
+      repository: file://../harness-manager
+      version: 0.2.x
+    - name: delegate-proxy
+      repository: file://../delegate-proxy
+      version: 0.2.x
+    - name: le-nextgen
+      repository: file://../le-nextgen
+      version: 0.2.x
+    - name: log-service
+      repository: file://../log-service
+      version: 0.2.x
+    - name: minio
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.9.1
+    - name: mongodb
+      repository: https://charts.bitnami.com/bitnami
+      version: 13.1.2
+    - name: next-gen-ui
+      repository: file://../next-gen-ui
+      version: 0.2.x
+    - name: ng-auth-ui
+      repository: file://../ng-auth-ui
+      version: 0.2.x
+    - name: ng-manager
+      repository: file://../ng-manager
+      version: 0.2.x
+    - name: pipeline-service
+      repository: file://../pipeline-service
+      version: 0.2.x
+    - name: platform-service
+      repository: file://../platform-service
+      version: 0.2.x
+    - name: redis
+      repository: https://harness.github.io/helm-redis
+      version: 0.2.x
+    - name: scm-service
+      repository: file://../scm-service
+      version: 0.2.x
+    - name: template-service
+      repository: file://../template-service
+      version: 0.2.x
+    - name: ti-service
+      repository: file://../ti-service
+      version: 0.2.x
+    - condition: timescaledb.enabled
+      name: timescaledb
+      repository: https://harness.github.io/helm-timescaledb
+      version: 0.2.x
+    description: Helm chart for Harness Platform
+    digest: 47c795cc2c57e8bf8ab356ea9f0cc8e8f7b786e676998e930d9265195d085b65
+    name: platform
+    type: application
+    urls:
+    - https://github.com/harness/helm-platform/releases/download/platform-0.3.8/platform-0.3.8.tgz
+    version: 0.3.8
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2022-12-21T16:25:59.353581013Z"
     dependencies:
     - name: access-control
@@ -870,4 +945,4 @@ entries:
     urls:
     - https://github.com/harness/helm-platform/releases/download/ti-service-0.2.12/ti-service-0.2.12.tgz
     version: 0.2.12
-generated: "2022-12-21T16:25:59.934761826Z"
+generated: "2022-12-28T18:25:27.961405249Z"
