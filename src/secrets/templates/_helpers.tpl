@@ -25,3 +25,30 @@
     lookerEmbedSecret: {{ include "common.secrets.passwords.manage" (dict "secret" "harness-looker-secrets" "key" "lookerEmbedSecret" "providedValues" (list "cdb.lookerEmbedSecret") "length" 16 "context" $) }}
     lookerSignupUrl: {{ include "common.secrets.passwords.manage" (dict "secret" "harness-looker-secrets" "key" "lookerSignupUrl" "providedValues" (list "cdb.lookerSignupUrl") "length" 16 "context" $) }}
 {{- end }}
+
+{{- define "harnesssecrets.generateMinioSecrets" }}
+    root-user: {{ include "common.secrets.passwords.manage" (dict "secret" "minio" "key" "root-user" "providedValues" (list "minio.rootUser") "length" 10 "context" $) }}
+    root-password: {{ include "common.secrets.passwords.manage" (dict "secret" "minio" "key" "root-password" "providedValues" (list "minio.rootPassword") "length" 10 "context" $) }}
+{{- end }}
+
+
+{{- define "harnesssecrets.generateMinioSecretsAgain" }}
+{{- if .Values.minio.rootUser }}
+root-user: {{ .Values.minio.rootUser | b64enc | quote }}
+{{- else}}
+root-user: {{ randAlphaNum 10 | quote }}
+{{- end -}}
+{{- if .Values.minio.rootPassword }}
+root-password: {{ .Values.minio.rootPassword }}
+{{- else}}
+root-password: {{ randAlphaNum 10 | quote }}
+{{- end -}}
+{{- end }}
+
+{{- define "getDefaultOrRandom" }}
+{{- if .Default }}
+{{- printf "%s" .Default}}
+{{- else }}
+{{- randAlphaNum .Length}}
+{{- end}}
+{{- end }}

@@ -135,6 +135,8 @@ minio:
   fullnameOverride: "minio"
   mode: standalone
   defaultBuckets: "logs"
+  auth:
+    existingSecret: "minio"
 
 mongodb:
   architecture: replicaset
@@ -351,4 +353,3 @@ timescaledb:
     capacity: 100Gi
   autoscaling:
     enabled: false
-

@@ -2,7 +2,7 @@
 
 Helm chart for Harness Platform
 
-![Version: 0.3.7](https://img.shields.io/badge/Version-0.3.7-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.16.0](https://img.shields.io/badge/AppVersion-1.16.0-informational?style=flat-square)
+![Version: 0.3.8](https://img.shields.io/badge/Version-0.3.8-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.16.0](https://img.shields.io/badge/AppVersion-1.16.0-informational?style=flat-square)
 
 ## Usage
 
@@ -12,7 +12,7 @@ Use the following dependency to add this chart repository to your Helm installat
 dependencies:
     - name: ccm
       repository: https://harness.github.io/helm-platform
-      version: 0.3.7
+      version: 0.3.8
 ```
 
 ## Values
@@ -87,6 +87,7 @@ dependencies:
 | log-service.resources.limits.memory | string | `"3072Mi"` |  |
 | log-service.resources.requests.cpu | int | `1` |  |
 | log-service.resources.requests.memory | string | `"3072Mi"` |  |
+| minio.auth.existingSecret | string | `"minio"` |  |
 | minio.defaultBuckets | string | `"logs"` |  |
 | minio.fullnameOverride | string | `"minio"` |  |
 | minio.mode | string | `"standalone"` |  |
