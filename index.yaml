@@ -107,6 +107,20 @@ entries:
   harness-secrets:
   - apiVersion: v2
     appVersion: 0.0.0
+    created: "2022-12-29T06:51:07.631553806Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      version: 2.x.x
+    description: A Helm chart to create Harness secrets
+    digest: 48754209da328a13ef5105488ed57f3892d6af1682dfaeba3d700c0f4af51a29
+    name: harness-secrets
+    type: application
+    urls:
+    - https://github.com/harness/helm-platform/releases/download/harness-secrets-0.2.7/harness-secrets-0.2.7.tgz
+    version: 0.2.7
+  - apiVersion: v2
+    appVersion: 0.0.0
     created: "2022-12-21T16:25:58.269905176Z"
     dependencies:
     - name: common
@@ -210,6 +224,81 @@ entries:
     - https://github.com/harness/helm-platform/releases/download/pipeline-service-0.2.17/pipeline-service-0.2.17.tgz
     version: 0.2.17
   platform:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2022-12-29T06:51:07.836523867Z"
+    dependencies:
+    - name: access-control
+      repository: file://../access-control
+      version: 0.2.x
+    - name: change-data-capture
+      repository: file://../change-data-capture
+      version: 0.2.x
+    - name: cv-nextgen
+      repository: file://../cv-nextgen
+      version: 0.2.x
+    - name: gateway
+      repository: file://../gateway
+      version: 0.2.x
+    - name: harness-secrets
+      repository: file://../secrets
+      version: 0.2.x
+    - name: harness-manager
+      repository: file://../harness-manager
+      version: 0.2.x
+    - name: delegate-proxy
+      repository: file://../delegate-proxy
+      version: 0.2.x
+    - name: le-nextgen
+      repository: file://../le-nextgen
+      version: 0.2.x
+    - name: log-service
+      repository: file://../log-service
+      version: 0.2.x
+    - name: minio
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.9.1
+    - name: mongodb
+      repository: https://charts.bitnami.com/bitnami
+      version: 13.1.2
+    - name: next-gen-ui
+      repository: file://../next-gen-ui
+      version: 0.2.x
+    - name: ng-auth-ui
+      repository: file://../ng-auth-ui
+      version: 0.2.x
+    - name: ng-manager
+      repository: file://../ng-manager
+      version: 0.2.x
+    - name: pipeline-service
+      repository: file://../pipeline-service
+      version: 0.2.x
+    - name: platform-service
+      repository: file://../platform-service
+      version: 0.2.x
+    - name: redis
+      repository: https://harness.github.io/helm-redis
+      version: 0.2.x
+    - name: scm-service
+      repository: file://../scm-service
+      version: 0.2.x
+    - name: template-service
+      repository: file://../template-service
+      version: 0.2.x
+    - name: ti-service
+      repository: file://../ti-service
+      version: 0.2.x
+    - condition: timescaledb.enabled
+      name: timescaledb
+      repository: https://harness.github.io/helm-timescaledb
+      version: 0.2.x
+    description: Helm chart for Harness Platform
+    digest: ef358053e11547c7a437c97951a00b9d912e21e6e63f889aa4aca1716524da0f
+    name: platform
+    type: application
+    urls:
+    - https://github.com/harness/helm-platform/releases/download/platform-0.3.10/platform-0.3.10.tgz
+    version: 0.3.10
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2022-12-29T06:25:00.179922991Z"
@@ -1020,4 +1109,4 @@ entries:
     urls:
     - https://github.com/harness/helm-platform/releases/download/ti-service-0.2.12/ti-service-0.2.12.tgz
     version: 0.2.12
-generated: "2022-12-29T06:25:00.180002991Z"
+generated: "2022-12-29T06:51:07.836574467Z"
