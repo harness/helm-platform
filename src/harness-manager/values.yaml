@@ -29,7 +29,7 @@ global:
     enabled: true
   opa:
     enabled: false
-  useImmutableDelegate: ""
+  useImmutableDelegate: "false"
 
 replicaCount: 1
 maxSurge: 1
