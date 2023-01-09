@@ -1023,7 +1023,7 @@ serviceAccount:
   ## @param serviceAccount.name Name of the created serviceAccount
   ## If not set and create is true, a name is generated using the mongodb.fullname template
   ##
-  name: ""
+  name: "harness-default"
   ## @param serviceAccount.annotations Additional Service Account annotations
   ##
   annotations: {}
