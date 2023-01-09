@@ -30,7 +30,6 @@ jobs:
         run: |
           helm repo add harness-common https://harness.github.io/helm-common
           helm repo add bitnami https://charts.bitnami.com/bitnami
-          helm repo add bitnami https://charts.bitnami.com/bitnami
           helm repo add harness-redis https://harness.github.io/helm-redis
           helm repo add harness-timescaledb https://harness.github.io/helm-timescaledb
 
