@@ -7,7 +7,7 @@ autoStopConnector: <+pipeline.variables.autoStopConnector>
 enableAutoStopping: <+pipeline.variables.enableAutoStopping>
 
 mongoImage: mongo:4.2.19
-mongoinstallImage: <+artifact.image>
+# mongoinstallImage: <+artifact.image>
 # busyboxImage: 4.2.19
 
 replicas: 3
