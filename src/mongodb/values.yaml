@@ -12,7 +12,7 @@ autoStopConnector: <+pipeline.variables.autoStopConnector>
 enableAutoStopping: <+pipeline.variables.enableAutoStopping>
 
 # mongoImage: mongo:4.2.18
-# mongoinstallImage: <+artifact.image>
+mongoinstallImage: bitnami/mongodb
 # busyboxImage: busybox:1.29
 
 replicas: 3
