@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mongo-replicaset-admin
+  annotations:
+    harness.io/skip-versioning: true
+type: Opaque
+stringData:
+  user: {{.Values.mongodbAdminUser}}
+  password: {{.Values.mongodbAdminPassword}}
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mongo-replicaset-keyfile
+  annotations:
+    harness.io/skip-versioning: true
+type: Opaque
+data:
+  key.txt: {{.Values.keyfile}}
