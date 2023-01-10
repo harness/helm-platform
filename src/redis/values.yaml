@@ -8,20 +8,20 @@ replicaCount: 3
 # -- Enable Hard pod anti-affinity during scheduling
 useAntiAffinity: true
 
-redis:
-  resources:
-    limits:
-      cpu: 0.1
-      memory: 200Mi
-    requests:
-      cpu: 0.1
-      memory: 200Mi
-  image:
-    registry: docker.io
-    tag: 6.2.5-alpine
-    repository: harness/redis
-    pullPolicy: IfNotPresent
-    digest: ""
+
+resources:
+  limits:
+    cpu: 0.1
+    memory: 200Mi
+  requests:
+    cpu: 0.1
+    memory: 200Mi
+image:
+  registry: docker.io
+  tag: 6.2.5-alpine
+  repository: harness/redis
+  pullPolicy: IfNotPresent
+  digest: ""
 
 sentinel:
   resources:
