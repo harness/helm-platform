@@ -48,8 +48,6 @@ spec:
               tag: 4.2.19
               digest: ""
               imagePullSecrets: []
-          args:
-            - --work-dir=/work-dir
           imagePullPolicy: "IfNotPresent"
           volumeMounts:
             - name: workdir
@@ -61,11 +59,6 @@ spec:
               tag: 4.2.19
               digest: ""
               imagePullSecrets: []
-          command:
-            - /work-dir/peer-finder
-          args:
-            - -on-start=/init/on-start.sh
-            - "-service=mongo-replicaset"
           imagePullPolicy: "IfNotPresent"
           env:
             - name: POD_NAMESPACE
@@ -99,22 +92,12 @@ spec:
       containers:
         - name: mongo-replicaset
           livenessProbe:
-            exec:
-              command:
-                - mongo
-                - --eval
-                - "db.adminCommand('ping')"
             initialDelaySeconds: 60
             timeoutSeconds: 10
             failureThreshold: 10
             periodSeconds: 10
             successThreshold: 1
           readinessProbe:
-            exec:
-              command:
-                - mongo
-                - --eval
-                - "db.adminCommand('ping')"
             initialDelaySeconds: 5
             timeoutSeconds: 1
             failureThreshold: 3
@@ -137,17 +120,6 @@ spec:
             requests:
               cpu: {{.Values.cpu | quote}}
               memory: {{.Values.memory}}
-          command:
-            - mongod
-          args:
-            - --config=/data/configdb/mongod.conf
-            - --dbpath=/data/db
-            - --replSet=rs0
-            - --port=27017
-            - --bind_ip=0.0.0.0
-            - --auth
-            - --keyFile=/data/configdb/key.txt
-            - --wiredTigerCacheSizeGB={{.Values.wiredTigerCacheSizeGB}}
           volumeMounts:
             - name: datadir
               mountPath: /data/db
