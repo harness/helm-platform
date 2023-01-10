@@ -1,0 +1,9 @@
+namespace: <+infra.namespace>
+created_by: <+pipeline.triggeredBy.email>
+
+resources:
+  memory: 512Mi
+  cpu: 250m
+storage: 1Gi
+
+password: espresso
