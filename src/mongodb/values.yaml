@@ -1,24 +1,23 @@
-mongodb:
-  architecture: replicaset
-  fullnameOverride: "mongodb-replicaset-chart"
-  image:
-    registry: docker.io
-    repository: bitnami/mongodb
-    tag: 4.2.19
-  replicaCount: 3
-  arbiter:
-    enabled: true
-  service:
-    nameOverride: "mongodb-replicaset-chart"
-  auth:
-    rootUser: "admin"
-  podLabels: { app : mongodb-replicaset } 
-  resources:
-    limits:
-      cpu: 4
-      memory: 8192Mi
-    requests:
-      cpu: 4
-      memory: 8192Mi
-  persistence:
-    size: 200Gi
+architecture: replicaset
+fullnameOverride: "mongodb-replicaset-chart"
+image:
+  registry: docker.io
+  repository: bitnami/mongodb
+  tag: 4.2.19
+replicaCount: 3
+arbiter:
+  enabled: true
+service:
+  nameOverride: "mongodb-replicaset-chart"
+auth:
+  rootUser: "admin"
+podLabels: { app : mongodb-replicaset } 
+resources:
+  limits:
+    cpu: 4
+    memory: 8192Mi
+  requests:
+    cpu: 4
+    memory: 8192Mi
+persistence:
+  size: 200Gi
