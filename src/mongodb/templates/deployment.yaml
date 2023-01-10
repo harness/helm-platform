@@ -16,13 +16,6 @@ spec:
       labels:
         app: mongo-replicaset
     spec:   
-      nodeSelector:
-      securityContext:
-        fsGroup: 999
-        runAsNonRoot: true
-        runAsUser: 999
-      imagePullSecrets:
-      - name: regcred
       initContainers:
         - name: copy-config
           image:
