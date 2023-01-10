@@ -1,4 +1,3 @@
-{{- if .Values.enableAutoStopping}}
 apiVersion: ccm.harness.io/v1
 kind: AutoStoppingRule
 metadata:
@@ -10,5 +9,3 @@ spec:
     idleTimeMins: 30
     workloadName: mongo-replicaset
     workloadType: StatefulSet
-{{- end}}
-Footer
