@@ -1,24 +1,24 @@
-namespace: 
-  name: <+infra.namespace>
-  annotated: false
-
-created_by: <+pipeline.triggeredBy.email>
-autoStopConnector: <+pipeline.variables.autoStopConnector>
-enableAutoStopping: <+pipeline.variables.enableAutoStopping>
-
-mongoImage: mongo:4.2.18
-mongoinstallImage: <+artifact.image>
-busyboxImage: busybox:1.29
-
-replicas: 3
-
-cpu: 500m
-memory: 1Gi
-storageSize: 5Gi
-storageClass: standard
-wiredTigerCacheSizeGB: 1
-
-mongodbAdminUser: admin
-mongodbAdminPassword: admin
-keyfile: aGFybmVzcw==
-ENV: pr
+mongodb:
+  architecture: replicaset
+  fullnameOverride: "mongodb-replicaset-chart"
+  image:
+    registry: docker.io
+    repository: bitnami/mongodb
+    tag: 4.2.19
+  replicaCount: 3
+  arbiter:
+    enabled: true
+  service:
+    nameOverride: "mongodb-replicaset-chart"
+  auth:
+    rootUser: "admin"
+  podLabels: { app: mongodb-replicaset }
+  resources:
+    limits:
+      cpu: 4
+      memory: 8192Mi
+    requests:
+      cpu: 4
+      memory: 8192Mi
+  persistence:
+    size: 200Gi
