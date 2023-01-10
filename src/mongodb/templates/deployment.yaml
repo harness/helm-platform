@@ -16,12 +16,6 @@ spec:
         app: mongo-replicaset
     spec:   
       nodeSelector:
-        cloud.google.com/gke-preemptible: "true"
-      tolerations:
-        - effect: "NoSchedule"
-          key: "cloud.google.com/gke-preemptible"
-          value: "true"
-          operator: "Equal" 
       securityContext:
         fsGroup: 999
         runAsNonRoot: true
