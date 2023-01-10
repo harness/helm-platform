@@ -1,0 +1,16 @@
+timescaledb:
+  enabled: true
+  image:
+    tag: "pg13-ts2.6-oss-latest"
+  replicaCount: 1
+  resources:
+    limits:
+      cpu: 1
+      memory: 2048Mi
+    requests:
+      cpu: 1
+      memory: 2048Mi
+  storage:
+    capacity: 100Gi
+  autoscaling:
+    enabled: false
