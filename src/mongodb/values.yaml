@@ -12,9 +12,7 @@ mongodb:
     nameOverride: "mongodb-replicaset-chart"
   auth:
     rootUser: "admin"
-  podLabels: 
-    - name: app
-      value: mongodb-replicaset
+  podLabels: { app : mongodb-replicaset } 
   resources:
     limits:
       cpu: 4
