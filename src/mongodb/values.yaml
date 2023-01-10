@@ -13,7 +13,8 @@ mongodb:
   auth:
     rootUser: "admin"
   podLabels: 
-    - app: mongodb-replicaset
+    - name: app
+      value: mongodb-replicaset
   resources:
     limits:
       cpu: 4
