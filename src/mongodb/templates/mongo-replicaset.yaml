@@ -1,8 +1,22 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongo-replicaset
+  annotations:
+    service.alpha.kubernetes.io/tolerate-unready-endpoints: "true"
+spec:
+  type: ClusterIP
+  clusterIP: None
+  ports:
+    - name: mongo
+      port: 27017
+  selector:
+    app: mongo-replicaset
+---
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: mongo-replicaset
-  namespace: {{ .Release.Namespace }}
   labels:
     app: mongo-replicaset
 spec:
@@ -15,15 +29,39 @@ spec:
     metadata:
       labels:
         app: mongo-replicaset
+        created_by: {{.Values.created_by | replace "@" "-"}}
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "9216"
+        prometheus.io/path: "/metrics"
     spec:   
+      nodeSelector:
+        cloud.google.com/gke-preemptible: "true"
+      tolerations:
+        - effect: "NoSchedule"
+          key: "cloud.google.com/gke-preemptible"
+          value: "true"
+          operator: "Equal" 
+      securityContext:
+        fsGroup: 999
+        runAsNonRoot: true
+        runAsUser: 999
+      imagePullSecrets:
+      - name: regcred
       initContainers:
         - name: copy-config
-          image:
-              registry: docker.io
-              repository: bitnami/mongodb
-              tag: 4.2.19
-              digest: ""
-              imagePullSecrets: []
+          image: {{.Values.busyboxImage}}
+          command:
+            - "sh"
+          args:
+            - "-c"
+            - |
+              set -e
+              set -x
+              cp /configdb-readonly/mongod.conf /data/configdb/mongod.conf
+              cp /keydir-readonly/key.txt /data/configdb/key.txt
+              chmod 600 /data/configdb/key.txt
+              touch /data/db/test.txt
           volumeMounts:
             - name: workdir
               mountPath: /work-dir
@@ -36,23 +74,20 @@ spec:
             - name: datadir
               mountPath: /data/db
         - name: install
-          image:
-              registry: docker.io
-              repository: bitnami/mongodb
-              tag: 4.2.19
-              digest: ""
-              imagePullSecrets: []
+          image: {{.Values.mongoinstallImage}}
+          args:
+            - --work-dir=/work-dir
           imagePullPolicy: "IfNotPresent"
           volumeMounts:
             - name: workdir
               mountPath: /work-dir
         - name: bootstrap
-          image:
-              registry: docker.io
-              repository: bitnami/mongodb
-              tag: 4.2.19
-              digest: ""
-              imagePullSecrets: []
+          image: {{.Values.mongoImage}}
+          command:
+            - /work-dir/peer-finder
+          args:
+            - -on-start=/init/on-start.sh
+            - "-service=mongo-replicaset"
           imagePullPolicy: "IfNotPresent"
           env:
             - name: POD_NAMESPACE
@@ -86,23 +121,28 @@ spec:
       containers:
         - name: mongo-replicaset
           livenessProbe:
+            exec:
+              command:
+                - mongo
+                - --eval
+                - "db.adminCommand('ping')"
             initialDelaySeconds: 60
             timeoutSeconds: 10
             failureThreshold: 10
             periodSeconds: 10
             successThreshold: 1
           readinessProbe:
+            exec:
+              command:
+                - mongo
+                - --eval
+                - "db.adminCommand('ping')"
             initialDelaySeconds: 5
             timeoutSeconds: 1
             failureThreshold: 3
             periodSeconds: 10
             successThreshold: 1
-          image:
-              registry: docker.io
-              repository: bitnami/mongodb
-              tag: 4.2.19
-              digest: ""
-              imagePullSecrets: []
+          image: {{.Values.mongoImage}}
           imagePullPolicy: "IfNotPresent"
           ports:
             - name: mongo
@@ -114,6 +154,17 @@ spec:
             requests:
               cpu: {{.Values.cpu | quote}}
               memory: {{.Values.memory}}
+          command:
+            - mongod
+          args:
+            - --config=/data/configdb/mongod.conf
+            - --dbpath=/data/db
+            - --replSet=rs0
+            - --port=27017
+            - --bind_ip=0.0.0.0
+            - --auth
+            - --keyFile=/data/configdb/key.txt
+            - --wiredTigerCacheSizeGB={{.Values.wiredTigerCacheSizeGB}}
           volumeMounts:
             - name: datadir
               mountPath: /data/db
@@ -146,4 +197,14 @@ spec:
         storageClassName: {{.Values.storageClass}}
         resources:
           requests:
-            storage: {{.Values.storageSize}}      
+            storage: {{.Values.storageSize}}
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: mongo-replicaset
+spec:
+  minAvailable: 2
+  selector:
+    matchLabels:
+      app: mongo-replicaset             

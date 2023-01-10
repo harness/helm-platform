@@ -1,8 +1,3 @@
-global:
-  loadbalancerURL: ""
-  imagePullSecrets: []
-  ingress:
-    useSelfSignedCert: false
 namespace: 
   name: <+infra.namespace>
   annotated: false
@@ -11,9 +6,9 @@ created_by: <+pipeline.triggeredBy.email>
 autoStopConnector: <+pipeline.variables.autoStopConnector>
 enableAutoStopping: <+pipeline.variables.enableAutoStopping>
 
-# mongoImage: mongo:4.2.18
-mongoinstallImage: bitnami/mongodb
-# busyboxImage: busybox:1.29
+mongoImage: mongo:4.2.18
+mongoinstallImage: <+artifact.image>
+busyboxImage: busybox:1.29
 
 replicas: 3
 
