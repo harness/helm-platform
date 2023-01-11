@@ -13,7 +13,7 @@ image:
   repository: harness/ti-service-signed
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "release-77"
+  tag: "release-98"
   digest: ""
   imagePullSecrets: []
 
