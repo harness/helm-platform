@@ -1,5 +1,5 @@
 architecture: replicaset
-fullnameOverride: "wait-for-mongo"
+fullnameOverride: "mongodb-replicaset-chart"
 image:
   registry: docker.io
   repository: bitnami/mongodb
@@ -8,10 +8,10 @@ replicaCount: 3
 arbiter:
   enabled: true
 service:
-  nameOverride: "wait-for-mongo"
+  nameOverride: "mongodb-replicaset-chart"
 auth:
   rootUser: "admin"
-podLabels: { app : wait-for-mongo } 
+podLabels: { app : mongodb-replicaset } 
 resources:
   limits:
     cpu: 4

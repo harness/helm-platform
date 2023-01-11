@@ -30,7 +30,7 @@ jobs:
   migrate:
     image:
       registry: docker.io
-      tag: release-77
+      tag: release-98
       repository: harness/ti-service-signed
       pullPolicy: IfNotPresent
       digest: ""
