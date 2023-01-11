@@ -8,7 +8,3 @@ storage: 1Gi
 
 password: espresso
 
-dependencies:
-  - name: postgres
-    version: 13.1.2
-    repository: https://charts.bitnami.com/bitnami
