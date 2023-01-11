@@ -1,0 +1,35 @@
+initContainers:
+  config_init:
+    image:
+      tag: 6.2.7-alpine
+redis:
+  resources:
+    limits:
+      cpu: 0.1
+      memory: 200Mi
+    requests:
+      cpu: 0.1
+      memory: 200Mi
+  image:
+    tag: 6.2.7-alpine
+    repository: harness/redis
+    pullPolicy: IfNotPresent
+replicaCount: 3
+sentinel:
+  resources:
+    limits:
+      cpu: 100m
+      memory: 200Mi
+    requests:
+      cpu: 100m
+      memory: 200Mi
+  image:
+    tag: 6.2.7-alpine
+    repository: harness/redis
+    pullPolicy: IfNotPresent
+volumeClaimTemplate:
+  resources:
+    requests:
+      storage: 10Gi
+autoscaling:
+  enabled: false
