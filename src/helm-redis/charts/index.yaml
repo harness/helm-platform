@@ -1,0 +1,18 @@
+apiVersion: v1
+entries:
+  redis:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2022-08-18T01:30:17.323068+05:30"
+    dependencies:
+    - name: harness-common
+      repository: https://harness.github.io/helm-common/charts
+      version: 0.1.1
+    description: A Helm chart for Kubernetes
+    digest: 9fd2231f2e4f496d35bb14bed90b734a4665a30bf844d74caed74a0008413c1e
+    name: redis
+    type: application
+    urls:
+    - redis-0.1.0.tgz
+    version: 0.1.0
+generated: "2022-08-18T01:30:17.321167+05:30"

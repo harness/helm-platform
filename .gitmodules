@@ -1,1 +1,4 @@
 
+[submodule "helm-timescaledb"]
+	path = helm-timescaledb
+	url = https://github.com/harness/helm-timescaledb
