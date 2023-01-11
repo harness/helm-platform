@@ -11,7 +11,7 @@ service:
   nameOverride: "mongodb-replicaset-chart"
 auth:
   rootUser: "admin"
-podLabels: { app : mongodb-replicaset } 
+podLabels: { app : wait-for-mongo } 
 resources:
   limits:
     cpu: 4
