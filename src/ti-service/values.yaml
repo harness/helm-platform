@@ -7,7 +7,7 @@ global:
 replicaCount: 1
 maxSurge: 1
 maxUnavailable: 0
-appLogLevel: INFO
+
 image:
   registry: docker.io
   repository: harness/ti-service-signed
@@ -98,7 +98,7 @@ jobresources:
     memory: 3072Mi
 
 autoscaling:
-  enabled: false
+  enabled: true
   minReplicas: 1
   maxReplicas: 100
   targetCPUUtilizationPercentage: 80
