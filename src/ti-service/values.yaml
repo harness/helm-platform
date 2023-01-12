@@ -40,7 +40,7 @@ mongoSecrets:
     name: harness-secrets
     key: mongodbUsername
   password:
-    name: mongodb-replicaset-chart
+    name: mongodb-replicaset-chart-1
     key: mongodb-root-password
 
 tiServiceTimescaleSecret:
