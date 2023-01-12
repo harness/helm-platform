@@ -1,0 +1,16 @@
+# harness.io/skip-file-for-deploy
+# Below rule is for services with no ingress rules, for autpstopping yamls with ingress rules please refer doc: https://docs.harness.io/article/1r80jdz2f9-create-autostopping-rules-for-kubernete
+
+{{- if .Values.enableAutoStopping}}
+apiVersion: ccm.harness.io/v1
+kind: AutoStoppingRule
+metadata:
+    name: mongo-as-rule-{{.Values.namespace.name}}-{{lower .Values.autoStopConnector}}
+    namespace: {{.Values.namespace.name}}
+    annotations:
+        harness.io/cloud-connector-id: {{.Values.autoStopConnector}}
+spec:
+    idleTimeMins: 30
+    workloadName: mongo-replicaset
+    workloadType: StatefulSet
+{{- end}}
