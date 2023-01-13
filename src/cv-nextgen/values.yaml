@@ -15,7 +15,7 @@ image:
   repository: harness/cv-nextgen-signed
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "76019"
+  tag: "77629"
   digest: ""
   imagePullSecrets: []
 
