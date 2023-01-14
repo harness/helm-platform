@@ -2,7 +2,7 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 global:
-  loadbalancerURL: "http://test/abc"
+  loadbalancerURL: "https://<+pipeline.variables.ENV_URL>.pr.harness.io/<+infra.namespace>/"
   ha: false
   imagePullSecrets: []
 
