@@ -1,0 +1,5 @@
+  fullnameOverride: "minio"
+  mode: standalone
+  defaultBuckets: "logs"
+  auth:
+    existingSecret: "minio"

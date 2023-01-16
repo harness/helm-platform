@@ -13,7 +13,7 @@ image:
   repository: harness/le-nextgen-signed
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "66501"
+  tag: "67200"
   digest: ""
   imagePullSecrets: []
 
