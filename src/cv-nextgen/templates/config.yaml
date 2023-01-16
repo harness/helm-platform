@@ -9,7 +9,7 @@ data:
   LOGGING_LEVEL: '{{ .Values.appLogLevel }}'
   MANAGER_URL: http://harness-manager.{{ .Release.Namespace }}.svc.cluster.local:9090/
   NG_MANAGER_URL: http://ng-manager.{{ .Release.Namespace }}.svc.cluster.local:7090/
-  MEMORY: '{{ .Values.java.memory | quote }}'
+  MEMORY: '{{ .Values.java.memory }}'
   STACK_DRIVER_LOGGING_ENABLED: "false"
   VERIFICATION_PORT: "6060"
   VERIFICATION_SERVICE_SECRET: 59MR5RlVARcdH7zb7pNx6GzqiglBmXR8
