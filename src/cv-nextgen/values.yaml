@@ -36,7 +36,7 @@ waitForInitContainer:
     digest: ""
 
 java:
-  memory: 4096m
+  memory: 4096
 
 appLogLevel: INFO
 
