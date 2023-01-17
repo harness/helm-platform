@@ -67,3 +67,7 @@ Create the name of the sentinet image to use
 {{- define "ui.securityImage" -}}
 {{ include "common.images.image" (dict "imageRoot" .Values.securityImage.image "global" .Values.global) }}
 {{- end }}
+
+{{- define "ui.pullSecrets" -}}
+{{ include "common.images.pullSecrets" (dict "images" (list .Values.image .Values.waitForInitContainer.image) "global" .Values.global ) }}
+{{- end -}}

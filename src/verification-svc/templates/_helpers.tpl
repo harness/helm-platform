@@ -67,3 +67,7 @@ Create the name of the sentinet image to use
 {{- define "verification-svc.securityImage" -}}
 {{ include "common.images.image" (dict "imageRoot" .Values.securityImage.image "global" .Values.global) }}
 {{- end }}
+
+{{- define "verification-svc.pullSecrets" -}}
+{{ include "common.images.pullSecrets" (dict "images" (list .Values.image .Values.waitForInitContainer.image) "global" .Values.global ) }}
+{{- end -}}

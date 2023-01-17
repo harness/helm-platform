@@ -5,10 +5,11 @@ global:
   ha: false
   loadbalancerURL: ""
   airgap: false
+  imagePullSecrets: []
   ingress:
     hosts:
       - "*"
-    enabled: true
+    enabled: false
     objects:
       annotations: {}
     className: harness
@@ -41,6 +42,7 @@ image:
   # Overrides the image tag whose default is the chart appVersion.
   tag: "77629"
   digest: ""
+  imagePullSecrets: []
 
 waitForInitContainer:
   image:
@@ -49,6 +51,7 @@ waitForInitContainer:
     pullPolicy: IfNotPresent
     tag: "latest"
     digest: ""
+    imagePullSecrets: []
 
 mongoSecrets:
   userName:
