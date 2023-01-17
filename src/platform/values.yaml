@@ -1,3 +1,9 @@
+global:
+  cg:
+    enabled: false
+  ng:
+    enabled: true
+
 access-control:
   appLogLevel: INFO
   image:

@@ -25,14 +25,17 @@ appVersion: "1.16.1"
 
 dependencies:
   - name: access-control
+    condition: global.ng.enabled
     version: 0.2.x
     repository: "file://../access-control"
 
   - name: change-data-capture
+    condition: global.ng.enabled
     version: 0.2.x
     repository: "file://../change-data-capture"
 
   - name: cv-nextgen
+    condition: global.ng.enabled
     version: 0.2.x
     repository: "file://../cv-nextgen"
 
@@ -53,22 +56,27 @@ dependencies:
     repository: "file://../delegate-proxy"
 
   - name: le-nextgen
+    condition: global.ng.enabled
     version: 0.2.x
     repository: "file://../le-nextgen"
 
   - name: log-service
+    condition: global.ng.enabled
     version: 0.2.x
     repository: "file://../log-service"
 
   - name: minio
+    condition: global.ng.enabled
     version: 11.9.1
     repository: https://charts.bitnami.com/bitnami
 
   - name: mongodb
+    condition: global.ng.enabled
     version: 13.1.2
     repository: https://charts.bitnami.com/bitnami
 
   - name: next-gen-ui
+    condition: global.ng.enabled
     version: 0.2.x
     repository: "file://../next-gen-ui"
 
@@ -77,14 +85,17 @@ dependencies:
     repository: "file://../ng-auth-ui"
 
   - name: ng-manager
+    condition: global.ng.enabled
     version: 0.2.x
     repository: "file://../ng-manager"
 
   - name: pipeline-service
+    condition: global.ng.enabled
     version: 0.2.x
     repository: "file://../pipeline-service"
 
   - name: platform-service
+    condition: global.ng.enabled
     version: 0.2.x
     repository: "file://../platform-service"
 
@@ -93,14 +104,17 @@ dependencies:
     repository: "https://harness.github.io/helm-redis"
 
   - name: scm-service
+    condition: global.ng.enabled
     version: 0.2.x
     repository: "file://../scm-service"
 
   - name: template-service
+    condition: global.ng.enabled   
     version: 0.2.x
     repository: "file://../template-service"
 
   - name: ti-service
+    condition: global.ng.enabled
     version: 0.2.x
     repository: "file://../ti-service"
 
@@ -108,3 +122,13 @@ dependencies:
     condition: timescaledb.enabled
     version: 0.2.x
     repository: "https://harness.github.io/helm-timescaledb"
+  
+  - name: ui
+    condition: global.cg.enabled
+    version: 0.3.x
+    repository: "file://../ui"
+  
+  - name: verification-svc
+    condition: global.cg.enabled
+    version: 0.3.x
+    repository: "file://../verification-svc"
