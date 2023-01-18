@@ -71,7 +71,6 @@ dependencies:
     repository: https://charts.bitnami.com/bitnami
 
   - name: mongodb
-    condition: global.ng.enabled
     version: 13.1.2
     repository: https://charts.bitnami.com/bitnami
 
