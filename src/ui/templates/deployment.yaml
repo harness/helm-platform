@@ -1,0 +1,82 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ui
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "ui.labels" . | nindent 4 }}
+spec:
+  progressDeadlineSeconds: 600
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  revisionHistoryLimit: 10
+  {{- end }}
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: {{.Values.maxSurge}}
+      maxUnavailable: {{.Values.maxUnavailable}}
+  selector:
+    matchLabels:
+      {{- include "ui.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/config.yaml") . | sha256sum }}
+      {{- with .Values.podAnnotations }}
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "ui.selectorLabels" . | nindent 8 }}
+    spec:
+      {{ include "ui.pullSecrets" . | nindent 6 }}
+      serviceAccountName: {{ include "ui.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      terminationGracePeriodSeconds: 15
+      initContainers:
+      - name: wait-for-harness-manager
+        image: {{ include "common.images.image" (dict "imageRoot" .Values.waitForInitContainer.image "global" .Values.global) }}
+        imagePullPolicy: IfNotPresent
+        args:
+          - "pod"
+          - "-lapp=harness-manager"
+      containers:
+        - name: ui
+          image: {{ include "common.images.image" (dict "imageRoot" .Values.image "global" .Values.global) }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          securityContext:
+              {{- toYaml .Values.securityContext | nindent 12 }}
+          ports:
+          - name: http-ui
+            containerPort: {{.Values.service.targetPort}}
+            protocol: "TCP"
+          resources:
+              {{- toYaml .Values.resources | nindent 12 }}
+          envFrom:
+          - configMapRef:
+              name: ui
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - ui
+            topologyKey: "kubernetes.io/hostname"
+      {{- with .Values.affinity }}
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

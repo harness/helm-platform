@@ -120,6 +120,9 @@ Create the name of the delegate upgrader image to use
 {{- if gt $length 0}}
 {{- $flags = printf "%s,%s" $flags .Values.featureFlags.LICENSE }}
 {{- end }}
+{{- if .Values.global.ng.enabled }}
+{{- $flags = printf "%s,%s" $flags .Values.featureFlags.NG }}
+{{- end }}
 {{- $length2 := len .Values.featureFlags.ADDITIONAL }}
 {{- if gt $length2 0}}
 {{- $flags = printf "%s,%s" $flags .Values.featureFlags.ADDITIONAL }}

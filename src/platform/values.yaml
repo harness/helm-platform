@@ -1,3 +1,9 @@
+global:
+  cg:
+    enabled: false
+  ng:
+    enabled: true
+
 access-control:
   appLogLevel: INFO
   image:
@@ -351,5 +357,37 @@ timescaledb:
       memory: 2048Mi
   storage:
     capacity: 100Gi
+  autoscaling:
+    enabled: false
+
+ui:
+  appLogLevel: INFO
+  image:
+    tag: "77600"
+  replicaCount: 1
+  resources:
+    limits:
+      cpu: 500m
+      memory: 512Mi
+    requests:
+      cpu: 500m
+      memory: 512Mi
+  autoscaling:
+    enabled: false
+
+verification-svc:
+  appLogInfo: INFO
+  image:
+    tag: "77629"
+  java:
+    memory: 2048
+  replicaCount: 1
+  resources:
+    limits:
+      cpu: 500m
+      memory: 3000Mi
+    requests:
+      cpu: 500m
+      memory: 3000Mi
   autoscaling:
     enabled: false

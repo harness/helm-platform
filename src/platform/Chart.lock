@@ -62,5 +62,11 @@ dependencies:
 - name: timescaledb
   repository: https://harness.github.io/helm-timescaledb
   version: 0.2.14
-digest: sha256:5874aa57b3ba327e2cd3181f0a569adf7794eeac8a69e87b896c48327568821f
-generated: "2022-12-29T12:14:08.126901+05:30"
+- name: ui
+  repository: file://../ui
+  version: 0.3.0
+- name: verification-svc
+  repository: file://../verification-svc
+  version: 0.3.0
+digest: sha256:5e60ddf3067ae4b903d088bea9d066dbf51942d55db81b22fc70c2351d85fd3a
+generated: "2023-01-18T22:43:16.403974+05:30"
