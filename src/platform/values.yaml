@@ -96,7 +96,7 @@ harness-manager:
   autoscaling:
     enabled: false
   image:
-    tag: "77629"
+    tag: "77630"
   java:
     memory: "2048"
   replicaCount: 1
@@ -378,7 +378,7 @@ ui:
 verification-svc:
   appLogInfo: INFO
   image:
-    tag: "77629"
+    tag: "77630"
   java:
     memory: 2048
   replicaCount: 1
