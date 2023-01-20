@@ -7,7 +7,7 @@ global:
 access-control:
   appLogLevel: INFO
   image:
-    tag: "77301"
+    tag: "77700"
   java:
     memory: 512m
   replicaCount: 1
@@ -26,7 +26,7 @@ change-data-capture:
   appLogLevel: INFO
   replicaCount: 1
   image:
-    tag: "77629"
+    tag: "78107"
   java:
     memory: 2048
   resources:
@@ -42,7 +42,7 @@ change-data-capture:
 cv-nextgen:
   appLogLevel: INFO
   image:
-    tag: "77629"
+    tag: "78107"
   java:
     memory: 4096
   replicaCount: 1
@@ -58,7 +58,7 @@ cv-nextgen:
 
 delegate-proxy:
   image:
-    tag: "77629"
+    tag: "78101"
   replicaCount: 1
   resources:
     limits:
@@ -70,7 +70,7 @@ delegate-proxy:
 
 gateway:
   image:
-    tag: "2000125"
+    tag: "2000137"
   java:
     memory: 512
   replicaCount: 1
@@ -91,12 +91,12 @@ harness-manager:
       tag: latest
   immutable_delegate_docker_image:
     image:
-      tag: 22.12.77629
+      tag: 23.01.78101
   external_graphql_rate_limit: "500"
   autoscaling:
     enabled: false
   image:
-    tag: "77630"
+    tag: "78107"
   java:
     memory: "2048"
   replicaCount: 1
@@ -107,13 +107,13 @@ harness-manager:
     requests:
       cpu: 2
       memory: 3000Mi
-  version: 1.0.77629
+  version: 1.0.78107
 
 le-nextgen:
   autoscaling:
     enabled: false
   image:
-    tag: "67200"
+    tag: "67300"
   replicaCount: 1
   resources:
     limits:
@@ -171,7 +171,7 @@ mongodb:
 
 next-gen-ui:
   image:
-    tag: "0.331.16"
+    tag: "0.336.3"
   replicaCount: 1
   resources:
     limits:
@@ -200,7 +200,7 @@ ng-auth-ui:
 ng-manager:
   appLogLevel: INFO
   image:
-    tag: "77629"
+    tag: "78107"
   java:
     memory: "4096m"
   replicaCount: 1
@@ -217,7 +217,7 @@ ng-manager:
 pipeline-service:
   appLogLevel: INFO
   image:
-    tag: "1.16.3"
+    tag: "1.19.2"
   java:
     memory: "4096m"
   replicaCount: 1
@@ -234,7 +234,7 @@ pipeline-service:
 platform-service:
   appLogLevel: INFO
   image:
-    tag: "77502"
+    tag: "77901"
   java:
     memory: "3072m"
   replicaCount: 1
@@ -303,7 +303,7 @@ scm-service:
 template-service:
   appLogLevel: INFO
   image:
-    tag: "77629"
+    tag: "78107"
   java:
     memory: "1024m"
   replicaCount: 1
@@ -320,7 +320,7 @@ template-service:
 ti-service:
   appLogLevel: INFO
   image:
-    tag: "release-98"
+    tag: "release-144"
   jobresources:
     limits:
       cpu: 1
@@ -331,7 +331,7 @@ ti-service:
   jobs:
     migrate:
       image:
-        tag: release-98
+        tag: release-144
   replicaCount: 1
   resources:
     limits:
@@ -363,7 +363,7 @@ timescaledb:
 ui:
   appLogLevel: INFO
   image:
-    tag: "77600"
+    tag: "78100"
   replicaCount: 1
   resources:
     limits:
@@ -378,7 +378,7 @@ ui:
 verification-svc:
   appLogInfo: INFO
   image:
-    tag: "77630"
+    tag: "78107"
   java:
     memory: 2048
   replicaCount: 1
