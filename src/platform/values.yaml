@@ -320,7 +320,7 @@ template-service:
 ti-service:
   appLogLevel: INFO
   image:
-    tag: "release-144"
+    tag: "release-148"
   jobresources:
     limits:
       cpu: 1
@@ -331,7 +331,7 @@ ti-service:
   jobs:
     migrate:
       image:
-        tag: release-144
+        tag: release-148
   replicaCount: 1
   resources:
     limits:
