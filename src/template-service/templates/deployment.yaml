@@ -9,7 +9,7 @@ spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
-  progressDeadlineSeconds: 300
+  progressDeadlineSeconds: 600
   selector:
     matchLabels:
       {{- include "template-service.selectorLabels" . | nindent 6 }}
