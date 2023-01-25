@@ -7,7 +7,7 @@ global:
 access-control:
   appLogLevel: INFO
   image:
-    tag: "77700"
+    tag: "77801"
   java:
     memory: 512m
   replicaCount: 1
