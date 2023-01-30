@@ -1,6 +1,6 @@
 global:
   cg:
-    enabled: false
+    enabled: true
   ng:
     enabled: true
 
