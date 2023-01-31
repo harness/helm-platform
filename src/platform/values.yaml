@@ -123,6 +123,20 @@ le-nextgen:
       cpu: 1
       memory: 6144Mi
 
+learning-engine:
+  autoscaling:
+    enabled: false
+  image:
+    tag: "66700"
+  replicaCount: 1
+  resources:
+    limits:
+      cpu: 1
+      memory: 2048Mi
+    requests:
+      cpu: 1
+      memory: 2048Mi
+
 log-service:
   image:
     tag: "release-18"
