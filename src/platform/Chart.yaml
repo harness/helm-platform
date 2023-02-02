@@ -15,7 +15,7 @@ type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 0.3.22
+version: 0.3.25
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
@@ -59,6 +59,11 @@ dependencies:
     condition: global.ng.enabled
     version: 0.2.x
     repository: "file://../le-nextgen"
+
+  - name: learning-engine
+    condition: global.cg.enabled
+    version: 0.3.x
+    repository: "file://../learning-engine"
 
   - name: log-service
     condition: global.ng.enabled
