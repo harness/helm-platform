@@ -283,7 +283,7 @@ data:
       },
       {
         "name": "DeleteAccountIterator",
-        "enabled": true,
+        "enabled": false,
         "threadPoolSize": 2,
         "threadPoolIntervalInSeconds": 60,
         "nextIterationMode": "TARGET",
@@ -292,7 +292,7 @@ data:
       },
       {
         "name": "DeletedEntityIterator",
-        "enabled": true,
+        "enabled": false,
         "threadPoolSize": 2,
         "threadPoolIntervalInSeconds": 60,
         "nextIterationMode": "TARGET",
