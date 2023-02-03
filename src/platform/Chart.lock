@@ -16,7 +16,7 @@ dependencies:
   version: 0.2.7
 - name: harness-manager
   repository: file://../harness-manager
-  version: 0.2.44
+  version: 0.2.45
 - name: delegate-proxy
   repository: file://../delegate-proxy
   version: 0.2.7
@@ -71,5 +71,5 @@ dependencies:
 - name: verification-svc
   repository: file://../verification-svc
   version: 0.3.0
-digest: sha256:2b045b8296e80019d663cf03975ca400de8df6276abc23b478086d3129572b19
-generated: "2023-02-02T21:02:17.8042+05:30"
+digest: sha256:bc38af0773b851400cb7d2a2a3340a157b6138dac80a3a9cb6582ff16f4f5c1a
+generated: "2023-02-03T18:17:36.469015+05:30"
