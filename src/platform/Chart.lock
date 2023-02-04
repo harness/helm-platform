@@ -49,7 +49,7 @@ dependencies:
   version: 0.2.17
 - name: platform-service
   repository: file://../platform-service
-  version: 0.2.13
+  version: 0.2.14
 - name: redis
   repository: https://harness.github.io/helm-redis
   version: 0.2.2
@@ -71,5 +71,5 @@ dependencies:
 - name: verification-svc
   repository: file://../verification-svc
   version: 0.3.0
-digest: sha256:b97afd16653faf61e0bf78e8f39b1c49f6c2c07494715beea1dc6255b860e24a
-generated: "2023-02-04T11:00:06.318896+05:30"
+digest: sha256:ac7e32c942f9f5f2cf0a541a2f149b0a34d97a736476e790923a707c6507329f
+generated: "2023-02-04T11:04:27.900077+05:30"
