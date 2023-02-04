@@ -283,6 +283,106 @@ entries:
   platform:
   - apiVersion: v2
     appVersion: 1.16.1
+    created: "2023-02-04T05:36:19.041423488Z"
+    dependencies:
+    - condition: global.ng.enabled
+      name: access-control
+      repository: file://../access-control
+      version: 0.2.x
+    - condition: global.ng.enabled
+      name: change-data-capture
+      repository: file://../change-data-capture
+      version: 0.2.x
+    - condition: global.ng.enabled
+      name: cv-nextgen
+      repository: file://../cv-nextgen
+      version: 0.2.x
+    - name: gateway
+      repository: file://../gateway
+      version: 0.2.x
+    - name: harness-secrets
+      repository: file://../secrets
+      version: 0.2.x
+    - name: harness-manager
+      repository: file://../harness-manager
+      version: 0.2.x
+    - name: delegate-proxy
+      repository: file://../delegate-proxy
+      version: 0.2.x
+    - condition: global.ng.enabled
+      name: le-nextgen
+      repository: file://../le-nextgen
+      version: 0.2.x
+    - condition: global.cg.enabled
+      name: learning-engine
+      repository: file://../learning-engine
+      version: 0.3.x
+    - condition: global.ng.enabled
+      name: log-service
+      repository: file://../log-service
+      version: 0.2.x
+    - condition: global.ng.enabled
+      name: minio
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.9.1
+    - name: mongodb
+      repository: https://charts.bitnami.com/bitnami
+      version: 13.1.2
+    - condition: global.ng.enabled
+      name: next-gen-ui
+      repository: file://../next-gen-ui
+      version: 0.2.x
+    - name: ng-auth-ui
+      repository: file://../ng-auth-ui
+      version: 0.2.x
+    - condition: global.ng.enabled
+      name: ng-manager
+      repository: file://../ng-manager
+      version: 0.2.x
+    - condition: global.ng.enabled
+      name: pipeline-service
+      repository: file://../pipeline-service
+      version: 0.2.x
+    - condition: global.ng.enabled
+      name: platform-service
+      repository: file://../platform-service
+      version: 0.2.x
+    - name: redis
+      repository: https://harness.github.io/helm-redis
+      version: 0.2.x
+    - condition: global.ng.enabled
+      name: scm-service
+      repository: file://../scm-service
+      version: 0.2.x
+    - condition: global.ng.enabled
+      name: template-service
+      repository: file://../template-service
+      version: 0.2.x
+    - condition: global.ng.enabled
+      name: ti-service
+      repository: file://../ti-service
+      version: 0.2.x
+    - condition: timescaledb.enabled
+      name: timescaledb
+      repository: https://harness.github.io/helm-timescaledb
+      version: 0.2.x
+    - condition: global.cg.enabled
+      name: ui
+      repository: file://../ui
+      version: 0.3.x
+    - condition: global.cg.enabled
+      name: verification-svc
+      repository: file://../verification-svc
+      version: 0.3.x
+    description: Helm chart for Harness Platform
+    digest: 285528fdf32218e16bc6a8d460f910101b5777fbad5c9aa44b7d36afb7888cd9
+    name: platform
+    type: application
+    urls:
+    - https://github.com/harness/helm-platform/releases/download/platform-0.3.29/platform-0.3.29.tgz
+    version: 0.3.29
+  - apiVersion: v2
+    appVersion: 1.16.1
     created: "2023-02-04T05:32:18.762321283Z"
     dependencies:
     - condition: global.ng.enabled
@@ -2836,6 +2936,20 @@ entries:
   platform-service:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2023-02-04T05:36:19.196181136Z"
+    dependencies:
+    - name: harness-common
+      repository: https://harness.github.io/helm-common
+      version: 1.x.x
+    description: A Helm chart for Kubernetes
+    digest: 54b466895ff94b45133e54488c3002c311596c302cf24206e829f2ed778d8eb5
+    name: platform-service
+    type: application
+    urls:
+    - https://github.com/harness/helm-platform/releases/download/platform-service-0.2.14/platform-service-0.2.14.tgz
+    version: 0.2.14
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2023-02-04T05:32:18.931583255Z"
     dependencies:
     - name: harness-common
@@ -2937,4 +3051,4 @@ entries:
     urls:
     - https://github.com/harness/helm-platform/releases/download/verification-svc-0.3.0/verification-svc-0.3.0.tgz
     version: 0.3.0
-generated: "2023-02-04T05:32:18.931968157Z"
+generated: "2023-02-04T05:36:19.196434235Z"
