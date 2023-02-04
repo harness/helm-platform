@@ -9,7 +9,7 @@ global:
     SMTP_PASSWORD: ""
     SMTP_HOST: ""
     SMTP_USERNAME: ""
-    SMTP_SSL: "true"
+    SMTP_USE_SSL: "true"
     SMTP_PORT: "465"
 
 replicaCount: 1
