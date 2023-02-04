@@ -72,7 +72,8 @@ spec:
         envFrom:
         - configMapRef:
             name: platform-service
-
+        - secretRef:
+            name: smtpSecret
         readinessProbe:
           httpGet:
             path: /api/health
