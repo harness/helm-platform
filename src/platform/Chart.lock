@@ -16,13 +16,16 @@ dependencies:
   version: 0.2.7
 - name: harness-manager
   repository: file://../harness-manager
-  version: 0.2.42
+  version: 0.2.45
 - name: delegate-proxy
   repository: file://../delegate-proxy
   version: 0.2.7
 - name: le-nextgen
   repository: file://../le-nextgen
   version: 0.2.5
+- name: learning-engine
+  repository: file://../learning-engine
+  version: 0.3.0
 - name: log-service
   repository: file://../log-service
   version: 0.2.13
@@ -68,5 +71,5 @@ dependencies:
 - name: verification-svc
   repository: file://../verification-svc
   version: 0.3.0
-digest: sha256:5e60ddf3067ae4b903d088bea9d066dbf51942d55db81b22fc70c2351d85fd3a
-generated: "2023-01-18T22:43:16.403974+05:30"
+digest: sha256:bc38af0773b851400cb7d2a2a3340a157b6138dac80a3a9cb6582ff16f4f5c1a
+generated: "2023-02-03T18:17:36.469015+05:30"
