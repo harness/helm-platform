@@ -16,7 +16,7 @@ type: application
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
 
-version: 0.3.33
+version: 0.4.0
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
@@ -114,7 +114,7 @@ dependencies:
     repository: "file://../scm-service"
 
   - name: template-service
-    condition: global.ng.enabled   
+    condition: global.ng.enabled
     version: 0.2.x
     repository: "file://../template-service"
 
@@ -127,12 +127,12 @@ dependencies:
     condition: timescaledb.enabled
     version: 0.2.x
     repository: "https://harness.github.io/helm-timescaledb"
-  
+
   - name: ui
     condition: global.cg.enabled
     version: 0.3.x
     repository: "file://../ui"
-  
+
   - name: verification-svc
     condition: global.cg.enabled
     version: 0.3.x
