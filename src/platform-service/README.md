@@ -1,6 +1,6 @@
 # platform-service
 
-![Version: 0.2.12](https://img.shields.io/badge/Version-0.2.12-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
+![Version: 0.2.17](https://img.shields.io/badge/Version-0.2.17-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
 
 A Helm chart for Kubernetes
 
@@ -23,6 +23,12 @@ A Helm chart for Kubernetes
 | fullnameOverride | string | `""` |  |
 | global.imagePullSecrets | list | `[]` |  |
 | global.loadbalancerURL | string | `"http://test/abc"` |  |
+| global.smtpCreateSecret.SMTP_HOST | string | `""` |  |
+| global.smtpCreateSecret.SMTP_PASSWORD | string | `""` |  |
+| global.smtpCreateSecret.SMTP_PORT | string | `"465"` |  |
+| global.smtpCreateSecret.SMTP_USERNAME | string | `""` |  |
+| global.smtpCreateSecret.SMTP_USE_SSL | string | `"true"` |  |
+| global.smtpCreateSecret.enabled | bool | `false` |  |
 | image.digest | string | `""` |  |
 | image.imagePullSecrets | list | `[]` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
@@ -53,11 +59,6 @@ A Helm chart for Kubernetes
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.create | bool | `false` |  |
 | serviceAccount.name | string | `"harness-default"` |  |
-| smtp.host | string | `""` |  |
-| smtp.password | string | `""` |  |
-| smtp.port | string | `""` |  |
-| smtp.ssl | bool | `true` |  |
-| smtp.user | string | `""` |  |
 | tolerations | list | `[]` |  |
 | waitForInitContainer.image.digest | string | `""` |  |
 | waitForInitContainer.image.imagePullSecrets | list | `[]` |  |
