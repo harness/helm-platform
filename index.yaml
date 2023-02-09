@@ -78,6 +78,20 @@ entries:
   harness-manager:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2023-02-09T16:45:45.804780379Z"
+    dependencies:
+    - name: harness-common
+      repository: https://harness.github.io/helm-common
+      version: 1.x.x
+    description: A Helm chart for Kubernetes
+    digest: 73fca06993738f9f632d4360af3c8aaba7435d889000eefeca435240b517b671
+    name: harness-manager
+    type: application
+    urls:
+    - https://github.com/harness/helm-platform/releases/download/harness-manager-0.2.46/harness-manager-0.2.46.tgz
+    version: 0.2.46
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2023-02-03T12:50:56.843973937Z"
     dependencies:
     - name: harness-common
@@ -3693,4 +3707,4 @@ entries:
     urls:
     - https://github.com/harness/helm-platform/releases/download/verification-svc-0.3.0/verification-svc-0.3.0.tgz
     version: 0.3.0
-generated: "2023-02-09T15:29:02.444743972Z"
+generated: "2023-02-09T16:45:45.805183384Z"
