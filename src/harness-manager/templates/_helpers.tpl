@@ -92,9 +92,6 @@ Create the name of the delegate upgrader image to use
 {{- if .Values.global.opa.enabled }}
 {{- $flags = printf "%s,%s" $flags $.Values.featureFlags.OPA }}
 {{- end }}
-{{- if not .Values.global.ngGitSync.enabled }}
-{{- $flags = printf "%s,%s" $flags $.Values.featureFlags.OLDGITSYNC }}
-{{- end }}
 {{- if .Values.global.cd.enabled }}
 {{- $flags = printf "%s,%s" $flags .Values.featureFlags.CD }}
 {{- end }}
