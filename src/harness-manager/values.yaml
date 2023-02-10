@@ -36,6 +36,13 @@ global:
   ngGitSync:
     enabled: false
   useImmutableDelegate: "false"
+  smtpCreateSecret:
+    enabled: false
+    SMTP_PASSWORD: ""
+    SMTP_HOST: ""
+    SMTP_USERNAME: ""
+    SMTP_USE_SSL: "true"
+    SMTP_PORT: "465"
 
 replicaCount: 1
 maxSurge: 1
