@@ -43,7 +43,7 @@ dependencies:
   version: 0.2.4
 - name: ng-manager
   repository: file://../ng-manager
-  version: 0.2.29
+  version: 0.2.30
 - name: pipeline-service
   repository: file://../pipeline-service
   version: 0.2.17

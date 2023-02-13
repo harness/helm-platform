@@ -46,6 +46,7 @@ data:
   ACCESS_CONTROL_BASE_URL: 'http://access-control.{{ .Release.Namespace }}.svc.cluster.local:9006/api/'
   RESOURCE_GROUP_BASE_URL: 'http://platform-service.{{ .Release.Namespace }}.svc.cluster.local:9005/api/'
   AUDIT_CLIENT_BASEURL: 'http://platform-service.{{ .Release.Namespace }}.svc.cluster.local:9005/api/'
+  CHAOS_SERVICE_BASE_URL: http://chaos-web-service.{{ .Release.Namespace }}.svc.cluster.local:8184/
   CENG_CLIENT_BASEURL: 'http://nextgen-ce.{{ .Release.Namespace }}.svc.cluster.local:6340/ccm/api/'
   CE_NG_CLIENT_BASEURL: 'http://nextgen-ce.{{ .Release.Namespace }}.svc.cluster.local:6340/ccm/api/'
   CE_SETUP_CONFIG_GCP_PROJECT_ID: {{ .Values.ceGcpSetupConfigGcpProjectId | quote }}
