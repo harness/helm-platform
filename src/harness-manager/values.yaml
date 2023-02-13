@@ -35,6 +35,8 @@ global:
     enabled: false
   ngGitSync:
     enabled: false
+  chaos:
+    enabled: false
   useImmutableDelegate: "false"
   smtpCreateSecret:
     enabled: false
@@ -195,5 +197,7 @@ featureFlags:
   LICENSE: "NG_LICENSES_ENABLED,VIEW_USAGE_ENABLED"
   # -- OPA
   OPA: "OPA_PIPELINE_GOVERNANCE,OPA_FEATURE_GOVERNANCE,OPA_FF_GOVERNANCE"
+  # -- CHAOS Feature Flags
+  CHAOS: "CHAOS_ENABLED"
   # -- Additional Feature Flag
   ADDITIONAL: ""
