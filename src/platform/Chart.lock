@@ -16,7 +16,7 @@ dependencies:
   version: 0.2.7
 - name: harness-manager
   repository: file://../harness-manager
-  version: 0.2.47
+  version: 0.2.48
 - name: delegate-proxy
   repository: file://../delegate-proxy
   version: 0.2.7
