@@ -56,6 +56,10 @@ spec:
         - envFrom:
             - configMapRef:
                 name: harness-manager-config
+            {{- if .Values.global.smtpCreateSecret.enabled }}
+            - secretRef:
+                name: smtp-secret
+            {{- end }}
           env:
             - name: MONGODB_USERNAME
               valueFrom:
