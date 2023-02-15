@@ -13,24 +13,12 @@
     PATRONI_SUPERUSER_PASSWORD: {{ $timescaledbPostgresPassword }}
     PATRONI_REPLICATION_PASSWORD: {{ $timescaledbStandbyPassword }}
     PATRONI_admin_PASSWORD: {{ $timescaledbAdminPassword }}
-{{ if .Values.global.ngcustomdashboard.enabled }}
-    lookerLicenseKey: {{ include "common.secrets.passwords.manage" (dict "secret" "harness-secrets" "key" "lookerLicenseKey" "providedValues" (list "cdb.lookerLicenseKey") "length" 16 "context" $) }}
-    lookerMasterKey: {{ include "common.secrets.passwords.manage" (dict "secret" "harness-secrets" "key" "lookerMasterKey" "providedValues" (list "cdb.lookerMasterKey") "length" 32 "context" $) }}
-    redshiftPassword: {{ include "common.secrets.passwords.manage" (dict "secret" "harness-secrets" "key" "redshiftPassword" "providedValues" (list "cdb.redshiftPassword") "length" 16 "context" $) }}
-{{- end }}
-{{- end }}
-{{- define "harnesssecrets.generateLookerSecrets" }}
-    lookerClientId: {{ include "common.secrets.passwords.manage" (dict "secret" "harness-looker-secrets" "key" "lookerClientId" "providedValues" (list "cdb.lookerClientId") "length" 20 "context" $) }}
-    lookerClientSecret: {{ include "common.secrets.passwords.manage" (dict "secret" "harness-looker-secrets" "key" "lookerClientSecret" "providedValues" (list "cdb.lookerClientSecret") "length" 24 "context" $) }}
-    lookerEmbedSecret: {{ include "common.secrets.passwords.manage" (dict "secret" "harness-looker-secrets" "key" "lookerEmbedSecret" "providedValues" (list "cdb.lookerEmbedSecret") "length" 16 "context" $) }}
-    lookerSignupUrl: {{ include "common.secrets.passwords.manage" (dict "secret" "harness-looker-secrets" "key" "lookerSignupUrl" "providedValues" (list "cdb.lookerSignupUrl") "length" 16 "context" $) }}
 {{- end }}
 
 {{- define "harnesssecrets.generateMinioSecrets" }}
     root-user: {{ include "common.secrets.passwords.manage" (dict "secret" "minio" "key" "root-user" "providedValues" (list "minio.rootUser") "length" 10 "context" $) }}
     root-password: {{ include "common.secrets.passwords.manage" (dict "secret" "minio" "key" "root-password" "providedValues" (list "minio.rootPassword") "length" 10 "context" $) }}
 {{- end }}
-
 
 {{- define "harnesssecrets.generateMinioSecretsAgain" }}
 {{- if .Values.minio.rootUser }}
