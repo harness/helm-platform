@@ -7,7 +7,7 @@ global:
 access-control:
   appLogLevel: INFO
   image:
-    tag: "77801"
+    tag: "78000"
   java:
     memory: 512m
   replicaCount: 1
@@ -26,7 +26,7 @@ change-data-capture:
   appLogLevel: INFO
   replicaCount: 1
   image:
-    tag: "78109"
+    tag: "78421"
   java:
     memory: 2048
   resources:
@@ -42,7 +42,7 @@ change-data-capture:
 cv-nextgen:
   appLogLevel: INFO
   image:
-    tag: "78109"
+    tag: "78421"
   java:
     memory: 4096
   replicaCount: 1
@@ -58,7 +58,7 @@ cv-nextgen:
 
 delegate-proxy:
   image:
-    tag: "78108"
+    tag: "78306"
   replicaCount: 1
   resources:
     limits:
@@ -70,7 +70,7 @@ delegate-proxy:
 
 gateway:
   image:
-    tag: "2000137"
+    tag: "2000149"
   java:
     memory: 512
   replicaCount: 1
@@ -91,12 +91,12 @@ harness-manager:
       tag: latest
   immutable_delegate_docker_image:
     image:
-      tag: 23.02.78108
+      tag: 23.02.78306
   external_graphql_rate_limit: "500"
   autoscaling:
     enabled: false
   image:
-    tag: "78109"
+    tag: "78421"
   java:
     memory: "2048"
   replicaCount: 1
@@ -107,13 +107,13 @@ harness-manager:
     requests:
       cpu: 2
       memory: 3000Mi
-  version: 1.0.78109
+  version: 1.0.78421
 
 le-nextgen:
   autoscaling:
     enabled: false
   image:
-    tag: "67300"
+    tag: "67500"
   replicaCount: 1
   resources:
     limits:
@@ -185,7 +185,7 @@ mongodb:
 
 next-gen-ui:
   image:
-    tag: "0.336.3"
+    tag: "0.339.15"
   replicaCount: 1
   resources:
     limits:
@@ -214,7 +214,7 @@ ng-auth-ui:
 ng-manager:
   appLogLevel: INFO
   image:
-    tag: "78109"
+    tag: "78421"
   java:
     memory: "4096m"
   replicaCount: 1
@@ -231,7 +231,7 @@ ng-manager:
 pipeline-service:
   appLogLevel: INFO
   image:
-    tag: "1.19.3"
+    tag: "1.21.10"
   java:
     memory: "4096m"
   replicaCount: 1
@@ -248,7 +248,7 @@ pipeline-service:
 platform-service:
   appLogLevel: INFO
   image:
-    tag: "77901"
+    tag: "78201"
   java:
     memory: "3072m"
   replicaCount: 1
@@ -317,7 +317,7 @@ scm-service:
 template-service:
   appLogLevel: INFO
   image:
-    tag: "78109"
+    tag: "78421"
   java:
     memory: "1024m"
   replicaCount: 1
@@ -377,7 +377,7 @@ timescaledb:
 ui:
   appLogLevel: INFO
   image:
-    tag: "78100"
+    tag: "78400"
   replicaCount: 1
   resources:
     limits:
@@ -392,7 +392,7 @@ ui:
 verification-svc:
   appLogInfo: INFO
   image:
-    tag: "78109"
+    tag: "78421"
   java:
     memory: 2048
   replicaCount: 1
