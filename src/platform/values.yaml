@@ -164,7 +164,7 @@ mongodb:
   image:
     registry: docker.io
     repository: bitnami/mongodb
-    tag: 4.2.19
+    tag: 4.4.15
   replicaCount: 3
   arbiter:
     enabled: true
@@ -360,7 +360,7 @@ ti-service:
 timescaledb:
   enabled: true
   image:
-    tag: "pg13-ts2.6-oss-latest"
+    tag: "pg13-ts2.9-oss-latest"
   replicaCount: 1
   resources:
     limits:
