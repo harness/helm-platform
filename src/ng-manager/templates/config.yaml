@@ -52,6 +52,7 @@ data:
   CURRENT_GEN_UI_URL: '{{ .Values.global.loadbalancerURL }}/#/'
   HARNESS_ENABLE_NG_AUTH_UI_PLACEHOLDER: "true"
   MONGO_TRANSACTIONS_ALLOWED: "false"
+  WEBHOOK_BASE_URL: '{{ .Values.global.loadbalancerURL }}/gateway/ng/api/'
   {{ $length := len .Values.global.license.ng }}
   {{- if gt $length 0}}
   ENABLE_SMP_LICENSING: 'true'
