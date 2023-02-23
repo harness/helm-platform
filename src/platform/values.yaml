@@ -199,7 +199,7 @@ next-gen-ui:
 
 ng-auth-ui:
   image:
-    tag: "0.45.0"
+    tag: "1.3.2"
   replicaCount: 1
   resources:
     limits:
@@ -302,7 +302,7 @@ redis:
 scm-service:
   appLogLevel: INFO
   image:
-    tag: "release-88-ubi"
+    tag: "release-114-ubi"
   replicaCount: 1
   resources:
     limits:
