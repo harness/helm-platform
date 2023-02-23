@@ -58,7 +58,7 @@ cv-nextgen:
 
 delegate-proxy:
   image:
-    tag: "78306"
+    tag: "78309"
   replicaCount: 1
   resources:
     limits:
@@ -91,7 +91,7 @@ harness-manager:
       tag: latest
   immutable_delegate_docker_image:
     image:
-      tag: 23.02.78306
+      tag: 23.02.78309
   external_graphql_rate_limit: "500"
   autoscaling:
     enabled: false
