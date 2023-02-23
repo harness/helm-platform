@@ -2,7 +2,7 @@
 
 Helm chart for Harness Platform
 
-![Version: 0.4.0](https://img.shields.io/badge/Version-0.4.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.16.1](https://img.shields.io/badge/AppVersion-1.16.1-informational?style=flat-square)
+![Version: 0.5.6](https://img.shields.io/badge/Version-0.5.6-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.16.1](https://img.shields.io/badge/AppVersion-1.16.1-informational?style=flat-square)
 
 ## Usage
 
@@ -12,7 +12,7 @@ Use the following dependency to add this chart repository to your Helm installat
 dependencies:
     - name: ccm
       repository: https://harness.github.io/helm-platform
-      version: 0.4.0
+      version: 0.5.6
 ```
 
 ## Values
@@ -21,7 +21,7 @@ dependencies:
 |-----|------|---------|-------------|
 | access-control.appLogLevel | string | `"INFO"` |  |
 | access-control.autoscaling.enabled | bool | `false` |  |
-| access-control.image.tag | string | `"77801"` |  |
+| access-control.image.tag | string | `"78000"` |  |
 | access-control.java.memory | string | `"512m"` |  |
 | access-control.replicaCount | int | `1` |  |
 | access-control.resources.limits.cpu | float | `0.5` |  |
@@ -31,7 +31,7 @@ dependencies:
 | access-control.slackWebhookURL | string | `""` |  |
 | change-data-capture.appLogLevel | string | `"INFO"` |  |
 | change-data-capture.autoscaling.enabled | bool | `false` |  |
-| change-data-capture.image.tag | string | `"78109"` |  |
+| change-data-capture.image.tag | string | `"78421"` |  |
 | change-data-capture.java.memory | int | `2048` |  |
 | change-data-capture.replicaCount | int | `1` |  |
 | change-data-capture.resources.limits.cpu | int | `1` |  |
@@ -40,21 +40,21 @@ dependencies:
 | change-data-capture.resources.requests.memory | string | `"2880Mi"` |  |
 | cv-nextgen.appLogLevel | string | `"INFO"` |  |
 | cv-nextgen.autoscaling.enabled | bool | `false` |  |
-| cv-nextgen.image.tag | string | `"78109"` |  |
+| cv-nextgen.image.tag | string | `"78421"` |  |
 | cv-nextgen.java.memory | int | `4096` |  |
 | cv-nextgen.replicaCount | int | `1` |  |
 | cv-nextgen.resources.limits.cpu | int | `1` |  |
 | cv-nextgen.resources.limits.memory | string | `"6144Mi"` |  |
 | cv-nextgen.resources.requests.cpu | int | `1` |  |
 | cv-nextgen.resources.requests.memory | string | `"6144Mi"` |  |
-| delegate-proxy.image.tag | string | `"78108"` |  |
+| delegate-proxy.image.tag | string | `"78309"` |  |
 | delegate-proxy.replicaCount | int | `1` |  |
 | delegate-proxy.resources.limits.cpu | string | `"200m"` |  |
 | delegate-proxy.resources.limits.memory | string | `"100Mi"` |  |
 | delegate-proxy.resources.requests.cpu | string | `"200m"` |  |
 | delegate-proxy.resources.requests.memory | string | `"100Mi"` |  |
 | gateway.autoscaling.enabled | bool | `false` |  |
-| gateway.image.tag | string | `"2000137"` |  |
+| gateway.image.tag | string | `"2000149"` |  |
 | gateway.java.memory | int | `512` |  |
 | gateway.replicaCount | int | `1` |  |
 | gateway.resources.limits.cpu | float | `0.4` |  |
@@ -67,17 +67,17 @@ dependencies:
 | harness-manager.delegate_docker_image.image.repository | string | `"harness/delegate"` |  |
 | harness-manager.delegate_docker_image.image.tag | string | `"latest"` |  |
 | harness-manager.external_graphql_rate_limit | string | `"500"` |  |
-| harness-manager.image.tag | string | `"78109"` |  |
-| harness-manager.immutable_delegate_docker_image.image.tag | string | `"23.02.78108"` |  |
+| harness-manager.image.tag | string | `"78421"` |  |
+| harness-manager.immutable_delegate_docker_image.image.tag | string | `"23.02.78309"` |  |
 | harness-manager.java.memory | string | `"2048"` |  |
 | harness-manager.replicaCount | int | `1` |  |
 | harness-manager.resources.limits.cpu | int | `2` |  |
 | harness-manager.resources.limits.memory | string | `"8192Mi"` |  |
 | harness-manager.resources.requests.cpu | int | `2` |  |
 | harness-manager.resources.requests.memory | string | `"3000Mi"` |  |
-| harness-manager.version | string | `"1.0.78109"` |  |
+| harness-manager.version | string | `"1.0.78421"` |  |
 | le-nextgen.autoscaling.enabled | bool | `false` |  |
-| le-nextgen.image.tag | string | `"67300"` |  |
+| le-nextgen.image.tag | string | `"67500"` |  |
 | le-nextgen.replicaCount | int | `1` |  |
 | le-nextgen.resources.limits.cpu | int | `1` |  |
 | le-nextgen.resources.limits.memory | string | `"6144Mi"` |  |
@@ -107,7 +107,7 @@ dependencies:
 | mongodb.fullnameOverride | string | `"mongodb-replicaset-chart"` |  |
 | mongodb.image.registry | string | `"docker.io"` |  |
 | mongodb.image.repository | string | `"bitnami/mongodb"` |  |
-| mongodb.image.tag | string | `"4.2.19"` |  |
+| mongodb.image.tag | string | `"4.4.15"` |  |
 | mongodb.persistence.size | string | `"200Gi"` |  |
 | mongodb.podLabels.app | string | `"mongodb-replicaset"` |  |
 | mongodb.replicaCount | int | `3` |  |
@@ -117,14 +117,14 @@ dependencies:
 | mongodb.resources.requests.memory | string | `"8192Mi"` |  |
 | mongodb.service.nameOverride | string | `"mongodb-replicaset-chart"` |  |
 | next-gen-ui.autoscaling.enabled | bool | `false` |  |
-| next-gen-ui.image.tag | string | `"0.336.3"` |  |
+| next-gen-ui.image.tag | string | `"0.339.15"` |  |
 | next-gen-ui.replicaCount | int | `1` |  |
 | next-gen-ui.resources.limits.cpu | float | `0.2` |  |
 | next-gen-ui.resources.limits.memory | string | `"200Mi"` |  |
 | next-gen-ui.resources.requests.cpu | float | `0.2` |  |
 | next-gen-ui.resources.requests.memory | string | `"200Mi"` |  |
 | ng-auth-ui.autoscaling.enabled | bool | `false` |  |
-| ng-auth-ui.image.tag | string | `"0.45.0"` |  |
+| ng-auth-ui.image.tag | string | `"1.3.2"` |  |
 | ng-auth-ui.replicaCount | int | `1` |  |
 | ng-auth-ui.resources.limits.cpu | float | `0.5` |  |
 | ng-auth-ui.resources.limits.memory | string | `"512Mi"` |  |
@@ -132,7 +132,7 @@ dependencies:
 | ng-auth-ui.resources.requests.memory | string | `"512Mi"` |  |
 | ng-manager.appLogLevel | string | `"INFO"` |  |
 | ng-manager.autoscaling.enabled | bool | `false` |  |
-| ng-manager.image.tag | string | `"78109"` |  |
+| ng-manager.image.tag | string | `"78421"` |  |
 | ng-manager.java.memory | string | `"4096m"` |  |
 | ng-manager.replicaCount | int | `1` |  |
 | ng-manager.resources.limits.cpu | int | `2` |  |
@@ -141,7 +141,7 @@ dependencies:
 | ng-manager.resources.requests.memory | string | `"200Mi"` |  |
 | pipeline-service.appLogLevel | string | `"INFO"` |  |
 | pipeline-service.autoscaling.enabled | bool | `false` |  |
-| pipeline-service.image.tag | string | `"1.19.3"` |  |
+| pipeline-service.image.tag | string | `"1.21.12"` |  |
 | pipeline-service.java.memory | string | `"4096m"` |  |
 | pipeline-service.replicaCount | int | `1` |  |
 | pipeline-service.resources.limits.cpu | int | `1` |  |
@@ -150,7 +150,7 @@ dependencies:
 | pipeline-service.resources.requests.memory | string | `"6144Mi"` |  |
 | platform-service.appLogLevel | string | `"INFO"` |  |
 | platform-service.autoscaling.enabled | bool | `false` |  |
-| platform-service.image.tag | string | `"77901"` |  |
+| platform-service.image.tag | string | `"78201"` |  |
 | platform-service.java.memory | string | `"3072m"` |  |
 | platform-service.replicaCount | int | `1` |  |
 | platform-service.resources.limits.cpu | float | `0.5` |  |
@@ -177,7 +177,7 @@ dependencies:
 | redis.volumeClaimTemplate.resources.requests.storage | string | `"10Gi"` |  |
 | scm-service.appLogLevel | string | `"INFO"` |  |
 | scm-service.autoscaling.enabled | bool | `false` |  |
-| scm-service.image.tag | string | `"release-88-ubi"` |  |
+| scm-service.image.tag | string | `"release-114-ubi"` |  |
 | scm-service.replicaCount | int | `1` |  |
 | scm-service.resources.limits.cpu | float | `0.1` |  |
 | scm-service.resources.limits.memory | string | `"512Mi"` |  |
@@ -185,7 +185,7 @@ dependencies:
 | scm-service.resources.requests.memory | string | `"512Mi"` |  |
 | template-service.appLogLevel | string | `"INFO"` |  |
 | template-service.autoscaling.enabled | bool | `false` |  |
-| template-service.image.tag | string | `"78109"` |  |
+| template-service.image.tag | string | `"78421"` |  |
 | template-service.java.memory | string | `"1024m"` |  |
 | template-service.replicaCount | int | `1` |  |
 | template-service.resources.limits.cpu | int | `1` |  |
@@ -207,7 +207,7 @@ dependencies:
 | ti-service.resources.requests.memory | string | `"3072Mi"` |  |
 | timescaledb.autoscaling.enabled | bool | `false` |  |
 | timescaledb.enabled | bool | `true` |  |
-| timescaledb.image.tag | string | `"pg13-ts2.6-oss-latest"` |  |
+| timescaledb.image.tag | string | `"pg13-ts2.9-oss-latest"` |  |
 | timescaledb.replicaCount | int | `1` |  |
 | timescaledb.resources.limits.cpu | int | `1` |  |
 | timescaledb.resources.limits.memory | string | `"2048Mi"` |  |
@@ -216,7 +216,7 @@ dependencies:
 | timescaledb.storage.capacity | string | `"100Gi"` |  |
 | ui.appLogLevel | string | `"INFO"` |  |
 | ui.autoscaling.enabled | bool | `false` |  |
-| ui.image.tag | string | `"78100"` |  |
+| ui.image.tag | string | `"78400"` |  |
 | ui.replicaCount | int | `1` |  |
 | ui.resources.limits.cpu | string | `"500m"` |  |
 | ui.resources.limits.memory | string | `"512Mi"` |  |
@@ -224,7 +224,7 @@ dependencies:
 | ui.resources.requests.memory | string | `"512Mi"` |  |
 | verification-svc.appLogInfo | string | `"INFO"` |  |
 | verification-svc.autoscaling.enabled | bool | `false` |  |
-| verification-svc.image.tag | string | `"78109"` |  |
+| verification-svc.image.tag | string | `"78421"` |  |
 | verification-svc.java.memory | int | `2048` |  |
 | verification-svc.replicaCount | int | `1` |  |
 | verification-svc.resources.limits.cpu | string | `"500m"` |  |
