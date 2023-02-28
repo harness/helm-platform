@@ -43,7 +43,7 @@ dependencies:
   version: 0.2.4
 - name: ng-manager
   repository: file://../ng-manager
-  version: 0.2.29
+  version: 0.2.30
 - name: pipeline-service
   repository: file://../pipeline-service
   version: 0.2.17
@@ -71,5 +71,5 @@ dependencies:
 - name: verification-svc
   repository: file://../verification-svc
   version: 0.3.0
-digest: sha256:26d96ba9c053315c73b6e704563887d784cf67936dc4c6998ef792296ae78eab
-generated: "2023-02-21T21:27:12.377802-05:00"
+digest: sha256:657ff792972500e71eeb7ca827c1b8d7826ac95044e6455bc076e8e39aa59d46
+generated: "2023-02-28T11:38:18.103837+05:30"
