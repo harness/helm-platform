@@ -199,7 +199,7 @@ next-gen-ui:
 
 ng-auth-ui:
   image:
-    tag: "1.3.2"
+    tag: "1.3.3"
   replicaCount: 1
   resources:
     limits:
