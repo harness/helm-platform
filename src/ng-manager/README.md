@@ -1,6 +1,6 @@
 # ng-manager
 
-![Version: 0.2.29](https://img.shields.io/badge/Version-0.2.29-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
+![Version: 0.2.30](https://img.shields.io/badge/Version-0.2.30-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
 
 A Helm chart for Kubernetes
 
@@ -31,6 +31,7 @@ A Helm chart for Kubernetes
 | ceSecret.template_url.name | string | `"nextgen-ce"` |  |
 | fullnameOverride | string | `""` |  |
 | global.ccm.enabled | bool | `false` |  |
+| global.chaos.enabled | bool | `false` |  |
 | global.license.cg | string | `""` |  |
 | global.license.ng | string | `""` |  |
 | global.loadbalancerURL | string | `""` |  |
