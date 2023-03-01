@@ -58,7 +58,7 @@ cv-nextgen:
 
 delegate-proxy:
   image:
-    tag: "78306"
+    tag: "78309"
   replicaCount: 1
   resources:
     limits:
@@ -91,7 +91,7 @@ harness-manager:
       tag: latest
   immutable_delegate_docker_image:
     image:
-      tag: 23.02.78306
+      tag: 23.02.78309
   external_graphql_rate_limit: "500"
   autoscaling:
     enabled: false
@@ -164,7 +164,7 @@ mongodb:
   image:
     registry: docker.io
     repository: bitnami/mongodb
-    tag: 4.2.19
+    tag: 4.4.15
   replicaCount: 3
   arbiter:
     enabled: true
@@ -199,7 +199,7 @@ next-gen-ui:
 
 ng-auth-ui:
   image:
-    tag: "0.45.0"
+    tag: "1.3.2"
   replicaCount: 1
   resources:
     limits:
@@ -231,7 +231,7 @@ ng-manager:
 pipeline-service:
   appLogLevel: INFO
   image:
-    tag: "1.21.10"
+    tag: "1.21.12"
   java:
     memory: "4096m"
   replicaCount: 1
@@ -302,7 +302,7 @@ redis:
 scm-service:
   appLogLevel: INFO
   image:
-    tag: "release-88-ubi"
+    tag: "release-114-ubi"
   replicaCount: 1
   resources:
     limits:
@@ -360,7 +360,7 @@ ti-service:
 timescaledb:
   enabled: true
   image:
-    tag: "pg13-ts2.6-oss-latest"
+    tag: "pg13-ts2.9-oss-latest"
   replicaCount: 1
   resources:
     limits:
