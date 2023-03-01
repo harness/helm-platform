@@ -7,8 +7,6 @@ global:
   license:
     cg: ''
     ng: ''
-  ingress:
-    useSelfSignedCert: false
   cd:
     enabled: false
   ci:

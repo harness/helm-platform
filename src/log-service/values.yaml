@@ -4,8 +4,6 @@
 global:
   loadbalancerURL: ""
   imagePullSecrets: []
-  ingress:
-    useSelfSignedCert: false
 
 s3:
   ### Default values are configured to work with Minio, override if you are using own s3 buckets
