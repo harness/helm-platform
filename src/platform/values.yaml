@@ -7,7 +7,7 @@ global:
 access-control:
   appLogLevel: INFO
   image:
-    tag: "78000"
+    tag: "78001"
   java:
     memory: 512m
   replicaCount: 1
@@ -26,7 +26,7 @@ change-data-capture:
   appLogLevel: INFO
   replicaCount: 1
   image:
-    tag: "78424"
+    tag: "78425"
   java:
     memory: 2048
   resources:
@@ -42,7 +42,7 @@ change-data-capture:
 cv-nextgen:
   appLogLevel: INFO
   image:
-    tag: "78424"
+    tag: "78425"
   java:
     memory: 4096
   replicaCount: 1
@@ -96,7 +96,7 @@ harness-manager:
   autoscaling:
     enabled: false
   image:
-    tag: "78424"
+    tag: "78425"
   java:
     memory: "2048"
   replicaCount: 1
@@ -107,7 +107,7 @@ harness-manager:
     requests:
       cpu: 2
       memory: 3000Mi
-  version: 1.0.78424
+  version: 1.0.78425
 
 le-nextgen:
   autoscaling:
@@ -214,7 +214,7 @@ ng-auth-ui:
 ng-manager:
   appLogLevel: INFO
   image:
-    tag: "78424"
+    tag: "78425"
   java:
     memory: "4096m"
   replicaCount: 1
@@ -231,7 +231,7 @@ ng-manager:
 pipeline-service:
   appLogLevel: INFO
   image:
-    tag: "1.21.12"
+    tag: "1.21.13"
   java:
     memory: "4096m"
   replicaCount: 1
@@ -248,7 +248,7 @@ pipeline-service:
 platform-service:
   appLogLevel: INFO
   image:
-    tag: "78201"
+    tag: "78202"
   java:
     memory: "3072m"
   replicaCount: 1
@@ -317,7 +317,7 @@ scm-service:
 template-service:
   appLogLevel: INFO
   image:
-    tag: "78424"
+    tag: "78425"
   java:
     memory: "1024m"
   replicaCount: 1
@@ -392,7 +392,7 @@ ui:
 verification-svc:
   appLogInfo: INFO
   image:
-    tag: "78424"
+    tag: "78425"
   java:
     memory: 2048
   replicaCount: 1
