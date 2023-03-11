@@ -6,14 +6,10 @@ metadata:
 data:
   LOG_SERVICE_S3_BUCKET: {{ .Values.s3.bucketName }}
   LOG_SERVICE_S3_REGION: {{ .Values.s3.region }}
-  {{- if .Values.global.ingress.useSelfSignedCert }}
-  LOG_SERVICE_S3_ENDPOINT: http://minio.{{ .Release.Namespace }}.svc.cluster.local:9000
-  {{- else }}
   {{- if .Values.s3.endpoint }}
   LOG_SERVICE_S3_ENDPOINT: {{ .Values.s3.endpoint | default .Values.s3.defaultMinioUrl }}
   {{- else }}
   LOG_SERVICE_S3_ENDPOINT: 'http://minio.{{ .Release.Namespace }}.svc.cluster.local:9000'
-  {{- end }}
   {{- end }}
   LOG_SERVICE_S3_PATH_STYLE: "true"
   LOG_SERVICE_DISABLE_AUTH: "true"
