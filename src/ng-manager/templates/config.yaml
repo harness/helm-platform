@@ -54,6 +54,7 @@ data:
   CE_SETUP_CONFIG_GCP_PROJECT_ID: {{ .Values.ceGcpSetupConfigGcpProjectId | quote }}
   CURRENT_GEN_UI_URL: '{{ .Values.global.loadbalancerURL }}/#/'
   HARNESS_ENABLE_NG_AUTH_UI_PLACEHOLDER: "true"
+  WEBHOOK_BASE_URL: '{{ .Values.global.loadbalancerURL }}/gateway/ng/api/'
   MONGO_TRANSACTIONS_ALLOWED: "false"
   {{ $length := len .Values.global.license.ng }}
   {{- if gt $length 0}}
