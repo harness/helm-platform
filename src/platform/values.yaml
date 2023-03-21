@@ -109,6 +109,9 @@ harness-manager:
       memory: 3000Mi
   version: 1.0.78426
 
+harness-secrets:
+  enabled: true
+
 le-nextgen:
   autoscaling:
     enabled: false
