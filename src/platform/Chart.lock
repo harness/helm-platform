@@ -1,34 +1,34 @@
 dependencies:
 - name: access-control
   repository: file://../access-control
-  version: 0.3.0
+  version: 0.2.11
 - name: change-data-capture
   repository: file://../change-data-capture
-  version: 0.3.0
+  version: 0.2.12
 - name: cv-nextgen
   repository: file://../cv-nextgen
-  version: 0.3.0
+  version: 0.2.19
 - name: gateway
   repository: file://../gateway
-  version: 0.3.0
+  version: 0.2.11
 - name: harness-secrets
   repository: file://../secrets
-  version: 0.3.0
+  version: 0.2.7
 - name: harness-manager
   repository: file://../harness-manager
-  version: 0.3.0
+  version: 0.2.49
 - name: delegate-proxy
   repository: file://../delegate-proxy
-  version: 0.3.0
+  version: 0.2.7
 - name: le-nextgen
   repository: file://../le-nextgen
-  version: 0.3.0
+  version: 0.2.5
 - name: learning-engine
   repository: file://../learning-engine
-  version: 0.4.0
+  version: 0.3.0
 - name: log-service
   repository: file://../log-service
-  version: 0.3.0
+  version: 0.2.13
 - name: minio
   repository: https://charts.bitnami.com/bitnami
   version: 11.9.1
@@ -37,39 +37,39 @@ dependencies:
   version: 13.1.2
 - name: next-gen-ui
   repository: file://../next-gen-ui
-  version: 0.3.0
+  version: 0.2.8
 - name: ng-auth-ui
   repository: file://../ng-auth-ui
-  version: 0.3.0
+  version: 0.2.4
 - name: ng-manager
   repository: file://../ng-manager
-  version: 0.3.0
+  version: 0.2.30
 - name: pipeline-service
   repository: file://../pipeline-service
-  version: 0.3.0
+  version: 0.2.17
 - name: platform-service
   repository: file://../platform-service
-  version: 0.3.0
+  version: 0.2.17
 - name: redis
   repository: https://harness.github.io/helm-redis
   version: 0.2.2
 - name: scm-service
   repository: file://../scm-service
-  version: 0.3.0
+  version: 0.2.3
 - name: template-service
   repository: file://../template-service
-  version: 0.3.0
+  version: 0.2.16
 - name: ti-service
   repository: file://../ti-service
-  version: 0.3.0
+  version: 0.2.12
 - name: timescaledb
   repository: https://harness.github.io/helm-timescaledb
   version: 0.2.14
 - name: ui
   repository: file://../ui
-  version: 0.4.0
+  version: 0.3.0
 - name: verification-svc
   repository: file://../verification-svc
-  version: 0.4.0
-digest: sha256:522fbb6f69afb6c963c0b2507b403accee7d0badcff307e8844678ec97d76e32
-generated: "2023-03-14T00:02:54.226335+05:30"
+  version: 0.3.0
+digest: sha256:657ff792972500e71eeb7ca827c1b8d7826ac95044e6455bc076e8e39aa59d46
+generated: "2023-02-28T11:38:18.103837+05:30"
