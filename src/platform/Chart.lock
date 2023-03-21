@@ -71,5 +71,5 @@ dependencies:
 - name: verification-svc
   repository: file://../verification-svc
   version: 0.4.0
-digest: sha256:522fbb6f69afb6c963c0b2507b403accee7d0badcff307e8844678ec97d76e32
-generated: "2023-03-14T00:02:54.226335+05:30"
+digest: sha256:f59c0de8a5bfe8de966707e22f258a4a010de0d37ac552890c93181532db03c5
+generated: "2023-03-21T12:58:06.442722+05:30"
