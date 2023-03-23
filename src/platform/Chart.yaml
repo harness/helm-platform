@@ -37,6 +37,7 @@ dependencies:
     repository: "file://../gateway"
   - name: harness-secrets
     version: 0.3.x
+    condition: harness-secrets.enabled
     repository: "file://../secrets"
   - name: harness-manager
     version: 0.3.x
