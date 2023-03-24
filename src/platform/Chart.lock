@@ -13,7 +13,7 @@ dependencies:
   version: 0.3.0
 - name: harness-secrets
   repository: file://../secrets
-  version: 0.3.0
+  version: 0.3.1
 - name: harness-manager
   repository: file://../harness-manager
   version: 0.3.0
@@ -71,5 +71,5 @@ dependencies:
 - name: verification-svc
   repository: file://../verification-svc
   version: 0.4.0
-digest: sha256:f59c0de8a5bfe8de966707e22f258a4a010de0d37ac552890c93181532db03c5
-generated: "2023-03-23T17:01:11.130661+05:30"
+digest: sha256:2a79c0200aa79918bde6c4ebd400e6ce4ac30d29954f67a6ad5423e19312a877
+generated: "2023-03-24T23:13:48.41453+05:30"
