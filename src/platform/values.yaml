@@ -175,6 +175,7 @@ mongodb:
     nameOverride: "mongodb-replicaset-chart"
   auth:
     rootUser: "admin"
+    existingSecret: "mongodb-replicaset-chart"
   podLabels: { app: mongodb-replicaset }
   resources:
     limits:
