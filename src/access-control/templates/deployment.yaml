@@ -6,7 +6,7 @@ metadata:
   labels:
     {{- include "access-control.labels" . | nindent 4 }}
 spec:
-  progressDeadlineSeconds: 720
+  progressDeadlineSeconds: {{ .Values.progressDeadlineSeconds }}
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}

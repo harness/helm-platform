@@ -49,6 +49,7 @@ A Helm chart for Kubernetes
 | pdb.minAvailable | string | `"50%"` | pdb.minAvailable Minimum number/percentage of pods that must still be available after the eviction # |
 | podAnnotations | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
+| progressDeadlineSeconds | int | `720` | set progressDealineSeconds in seconds, number of seconds the Deployment controller waits before indicating failure # ref: https://kubernetes.io/docs/concepts/workloads/controllers/deployment/ |
 | readinessProbe | object | `{"enabled":true,"failureThreshold":10,"initialDelaySeconds":60,"periodSeconds":10,"successThreshold":1,"timeoutSeconds":10}` | readinessProbe.successThreshold Success threshold for readinessProbe # |
 | replicaCount | int | `1` | replicaCount Number of pods # |
 | resources | object | `{"limits":{"cpu":0.5,"memory":"8192Mi"},"requests":{"cpu":0.5,"memory":"512Mi"}}` | resources.requests The requested resources for the containers # |

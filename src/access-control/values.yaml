@@ -54,6 +54,9 @@ schedulerName: ""
 ## ref: https://kubernetes.io/docs/concepts/workloads/pods/pod/#termination-of-pods
 ##
 terminationGracePeriodSeconds: "30"
+# -- set progressDealineSeconds in seconds, number of seconds the Deployment controller waits before indicating failure
+## ref: https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
+progressDeadlineSeconds: 720
 # -- Configurations for Harness application
 config:
   DEPLOY_MODE: KUBERNETES_ONPREM
