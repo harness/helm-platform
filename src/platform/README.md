@@ -2,7 +2,7 @@
 
 Helm chart for Harness Platform
 
-![Version: 0.5.9](https://img.shields.io/badge/Version-0.5.9-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.16.1](https://img.shields.io/badge/AppVersion-1.16.1-informational?style=flat-square)
+![Version: 0.5.11](https://img.shields.io/badge/Version-0.5.11-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.16.1](https://img.shields.io/badge/AppVersion-1.16.1-informational?style=flat-square)
 
 ## Usage
 
@@ -12,7 +12,7 @@ Use the following dependency to add this chart repository to your Helm installat
 dependencies:
     - name: ccm
       repository: https://harness.github.io/helm-platform
-      version: 0.5.9
+      version: 0.5.11
 ```
 
 ## Values
@@ -104,6 +104,7 @@ dependencies:
 | minio.mode | string | `"standalone"` |  |
 | mongodb.arbiter.enabled | bool | `true` |  |
 | mongodb.architecture | string | `"replicaset"` |  |
+| mongodb.auth.existingSecret | string | `"mongodb-replicaset-chart"` |  |
 | mongodb.auth.rootUser | string | `"admin"` |  |
 | mongodb.fullnameOverride | string | `"mongodb-replicaset-chart"` |  |
 | mongodb.image.registry | string | `"docker.io"` |  |
