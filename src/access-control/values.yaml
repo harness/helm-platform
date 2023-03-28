@@ -155,7 +155,7 @@ waitForInitContainer:
     requests:
       cpu: 128m
       memory: 128Mi
-  securityContext:
+  containerSecurityContext:
     runAsUser: 65534
     runAsNonRoot: true
 ## -- mongo secrets reference passed to the application
