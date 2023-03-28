@@ -1,6 +1,12 @@
 # Default values for access-control
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
+## Global Docker image parameters
+## Please, note that this will override the image parameters, including dependencies, configured to use the global value
+## Current available global Docker image parameters: imageRegistry, imagePullSecrets
+# --global.imageRegistry Global Docker image registry
+# --global.imagePullSecrets Global Docker registry secret names as an array
+# --global.storageClass Global StorageClass for Persistent Volume(s)
 global:
   ha: false
   ingress:
@@ -19,16 +25,19 @@ global:
     objects:
       annotations: {}
   istio:
+    # -- create virtualServices objects
     enabled: false
+    # -- create gateway and use in virtualservice
     gateway:
       create: false
+    # -- if gateway not created, use specified gateway and host
     virtualService:
       gateways:
       hosts:
   imagePullSecrets: []
-
+# --replicaCount Number of pods
+##
 replicaCount: 1
-
 # -- deployment.updateStrategy.type Deployment strategy type
 ## ref: https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#update-strategies
 ## e.g:
@@ -41,10 +50,11 @@ updateStrategy:
 ## https://kubernetes.io/docs/tasks/administer-cluster/configure-multiple-schedulers/
 ##
 schedulerName: ""
-## @param terminationGracePeriodSeconds In seconds, time the given to the MinIO pod needs to terminate gracefully
+# --terminationGracePeriodSeconds In seconds, time the given to the MinIO pod needs to terminate gracefully
 ## ref: https://kubernetes.io/docs/concepts/workloads/pods/pod/#termination-of-pods
 ##
 terminationGracePeriodSeconds: "30"
+# -- Configurations for Harness application
 config:
   DEPLOY_MODE: KUBERNETES_ONPREM
   LOGGING_LEVEL: INFO
@@ -94,16 +104,23 @@ secrets:
 ## ref: https://kubernetes.io/docs/tasks/run-application/configure-pdb/
 ##
 pdb:
-  ## @param pdb.create Enable/disable a Pod Disruption Budget creation
+  # --pdb.create Enable/disable a Pod Disruption Budget creation
   ##
   create: true
-  ## @param pdb.minAvailable Minimum number/percentage of pods that must still be available after the eviction
+  # --pdb.minAvailable Minimum number/percentage of pods that must still be available after the eviction
   ##
   minAvailable: 50%
-  ## @param pdb.maxUnavailable Maximum number/percentage of pods that may be made unavailable after the eviction
+  # --pdb.maxUnavailable Maximum number/percentage of pods that may be made unavailable after the eviction
   ##
   maxUnavailable: ""
-
+## image version
+## ref: https://hub.docker.com/r/harness/accesscontrol-service-signed/tags
+# --image.registry ; image registry
+# --image.repository ; image repository
+# --image.tag ; image tag (immutable tags are recommended)
+# --image.digest ; image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag
+# --image.pullPolicy Image pull policy
+# --image.imagePullSecrets Specify docker-registry secret names as an array
 image:
   registry: docker.io
   repository: harness/accesscontrol-service-signed
@@ -111,8 +128,16 @@ image:
   tag: "78900"
   digest: ""
   imagePullSecrets: []
-
+# -- Wait-For-App initContainers details
 waitForInitContainer:
+  ## image version
+  ## ref: https://hub.docker.com/r/harness/helm-init-container/tags
+  # --image.registry ; image registry
+  # --image.repository ; image repository
+  # --image.tag ; image tag (immutable tags are recommended)
+  # --image.digest ; image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag
+  # --image.pullPolicy Image pull policy
+  # --image.imagePullSecrets Specify docker-registry secret names as an array
   image:
     registry: docker.io
     repository: harness/helm-init-container
@@ -130,7 +155,7 @@ waitForInitContainer:
   securityContext:
     runAsUser: 65534
     runAsNonRoot: true
-## mongo secrets reference passed to the application
+## -- mongo secrets reference passed to the application
 ##
 mongoSecrets:
   userName:
@@ -140,10 +165,10 @@ mongoSecrets:
     name: mongodb-replicaset-chart
     key: mongodb-root-password
 
-## @param nameOverride String to partially override common.names.fullname template (will maintain the release name)
+# --nameOverride String to partially override common.names.fullname template (will maintain the release name)
 ##
 nameOverride: ""
-## @param fullnameOverride String to fully override common.names.fullname template
+# --fullnameOverride String to fully override common.names.fullname template
 ##
 fullnameOverride: ""
 ## Specifies whether a ServiceAccount should be created
@@ -177,8 +202,8 @@ service:
   port: 9006
 ## Pod resource requests and limits
 ## ref: https://kubernetes.io/docs/user-guide/compute-resources/
-## @param resources.limits The resources limits for the Keycloak containers
-## @param resources.requests The requested resources for the Keycloak containers
+# --resources.limits The resources limits for the containers
+# --resources.requests The requested resources for the containers
 ##
 resources:
   limits:
@@ -236,12 +261,12 @@ resources:
 #         kill -15
 lifecycleHooks: {}
 
-## Keycloak Autoscaling configuration
-## @param autoscaling.enabled Enable autoscaling for Keycloak
-## @param autoscaling.minReplicas Minimum number of Keycloak replicas
-## @param autoscaling.maxReplicas Maximum number of Keycloak replicas
-## @param autoscaling.targetCPU Target CPU utilization percentage
-## @param autoscaling.targetMemory Target Memory utilization percentage
+## Autoscaling configuration
+# --autoscaling.enabled Enable autoscaling for pods
+# --autoscaling.minReplicas Minimum number of replicas
+# --autoscaling.maxReplicas Maximum number of replicas
+# --autoscaling.targetCPU Target CPU utilization percentage
+# --autoscaling.targetMemory Target Memory utilization percentage
 ##
 autoscaling:
   enabled: false
@@ -311,7 +336,7 @@ extraEnvVarsCM: ""
 # -- extraEnvVarsSecret Secret with extra environment variables
 ##
 extraEnvVarsSecret: ""
-# --  extraVolumes Optionally specify extra list of additional volumes for MinIO&reg; pods
+# --  extraVolumes Optionally specify extra list of additional volumes for ; pods
 ##
 # e.g.
 # extraVolumes:
@@ -332,7 +357,7 @@ extraEnvVarsSecret: ""
 #     path: /var/dumps
 #     type: DirectoryOrCreate
 extraVolumes: []
-# --  extraVolumeMounts Optionally specify extra list of additional volumeMounts for MinIO&reg; container(s)
+# --  extraVolumeMounts Optionally specify extra list of additional volumeMounts for ; container(s)
 ##
 # e.g.
 # extraVolumeMounts:
@@ -343,7 +368,7 @@ extraVolumes: []
 # - name: dumps
 #   mountPath: /opt/harness/dumps
 extraVolumeMounts: []
-## @param initContainers Add additional init containers to the MinIO&reg; pods
+# --initContainers Add additional init containers to the ; pods
 ## e.g:
 ## initContainers:
 ##   - name: your-image-name
@@ -354,7 +379,7 @@ extraVolumeMounts: []
 ##         containerPort: 1234
 ##
 initContainers: []
-## @param sidecars Add additional sidecar containers to the MinIO&reg; pods
+# --sidecars Add additional sidecar containers to the ; pods
 ## e.g:
 ## sidecars:
 ##   - name: your-image-name

@@ -47,7 +47,7 @@ spec:
           {{- end }}
           securityContext:
             {{- toYaml .Values.waitForInitContainer.containerSecurityContext | nindent 12 }}
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: {{ .Values.waitForInitContainer.imagePullPolicy }}
           args:
             - "pod"
             - "-lapp=mongodb-replicaset"
@@ -59,7 +59,7 @@ spec:
           {{- end }}
           securityContext:
             {{- toYaml .Values.waitForInitContainer.containerSecurityContext | nindent 12 }}
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: {{ .Values.waitForInitContainer.imagePullPolicy }}
           args:
             - "pod"
             - "-lapp=redis-sentinel"
