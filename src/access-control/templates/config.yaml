@@ -1,80 +1,48 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: access-control
+  name: {{ include "access-control.name" . }}
   namespace: {{ .Release.Namespace }}
 data:
-  IDENTITY_SERVICE_SECRET: HVSKUYqD4e5Rxu12hFDdCJKGM64sxgEynvdDhaOHaTHhwwn0K4Ttr0uoOxSsEVYNrUU=
-
-  DEPLOY_MODE: KUBERNETES_ONPREM
-  LOGGING_LEVEL: {{ .Values.appLogLevel | quote }}
-  EVENTS_CONFIG_USE_SENTINEL: 'true'
-  EVENTS_CONFIG_SENTINEL_MASTER_NAME: 'harness-redis'
-  EVENTS_CONFIG_REDIS_SENTINELS: 'redis://redis-sentinel-harness-announce-0.{{ .Release.Namespace  }}:26379,redis://redis-sentinel-harness-announce-1.{{ .Release.Namespace  }}:26379,redis://redis-sentinel-harness-announce-2.{{ .Release.Namespace  }}:26379'
-
-  # lockRedisConfig
-  LOCK_CONFIG_USE_SENTINEL: 'true'
-  LOCK_CONFIG_SENTINEL_MASTER_NAME: 'harness-redis'
-  LOCK_CONFIG_REDIS_SENTINELS: 'redis://redis-sentinel-harness-announce-0.{{ .Release.Namespace  }}:26379,redis://redis-sentinel-harness-announce-1.{{ .Release.Namespace  }}:26379,redis://redis-sentinel-harness-announce-2.{{ .Release.Namespace  }}:26379'
-
-  # iteratorsConfig
-  RESOURCE_GROUP_ITERATOR_ENABLED: 'true'
-  RESOURCE_GROUP_ITERATOR_INTERVAL: '3600'
-  USER_GROUP_ITERATOR_ENABLED: 'true'
-  USER_GROUP_ITERATOR_INTERVAL: '3600'
-  USER_ITERATOR_ENABLED: 'true'
-  USER_ITERATOR_INTERVAL: '3600'
-  SERVICEACCOUNT_ITERATOR_ENABLED: 'true'
-  SERVICEACCOUNT_ITERATOR_INTERVAL: '3600'
-  SUPPORTPREFERENCE_ITERATOR_ENABLED: 'true'
-  SUPPORTPREFERENCE_ITERATOR_INTERVAL: '600'
-  SCOPE_ITERATOR_ENABLED: 'true'
-  SCOPE_ITERATOR_INTERVAL: '3600'
-
-  # resourceGroupClient:
-  RESOURCE_GROUP_CLIENT_BASE_URL: 'http://platform-service.{{ .Release.Namespace }}.svc.cluster.local:9005/api/'
-
-  # userClient:
-  USER_CLIENT_BASE_URL: 'http://ng-manager:7090/'
-
-  # userGroupClient
-  USER_GROUP_CLIENT_BASE_URL: 'http://ng-manager:7090/'
-
-  # serviceAccountClient
-  SERVICEACCOUNT_CLIENT_BASE_URL : 'http://ng-manager:7090/'
-
-  #accountClient
-  ACCOUNT_CLIENT_BASE_URL: 'http://harness-manager:9090/api/'
-  FEATURE_FLAG_CLIENT_BASE_URL: 'http://harness-manager:9090/api/'
-
-  #projectClient
-  PROJECT_CLIENT_BASE_URL: 'http://ng-manager:7090/'
-
-  #organizationClient
-  ORGANIZATION_CLIENT_BASE_URL: 'http://ng-manager:7090/'
-
-  # aggreatorModuleConfig
-  OFFSET_FLUSH_INTERVAL_MS: '10000'
-  MONGODB_USER: admin
-  MONGODB_SSL_ENABLED: 'false'
-  AGGREGATOR_ENABLED: 'true'
-
-  # auth
-  ENABLE_AUTH: 'true'
-
-  # preference
-  ACCESS_CONTROL_PREFERENCE_ENABLED: 'true'
-
-  #for notification
-  NOTIFICATION_SLACK_WEBHOOK_URL: {{ .Values.slackWebhookURL | quote }}
-  NOTIFICATION_ENVIRONMENT: ONPREM
-
-
-  # for client
-  ENABLE_ACCESS_CONTROL: 'false'
-  ACCESS_CONTROL_SERVICE_BASE_URL: 'http://access-control.{{ .Release.Namespace }}.svc.cluster.local:9006/api/'
-  ENABLE_AUDIT: 'true'
-  AUDIT_CLIENT_BASE_URL: 'http://platform-service.{{ .Release.Namespace }}.svc.cluster.local:9005/api/'
-  DISTRIBUTED_LOCK_IMPLEMENTATION: REDIS
-  GOOGLE_APPLICATION_CREDENTIALS: /opt/harness/monitoring/stackdriver.json
-  MEMORY: {{ .Values.java.memory | quote }}
+  DEPLOY_MODE: {{ .Values.config.DEPLOY_MODE }}
+  LOGGING_LEVEL: {{ .Values.config.LOGGING_LEVEL}}
+  EVENTS_CONFIG_USE_SENTINEL: {{ .Values.config.EVENTS_CONFIG_USE_SENTINEL | quote }}
+  EVENTS_CONFIG_SENTINEL_MASTER_NAME: {{ .Values.config.EVENTS_CONFIG_SENTINEL_MASTER_NAME }}
+  EVENTS_CONFIG_REDIS_SENTINELS: {{ .Values.config.EVENTS_CONFIG_REDIS_SENTINELS | default ("redis://redis-sentinel-harness-announce-0.NAMESPACE:26379,redis://redis-sentinel-harness-announce-1.NAMESPACE:26379,redis://redis-sentinel-harness-announce-2.NAMESPACE:26379" | replace "NAMESPACE" .Release.Namespace ) }}
+  LOCK_CONFIG_USE_SENTINEL: {{ .Values.config.LOCK_CONFIG_USE_SENTINEL | quote }}
+  LOCK_CONFIG_SENTINEL_MASTER_NAME: {{ .Values.config.LOCK_CONFIG_SENTINEL_MASTER_NAME }}
+  LOCK_CONFIG_REDIS_SENTINELS: {{ .Values.config.LOCK_CONFIG_REDIS_SENTINELS | default ("redis://redis-sentinel-harness-announce-0.NAMESPACE:26379,redis://redis-sentinel-harness-announce-1.NAMESPACE:26379,redis://redis-sentinel-harness-announce-2.NAMESPACE:26379" | replace "NAMESPACE" .Release.Namespace ) }}
+  RESOURCE_GROUP_ITERATOR_ENABLED: {{ .Values.config.RESOURCE_GROUP_ITERATOR_ENABLED | quote }}
+  RESOURCE_GROUP_ITERATOR_INTERVAL: {{ .Values.config.RESOURCE_GROUP_ITERATOR_INTERVAL | quote }}
+  USER_GROUP_ITERATOR_ENABLED: {{ .Values.config.USER_GROUP_ITERATOR_ENABLED | quote }}
+  USER_GROUP_ITERATOR_INTERVAL: {{ .Values.config.USER_GROUP_ITERATOR_INTERVAL | quote }}
+  USER_ITERATOR_ENABLED: {{ .Values.config.USER_ITERATOR_ENABLED | quote }}
+  USER_ITERATOR_INTERVAL: {{ .Values.config.USER_ITERATOR_INTERVAL | quote }}
+  SERVICEACCOUNT_ITERATOR_ENABLED: {{ .Values.config.SERVICEACCOUNT_ITERATOR_ENABLED | quote }}
+  SERVICEACCOUNT_ITERATOR_INTERVAL: {{ .Values.config.SERVICEACCOUNT_ITERATOR_INTERVAL | quote }}
+  SUPPORTPREFERENCE_ITERATOR_ENABLED: {{ .Values.config.SUPPORTPREFERENCE_ITERATOR_ENABLED | quote }}
+  SUPPORTPREFERENCE_ITERATOR_INTERVAL: {{ .Values.config.SUPPORTPREFERENCE_ITERATOR_INTERVAL | quote }}
+  SCOPE_ITERATOR_ENABLED: {{ .Values.config.SCOPE_ITERATOR_ENABLED | quote }}
+  SCOPE_ITERATOR_INTERVAL: {{ .Values.config.SCOPE_ITERATOR_INTERVAL | quote }}
+  RESOURCE_GROUP_CLIENT_BASE_URL: {{ .Values.config.RESOURCE_GROUP_CLIENT_BASE_URL | default "http://platform-service:9005/api/" }}
+  USER_CLIENT_BASE_URL: {{ .Values.config.USER_CLIENT_BASE_URL | default "http://ng-manager:7090/" }}
+  USER_GROUP_CLIENT_BASE_URL: {{ .Values.config.USER_GROUP_CLIENT_BASE_URL | default "http://ng-manager:7090/" }}
+  SERVICEACCOUNT_CLIENT_BASE_URL: {{ .Values.config.SERVICEACCOUNT_CLIENT_BASE_URL | default "http://ng-manager:7090/" }}
+  ACCOUNT_CLIENT_BASE_URL: {{ .Values.config.ACCOUNT_CLIENT_BASE_URL | default "http://harness-manager:9090/api/" }}
+  FEATURE_FLAG_CLIENT_BASE_URL: {{ .Values.config.FEATURE_FLAG_CLIENT_BASE_URL | default "http://harness-manager:9090/api/" }}
+  PROJECT_CLIENT_BASE_URL: {{ .Values.config.PROJECT_CLIENT_BASE_URL | default "http://ng-manager:7090/" }}
+  ORGANIZATION_CLIENT_BASE_URL: {{ .Values.config.ORGANIZATION_CLIENT_BASE_URL | default "http://ng-manager:7090/" }}
+  OFFSET_FLUSH_INTERVAL_MS: {{ .Values.config.OFFSET_FLUSH_INTERVAL_MS | quote }}
+  MONGODB_SSL_ENABLED: {{ .Values.config.MONGODB_SSL_ENABLED | quote }}
+  AGGREGATOR_ENABLED: {{ .Values.config.AGGREGATOR_ENABLED | quote }}
+  ENABLE_AUTH: {{ .Values.config.ENABLE_AUTH | quote }}
+  ACCESS_CONTROL_PREFERENCE_ENABLED: {{ .Values.config.ACCESS_CONTROL_PREFERENCE_ENABLED | quote }}
+  NOTIFICATION_SLACK_WEBHOOK_URL: {{ .Values.config.NOTIFICATION_SLACK_WEBHOOK_URL }}
+  NOTIFICATION_ENVIRONMENT: {{ .Values.config.NOTIFICATION_ENVIRONMENT }}
+  ENABLE_ACCESS_CONTROL: {{ .Values.config.ENABLE_ACCESS_CONTROL | quote }}
+  ACCESS_CONTROL_SERVICE_BASE_URL: {{ .Values.config.ACCESS_CONTROL_SERVICE_BASE_URL | default "http://access-control:9006/api/" }}
+  ENABLE_AUDIT: {{ .Values.config.ENABLE_AUDIT | quote }}
+  AUDIT_CLIENT_BASE_URL: {{ .Values.config.AUDIT_CLIENT_BASE_URL | default "http://platform-service:9005/api/" }}
+  DISTRIBUTED_LOCK_IMPLEMENTATION: {{ .Values.config.DISTRIBUTED_LOCK_IMPLEMENTATION }}
+  GOOGLE_APPLICATION_CREDENTIALS: {{ .Values.config.GOOGLE_APPLICATION_CREDENTIALS }}
+  MEMORY: {{ .Values.config.MEMORY | default 512 }}m

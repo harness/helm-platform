@@ -61,7 +61,16 @@ Create the name of the service account to use
 {{- end }}
 {{- end }}
 
-
+{{/*
+Randomly Creates Secret for access-control unless overwritten.
+*/}}
+{{- define "access-control.generateSecrets" }}
+    IDENTITY_SERVICE_SECRET: {{ include "harnesscommon.secrets.passwords.manage" (dict "secret" "access-control" "key" "IDENTITY_SERVICE_SECRET" "providedValues" (list "secrets.IDENTITY_SERVICE_SECRET") "length" 10 "context" $) }}
+    MONGODB_USER: {{ include "harnesscommon.secrets.passwords.manage" (dict "secret" "access-control" "key" "MONGODB_USER" "providedValues" (list "secrets.MONGODB_USER") "length" 10 "context" $) }}
+{{- end }}
+{{/*
+Helper function for pullSecrets at chart level or global level.
+*/}}
 {{- define "access-control.pullSecrets" -}}
 {{ include "common.images.pullSecrets" (dict "images" (list .Values.image .Values.waitForInitContainer.image) "global" .Values.global ) }}
 {{- end -}}
