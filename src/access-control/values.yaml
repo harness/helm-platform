@@ -50,7 +50,7 @@ updateStrategy:
 ## https://kubernetes.io/docs/tasks/administer-cluster/configure-multiple-schedulers/
 ##
 schedulerName: ""
-# --terminationGracePeriodSeconds In seconds, time the given to the MinIO pod needs to terminate gracefully
+# -- terminationGracePeriodSeconds In seconds, time the given to the pod needs to terminate gracefully
 ## ref: https://kubernetes.io/docs/concepts/workloads/pods/pod/#termination-of-pods
 ##
 terminationGracePeriodSeconds: "30"
