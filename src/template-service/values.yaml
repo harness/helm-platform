@@ -3,10 +3,53 @@
 # Declare variables to be passed into your templates.
 global:
   loadbalancerURL: ""
+  ingress:
+    enabled: false
+    className: harness
+    hosts:
+      - my-host.example.org
+    tls:
+      enabled: true
+      secretName: ''
+  istio:
+    enabled: false
+    gateway:
+      create: false
+    virtualService:
+      gateways:
+      hosts:
   imagePullSecrets: []
 replicaCount: 1
 maxSurge: 1
 maxUnavailable: 0
+
+config:
+  CACHE_BACKEND: REDIS
+  CACHE_CONFIG_REDIS_SENTINELS: 'redis://redis-sentinel-harness-announce-0.{{ .Release.Namespace  }}:26379,redis://redis-sentinel-harness-announce-1.{{ .Release.Namespace  }}:26379,redis://redis-sentinel-harness-announce-2.{{ .Release.Namespace  }}:26379'
+  CACHE_CONFIG_SENTINEL_MASTER_NAME: harness-redis
+  CACHE_CONFIG_USE_SENTINEL: true
+  DEPLOY_MODE: KUBERNETES_ONPREM
+  MANAGER_TARGET:
+  MANAGER_AUTHORITY:
+  NG_MANAGER_GITSYNC_TARGET:
+  NG_MANAGER_GITSYNC_AUTHORITY:
+  SCM_SERVICE_URI:
+  EVENTS_FRAMEWORK_REDIS_URL:
+  EVENTS_FRAMEWORK_USE_SENTINEL: true
+  EVENTS_FRAMEWORK_SENTINEL_MASTER_NAME: harness-redis
+  EVENTS_FRAMEWORK_REDIS_SENTINELS: 'redis://redis-sentinel-harness-announce-0.{{ .Release.Namespace  }}:26379,redis://redis-sentinel-harness-announce-1.{{ .Release.Namespace  }}:26379,redis://redis-sentinel-harness-announce-2.{{ .Release.Namespace  }}:26379'
+  ENABLE_AUTH: true
+  ENABLE_GIT_SYNC: true
+  ENABLE_AUDIT: true
+  ACCESS_CONTROL_ENABLED: true
+  ENFORCEMENT_CHECK_ENABLED: true
+  NG_MANAGER_BASE_URL:
+  ACCESS_CONTROL_BASE_URL: 'http://access-control.{{ .Release.Namespace }}.svc.cluster.local:9006/api/'
+  AUDIT_SERVICE_BASE_URL: 'http://platform-service.{{ .Release.Namespace }}.svc.cluster.local:9005/api/'
+  SERVER_PORT:
+  PMS_GRPC_AUTHORITY:
+  PMS_GRPC_TARGET:
+  MANAGER_CLIENT_BASEURL:
 
 image:
   registry: docker.io

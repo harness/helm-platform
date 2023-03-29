@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: template-service
+  name: {{ include "template-service.name" . }}
   namespace: {{ .Release.Namespace }}
   labels:
         {{- include "template-service.labels" . | nindent 4 }}
