@@ -4,11 +4,50 @@
 global:
   loadbalancerURL: ""
   ha: false
+  ingress:
+    enabled: false
+    className: harness
+    hosts:
+      - my-host.example.org
+    tls:
+      enabled: true
+      secretName: ''
+  istio:
+    enabled: false
+    gateway:
+      create: false
+    virtualService:
+      gateways:
+      hosts:
   imagePullSecrets: []
 
 replicaCount: 1
 maxSurge: 1
 maxUnavailable: 0
+
+config:
+  DEPLOY_MODE: KUBERNETES_ONPREM
+  ENV: KUBERNETES_ONPREM
+  STACK_DRIVER_LOGGING_ENABLED: false
+  VERIFICATION_PORT: 6060
+  VERIFICATION_SERVICE_SECRET: 59MR5RlVARcdH7zb7pNx6GzqiglBmXR8
+  SHOULD_CONFIGURE_WITH_NOTIFICATION: true
+  EVENTS_FRAMEWORK_REDIS_URL:
+  EVENTS_FRAMEWORK_USE_SENTINEL: true
+  EVENTS_FRAMEWORK_SENTINEL_MASTER_NAME: harness-redis
+  EVENTS_FRAMEWORK_REDIS_SENTINELS:
+  SHOULD_CONFIGURE_WITH_PMS: true
+  PMS_TARGET:
+  PMS_AUTHORITY:
+  GRPC_SERVER_PORT: 9979
+  CACHE_CONFIG_REDIS_URL:
+  CACHE_BACKEND: REDIS
+  CACHE_CONFIG_REDIS_SENTINELS: 
+  CACHE_CONFIG_SENTINEL_MASTER_NAME: harness-redis
+  CACHE_CONFIG_USE_SENTINEL: true
+  MOCK_ACCESS_CONTROL_SERVICE: false
+  ACCESS_CONTROL_BASE_URL:  http://access-control.{{ .Release.Namespace }}.svc.cluster.local:9006/api/
+  ACCESS_CONTROL_ENABLED: true
 
 image:
   registry: docker.io
