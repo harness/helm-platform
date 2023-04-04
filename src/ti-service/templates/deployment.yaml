@@ -32,12 +32,14 @@ spec:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       terminationGracePeriodSeconds: 30
       initContainers:
+      {{- if .Values.global.database.mongo.installed }}
       - name: wait-for-mongo
         image: {{ include "common.images.image" (dict "imageRoot" .Values.waitForInitContainer.image "global" .Values.global) }}
         imagePullPolicy: IfNotPresent
         args:
           - "pod"
           - "-lapp=mongodb-replicaset"
+      {{- end }}    
       - name: wait-for-timescale
         image: {{ include "common.images.image" (dict "imageRoot" .Values.waitForInitContainer.image "global" .Values.global) }}
         imagePullPolicy: IfNotPresent
@@ -69,18 +71,9 @@ spec:
             containerPort: {{.Values.service.port}}
             protocol: "TCP"
           env:
-          - name: MONGODB_USERNAME
-            valueFrom:
-              secretKeyRef:
-                name: {{ .Values.mongoSecrets.userName.name }}
-                key: {{ .Values.mongoSecrets.userName.key }}
-          - name: MONGODB_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: {{ .Values.mongoSecrets.password.name }}
-                key: {{ .Values.mongoSecrets.password.key }}
+          {{- include "harnesscommon.dbconnection.mongoEnv" . | indent 10 }}
           - name: TI_SERVICE_MONGODB_CONN_STR
-            value: {{ include "harnesscommon.database.mongo" (dict "database" "ti-harness" "context" $) }}
+            value: {{ include "harnesscommon.dbconnection.mongoConnection" (dict "database" "ti-harness" "context" $) }}
           - name: TI_SERVICE_TIMESCALE_USERNAME
             value: "postgres"
           - name: TI_SERVICE_TIMESCALE_PASSWORD
