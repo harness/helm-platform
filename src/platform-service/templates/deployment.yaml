@@ -34,12 +34,14 @@ spec:
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       initContainers:
+      {{- if .Values.global.database.mongo.installed }}
       - name: wait-for-mongo
         image: {{ include "common.images.image" (dict "imageRoot" .Values.waitForInitContainer.image "global" .Values.global) }}
         imagePullPolicy: IfNotPresent
         args:
           - "pod"
           - "-lapp=mongodb-replicaset"
+      {{- end }}
       containers:
       - name: platform-service
         image: {{ include "common.images.image" (dict "imageRoot" .Values.image "global" .Values.global) }}
