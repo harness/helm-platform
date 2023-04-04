@@ -34,12 +34,14 @@ spec:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       terminationGracePeriodSeconds: 30
       initContainers:
+        {{- if .Values.global.database.mongo.installed }}
         - name: wait-for-mongo
           image: {{ include "common.images.image" (dict "imageRoot" .Values.waitForInitContainer.image "global" .Values.global) }}
           imagePullPolicy: IfNotPresent
           args:
             - "pod"
             - "-lapp=mongodb-replicaset"
+        {{- end }}    
         - name: wait-for-redis
           image: {{ include "common.images.image" (dict "imageRoot" .Values.waitForInitContainer.image "global" .Values.global) }}
           imagePullPolicy: IfNotPresent
@@ -75,22 +77,13 @@ spec:
             containerPort: {{.Values.service.port}}
             protocol: "TCP"
           env:
-            - name: MONGODB_USERNAME
-              valueFrom:
-                secretKeyRef:
-                  name: {{ .Values.mongoSecrets.userName.name }}
-                  key: {{ .Values.mongoSecrets.userName.key }}
-            - name: MONGODB_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: {{ .Values.mongoSecrets.password.name }}
-                  key: {{ .Values.mongoSecrets.password.key }}
+            {{- include "harnesscommon.dbconnection.mongoEnv" . | indent 12 }}
             - name: MONGODB_HOSTS
               value: {{if .Values.global.ha }}'mongodb-replicaset-chart-0.mongodb-replicaset-chart.{{ .Release.Namespace }}.svc:27017,mongodb-replicaset-chart-1.mongodb-replicaset-chart.{{ .Release.Namespace }}.svc:27017,mongodb-replicaset-chart-2.mongodb-replicaset-chart.{{ .Release.Namespace }}.svc:27017'{{ else }}'mongodb-replicaset-chart-0.mongodb-replicaset-chart.{{ .Release.Namespace }}.svc:27017'{{ end }}
             - name: MONGO_URI
-              value: {{ include "harnesscommon.database.mongo" (dict "database" "accesscontrol" "context" $) }}
+              value: {{ include "harnesscommon.dbconnection.mongoConnection" (dict "database" "accesscontrol" "context" $) }}
             - name: OFFSET_STORAGE_FILE_FILENAME
-              value: {{ include "harnesscommon.database.mongo" (dict "database" "accesscontrol" "context" $) }}
+              value: {{ include "harnesscommon.dbconnection.mongoConnection" (dict "database" "accesscontrol" "context" $) }}
             - name: IDENTITY_SERVICE_SECRET
               value: 'HVSKUYqD4e5Rxu12hFDdCJKGM64sxgEynvdDhaOHaTHhwwn0K4Ttr0uoOxSsEVYNrUU='
           envFrom:
