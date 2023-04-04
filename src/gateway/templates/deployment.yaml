@@ -38,12 +38,14 @@ spec:
             secretName: mongodb-replicaset-ssl-cert
       {{- end }}
       initContainers:
+      {{- if .Values.global.database.mongo.installed }}
       - name: wait-for-mongo
         image: {{ include "common.images.image" (dict "imageRoot" .Values.waitForInitContainer.image "global" .Values.global) }}
         imagePullPolicy: IfNotPresent
         args:
           - "pod"
           - "-lapp=mongodb-replicaset"
+      {{- end }}
       - name: wait-for-timescale
         image: {{ include "common.images.image" (dict "imageRoot" .Values.waitForInitContainer.image "global" .Values.global) }}
         imagePullPolicy: IfNotPresent
@@ -76,18 +78,9 @@ spec:
           resources:
               {{- toYaml .Values.resources | nindent 12 }}
           env:
-            - name: MONGODB_USERNAME
-              valueFrom:
-                secretKeyRef:
-                  name: {{ .Values.mongoSecrets.userName.name }}
-                  key: {{ .Values.mongoSecrets.userName.key }}
-            - name: MONGODB_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: {{ .Values.mongoSecrets.password.name }}
-                  key: {{ .Values.mongoSecrets.password.key }}
+            {{- include "harnesscommon.dbconnection.mongoEnv" . | indent 12 }}
             - name: MONGO_DB_URL
-              value: {{ include "harnesscommon.database.mongo" (dict "database" "gateway" "context" $) }}
+              value: {{ include "harnesscommon.dbconnection.mongoConnection" (dict "database" "gateway" "context" $) }}
           envFrom:
           - configMapRef:
               name: gateway

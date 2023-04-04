@@ -34,12 +34,14 @@ spec:
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       initContainers:
+      {{- if .Values.global.database.mongo.installed }}
       - name: wait-for-mongo
         image: {{ include "common.images.image" (dict "imageRoot" .Values.waitForInitContainer.image "global" .Values.global) }}
         imagePullPolicy: IfNotPresent
         args:
           - "pod"
           - "-lapp=mongodb-replicaset"
+      {{- end }}
       containers:
       - name: platform-service
         image: {{ include "common.images.image" (dict "imageRoot" .Values.image "global" .Values.global) }}
@@ -53,22 +55,13 @@ spec:
         resources:
           {{- toYaml .Values.resources | nindent 12 }}
         env:
-          - name: MONGODB_USERNAME
-            valueFrom:
-              secretKeyRef:
-                name: {{ .Values.mongoSecrets.userName.name }}
-                key: {{ .Values.mongoSecrets.userName.key }}
-          - name: MONGODB_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: {{ .Values.mongoSecrets.password.name }}
-                key: {{ .Values.mongoSecrets.password.key }}
+          {{- include "harnesscommon.dbconnection.mongoEnv" . | indent 10 }}
           - name: MONGO_URI
-            value: {{ include "harnesscommon.database.mongo" (dict "database" "notifications" "context" $) }}
+            value: {{ include "harnesscommon.dbconnection.mongoConnection" (dict "database" "notifications" "context" $) }}
           - name: AUDIT_MONGO_URI
-            value: {{ include "harnesscommon.database.mongo" (dict "database" "audits" "context" $) }}
+            value: {{ include "harnesscommon.dbconnection.mongoConnection" (dict "database" "audits" "context" $) }}
           - name: RESOURCE_GROUP_MONGO_URI
-            value: {{ include "harnesscommon.database.mongo" (dict "database" "resource-groups" "context" $) }}
+            value: {{ include "harnesscommon.dbconnection.mongoConnection" (dict "database" "resource-groups" "context" $) }}
         envFrom:
         - configMapRef:
             name: platform-service
