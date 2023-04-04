@@ -3,6 +3,20 @@ entries:
   access-control:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2023-04-04T20:29:28.977023889Z"
+    dependencies:
+    - name: harness-common
+      repository: https://harness.github.io/helm-common
+      version: 1.x.x
+    description: A Helm chart for Kubernetes
+    digest: e8160d8f1b14aa54c675df38d321ce62723a5f00ce8b3cd925bbeacfa1115579
+    name: access-control
+    type: application
+    urls:
+    - https://github.com/harness/helm-platform/releases/download/access-control-0.3.1/access-control-0.3.1.tgz
+    version: 0.3.1
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2022-12-21T16:25:57.289733124Z"
     dependencies:
     - name: harness-common
@@ -5211,4 +5225,4 @@ entries:
     urls:
     - https://github.com/harness/helm-platform/releases/download/verification-svc-0.3.0/verification-svc-0.3.0.tgz
     version: 0.3.0
-generated: "2023-04-04T20:28:16.094518973Z"
+generated: "2023-04-04T20:29:28.978588275Z"
