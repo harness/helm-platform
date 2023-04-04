@@ -63,7 +63,7 @@ spec:
                 name: smtp-secret
             {{- end }}
           env:
-            {{- include "harnesscommon.dbconnection.mongoEnv" . | nindent 12 }}
+            {{- include "harnesscommon.dbconnection.mongoEnv" . | indent 12 }}
             - name : TIMESCALEDB_PASSWORD
               valueFrom:
                 secretKeyRef:
