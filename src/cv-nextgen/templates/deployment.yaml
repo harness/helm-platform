@@ -45,22 +45,13 @@ spec:
           securityContext:
               {{- toYaml .Values.securityContext | nindent 12 }}
           env:
-            - name: MONGODB_USERNAME
-              valueFrom:
-                secretKeyRef:
-                  name: {{ .Values.mongoSecrets.userName.name }}
-                  key: {{ .Values.mongoSecrets.userName.key }}
-            - name: MONGODB_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: {{ .Values.mongoSecrets.password.name }}
-                  key: {{ .Values.mongoSecrets.password.key }}
+            {{- include "harnesscommon.dbconnection.mongoEnv" . | indent 12 }}
             - name: MONGO_URI
-              value: {{ include "harnesscommon.database.mongo" (dict "database" "cvng-harness" "context" $) }}
+              value: {{ include "harnesscommon.dbconnection.mongoConnection" (dict "database" "cvng-harness" "context" $) }}
             - name : NOTIFICATION_MONGO_URI
-              value: {{ include "harnesscommon.database.mongo" (dict "database" "notifications" "context" $) }}
+              value: {{ include "harnesscommon.dbconnection.mongoConnection" (dict "database" "notifications" "context" $) }}
             - name: PMS_MONGO_URI
-              value: {{ include "harnesscommon.database.mongo" (dict "database" "pms-harness" "context" $) }}
+              value: {{ include "harnesscommon.dbconnection.mongoConnection" (dict "database" "pms-harness" "context" $) }}
           envFrom:
             - configMapRef:
                 name: cv-nextgen
