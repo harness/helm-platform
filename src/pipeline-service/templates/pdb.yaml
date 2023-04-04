@@ -1,7 +1,7 @@
 apiVersion: policy/v1
 kind: PodDisruptionBudget
 metadata:
-  name: pipeline-service
+  name: {{ include "pipeline-service.name" . }}
   namespace: {{ .Release.Namespace }}
 spec:
   minAvailable: "50%"

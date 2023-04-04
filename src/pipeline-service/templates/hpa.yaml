@@ -2,7 +2,7 @@
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
-  name: pipeline-service
+  name: {{ include "pipeline-service.name" . }}
   namespace: {{ .Release.Namespace }}
   labels:
     {{- include "pipeline-service.labels" . | nindent 4 }}
