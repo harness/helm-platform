@@ -53,22 +53,13 @@ spec:
         resources:
           {{- toYaml .Values.resources | nindent 12 }}
         env:
-          - name: MONGODB_USERNAME
-            valueFrom:
-              secretKeyRef:
-                name: {{ .Values.mongoSecrets.userName.name }}
-                key: {{ .Values.mongoSecrets.userName.key }}
-          - name: MONGODB_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: {{ .Values.mongoSecrets.password.name }}
-                key: {{ .Values.mongoSecrets.password.key }}
+          {{- include "harnesscommon.dbconnection.mongoEnv" . | nindent 10 }}
           - name: MONGO_URI
-            value: {{ include "harnesscommon.database.mongo" (dict "database" "notifications" "context" $) }}
+            value: {{ include "harnesscommon.dbconnection.mongoConnection" (dict "database" "notifications" "context" $) }}
           - name: AUDIT_MONGO_URI
-            value: {{ include "harnesscommon.database.mongo" (dict "database" "audits" "context" $) }}
+            value: {{ include "harnesscommon.dbconnection.mongoConnection" (dict "database" "audits" "context" $) }}
           - name: RESOURCE_GROUP_MONGO_URI
-            value: {{ include "harnesscommon.database.mongo" (dict "database" "resource-groups" "context" $) }}
+            value: {{ include "harnesscommon.dbconnection.mongoConnection" (dict "database" "resource-groups" "context" $) }}
         envFrom:
         - configMapRef:
             name: platform-service
