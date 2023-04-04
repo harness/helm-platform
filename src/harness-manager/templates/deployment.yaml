@@ -34,12 +34,14 @@ spec:
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       initContainers:
+      {{- if .Values.global.database.mongo.installed }}
       - name: wait-for-mongo
         image: {{ include "common.images.image" (dict "imageRoot" .Values.waitForInitContainer.image "global" .Values.global) }}
         imagePullPolicy: IfNotPresent
         args:
           - "pod"
           - "-lapp=mongodb-replicaset"
+      {{- end }}    
       - name: wait-for-timescale
         image: {{ include "common.images.image" (dict "imageRoot" .Values.waitForInitContainer.image "global" .Values.global) }}
         imagePullPolicy: IfNotPresent
@@ -61,16 +63,7 @@ spec:
                 name: smtp-secret
             {{- end }}
           env:
-            - name: MONGODB_USERNAME
-              valueFrom:
-                secretKeyRef:
-                  name: {{ .Values.mongoSecrets.userName.name }}
-                  key: {{ .Values.mongoSecrets.userName.key }}
-            - name: MONGODB_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: {{ .Values.mongoSecrets.password.name }}
-                  key: {{ .Values.mongoSecrets.password.key }}
+            {{- include "harnesscommon.dbconnection.mongoEnv" . | nindent 12 }}
             - name : TIMESCALEDB_PASSWORD
               valueFrom:
                 secretKeyRef:
@@ -79,7 +72,7 @@ spec:
             - name: TIMESCALEDB_USERNAME
               value: postgres
             - name: MONGO_URI
-              value: {{ include "harnesscommon.database.mongo" (dict "database" "harness" "context" $) }}
+              value: {{ include "harnesscommon.dbconnection.mongoConnection" (dict "database" "harness" "context" $) }}
             - name: TIMESCALEDB_URI
               value: 'jdbc:postgresql://timescaledb-single-chart.{{ .Release.Namespace }}:5432/harness'
           image: {{ include "common.images.image" (dict "imageRoot" .Values.image "global" .Values.global) }}
