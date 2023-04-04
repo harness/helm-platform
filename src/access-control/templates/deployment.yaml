@@ -78,7 +78,6 @@ spec:
             protocol: "TCP"
           env:
             {{- include "harnesscommon.dbconnection.mongoEnv" . | nindent 12 }}
-            {{- include "harnesscommon.dbconnection.timescaleEnv" . | nindent 12 }}
             - name: MONGODB_HOSTS
               value: {{if .Values.global.ha }}'mongodb-replicaset-chart-0.mongodb-replicaset-chart.{{ .Release.Namespace }}.svc:27017,mongodb-replicaset-chart-1.mongodb-replicaset-chart.{{ .Release.Namespace }}.svc:27017,mongodb-replicaset-chart-2.mongodb-replicaset-chart.{{ .Release.Namespace }}.svc:27017'{{ else }}'mongodb-replicaset-chart-0.mongodb-replicaset-chart.{{ .Release.Namespace }}.svc:27017'{{ end }}
             - name: MONGO_URI
