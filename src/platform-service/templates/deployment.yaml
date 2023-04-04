@@ -55,7 +55,7 @@ spec:
         resources:
           {{- toYaml .Values.resources | nindent 12 }}
         env:
-          {{- include "harnesscommon.dbconnection.mongoEnv" . | nindent 10 }}
+          {{- include "harnesscommon.dbconnection.mongoEnv" . | indent 10 }}
           - name: MONGO_URI
             value: {{ include "harnesscommon.dbconnection.mongoConnection" (dict "database" "notifications" "context" $) }}
           - name: AUDIT_MONGO_URI
