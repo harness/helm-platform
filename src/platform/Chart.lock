@@ -1,22 +1,22 @@
 dependencies:
 - name: access-control
   repository: file://../access-control
-  version: 0.3.0
+  version: 0.3.1
 - name: change-data-capture
   repository: file://../change-data-capture
-  version: 0.3.0
+  version: 0.3.1
 - name: cv-nextgen
   repository: file://../cv-nextgen
-  version: 0.3.0
+  version: 0.3.1
 - name: gateway
   repository: file://../gateway
-  version: 0.3.0
+  version: 0.3.1
 - name: harness-secrets
   repository: file://../secrets
   version: 0.3.1
 - name: harness-manager
   repository: file://../harness-manager
-  version: 0.3.0
+  version: 0.3.1
 - name: delegate-proxy
   repository: file://../delegate-proxy
   version: 0.3.0
@@ -43,13 +43,13 @@ dependencies:
   version: 0.3.0
 - name: ng-manager
   repository: file://../ng-manager
-  version: 0.3.0
+  version: 0.3.1
 - name: pipeline-service
   repository: file://../pipeline-service
-  version: 0.3.0
+  version: 0.3.1
 - name: platform-service
   repository: file://../platform-service
-  version: 0.3.0
+  version: 0.3.1
 - name: redis
   repository: https://harness.github.io/helm-redis
   version: 0.2.4
@@ -61,7 +61,7 @@ dependencies:
   version: 0.3.0
 - name: ti-service
   repository: file://../ti-service
-  version: 0.3.0
+  version: 0.3.1
 - name: timescaledb
   repository: https://harness.github.io/helm-timescaledb
   version: 0.2.14
@@ -71,5 +71,5 @@ dependencies:
 - name: verification-svc
   repository: file://../verification-svc
   version: 0.4.0
-digest: sha256:93d7cdc9a28eee5cfe49c892012a9f15b14ab05b354627e7e01636cf1c7b9f35
-generated: "2023-03-27T16:32:43.344098+05:30"
+digest: sha256:ced880e3a2c388cf2572cb1e1f96646622cf3c3e90095dfe4532d71d75ceed00
+generated: "2023-04-04T22:53:54.805124-04:00"
