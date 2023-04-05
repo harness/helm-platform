@@ -10,13 +10,13 @@ dependencies:
   version: 0.3.1
 - name: gateway
   repository: file://../gateway
-  version: 0.3.1
+  version: 0.3.3
 - name: harness-secrets
   repository: file://../secrets
   version: 0.3.1
 - name: harness-manager
   repository: file://../harness-manager
-  version: 0.3.1
+  version: 0.3.2
 - name: delegate-proxy
   repository: file://../delegate-proxy
   version: 0.3.0
@@ -70,6 +70,6 @@ dependencies:
   version: 0.4.0
 - name: verification-svc
   repository: file://../verification-svc
-  version: 0.4.0
-digest: sha256:ced880e3a2c388cf2572cb1e1f96646622cf3c3e90095dfe4532d71d75ceed00
-generated: "2023-04-04T22:53:54.805124-04:00"
+  version: 0.4.1
+digest: sha256:2de47ce9a3f87f44d613916ada58e80c316a2d624ecb628b8d52f5ee3a37a536
+generated: "2023-04-05T12:01:26.444714+05:30"
