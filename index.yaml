@@ -5255,6 +5255,20 @@ entries:
   verification-svc:
   - apiVersion: v2
     appVersion: 22.12.77629
+    created: "2023-04-05T01:05:58.074410535Z"
+    dependencies:
+    - name: harness-common
+      repository: https://harness.github.io/helm-common
+      version: 1.x.x
+    description: A Helm chart for Kubernetes
+    digest: 9ea6f153f59a9f111c69e16fde558b24ac3140e3ddab7e34cc282d9002db4459
+    name: verification-svc
+    type: application
+    urls:
+    - https://github.com/harness/helm-platform/releases/download/verification-svc-0.4.1/verification-svc-0.4.1.tgz
+    version: 0.4.1
+  - apiVersion: v2
+    appVersion: 22.12.77629
     created: "2023-01-19T08:39:35.549014481Z"
     dependencies:
     - name: harness-common
@@ -5267,4 +5281,4 @@ entries:
     urls:
     - https://github.com/harness/helm-platform/releases/download/verification-svc-0.3.0/verification-svc-0.3.0.tgz
     version: 0.3.0
-generated: "2023-04-04T21:32:55.599240989Z"
+generated: "2023-04-05T01:05:58.074786933Z"
