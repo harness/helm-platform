@@ -24,18 +24,9 @@ spec:
         resources:
           {{- toYaml .Values.jobresources | nindent 10 }}
         env:
-          - name: MONGODB_USERNAME
-            valueFrom:
-              secretKeyRef:
-                name: harness-secrets
-                key: mongodbUsername
-          - name: MONGODB_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: mongodb-replicaset-chart
-                key: mongodb-root-password
+          {{- include "harnesscommon.dbconnection.mongoEnv" . | indent 10 }}
           - name: TI_SERVICE_MONGODB_CONN_STR
-            value: {{ include "harnesscommon.database.mongo" (dict "database" "ti-harness" "context" $) }}
+            value: {{ include "harnesscommon.dbconnection.mongoConnection" (dict "database" "ti-harness" "context" $) }}
           - name: TI_SERVICE_TIMESCALE_USERNAME
             value: "postgres"
           - name: TI_SERVICE_TIMESCALE_PASSWORD
