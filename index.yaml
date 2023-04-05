@@ -5196,6 +5196,20 @@ entries:
   template-service:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2023-04-05T01:29:43.348542208Z"
+    dependencies:
+    - name: harness-common
+      repository: https://harness.github.io/helm-common
+      version: 1.x.x
+    description: A Helm chart for Kubernetes
+    digest: 77ba21dfb08df9cf51ac709f872e8e04c3b556917aea561433e18fae1b2ff151
+    name: template-service
+    type: application
+    urls:
+    - https://github.com/harness/helm-platform/releases/download/template-service-0.3.0/template-service-0.3.0.tgz
+    version: 0.3.0
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2022-12-21T16:25:59.796765746Z"
     dependencies:
     - name: harness-common
@@ -5281,4 +5295,4 @@ entries:
     urls:
     - https://github.com/harness/helm-platform/releases/download/verification-svc-0.3.0/verification-svc-0.3.0.tgz
     version: 0.3.0
-generated: "2023-04-05T01:05:58.074786933Z"
+generated: "2023-04-05T01:29:43.34905034Z"
