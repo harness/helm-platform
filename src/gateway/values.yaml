@@ -40,6 +40,21 @@ global:
       passwordKey: ""
       extraArgs: ""
   ha: false
+  ingress:
+    enabled: false
+    className: harness
+    hosts:
+      - my-host.example.org
+    tls:
+      enabled: true
+      secretName: harness-cert
+  istio:
+    enabled: false
+    gateway:
+      create: false
+    virtualService:
+      gateways:
+      hosts:
   imagePullSecrets: []
 replicaCount: 1
 maxSurge: 1
