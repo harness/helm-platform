@@ -53,8 +53,8 @@ global:
     gateway:
       create: false
     virtualService:
-      gateways:
-      hosts:
+      gateways: []
+      hosts: []
   imagePullSecrets: []
 replicaCount: 1
 maxSurge: 1
