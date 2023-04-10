@@ -39,6 +39,31 @@ global:
       userKey: ""
       passwordKey: ""
       extraArgs: ""
+  ingress:
+    # -- create ingress objects
+    enabled: false
+    # -- set ingress object classname
+    className: harness
+    # -- set host of ingressObjects
+    hosts:
+      - my-host.example.org
+    # -- set tls for ingress objects
+    tls:
+      enabled: true
+      secretName: ''
+    # -- add annotations to ingress objects
+    objects:
+      annotations: {}
+  istio:
+    # -- create virtualServices objects
+    enabled: false
+    # -- create gateway and use in virtualservice
+    gateway:
+      create: false
+    # -- if gateway not created, use specified gateway and host
+    virtualService:
+      gateways:
+      hosts:
   mongoSSL: false
   license:
     cg: ''
@@ -79,6 +104,7 @@ global:
     SMTP_USERNAME: ""
     SMTP_USE_SSL: "true"
     SMTP_PORT: "465"
+  ha: false
 
 replicaCount: 1
 maxSurge: 1
@@ -110,6 +136,311 @@ initContainer:
     tag: latest
     digest: ""
 
+config:
+  ALLOWED_ORIGINS:
+  DELEGATE_METADATA_URL:
+  WATCHER_METADATA_URL:
+  LOG_STREAMING_SERVICE_BASEURL:
+  LOG_STREAMING_SERVICE_EXTERNAL_URL:
+  ATMOSPHERE_BACKEND: REDIS
+  BACKGROUND_SCHEDULER_CLUSTERED: "true"
+  CACHE_BACKEND: REDIS
+  CAPSULE_JAR: rest-capsule.jar
+  IMMUTABLE_DELEGATE_ENABLED:
+  DELEGATE_SERVICE_TARGET: harness-manager:9879
+  DELEGATE_SERVICE_AUTHORITY: harness-manager:9879
+  DISTRIBUTED_LOCK_IMPLEMENTATION: REDIS
+  DEPLOY_MODE: KUBERNETES_ONPREM
+  DISABLE_NEW_RELIC: "true"
+  ENABLE_G1GC: "true"
+  EXTERNAL_GRAPHQL_RATE_LIMIT: 500
+  GITOPS_SERVICE_CLIENT_BASEURL:
+  HAZELCAST_NAMESPACE:
+  HAZELCAST_SERVICE: harness-manager
+  HZ_CLUSTER_NAME: harness-manager
+  LOGGING_LEVEL: "INFO"
+  MEMORY: "2048"
+  REDIS_SENTINEL: "true"
+  REDIS_URL: 'redis://localhost:6379'
+  REDIS_MASTER_NAME: 'harness-redis'
+  REDIS_SENTINELS:
+  SERVER_PORT: "9090"
+  SERVICE_ACC: /opt/harness/svc/service_acc.json
+  VERSION: 1.0.78900
+  NG_MANAGER_BASE_URL:
+  ACCESS_CONTROL_ENABLED: "true"
+  ACCESS_CONTROL_BASE_URL:
+  EVENTS_FRAMEWORK_REDIS_SENTINELS:
+  EVENTS_FRAMEWORK_SENTINEL_MASTER_NAME: 'harness-redis'
+  EVENTS_FRAMEWORK_USE_SENTINEL: "true"
+  EVENTS_FRAMEWORK_AVAILABLE_IN_ONPREM: "true"
+  EVENTS_FRAMEWORK_REDIS_URL: 'redis://localhost:6379'
+  HARNESS_ENABLE_NG_AUTH_UI_PLACEHOLDER: "true"
+  MONGO_SSL_CONFIG: "false"
+  ENABLE_ITERATORS: 'true'
+  ITERATOR_CONFIG_PATH: '/opt/harness/config'
+  LICENSE_INFO:
+
+iteratorConfig:
+  alertReconciliation:
+    enabled: true
+    threadPoolSize: 3
+    threadPoolIntervalInSeconds: 60
+    nextIterationMode: "TARGET"
+    targetIntervalInSeconds: 600
+    throttleIntervalInSeconds: 0
+  artifactCollection:
+    enabled: true
+    threadPoolSize: 20
+    threadPoolIntervalInSeconds: 10
+    nextIterationMode: "TARGET"
+    targetIntervalInSeconds: 60
+    throttleIntervalInSeconds: 0
+  artifactCleanup:
+    enabled: true
+    threadPoolSize: 5
+    threadPoolIntervalInSeconds: 300
+    nextIterationMode: "TARGET"
+    targetIntervalInSeconds: 7200
+    throttleIntervalInSeconds: 0
+  eventDelivery:
+    enabled: true
+    threadPoolSize: 25
+    threadPoolIntervalInSeconds: 60
+    nextIterationMode: "TARGET"
+    targetIntervalInSeconds: 5
+    throttleIntervalInSeconds: 0
+  instanceSync:
+    enabled: true
+    threadPoolSize: 10
+    threadPoolIntervalInSeconds: 30
+    nextIterationMode: "TARGET"
+    targetIntervalInSeconds: 600
+    throttleIntervalInSeconds: 0
+  licenseExpiryCheck:
+    enabled: true
+    threadPoolSize: 2
+    threadPoolIntervalInSeconds: 30
+    nextIterationMode: "TARGET"
+    targetIntervalInSeconds: 3600
+    throttleIntervalInSeconds: 0
+  approvalPolling:
+    enabled: true
+    threadPoolSize: 5
+    threadPoolIntervalInSeconds: 10
+    nextIterationMode: "TARGET"
+    targetIntervalInSeconds: 60
+    throttleIntervalInSeconds: 0
+  gcpBilling:
+    enabled: true
+    threadPoolSize: 2
+    threadPoolIntervalInSeconds: 1800
+    nextIterationMode: "TARGET"
+    targetIntervalInSeconds: 3600
+    throttleIntervalInSeconds: 0
+  segmentGroupEventJob:
+    enabled: true
+    threadPoolSize: 2
+    threadPoolIntervalInSeconds: 1800
+    nextIterationMode: "TARGET"
+    targetIntervalInSeconds: 86400
+    throttleIntervalInSeconds: 0
+  barrierInstanceMonitor:
+    enabled: true
+    threadPoolSize: 2
+    threadPoolIntervalInSeconds: 60
+    nextIterationMode: "TARGET"
+    targetIntervalInSeconds: 60
+    throttleIntervalInSeconds: 0
+  entityAuditRecordProcessor:
+    enabled: true
+    threadPoolSize: 2
+    threadPoolIntervalInSeconds: 30
+    nextIterationMode: "TARGET"
+    targetIntervalInSeconds: 1800
+    throttleIntervalInSeconds: 0
+  usageMetricsHandler:
+    enabled: true
+    threadPoolSize: 2
+    threadPoolIntervalInSeconds: 30
+    nextIterationMode: "TARGET"
+    targetIntervalInSeconds: 86400
+    throttleIntervalInSeconds: 0
+  resourceConstraintBackup:
+    enabled: true
+    threadPoolSize: 10
+    threadPoolIntervalInSeconds: 60
+    nextIterationMode: "TARGET"
+    targetIntervalInSeconds: 30
+    throttleIntervalInSeconds: 0
+  workflowExecutionMonitor:
+    enabled: true
+    threadPoolSize: 5
+    threadPoolIntervalInSeconds: 10
+    nextIterationMode: "TARGET"
+    targetIntervalInSeconds: 60
+    throttleIntervalInSeconds: 0
+  settingAttributeValidateConnectivity:
+    enabled: true
+    threadPoolSize: 5
+    threadPoolIntervalInSeconds: 600
+    nextIterationMode: "TARGET"
+    targetIntervalInSeconds: 10800
+    throttleIntervalInSeconds: 0
+  vaultSecretManagerRenewalHandler:
+    enabled: true
+    threadPoolSize: 5
+    threadPoolIntervalInSeconds: 5
+    nextIterationMode: "TARGET"
+    targetIntervalInSeconds: 31
+    throttleIntervalInSeconds: 0
+  settingAttributesSecretsMigrationHandler:
+    enabled: true
+    threadPoolSize: 2
+    threadPoolIntervalInSeconds: 30
+    nextIterationMode: "TARGET"
+    targetIntervalInSeconds: 1800
+    throttleIntervalInSeconds: 0
+  gitSyncEntityExpiryCheck:
+    enabled: true
+    threadPoolSize: 2
+    threadPoolIntervalInSeconds: 600
+    nextIterationMode: "TARGET"
+    targetIntervalInSeconds: 43200
+    throttleIntervalInSeconds: 0
+  exportExecutionsRequestHandler:
+    enabled: true
+    threadPoolSize: 3
+    threadPoolIntervalInSeconds: 60
+    nextIterationMode: "TARGET"
+    targetIntervalInSeconds: 1800
+    throttleIntervalInSeconds: 0
+  exportExecutionsRequestCleanupHandler:
+    enabled: true
+    threadPoolSize: 2
+    threadPoolIntervalInSeconds: 3600
+    nextIterationMode: "TARGET"
+    targetIntervalInSeconds: 2700
+    throttleIntervalInSeconds: 0
+  deploymentFreezeActivities:
+    enabled: true
+    threadPoolSize: 3
+    threadPoolIntervalInSeconds: 0
+    nextIterationMode: "THROTTLE"
+    targetIntervalInSeconds: 0
+    throttleIntervalInSeconds: 45
+  deploymentFreezeDeactivation:
+    enabled: true
+    threadPoolSize: 3
+    threadPoolIntervalInSeconds: 0
+    nextIterationMode: "THROTTLE"
+    targetIntervalInSeconds: 0
+    throttleIntervalInSeconds: 45
+  ceLicenceExpiryProcessor:
+    enabled: true
+    threadPoolSize: 2
+    threadPoolIntervalInSeconds: 86400
+    nextIterationMode: "TARGET"
+    targetIntervalInSeconds: 86400
+    throttleIntervalInSeconds: 0
+  deleteAccountIterator:
+    enabled: false
+    threadPoolSize: 2
+    threadPoolIntervalInSeconds: 60
+    nextIterationMode: "TARGET"
+    targetIntervalInSeconds: 18000
+    throttleIntervalInSeconds: 0
+  deletedEntityIterator:
+    enabled: false
+    threadPoolSize: 2
+    threadPoolIntervalInSeconds: 60
+    nextIterationMode: "TARGET"
+    targetIntervalInSeconds: 43200
+    throttleIntervalInSeconds: 0
+  resourceLookupTagLinkSync:
+    enabled: true
+    threadPoolSize: 1
+    threadPoolIntervalInSeconds: 43200
+    nextIterationMode: "TARGET"
+    targetIntervalInSeconds: 43200
+    throttleIntervalInSeconds: 0
+  accessRequestHandler:
+    enabled: true
+    threadPoolSize: 2
+    threadPoolIntervalInSeconds: 5
+    nextIterationMode: "TARGET"
+    targetIntervalInSeconds: 15
+    throttleIntervalInSeconds: 0
+  scheduledTrigger:
+    enabled: true
+    threadPoolSize: 8
+    threadPoolIntervalInSeconds: 0
+    nextIterationMode: "THROTTLE"
+    targetIntervalInSeconds: 0
+    throttleIntervalInSeconds: 45
+  ldapGroupScheduled:
+    enabled: true
+    threadPoolSize: 8
+    threadPoolIntervalInSeconds: 0
+    nextIterationMode: "THROTTLE"
+    targetIntervalInSeconds: 0
+    throttleIntervalInSeconds: 45
+  encryptedDataLocalToGcpKmsMigrationHandler:
+    enabled: true
+    threadPoolSize: 5
+    threadPoolIntervalInSeconds: 30
+    nextIterationMode: "TARGET"
+    targetIntervalInSeconds: 72000
+    throttleIntervalInSeconds: 0
+  timeoutEngine:
+    enabled: true
+    threadPoolSize: 5
+    threadPoolIntervalInSeconds: 10
+    nextIterationMode: "TARGET"
+    targetIntervalInSeconds: 10
+    throttleIntervalInSeconds: 0
+  gitSyncPollingIterator:
+    enabled: true
+    threadPoolSize: 2
+    threadPoolIntervalInSeconds: 60
+    nextIterationMode: "TARGET"
+    targetIntervalInSeconds: 300
+    throttleIntervalInSeconds: 0
+  perpetualTaskAssignment:
+    enabled: true
+    threadPoolSize: 5
+    threadPoolIntervalInSeconds: 60
+    nextIterationMode: "TARGET"
+    targetIntervalInSeconds: 60
+    throttleIntervalInSeconds: 0
+  delegateDisconnectDetector:
+    enabled: true
+    threadPoolSize: 2
+    threadPoolIntervalInSeconds: 60
+    nextIterationMode: "TARGET"
+    targetIntervalInSeconds: 60
+    throttleIntervalInSeconds: 0
+  delegateTaskFail:
+    enabled: true
+    threadPoolSize: 2
+    threadPoolIntervalInSeconds: 30
+    nextIterationMode: "TARGET"
+    targetIntervalInSeconds: 30
+    throttleIntervalInSeconds: 0
+  delegateTelemetryPublisherIteration:
+    enabled: true
+    threadPoolSize: 1
+    threadPoolIntervalInSeconds: 600
+    nextIterationMode: "TARGET"
+    targetIntervalInSeconds: 86400
+    throttleIntervalInSeconds: 0
+
+secrets:
+  LOG_STREAMING_SERVICE_TOKEN: c76e567a-b341-404d-a8dd-d9738714eb82
+  MONGO_SSL_CA_TRUST_STORE_PATH: /opt/harness/keystore.jks
+  MONGO_SSL_CA_TRUST_STORE_PASSWORD: password
+  VERIFICATION_SERVICE_SECRET: 59MR5RlVARcdH7zb7pNx6GzqiglBmXR8
+
 mongoSecrets:
   userName:
     name: harness-secrets
@@ -122,8 +453,6 @@ timescaleSecret:
   password:
     name: harness-secrets
     key: timescaledbPostgresPassword
-
-version: 1.0.76019
 
 delegate_docker_image:
   image:
@@ -147,9 +476,6 @@ upgrader_docker_image:
     digest: ""
 
 appLogLevel: INFO
-
-java:
-  memory: "2048"
 
 external_graphql_rate_limit: "500"
 

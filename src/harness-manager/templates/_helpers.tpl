@@ -136,6 +136,16 @@ Create the name of the delegate upgrader image to use
 {{- printf "%s" $flags }}
 {{- end }}
 
+{{/*
+Randomly Creates Secret for access-control unless overwritten.
+*/}}
+{{- define "harness-manager.generateSecrets" }}
+    LOG_STREAMING_SERVICE_TOKEN: {{ include "harnesscommon.secrets.passwords.manage" (dict "secret" "harness-manager" "key" "LOG_STREAMING_SERVICE_TOKEN" "providedValues" (list "secrets.LOG_STREAMING_SERVICE_TOKEN") "length" 10 "context" $) }}
+    MONGO_SSL_CA_TRUST_STORE_PATH: {{ include "harnesscommon.secrets.passwords.manage" (dict "secret" "harness-manager" "key" "MONGO_SSL_CA_TRUST_STORE_PATH" "providedValues" (list "secrets.MONGO_SSL_CA_TRUST_STORE_PATH") "length" 10 "context" $) }}
+    MONGO_SSL_CA_TRUST_STORE_PASSWORD: {{ include "harnesscommon.secrets.passwords.manage" (dict "secret" "harness-manager" "key" "MONGO_SSL_CA_TRUST_STORE_PASSWORD" "providedValues" (list "secrets.MONGO_SSL_CA_TRUST_STORE_PASSWORD") "length" 10 "context" $) }}
+    VERIFICATION_SERVICE_SECRET: {{ include "harnesscommon.secrets.passwords.manage" (dict "secret" "harness-manager" "key" "VERIFICATION_SERVICE_SECRET" "providedValues" (list "secrets.VERIFICATION_SERVICE_SECRET") "length" 10 "context" $) }}
+{{- end }}
+
 {{- define "harness-manager.pullSecrets" -}}
 {{ include "common.images.pullSecrets" (dict "images" (list .Values.image .Values.waitForInitContainer.image) "global" .Values.global ) }}
 {{- end -}}
