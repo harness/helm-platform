@@ -16,8 +16,8 @@ global:
     gateway:
       create: false
     virtualService:
-      gateways:
-      hosts:
+      gateways: []
+      hosts: []
   imagePullSecrets: []
 
 s3:
