@@ -166,7 +166,7 @@ mongodb:
   fullnameOverride: "mongodb-replicaset-chart"
   image:
     registry: docker.io
-    repository: harness/mongodb
+    repository: harness/mongo
     tag: 4.4.19
   replicaCount: 3
   arbiter:
