@@ -3,6 +3,15 @@
 # Declare variables to be passed into your templates.
 global:
   loadbalancerURL: ""
+  license:
+    cg: ''
+    ng: ''
+  ccm:
+    enabled: false
+  opa:
+    enabled: false
+  chaos:
+    enabled: false
   database:
     postgres:
       ## - installed = true if installed within cluster
@@ -24,7 +33,7 @@ global:
       installed: true
       protocol: mongodb
       # --  provide default values if mongo.installed is set to false
-      hosts: []
+      hosts: [ ]
       secretName: ""
       userKey: ""
       passwordKey: ""
@@ -39,15 +48,31 @@ global:
       userKey: ""
       passwordKey: ""
       extraArgs: ""
-  license:
-    cg: ''
-    ng: ''
-  ccm:
+  ingress:
+    # -- create ingress objects
     enabled: false
-  opa:
+    # -- set ingress object classname
+    className: harness
+    # -- set host of ingressObjects
+    hosts:
+      - my-host.example.org
+    # -- set tls for ingress objects
+    tls:
+      enabled: true
+      secretName: ''
+    # -- add annotations to ingress objects
+    objects:
+      annotations: { }
+  istio:
+    # -- create virtualServices objects
     enabled: false
-  chaos:
-    enabled: false
+    # -- create gateway and use in virtualservice
+    gateway:
+      create: false
+    # -- if gateway not created, use specified gateway and host
+    virtualService:
+      gateways:
+      hosts:
 replicaCount: 1
 maxSurge: 1
 maxUnavailable: 0

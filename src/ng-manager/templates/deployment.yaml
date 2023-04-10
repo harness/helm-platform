@@ -35,12 +35,14 @@ spec:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       terminationGracePeriodSeconds: 30
       initContainers:
+      {{- if .Values.global.database.mongo.installed }}
       - name: wait-for-harness-manager
         image: {{ include "common.images.image" (dict "imageRoot" .Values.waitForInitContainer.image "global" .Values.global) }}
         imagePullPolicy: IfNotPresent
         args:
           - "pod"
           - "-lapp=harness-manager"
+      {{- end }}
       - name: wait-for-pipeline
         image: {{ include "common.images.image" (dict "imageRoot" .Values.waitForInitContainer.image "global" .Values.global) }}
         imagePullPolicy: IfNotPresent
