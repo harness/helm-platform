@@ -64,6 +64,9 @@ spec:
             {{- end }}
           env:
             {{- include "harnesscommon.dbconnection.mongoEnv" . | indent 12 }}
+            {{- range $k, $v := .Values.secrets }}  
+            {{ include "harness-manager.externalSecretEnv" (dict "secret" $k "default" $v "context" $) }} 
+            {{- end}}
             - name : TIMESCALEDB_PASSWORD
               valueFrom:
                 secretKeyRef:
