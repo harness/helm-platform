@@ -62,11 +62,14 @@ spec:
             - secretRef:
                 name: smtp-secret
             {{- end }}
+            {{- if and .Values.secrets .Values.secrets.stores }}
+            {{- range $store := .Values.secrets.stores }}
+            - secretRef:
+                name: harness-manager-{{ $store.name }}
+            {{- end }}
+            {{- end }}
           env:
             {{- include "harnesscommon.dbconnection.mongoEnv" . | indent 12 }}
-            {{- range $k, $v := .Values.secrets }}  
-            {{ include "harness-manager.externalSecretEnv" (dict "secret" $k "default" $v "context" $) }} 
-            {{- end}}
             - name : TIMESCALEDB_PASSWORD
               valueFrom:
                 secretKeyRef:
