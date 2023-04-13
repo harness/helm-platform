@@ -2,7 +2,7 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 global:
-  useExternalSecrets: true 
+  useExternalSecrets: true
   loadbalancerURL: ""
   database:
     postgres:
@@ -209,7 +209,7 @@ featureFlags:
   # -- NG Specific Feature Flags
   NG: "ENABLE_DEFAULT_NG_EXPERIENCE_FOR_ONPREM,NEXT_GEN_ENABLED,NEW_LEFT_NAVBAR_SETTINGS,SPG_SIDENAV_COLLAPSE"
   # -- Disable OLD_GIT_SYNC if ngGitSync is enabled
-  OLDGITSYNC : "USE_OLD_GIT_SYNC"
+  OLDGITSYNC: "USE_OLD_GIT_SYNC"
   # -- STO Feature Flags
   CD: "CDNG_ENABLED"
   # -- STO Feature Flags
@@ -249,7 +249,7 @@ secrets:
   stores:
     - name: shared
       secrets:
-        "APPDYNAMICS_AGENT_ACCOUNT_ACCESS_KEY": "" 
+        "APPDYNAMICS_AGENT_ACCOUNT_ACCESS_KEY": ""
         "AWS_MARKETPLACE_ACCESSKEY": ""
         "LOG_STREAMING_SERVICE_TOKEN": "c76e567a-b341-404d-a8dd-d9738714eb82"
     - name: project
