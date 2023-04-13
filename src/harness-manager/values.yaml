@@ -2,7 +2,7 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 global:
-  useExternalSecrets: false 
+  useExternalSecrets: true 
   loadbalancerURL: ""
   database:
     postgres:
@@ -240,9 +240,11 @@ featureFlags:
 
 ## secret Definitions
 ## "NAME": "default value (if not external)"
-## if useExternalSecrets is enabled, secrets must be in the lowercase of the capatilzed name
-## ex: AWS_MARKETPLACE_ACCESSKEY should be in the secret aws_marketplace_accesskey
+## if useExternalSecrets is enabled, secrets must be in the upper case
+## ex: AWS_MARKETPLACE_ACCESSKEY should be in the secret $env_AWS_MARKETPLACE_ACCESSKEY
 secrets:
+  ## env is used with ExternalSecrets, env is prefixed to secret names
+  env: "qa"
   ## stores are expected to be ClusterSecretStore type if you are using ExternalSecrets
   stores:
     - name: shared
