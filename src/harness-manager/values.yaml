@@ -255,3 +255,22 @@ secrets:
     - name: project
       secrets:
         "TEST": ""
+
+## configMap Definitions
+## "NAME": "default value (if not external)"
+## if useExternalSecrets is enabled, secrets must be in the upper case
+## ex: AWS_MARKETPLACE_ACCESSKEY should be in the secret $env_AWS_MARKETPLACE_ACCESSKEY
+configMap:
+  ## env is used with ExternalSecrets, env is prefixed to secret names
+  env: "qa"
+  ## stores are expected to be ClusterSecretStore type if you are using ExternalSecrets
+  stores:
+    - name: shared
+      secrets:
+        "APPDYNAMICS_AGENT_ACCOUNT_ACCESS_KEY": ""
+        "AWS_MARKETPLACE_ACCESSKEY": ""
+        "LOG_STREAMING_SERVICE_TOKEN": "c76e567a-b341-404d-a8dd-d9738714eb82"
+    - name: project
+      secrets:
+        "TEST": ""  
+  
