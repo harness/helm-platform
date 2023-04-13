@@ -249,12 +249,12 @@ secrets:
   stores:
     - name: shared
       secrets:
-        "APPDYNAMICS_AGENT_ACCOUNT_ACCESS_KEY": ""
-        "AWS_MARKETPLACE_ACCESSKEY": ""
+#        "APPDYNAMICS_AGENT_ACCOUNT_ACCESS_KEY": ""
+#        "AWS_MARKETPLACE_ACCESSKEY": ""
         "LOG_STREAMING_SERVICE_TOKEN": "c76e567a-b341-404d-a8dd-d9738714eb82"
-    - name: project
-      secrets:
-        "TEST": ""
+#    - name: project
+#      secrets:
+#        "TEST": ""
 
 ## configMap Definitions
 ## "NAME": "default value (if not external)"
