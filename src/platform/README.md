@@ -10,7 +10,7 @@ Use the following dependency to add this chart repository to your Helm installat
 
 ```
 dependencies:
-    - name: ccm
+    - name: platform
       repository: https://harness.github.io/helm-platform
       version: 0.5.9
 ```

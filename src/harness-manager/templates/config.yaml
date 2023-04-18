@@ -60,6 +60,8 @@ data:
   ENABLE_ITERATORS: 'true'
   ITERATOR_CONFIG_PATH: '/opt/harness/config'
   LICENSE_INFO: '{{ .Values.global.license.cg }}'
+  ENABLE_AUDIT: 'true'
+  AUDIT_CLIENT_BASEURL: 'http://platform-service:9005/api/'
 
 ---
 apiVersion: v1
