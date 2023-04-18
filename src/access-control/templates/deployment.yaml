@@ -78,7 +78,7 @@ spec:
             protocol: "TCP"
           env:
             {{- include "harnesscommon.dbconnection.mongoEnv" . | indent 12 }}
-            - name: MONGODB_USERNAME
+            - name: MONGODB_USER
               valueFrom:
                 secretKeyRef:
                   name: {{ .Values.mongoSecrets.userName.name }}
