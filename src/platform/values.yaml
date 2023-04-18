@@ -166,8 +166,8 @@ mongodb:
   fullnameOverride: "mongodb-replicaset-chart"
   image:
     registry: docker.io
-    repository: bitnami/mongodb
-    tag: 4.4.15
+    repository: harness/mongo
+    tag: 4.4.19
   replicaCount: 3
   arbiter:
     enabled: true
@@ -235,7 +235,7 @@ ng-manager:
 pipeline-service:
   appLogLevel: INFO
   image:
-    tag: "1.26.3"
+    tag: "1.26.6"
   java:
     memory: "4096m"
   replicaCount: 1
