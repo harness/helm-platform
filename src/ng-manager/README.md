@@ -1,6 +1,6 @@
 # ng-manager
 
-![Version: 0.3.0](https://img.shields.io/badge/Version-0.3.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
+![Version: 0.3.2](https://img.shields.io/badge/Version-0.3.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
 
 A Helm chart for Kubernetes
 
@@ -32,6 +32,27 @@ A Helm chart for Kubernetes
 | fullnameOverride | string | `""` |  |
 | global.ccm.enabled | bool | `false` |  |
 | global.chaos.enabled | bool | `false` |  |
+| global.database.mongo.extraArgs | string | `""` |  |
+| global.database.mongo.hosts | list | `[]` | provide default values if mongo.installed is set to false |
+| global.database.mongo.installed | bool | `true` |  |
+| global.database.mongo.passwordKey | string | `""` |  |
+| global.database.mongo.protocol | string | `"mongodb"` |  |
+| global.database.mongo.secretName | string | `""` |  |
+| global.database.mongo.userKey | string | `""` |  |
+| global.database.postgres.extraArgs | string | `""` |  |
+| global.database.postgres.hosts[0] | string | `"postgres:5432"` |  |
+| global.database.postgres.installed | bool | `true` |  |
+| global.database.postgres.passwordKey | string | `""` |  |
+| global.database.postgres.protocol | string | `"postgres"` |  |
+| global.database.postgres.secretName | string | `""` |  |
+| global.database.postgres.userKey | string | `""` |  |
+| global.database.timescaledb.extraArgs | string | `""` |  |
+| global.database.timescaledb.hosts | list | `["timescaledb-single-chart:5432"]` | provide default values if mongo.installed is set to false |
+| global.database.timescaledb.installed | bool | `true` |  |
+| global.database.timescaledb.passwordKey | string | `""` |  |
+| global.database.timescaledb.protocol | string | `"jdbc:postgresql"` |  |
+| global.database.timescaledb.secretName | string | `""` |  |
+| global.database.timescaledb.userKey | string | `""` |  |
 | global.license.cg | string | `""` |  |
 | global.license.ng | string | `""` |  |
 | global.loadbalancerURL | string | `""` |  |
