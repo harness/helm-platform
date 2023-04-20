@@ -58,7 +58,7 @@ data:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: iterator-config
+  name: migrator-iterator-config
 data:
   iterator_config.json: |
     [

@@ -149,3 +149,30 @@ Randomly Creates Secret for access-control unless overwritten.
 {{- define "migrator.pullSecrets" -}}
 {{ include "common.images.pullSecrets" (dict "images" (list .Values.image .Values.waitForInitContainer.image) "global" .Values.global ) }}
 {{- end -}}
+
+{{/*
+Overrride mongoUri if provided, else use the default
+*/}}
+{{- define "migrator.mongoConnection" }}
+{{- $type := "MONGO" }}
+{{- $override := .Values.migrator.mongodb.override }}
+{{- $hosts := .Values.migrator.mongodb.hosts }}
+{{- $protocol := .Values.migrator.mongodb.protocol }}
+{{- $extraArgs:= .Values.migrator.mongodb.extraArgs }}
+{{- if $override }}
+{{- $firsthost := (index $hosts 0) }}
+{{- $connectionString := (printf "%s://$(%s_USER):$(%s_PASSWORD)@%s" $protocol $type $type $firsthost) }}
+{{- if $extraArgs }}
+{{- $connectionString = (printf "%s%s" $connectionString $extraArgs ) }}
+{{- end }}
+{{- range $host := (rest $hosts) }}
+{{- $connectionString = printf "%s,%s://$(%s_USER):$(%s_PASSWORD)@%s" $connectionString $protocol $type $type $host }}
+{{- if $extraArgs }}
+{{- $connectionString = (printf "%s%s" $connectionString $extraArgs ) }}
+{{- end }}
+{{- end }}
+{{- printf "%s" $connectionString }}
+{{- else }}
+{{ include "harnesscommon.dbconnection.mongoConnection" (dict "database" "harness" "context" $)}}
+{{- end }}
+{{- end }}

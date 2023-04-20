@@ -68,7 +68,7 @@ spec:
             {{- include "harnesscommon.dbconnection.mongoEnv" . | nindent 12 }}
             {{- include "harnesscommon.dbconnection.timescaleEnv" . | nindent 12 }}
             - name: MONGO_URI
-              value: {{ include "harnesscommon.dbconnection.mongoConnection" (dict "database" "harness" "context" $)}}
+              value: {{ include "migrator.mongoConnection" . }}
             - name: TIMESCALEDB_URI
               value: {{ include "harnesscommon.dbconnection.timescaleConnection" (dict "context" $) }}
           image: {{ include "common.images.image" (dict "imageRoot" .Values.image "global" .Values.global) }}
@@ -83,31 +83,37 @@ spec:
                   - shutdown
           livenessProbe:
             failureThreshold: 20
-            initialDelaySeconds: 180
             httpGet:
-              path: /api/version
-              port: {{.Values.service.port}}
+              path: /api/ng-migration/version
+              port: migrator
               scheme: HTTP
-            periodSeconds: 20
+            initialDelaySeconds: 300
+            periodSeconds: 10
             successThreshold: 1
-            timeoutSeconds: 1
-          name: manager
+            timeoutSeconds: 5
+          name: migrator-prod
           ports:
-            - containerPort: {{.Values.service.grpcport}}
-              protocol: TCP
+          - containerPort: 9080
+            name: migrator
+            protocol: TCP
+          - containerPort: 9879
+            name: migrator-grpc
+            protocol: TCP
           readinessProbe:
             failureThreshold: 6
             httpGet:
-              path: /api/health
-              port: {{.Values.service.port}}
+              path: /api/ng-migration/health
+              port: migrator
               scheme: HTTP
-            initialDelaySeconds: 90
+            initialDelaySeconds: 60
             periodSeconds: 5
             successThreshold: 1
-            timeoutSeconds: 1
+            timeoutSeconds: 5
           volumeMounts:
             - name: dynamic-iterator-config
               mountPath: /opt/harness/config
+            - mountPath: /heapdump
+              name: heap-dumps
           {{- if .Values.global.mongoSSL }}
             - name: mongo-ssl-certs
               mountPath: /mongo
@@ -117,8 +123,10 @@ spec:
       volumes:
         - name: dynamic-iterator-config
           configMap:
-            name: iterator-config
+            name: migrator-iterator-config
             defaultMode: 420
+        - emptyDir: {}
+          name: heap-dumps
       {{- if .Values.global.mongoSSL }}
         - name: mongo-ssl-certs
           secret:
