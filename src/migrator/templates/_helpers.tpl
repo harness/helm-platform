@@ -160,19 +160,22 @@ Overrride mongoUri if provided, else use the default
 {{- $protocol := .Values.migrator.mongodb.protocol }}
 {{- $extraArgs:= .Values.migrator.mongodb.extraArgs }}
 {{- if $override }}
-{{- $firsthost := (index $hosts 0) }}
-{{- $connectionString := (printf "%s://$(%s_USER):$(%s_PASSWORD)@%s" $protocol $type $type $firsthost) }}
-{{- if $extraArgs }}
-{{- $connectionString = (printf "%s%s" $connectionString $extraArgs ) }}
-{{- end }}
-{{- range $host := (rest $hosts) }}
-{{- $connectionString = printf "%s,%s://$(%s_USER):$(%s_PASSWORD)@%s" $connectionString $protocol $type $type $host }}
-{{- if $extraArgs }}
-{{- $connectionString = (printf "%s%s" $connectionString $extraArgs ) }}
-{{- end }}
-{{- end }}
-{{- printf "%s" $connectionString }}
+{{- include "harnesscommon.dbconnection.connection" (dict "type" $type "hosts" $hosts "protocol" $protocol "extraArgs" $extraArgs )}}
 {{- else }}
-{{ include "harnesscommon.dbconnection.mongoConnection" (dict "database" "harness" "context" $)}}
+{{- include "harnesscommon.dbconnection.mongoConnection" (dict "database" "harness" "context" $) }}
+{{- end }}
+{{- end }}
+
+{{- define "migrator.mongoEnv" }}
+{{- $type := "mongo" }}
+{{- $override := .Values.migrator.mongodb.override }}
+{{- $passwordSecret := .Values.migrator.mongodb.secretName }}
+{{- $passwordKey := .Values.migrator.mongodb.passwordKey }}
+{{- $userKey := .Values.migrator.mongodb.userKey }}
+{{- if $override }}
+{{- include "harnesscommon.dbconnection.dbenvuser" (dict "type" $type "secret" $passwordSecret "userKey" $userKey) }}
+{{- include "harnesscommon.dbconnection.dbenvpassword" (dict "type" $type "secret" $passwordSecret "passwordKey" $passwordKey ) }}
+{{- else }}
+{{- include "harnesscommon.dbconnection.mongoEnv" . }}
 {{- end }}
 {{- end }}

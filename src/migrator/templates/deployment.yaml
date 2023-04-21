@@ -65,7 +65,7 @@ spec:
                 name: smtp-secret
             {{- end }}
           env:
-            {{- include "harnesscommon.dbconnection.mongoEnv" . | nindent 12 }}
+            {{- include "migrator.mongoEnv" . | nindent 12 }}
             {{- include "harnesscommon.dbconnection.timescaleEnv" . | nindent 12 }}
             - name: MONGO_URI
               value: {{ include "migrator.mongoConnection" . }}
