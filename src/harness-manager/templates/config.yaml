@@ -42,9 +42,7 @@ data:
   SERVICE_ACC: /opt/harness/svc/service_acc.json
   VERSION: {{ .Values.version }}
   LOG_STREAMING_SERVICE_TOKEN: c76e567a-b341-404d-a8dd-d9738714eb82
-  NG_MANAGER_BASE_URL: 'http://ng-manager:7090/'
-  ACCESS_CONTROL_ENABLED: "true"
-  ACCESS_CONTROL_BASE_URL: 'http://access-control:9006/api/'
+ 
   EVENTS_FRAMEWORK_REDIS_SENTINELS: 'redis://redis-sentinel-harness-announce-0.{{  .Release.Namespace }}:26379,redis://redis-sentinel-harness-announce-1.{{ .Release.Namespace }}:26379,redis://redis-sentinel-harness-announce-2.{{ .Release.Namespace }}:26379'
   EVENTS_FRAMEWORK_SENTINEL_MASTER_NAME: 'harness-redis'
   EVENTS_FRAMEWORK_USE_SENTINEL: "true"
@@ -60,8 +58,13 @@ data:
   ENABLE_ITERATORS: 'true'
   ITERATOR_CONFIG_PATH: '/opt/harness/config'
   LICENSE_INFO: '{{ .Values.global.license.cg }}'
+  {{- if .Values.global.ng.enabled }}
+  NG_MANAGER_BASE_URL: 'http://ng-manager:7090/'
+  ACCESS_CONTROL_ENABLED: "true"
+  ACCESS_CONTROL_BASE_URL: 'http://access-control:9006/api/'
   ENABLE_AUDIT: 'true'
   AUDIT_CLIENT_BASEURL: 'http://platform-service:9005/api/'
+ {{- end }}
 
 ---
 apiVersion: v1
