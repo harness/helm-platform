@@ -116,7 +116,7 @@ le-nextgen:
   autoscaling:
     enabled: false
   image:
-    tag: "67707"
+    tag: "67708"
   replicaCount: 1
   resources:
     limits:
@@ -130,7 +130,7 @@ learning-engine:
   autoscaling:
     enabled: false
   image:
-    tag: "67707"
+    tag: "67708"
   replicaCount: 1
   resources:
     limits:
