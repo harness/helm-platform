@@ -54,9 +54,10 @@ data:
   ITERATOR_CONFIG_PATH: {{ .Values.config.ITERATOR_CONFIG_PATH }}
   LICENSE_INFO: {{ .Values.config.LICENSE_INFO | default .Values.global.license.cg | quote }}
   ENABLE_AUDIT: 'true'
-  AUDIT_CLIENT_BASEURL: 'http://platform-service:9005/api/'
-  TEMPLATE_SERVICE_ENDPOINT: http://template-service:15002/api/
-  PIPELINE_SERVICE_CLIENT_BASEURL: http://pipeline-service:12001/api/
+  AUDIT_CLIENT_BASEURL: {{ .Values.config.AUDIT_CLIENT_BASEURL | default "http://platform-service:9005/api/" }}
+  TEMPLATE_SERVICE_ENDPOINT: {{ .Values.config.TEMPLATE_SERVICE_ENDPOINT | default "http://template-service:15002/api/" }}
+  PIPELINE_SERVICE_CLIENT_BASEURL: {{ .Values.config.PIPELINE_SERVICE_CLIENT_BASEURL | default "http://pipeline-service:12001/api/" }}
+  NG_MANAGER_CLIENT_BASEURL: {{ .Values.config.NG_MANAGER_CLIENT_BASEURL | default "http://ng-manager:7090/" }}
 
 ---
 apiVersion: v1
