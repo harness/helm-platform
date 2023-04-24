@@ -15,7 +15,7 @@ spec:
                 name: migrator
                 port:
                   number: {{ .Values.service.port }}
-            path: /migrator(/|$)(.*)
+            path: /ng-migration(/|$)(.*)
             pathType: ImplementationSpecific
     {{- range .Values.global.ingress.hosts }}
       host: {{ . | quote }}
