@@ -8,3 +8,4 @@ data:
   MEMORY: {{ .Values.java.memory | quote }}
   MONGO_TAG_NAME: "none"
   MONGO_TAG_VALUE: "none"
+  STACK_DRIVER_LOGGING_ENABLED: {{ .Values.global.stackDriverLoggingEnabled | quote }}

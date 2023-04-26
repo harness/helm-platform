@@ -47,6 +47,7 @@ global:
       userKey: ""
       passwordKey: ""
       extraArgs: ""
+  stackDriverLoggingEnabled: false
 
 replicaCount: 1
 maxSurge: 1

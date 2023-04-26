@@ -10,7 +10,7 @@ data:
   MANAGER_URL: http://harness-manager.{{ .Release.Namespace }}.svc.cluster.local:9090/
   NG_MANAGER_URL: http://ng-manager.{{ .Release.Namespace }}.svc.cluster.local:7090/
   MEMORY: {{ .Values.java.memory | quote }}
-  STACK_DRIVER_LOGGING_ENABLED: "false"
+  STACK_DRIVER_LOGGING_ENABLED: {{ .Values.global.stackDriverLoggingEnabled | quote }}
   VERIFICATION_PORT: "6060"
   VERIFICATION_SERVICE_SECRET: 59MR5RlVARcdH7zb7pNx6GzqiglBmXR8
   NOTIFICATION_BASE_URL: http://platform-service.{{ .Release.Namespace }}.svc.cluster.local:9005/api/

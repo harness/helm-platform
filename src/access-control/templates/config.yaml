@@ -78,3 +78,6 @@ data:
   DISTRIBUTED_LOCK_IMPLEMENTATION: REDIS
   GOOGLE_APPLICATION_CREDENTIALS: /opt/harness/monitoring/stackdriver.json
   MEMORY: {{ .Values.java.memory | quote }}
+
+  # logging
+  STACK_DRIVER_LOGGING_ENABLED: {{ .Values.global.stackDriverLoggingEnabled | quote }}
