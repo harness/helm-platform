@@ -27,6 +27,9 @@ data:
   AUDIT_CLIENT_BASEURL: 'http://platform-service.{{ .Release.Namespace }}.svc.cluster.local:9005/api/'
   TEMPLATE_SERVICE_BASE_URL: 'http://template-service:15002/api/'
   MEMORY: {{ .Values.java.memory | quote }}
+  {{- if .Values.additionalConfigs }}
+  {{- toYaml .Values.additionalConfigs | nindent 2 }}
+  {{- end }}
 
 kind: ConfigMap
 metadata:

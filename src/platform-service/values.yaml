@@ -125,7 +125,6 @@ autoscaling:
   # targetMemoryUtilizationPercentage: 80
 
 
-
 nodeSelector: {}
 
 tolerations: []
@@ -133,3 +132,5 @@ tolerations: []
 affinity: {}
 
 imagePullSecrets: {}
+
+additionalConfigs: {}

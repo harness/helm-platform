@@ -235,3 +235,5 @@ featureFlags:
   CHAOS: "CHAOS_ENABLED"
   # -- Additional Feature Flag
   ADDITIONAL: ""
+
+additionalConfigs: {}

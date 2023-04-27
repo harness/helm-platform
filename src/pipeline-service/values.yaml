@@ -156,3 +156,5 @@ tolerations: []
 affinity: {}
 
 imagePullSecrets: {}
+
+additionalConfigs: {}
