@@ -79,6 +79,7 @@ global:
     SMTP_USERNAME: ""
     SMTP_USE_SSL: "true"
     SMTP_PORT: "465"
+  stackDriverLoggingEnabled: false
 
 replicaCount: 1
 maxSurge: 1
