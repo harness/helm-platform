@@ -26,7 +26,7 @@ change-data-capture:
   appLogLevel: INFO
   replicaCount: 1
   image:
-    tag: "78927"
+    tag: "78929"
   java:
     memory: 2048
   resources:
@@ -42,7 +42,7 @@ change-data-capture:
 cv-nextgen:
   appLogLevel: INFO
   image:
-    tag: "78927"
+    tag: "78929"
   java:
     memory: 4096
   replicaCount: 1
@@ -58,7 +58,7 @@ cv-nextgen:
 
 delegate-proxy:
   image:
-    tag: "78904"
+    tag: "78918"
   replicaCount: 1
   resources:
     limits:
@@ -91,12 +91,12 @@ harness-manager:
       tag: latest
   immutable_delegate_docker_image:
     image:
-      tag: 23.03.78904
+      tag: 23.04.78918
   external_graphql_rate_limit: "500"
   autoscaling:
     enabled: false
   image:
-    tag: "78927"
+    tag: "78929"
   java:
     memory: "2048"
   replicaCount: 1
@@ -107,7 +107,7 @@ harness-manager:
     requests:
       cpu: 2
       memory: 3000Mi
-  version: 1.0.78927
+  version: 1.0.78929
 
 harness-secrets:
   enabled: true
@@ -218,7 +218,7 @@ ng-auth-ui:
 ng-manager:
   appLogLevel: INFO
   image:
-    tag: "78927"
+    tag: "78929"
   java:
     memory: "4096m"
   replicaCount: 1
@@ -321,7 +321,7 @@ scm-service:
 template-service:
   appLogLevel: INFO
   image:
-    tag: "78927"
+    tag: "78929"
   java:
     memory: "1024m"
   replicaCount: 1
@@ -396,7 +396,7 @@ ui:
 verification-svc:
   appLogInfo: INFO
   image:
-    tag: "78927"
+    tag: "78929"
   java:
     memory: 2048
   replicaCount: 1
