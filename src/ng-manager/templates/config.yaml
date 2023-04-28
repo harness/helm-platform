@@ -16,6 +16,7 @@ data:
   EVENTS_FRAMEWORK_USE_SENTINEL: "true"
   EVENTS_FRAMEWORK_SENTINEL_MASTER_NAME: 'harness-redis'
   EVENTS_FRAMEWORK_REDIS_SENTINELS: 'redis://redis-sentinel-harness-announce-0.{{ .Release.Namespace }}:26379,redis://redis-sentinel-harness-announce-1.{{ .Release.Namespace }}:26379,redis://redis-sentinel-harness-announce-2.{{ .Release.Namespace }}:26379'
+  STACK_DRIVER_LOGGING_ENABLED: {{ .Values.global.stackDriverLoggingEnabled | quote }}
   GRPC_SERVER_PORT: "9979"
   SHOULD_CONFIGURE_WITH_PMS: "true"
   PMS_GITSYNC_TARGET:  pipeline-service:14002
@@ -71,3 +72,6 @@ data:
   PIPELINE_SERVICE_CLIENT_BASEURL: http://pipeline-service:12001/api/
   CI_MANAGER_SERVICE_CLIENT_BASEURL: http://ci-manager:7090/
   CVNG_SERVICE_CLIENT_BASEURL: http://cv-nextgen:6060/cv/api/
+  {{- if .Values.additionalConfigs }}
+  {{- toYaml .Values.additionalConfigs | nindent 2 }}
+  {{- end }}

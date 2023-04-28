@@ -7,3 +7,6 @@ data:
   API_URL: '{{ .Values.global.loadbalancerURL }}/gateway'
   DEPLOYMENT_TYPE: ON_PREM
   HARNESS_ENABLE_NG_AUTH_UI_PLACEHOLDER: "true"
+  {{- if .Values.additionalConfigs }}
+  {{- toYaml .Values.additionalConfigs | nindent 2 }}
+  {{- end }}

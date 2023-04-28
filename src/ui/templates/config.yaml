@@ -20,3 +20,6 @@ data:
   HARNESS_ENABLE_SEGMENT_PLACEHOLDER: "false"
   HARNESS_ENABLE_APPDY_EUM_PLACEHOLDER: "false"
   {{ end }}
+  {{- if .Values.additionalConfigs }}
+  {{- toYaml .Values.additionalConfigs | nindent 2 }}
+  {{- end }}
