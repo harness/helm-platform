@@ -91,7 +91,7 @@ global:
   ng:
     enabled: true
   cg:
-    enabled: false
+    enabled: true
   ngGitSync:
     enabled: false
   chaos:
