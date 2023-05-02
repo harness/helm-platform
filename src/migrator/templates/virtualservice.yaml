@@ -1,3 +1,4 @@
+{{- if and .Values.global.cg.enabled .Values.global.ng.enabled }}
 {{- if .Values.global.istio.enabled }}
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
@@ -34,3 +35,4 @@ spec:
           number: {{ .Values.service.port }}
         host: migrator
 {{ end }}
+{{- end }}
