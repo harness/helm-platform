@@ -1,3 +1,4 @@
+{{- if and .Values.global.cg.enabled .Values.global.ng.enabled }}
 apiVersion: policy/v1
 kind: PodDisruptionBudget
 metadata:
@@ -8,3 +9,5 @@ spec:
   selector:
    matchLabels:
     app: migrator
+{{- end }}
+
