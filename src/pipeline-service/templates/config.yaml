@@ -13,6 +13,7 @@ data:
   LOCK_CONFIG_REDIS_SENTINELS: redis://redis-sentinel-harness-announce-0.{{ .Release.Namespace }}:26379,redis://redis-sentinel-harness-announce-1.{{ .Release.Namespace }}:26379,redis://redis-sentinel-harness-announce-2.{{ .Release.Namespace }}:26379
   LOCK_CONFIG_SENTINEL_MASTER_NAME: harness-redis
   LOCK_CONFIG_USE_SENTINEL: "true"
+  STACK_DRIVER_LOGGING_ENABLED: {{ .Values.global.stackDriverLoggingEnabled | quote }}
   MEMORY: {{ .Values.java.memory | quote }}
   MANAGER_TARGET: harness-manager:9879
   MANAGER_AUTHORITY: harness-manager:9879
@@ -60,3 +61,6 @@ data:
   {{- end }}
   ENABLE_AUDIT : 'true'
   AUDIT_SERVICE_BASE_URL: http://platform-service:9005/api/
+  {{- if .Values.additionalConfigs }}
+  {{- toYaml .Values.additionalConfigs | nindent 2 }}
+  {{- end }}

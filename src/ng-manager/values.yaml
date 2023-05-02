@@ -48,6 +48,7 @@ global:
     enabled: false
   chaos:
     enabled: false
+  stackDriverLoggingEnabled: false
 replicaCount: 1
 maxSurge: 1
 maxUnavailable: 0
@@ -192,3 +193,5 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+additionalConfigs: {}

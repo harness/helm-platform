@@ -113,3 +113,5 @@ ingress:
         - path: /ui
           pathType: ImplementationSpecific
   tls: []
+
+additionalConfigs: {}

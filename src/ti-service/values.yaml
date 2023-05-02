@@ -147,3 +147,5 @@ tolerations: []
 affinity: {}
 
 useSSL: false
+
+additionalConfigs: {}
