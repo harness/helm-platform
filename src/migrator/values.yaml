@@ -56,7 +56,7 @@ global:
       annotations: {}
   istio:
     # -- create virtualServices objects
-    enabled: false
+    enabled: true
     # -- create gateway and use in virtualservice
     gateway:
       create: false
