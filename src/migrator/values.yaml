@@ -115,7 +115,7 @@ image:
   repository: harness/migrator-signed
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "100400-000"
+  tag: "100421-000"
   digest: ""
   imagePullSecrets:
   - gcr-io-secret
