@@ -14,6 +14,7 @@ A Helm chart for Kubernetes
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
+| additionalConfigs | object | `{}` |  |
 | affinity | object | `{}` |  |
 | appLogLevel | string | `"INFO"` |  |
 | autoscaling.enabled | bool | `true` |  |
@@ -45,6 +46,7 @@ A Helm chart for Kubernetes
 | global.imagePullSecrets | list | `[]` |  |
 | global.loadbalancerURL | string | `""` |  |
 | global.opa.enabled | bool | `false` |  |
+| global.stackDriverLoggingEnabled | bool | `false` |  |
 | image.digest | string | `""` |  |
 | image.imagePullSecrets | list | `[]` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |

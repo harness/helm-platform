@@ -14,6 +14,7 @@ A Helm chart for Kubernetes
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
+| additionalConfigs | object | `{}` |  |
 | affinity | object | `{}` |  |
 | appLogLevel | string | `"INFO"` |  |
 | autoscaling.enabled | bool | `true` |  |
@@ -87,6 +88,7 @@ A Helm chart for Kubernetes
 | global.smtpCreateSecret.SMTP_USE_SSL | string | `"true"` |  |
 | global.smtpCreateSecret.enabled | bool | `false` |  |
 | global.srm.enabled | bool | `false` |  |
+| global.stackDriverLoggingEnabled | bool | `false` |  |
 | global.sto.enabled | bool | `false` |  |
 | global.useImmutableDelegate | string | `"false"` |  |
 | image.digest | string | `""` |  |

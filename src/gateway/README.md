@@ -14,6 +14,7 @@ A Helm chart for Kubernetes
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
+| additionalConfigs | object | `{}` |  |
 | affinity | object | `{}` |  |
 | autoscaling.enabled | bool | `true` |  |
 | autoscaling.maxReplicas | int | `100` |  |

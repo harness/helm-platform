@@ -14,6 +14,7 @@ Helm chart for learning-engine
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
+| additionalConfigs | object | `{}` |  |
 | affinity | object | `{}` |  |
 | autoscaling.enabled | bool | `false` |  |
 | autoscaling.maxReplicas | int | `100` |  |
