@@ -14,6 +14,7 @@ A Helm chart for Kubernetes
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
+| additionalConfigs | object | `{}` |  |
 | affinity | object | `{}` |  |
 | appLogInfo | string | `"INFO"` | appLogInfo can be INFO DEBUG WARN ERROR |
 | autoscaling.enabled | bool | `false` |  |
