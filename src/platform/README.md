@@ -4,13 +4,14 @@ Helm chart for Harness Platform
 
 ![Version: 0.6.19](https://img.shields.io/badge/Version-0.6.19-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.16.1](https://img.shields.io/badge/AppVersion-1.16.1-informational?style=flat-square)
 
+
 ## Usage
 
 Use the following dependency to add this chart repository to your Helm installation:
 
 ```
 dependencies:
-    - name: ccm
+    - name: platform
       repository: https://harness.github.io/helm-platform
       version: 0.6.19
 ```
@@ -21,7 +22,7 @@ dependencies:
 |-----|------|---------|-------------|
 | access-control.appLogLevel | string | `"INFO"` |  |
 | access-control.autoscaling.enabled | bool | `false` |  |
-| access-control.image.tag | string | `"78402"` |  |
+| access-control.image.tag | string | `"78405"` |  |
 | access-control.java.memory | string | `"512m"` |  |
 | access-control.replicaCount | int | `1` |  |
 | access-control.resources.limits.cpu | float | `0.5` |  |
@@ -31,7 +32,7 @@ dependencies:
 | access-control.slackWebhookURL | string | `""` |  |
 | change-data-capture.appLogLevel | string | `"INFO"` |  |
 | change-data-capture.autoscaling.enabled | bool | `false` |  |
-| change-data-capture.image.tag | string | `"78920"` |  |
+| change-data-capture.image.tag | string | `"78929"` |  |
 | change-data-capture.java.memory | int | `2048` |  |
 | change-data-capture.replicaCount | int | `1` |  |
 | change-data-capture.resources.limits.cpu | int | `1` |  |
@@ -40,14 +41,14 @@ dependencies:
 | change-data-capture.resources.requests.memory | string | `"2880Mi"` |  |
 | cv-nextgen.appLogLevel | string | `"INFO"` |  |
 | cv-nextgen.autoscaling.enabled | bool | `false` |  |
-| cv-nextgen.image.tag | string | `"78920"` |  |
+| cv-nextgen.image.tag | string | `"78929"` |  |
 | cv-nextgen.java.memory | int | `4096` |  |
 | cv-nextgen.replicaCount | int | `1` |  |
 | cv-nextgen.resources.limits.cpu | int | `1` |  |
 | cv-nextgen.resources.limits.memory | string | `"6144Mi"` |  |
 | cv-nextgen.resources.requests.cpu | int | `1` |  |
 | cv-nextgen.resources.requests.memory | string | `"6144Mi"` |  |
-| delegate-proxy.image.tag | string | `"78904"` |  |
+| delegate-proxy.image.tag | string | `"78918"` |  |
 | delegate-proxy.replicaCount | int | `1` |  |
 | delegate-proxy.resources.limits.cpu | string | `"200m"` |  |
 | delegate-proxy.resources.limits.memory | string | `"100Mi"` |  |
@@ -88,25 +89,25 @@ dependencies:
 | harness-manager.delegate_docker_image.image.repository | string | `"harness/delegate"` |  |
 | harness-manager.delegate_docker_image.image.tag | string | `"latest"` |  |
 | harness-manager.external_graphql_rate_limit | string | `"500"` |  |
-| harness-manager.image.tag | string | `"78920"` |  |
-| harness-manager.immutable_delegate_docker_image.image.tag | string | `"23.03.78904"` |  |
+| harness-manager.image.tag | string | `"78929"` |  |
+| harness-manager.immutable_delegate_docker_image.image.tag | string | `"23.04.78918"` |  |
 | harness-manager.java.memory | string | `"2048"` |  |
 | harness-manager.replicaCount | int | `1` |  |
 | harness-manager.resources.limits.cpu | int | `2` |  |
 | harness-manager.resources.limits.memory | string | `"8192Mi"` |  |
 | harness-manager.resources.requests.cpu | int | `2` |  |
 | harness-manager.resources.requests.memory | string | `"3000Mi"` |  |
-| harness-manager.version | string | `"1.0.78920"` |  |
+| harness-manager.version | string | `"1.0.78929"` |  |
 | harness-secrets.enabled | bool | `true` |  |
 | le-nextgen.autoscaling.enabled | bool | `false` |  |
-| le-nextgen.image.tag | string | `"67706"` |  |
+| le-nextgen.image.tag | string | `"67708"` |  |
 | le-nextgen.replicaCount | int | `1` |  |
 | le-nextgen.resources.limits.cpu | int | `1` |  |
 | le-nextgen.resources.limits.memory | string | `"6144Mi"` |  |
 | le-nextgen.resources.requests.cpu | int | `1` |  |
 | le-nextgen.resources.requests.memory | string | `"6144Mi"` |  |
 | learning-engine.autoscaling.enabled | bool | `false` |  |
-| learning-engine.image.tag | string | `"67706"` |  |
+| learning-engine.image.tag | string | `"67708"` |  |
 | learning-engine.replicaCount | int | `1` |  |
 | learning-engine.resources.limits.cpu | int | `1` |  |
 | learning-engine.resources.limits.memory | string | `"2048Mi"` |  |
@@ -168,7 +169,7 @@ dependencies:
 | ng-auth-ui.resources.requests.memory | string | `"512Mi"` |  |
 | ng-manager.appLogLevel | string | `"INFO"` |  |
 | ng-manager.autoscaling.enabled | bool | `false` |  |
-| ng-manager.image.tag | string | `"78920"` |  |
+| ng-manager.image.tag | string | `"78929"` |  |
 | ng-manager.java.memory | string | `"4096m"` |  |
 | ng-manager.replicaCount | int | `1` |  |
 | ng-manager.resources.limits.cpu | int | `2` |  |
@@ -177,7 +178,7 @@ dependencies:
 | ng-manager.resources.requests.memory | string | `"200Mi"` |  |
 | pipeline-service.appLogLevel | string | `"INFO"` |  |
 | pipeline-service.autoscaling.enabled | bool | `false` |  |
-| pipeline-service.image.tag | string | `"1.26.8"` |  |
+| pipeline-service.image.tag | string | `"1.26.9"` |  |
 | pipeline-service.java.memory | string | `"4096m"` |  |
 | pipeline-service.replicaCount | int | `1` |  |
 | pipeline-service.resources.limits.cpu | int | `1` |  |
@@ -186,7 +187,7 @@ dependencies:
 | pipeline-service.resources.requests.memory | string | `"6144Mi"` |  |
 | platform-service.appLogLevel | string | `"INFO"` |  |
 | platform-service.autoscaling.enabled | bool | `false` |  |
-| platform-service.image.tag | string | `"78601"` |  |
+| platform-service.image.tag | string | `"78602"` |  |
 | platform-service.java.memory | string | `"3072m"` |  |
 | platform-service.replicaCount | int | `1` |  |
 | platform-service.resources.limits.cpu | float | `0.5` |  |
@@ -221,7 +222,7 @@ dependencies:
 | scm-service.resources.requests.memory | string | `"512Mi"` |  |
 | template-service.appLogLevel | string | `"INFO"` |  |
 | template-service.autoscaling.enabled | bool | `false` |  |
-| template-service.image.tag | string | `"78920"` |  |
+| template-service.image.tag | string | `"78929"` |  |
 | template-service.java.memory | string | `"1024m"` |  |
 | template-service.replicaCount | int | `1` |  |
 | template-service.resources.limits.cpu | int | `1` |  |
@@ -260,7 +261,7 @@ dependencies:
 | ui.resources.requests.memory | string | `"512Mi"` |  |
 | verification-svc.appLogInfo | string | `"INFO"` |  |
 | verification-svc.autoscaling.enabled | bool | `false` |  |
-| verification-svc.image.tag | string | `"78920"` |  |
+| verification-svc.image.tag | string | `"78929"` |  |
 | verification-svc.java.memory | int | `2048` |  |
 | verification-svc.replicaCount | int | `1` |  |
 | verification-svc.resources.limits.cpu | string | `"500m"` |  |
