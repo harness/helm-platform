@@ -14,6 +14,7 @@ A Helm chart for Kubernetes
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
+| additionalConfigs | object | `{}` |  |
 | affinity | object | `{}` |  |
 | fullnameOverride | string | `""` |  |
 | global.imagePullSecrets | list | `[]` |  |
