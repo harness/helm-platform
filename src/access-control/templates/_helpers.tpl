@@ -65,3 +65,21 @@ Create the name of the service account to use
 {{- define "access-control.pullSecrets" -}}
 {{ include "common.images.pullSecrets" (dict "images" (list .Values.image .Values.waitForInitContainer.image) "global" .Values.global ) }}
 {{- end -}}
+
+{{/* Generates comma separated list of Mongo Host names based off environment 
+*/}}
+{{- define "access-control.mongohosts" }}
+{{- $type := "mongo" }}
+{{- $hosts := (pluck $type .Values.global.database | first ).hosts }}
+{{- $installed := (pluck $type .Values.global.database | first ).installed }}
+{{- if $installed }}
+  {{- $namespace := .Release.Namespace }}
+  {{- if .Values.global.ha -}}
+    {{- printf " 'mongodb-replicaset-chart-0.mongodb-replicaset-chart.%s.svc,mongodb-replicaset-chart-1.mongodb-replicaset-chart.%s.svc,mongodb-replicaset-chart-2.mongodb-replicaset-chart.%s.svc:27017'" $namespace $namespace $namespace -}}
+  {{- else }}
+    {{- printf " 'mongodb-replicaset-chart-0.mongodb-replicaset-chart.%s.svc'" $namespace -}}
+  {{- end }}
+{{- else }}
+    {{- printf " %s" (join "," $hosts ) -}}
+{{- end }}
+{{- end }}
