@@ -71,7 +71,7 @@ global:
     enabled: false
   chaos:
     enabled: false
-  useImmutableDelegate: "false"
+  useImmutableDelegate: "true"
   smtpCreateSecret:
     enabled: false
     SMTP_PASSWORD: ""
