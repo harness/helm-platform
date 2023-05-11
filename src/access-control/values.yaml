@@ -45,9 +45,7 @@ global:
   imagePullSecrets: []
   stackDriverLoggingEnabled: false
 
-mongoHosts:
-- test1
-- test
+mongoHosts: []
 
 replicaCount: 1
 maxSurge: 1
