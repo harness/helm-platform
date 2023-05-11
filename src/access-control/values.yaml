@@ -132,3 +132,6 @@ tolerations: []
 affinity: {}
 
 additionalConfigs: {}
+
+mongoSSL:
+  enabled: false
