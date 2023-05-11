@@ -21,14 +21,16 @@ global:
       ## - extra arguments set to connection string
       extraArgs: ""
     mongo:
-      installed: true
+      installed: false
       protocol: mongodb
       # --  provide default values if mongo.installed is set to false
-      hosts: []
-      secretName: ""
-      userKey: ""
-      passwordKey: ""
-      extraArgs: ""
+      hosts:
+      - h1
+      - h2
+      secretName: "xx"
+      userKey: "xx"
+      passwordKey: "xxx"
+      extraArgs: "xx"
     timescaledb:
       installed: true
       protocol: "jdbc:postgresql"
@@ -42,6 +44,10 @@ global:
   ha: false
   imagePullSecrets: []
   stackDriverLoggingEnabled: false
+
+mongoHosts:
+- test1
+- test
 
 replicaCount: 1
 maxSurge: 1
