@@ -25,7 +25,6 @@ spec:
         {{- with .Values.podAnnotations }}
         {{- toYaml . | nindent 8 }}
         {{- end }}
-        {{- include "harnesscommon.monitoring.annotations" . | nindent 8 }}
       labels:
         app: ng-manager
         {{- include "ng-manager.selectorLabels" . | nindent 8 }}
@@ -64,7 +63,6 @@ spec:
         - name: grpc-git-sync
           containerPort: {{ .Values.service.gitsyncgrpcport }}
           protocol: "TCP"
-        {{- include "harnesscommon.monitoring.containerPort" . | nindent 8 }}
         resources:
           {{- toYaml .Values.resources | nindent 12 }}
         env:
