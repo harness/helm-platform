@@ -55,8 +55,7 @@ data:
 
   # aggreatorModuleConfig
   OFFSET_FLUSH_INTERVAL_MS: '10000'
-  MONGODB_USER: admin
-  MONGODB_SSL_ENABLED: 'false'
+  MONGODB_SSL_ENABLED: {{ .Values.mongoSSL.enabled | quote }}
   AGGREGATOR_ENABLED: 'true'
 
   # auth
