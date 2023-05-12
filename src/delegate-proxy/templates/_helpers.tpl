@@ -71,7 +71,7 @@ Create the name of the immutable delegate image to use
 {{- define "delegate-proxy.docker_image" -}}
 {{- $tag := printf "%s" .Values.image.tag }}
 {{- if .Values.global.useMinimalDelegateImage }}
-{{- $tag = printf "%s.minimal" $tag }}
+{{- $tag = printf "%s_minimal" $tag }}
 {{- end }}
 {{- $image := dict "registry" .Values.image.registry "repository" .Values.image.repository "tag" $tag "digest" .Values.image.digest -}}
 {{ include "common.images.image" (dict "imageRoot" $image "global" .Values.global) }}
