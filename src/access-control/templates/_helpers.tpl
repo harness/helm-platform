@@ -70,7 +70,7 @@ Create the name of the service account to use
 */}}
 {{- define "access-control.mongohosts" }}
 {{- $type := "mongo" }}
-{{- $hosts := (pluck $type .Values.global.database | first ).hosts }}
+{{- $hosts := .Values.mongoHosts }}
 {{- $installed := (pluck $type .Values.global.database | first ).installed }}
 {{- if $installed }}
   {{- $namespace := .Release.Namespace }}
@@ -80,6 +80,6 @@ Create the name of the service account to use
     {{- printf " 'mongodb-replicaset-chart-0.mongodb-replicaset-chart.%s.svc'" $namespace -}}
   {{- end }}
 {{- else }}
-    {{- printf " %s" (join "," $hosts ) -}}
+    {{- printf "%s" (join "," $hosts ) -}}
 {{- end }}
 {{- end }}
