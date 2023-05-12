@@ -61,6 +61,7 @@ dependencies:
     repository: "file://../log-service"
   - name: migrator
     version: 0.3.x
+    condition: global.migrator.enabled
     repository: "file://../migrator"
   - name: minio
     condition: global.ng.enabled

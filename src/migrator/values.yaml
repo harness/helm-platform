@@ -115,7 +115,7 @@ image:
   repository: harness/migrator-signed
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "100421-000"
+  tag: "100440-000"
   digest: ""
   imagePullSecrets:
   - gcr-io-secret
@@ -167,7 +167,7 @@ config:
   REDIS_SENTINELS:
   SERVER_PORT: "9080"
   SERVICE_ACC: /opt/harness/svc/service_acc.json
-  VERSION: 1.0.78900
+  VERSION: 1.0.100440
   NG_MANAGER_BASE_URL:
   AUDIT_CLIENT_BASEURL:
   TEMPLATE_SERVICE_ENDPOINT:
