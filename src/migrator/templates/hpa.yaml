@@ -1,4 +1,3 @@
-{{- if and .Values.global.cg.enabled .Values.global.ng.enabled }}
 {{- if .Values.autoscaling.enabled }}
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
@@ -18,6 +17,5 @@ spec:
   {{- if .Values.autoscaling.targetCPUUtilizationPercentage }}
   targetCPUUtilizationPercentage : {{ .Values.autoscaling.targetCPUUtilizationPercentage }}
   {{ end }}
-{{- end }}
 {{- end }}
 
