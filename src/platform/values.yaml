@@ -46,7 +46,7 @@ global:
 access-control:
   appLogLevel: INFO
   image:
-    tag: "78703"
+    tag: "78704"
   java:
     memory: 512m
   replicaCount: 1
@@ -65,7 +65,7 @@ change-data-capture:
   appLogLevel: INFO
   replicaCount: 1
   image:
-    tag: "79220"
+    tag: "79222"
   java:
     memory: 2048
   resources:
@@ -81,7 +81,7 @@ change-data-capture:
 cv-nextgen:
   appLogLevel: INFO
   image:
-    tag: "79220"
+    tag: "79222"
   java:
     memory: 4096
   replicaCount: 1
@@ -97,7 +97,7 @@ cv-nextgen:
 
 delegate-proxy:
   image:
-    tag: "78918"
+    tag: "78904"
   replicaCount: 1
   resources:
     limits:
@@ -130,12 +130,12 @@ harness-manager:
       tag: latest
   immutable_delegate_docker_image:
     image:
-      tag: 23.04.78918
+      tag: 23.03.78904
   external_graphql_rate_limit: "500"
   autoscaling:
     enabled: false
   image:
-    tag: "79220"
+    tag: "79222"
   java:
     memory: "2048"
   replicaCount: 1
@@ -146,7 +146,7 @@ harness-manager:
     requests:
       cpu: 2
       memory: 3000Mi
-  version: 1.0.79220
+  version: 1.0.79222
 
 harness-secrets:
   enabled: true
@@ -200,7 +200,7 @@ migrator:
       tag: latest
   immutable_delegate_docker_image:
     image:
-      tag: 23.04.78918
+      tag: 23.03.78904
   external_graphql_rate_limit: "500"
   autoscaling:
     enabled: false
@@ -282,7 +282,7 @@ ng-auth-ui:
 ng-manager:
   appLogLevel: INFO
   image:
-    tag: "79220"
+    tag: "79222"
   java:
     memory: "4096m"
   replicaCount: 1
@@ -299,7 +299,7 @@ ng-manager:
 pipeline-service:
   appLogLevel: INFO
   image:
-    tag: "1.29.5"
+    tag: "1.29.7"
   java:
     memory: "4096m"
   replicaCount: 1
@@ -316,7 +316,7 @@ pipeline-service:
 platform-service:
   appLogLevel: INFO
   image:
-    tag: "78901"
+    tag: "78902"
   java:
     memory: "3072m"
   replicaCount: 1
@@ -385,7 +385,7 @@ scm-service:
 template-service:
   appLogLevel: INFO
   image:
-    tag: "79220"
+    tag: "79222"
   java:
     memory: "1024m"
   replicaCount: 1
@@ -460,7 +460,7 @@ ui:
 verification-svc:
   appLogInfo: INFO
   image:
-    tag: "79220"
+    tag: "79222"
   java:
     memory: 2048
   replicaCount: 1
