@@ -40,7 +40,7 @@ dependencies:
   - name: harness-secrets
     version: 0.1.x
     condition: harness-secrets.enabled
-    repository: "file://../secrets"
+    repository: "file://../bootstrap/secrets"
   - name: harness-manager
     version: 0.3.x
     repository: "file://../harness-manager"
