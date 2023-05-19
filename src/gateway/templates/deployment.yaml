@@ -62,15 +62,17 @@ spec:
             httpGet:
               path: /actuator/health
               port: gateway-port
-            initialDelaySeconds: 120
-            periodSeconds: 10
+            initialDelaySeconds: 25
+            periodSeconds: 5
+            failureThreshold: 3
           livenessProbe:
             httpGet:
-              path: /actuator/health
+              path: /api/liveness
               port: gateway-port
-            initialDelaySeconds: 180
-            periodSeconds: 20
-            failureThreshold: 2
+            initialDelaySeconds: 100
+            periodSeconds: 60
+            failureThreshold: 5
+            timeoutSeconds: 10
           ports:
           - name: gateway-port
             containerPort: {{.Values.service.port}}
