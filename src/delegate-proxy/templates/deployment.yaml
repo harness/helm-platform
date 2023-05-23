@@ -32,7 +32,7 @@ spec:
         {{- toYaml .Values.securityContext | nindent 8 }}
       containers:
         - name: delegate-proxy
-          image: {{ include "common.images.image" (dict "imageRoot" .Values.image "global" .Values.global) }}
+          image: {{ include "delegate-proxy.docker_image" . }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           resources:
               {{- toYaml .Values.resources | nindent 12 }}
