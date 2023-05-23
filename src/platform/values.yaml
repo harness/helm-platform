@@ -46,7 +46,7 @@ global:
 access-control:
   appLogLevel: INFO
   image:
-    tag: "78405"
+    tag: "78705"
   java:
     memory: 512m
   replicaCount: 1
@@ -65,7 +65,7 @@ change-data-capture:
   appLogLevel: INFO
   replicaCount: 1
   image:
-    tag: "78929"
+    tag: "79227"
   java:
     memory: 2048
   resources:
@@ -81,7 +81,7 @@ change-data-capture:
 cv-nextgen:
   appLogLevel: INFO
   image:
-    tag: "78929"
+    tag: "79227"
   java:
     memory: 4096
   replicaCount: 1
@@ -97,7 +97,7 @@ cv-nextgen:
 
 delegate-proxy:
   image:
-    tag: "78918"
+    tag: "78904"
   replicaCount: 1
   resources:
     limits:
@@ -109,7 +109,7 @@ delegate-proxy:
 
 gateway:
   image:
-    tag: "2000185"
+    tag: "2000193"
   java:
     memory: 512
   replicaCount: 1
@@ -130,12 +130,12 @@ harness-manager:
       tag: latest
   immutable_delegate_docker_image:
     image:
-      tag: 23.04.78918
+      tag: 23.03.78904
   external_graphql_rate_limit: "500"
   autoscaling:
     enabled: false
   image:
-    tag: "78929"
+    tag: "79227"
   java:
     memory: "2048"
   replicaCount: 1
@@ -146,7 +146,7 @@ harness-manager:
     requests:
       cpu: 2
       memory: 3000Mi
-  version: 1.0.78929
+  version: 1.0.79227
 
 harness-secrets:
   enabled: true
@@ -155,7 +155,7 @@ le-nextgen:
   autoscaling:
     enabled: false
   image:
-    tag: "67708"
+    tag: "67808"
   replicaCount: 1
   resources:
     limits:
@@ -200,7 +200,7 @@ migrator:
       tag: latest
   immutable_delegate_docker_image:
     image:
-      tag: 23.04.78918
+      tag: 23.03.78904
   external_graphql_rate_limit: "500"
   autoscaling:
     enabled: false
@@ -253,7 +253,7 @@ mongodb:
 
 next-gen-ui:
   image:
-    tag: "0.344.13"
+    tag: "0.347.16"
   replicaCount: 1
   resources:
     limits:
@@ -267,7 +267,7 @@ next-gen-ui:
 
 ng-auth-ui:
   image:
-    tag: "1.4.0"
+    tag: "1.5.0"
   replicaCount: 1
   resources:
     limits:
@@ -282,7 +282,7 @@ ng-auth-ui:
 ng-manager:
   appLogLevel: INFO
   image:
-    tag: "78929"
+    tag: "79227"
   java:
     memory: "4096m"
   replicaCount: 1
@@ -299,7 +299,7 @@ ng-manager:
 pipeline-service:
   appLogLevel: INFO
   image:
-    tag: "1.26.9"
+    tag: "1.29.9"
   java:
     memory: "4096m"
   replicaCount: 1
@@ -316,7 +316,7 @@ pipeline-service:
 platform-service:
   appLogLevel: INFO
   image:
-    tag: "78602"
+    tag: "78903"
   java:
     memory: "3072m"
   replicaCount: 1
@@ -370,7 +370,7 @@ redis:
 scm-service:
   appLogLevel: INFO
   image:
-    tag: "release-114-ubi"
+    tag: "release-127-ubi"
   replicaCount: 1
   resources:
     limits:
@@ -385,7 +385,7 @@ scm-service:
 template-service:
   appLogLevel: INFO
   image:
-    tag: "78929"
+    tag: "79227"
   java:
     memory: "1024m"
   replicaCount: 1
@@ -402,7 +402,7 @@ template-service:
 ti-service:
   appLogLevel: INFO
   image:
-    tag: "release-167"
+    tag: "release-172"
   jobresources:
     limits:
       cpu: 1
@@ -413,7 +413,7 @@ ti-service:
   jobs:
     migrate:
       image:
-        tag: release-167
+        tag: release-172
   replicaCount: 1
   resources:
     limits:
@@ -445,7 +445,7 @@ timescaledb:
 ui:
   appLogLevel: INFO
   image:
-    tag: "78901"
+    tag: "79201"
   replicaCount: 1
   resources:
     limits:
@@ -460,7 +460,7 @@ ui:
 verification-svc:
   appLogInfo: INFO
   image:
-    tag: "78929"
+    tag: "79227"
   java:
     memory: 2048
   replicaCount: 1
