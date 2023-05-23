@@ -38,7 +38,7 @@ dependencies:
     version: 0.3.x
     repository: "file://../gateway"
   - name: harness-secrets
-    version: 0.1.x
+    version: 0.3.x
     condition: harness-secrets.enabled
     repository: "file://../bootstrap/secrets"
   - name: harness-manager
