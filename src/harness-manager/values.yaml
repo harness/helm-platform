@@ -72,6 +72,7 @@ global:
   chaos:
     enabled: false
   useImmutableDelegate: "true"
+  useMinimalDelegateImage: false
   smtpCreateSecret:
     enabled: false
     SMTP_PASSWORD: ""
@@ -132,6 +133,7 @@ delegate_docker_image:
     repository: harness/delegate
     tag: latest
     digest: ""
+
 
 immutable_delegate_docker_image:
   image:
