@@ -98,6 +98,7 @@ A Helm chart for Kubernetes
 | global.stackDriverLoggingEnabled | bool | `false` |  |
 | global.sto.enabled | bool | `false` |  |
 | global.useImmutableDelegate | string | `"true"` |  |
+| global.useMinimalDelegateImage | bool | `false` |  |
 | image.digest | string | `""` |  |
 | image.imagePullSecrets | list | `[]` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
