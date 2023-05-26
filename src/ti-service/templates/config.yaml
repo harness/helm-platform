@@ -15,10 +15,14 @@ data:
   {{- if .Values.useSSL }}
   TI_SERVICE_TIMESCALE_SSL_MODE: "require"
   {{- end }}
-  EVENTS_FRAMEWORK_REDIS_URL: default
-  EVENTS_FRAMEWORK_REDIS_USE_SENTINEL: 'true'
+
+  # Protocol needs to be set to empty because ti-service uses go-redis library which doesn't accept protocol based strings
+  {{- $dbContext := deepCopy .Values.global.database.redis }}
+  {{- $_ := set $dbContext "protocol" "" }}
+  EVENTS_FRAMEWORK_REDIS_URL: {{ include "harnesscommon.dbconnection.redisConnection" (dict "context" $dbContext) }}
+  EVENTS_FRAMEWORK_REDIS_USE_SENTINEL: {{ .Values.global.database.redis.installed | quote }}
   EVENTS_FRAMEWORK_REDIS_SENTINEL_MASTER_NAME: 'harness-redis'
-  EVENTS_FRAMEWORK_REDIS_SENTINEL_URLS: 'redis-sentinel-harness-announce-0.{{ .Release.Namespace }}:26379,redis://redis-sentinel-harness-announce-1.{{ .Release.Namespace }}:26379,redis://redis-sentinel-harness-announce-2.{{ .Release.Namespace  }}:26379'
+  EVENTS_FRAMEWORK_REDIS_SENTINEL_URLS: {{ include "harnesscommon.dbconnection.redisConnection" (dict "context" $dbContext) }}
   TI_SERVICE_GLOBAL_TOKEN: 78d16b66-4b4c-11eb-8377-acde48001122
   {{- if .Values.additionalConfigs }}
   {{- toYaml .Values.additionalConfigs | nindent 2 }}

@@ -17,10 +17,10 @@ data:
   SHOULD_CONFIGURE_WITH_NOTIFICATION: "true"
   PORTAL_URL: {{ .Values.global.loadbalancerURL }}
   MANAGER_CLIENT_BASEURL: http://harness-manager.{{ .Release.Namespace }}.svc.cluster.local:9090/
-  EVENTS_FRAMEWORK_REDIS_URL: 'redis://localhost:6379'
-  EVENTS_FRAMEWORK_USE_SENTINEL: "true"
+  EVENTS_FRAMEWORK_REDIS_URL: {{ include "harnesscommon.dbconnection.redisConnection" (dict "context" .Values.global.database.redis) }}
+  EVENTS_FRAMEWORK_USE_SENTINEL: {{ .Values.global.database.redis.installed  | quote }}
   EVENTS_FRAMEWORK_SENTINEL_MASTER_NAME: 'harness-redis'
-  EVENTS_FRAMEWORK_REDIS_SENTINELS: 'redis://redis-sentinel-harness-announce-0.{{ .Release.Namespace }}:26379,redis://redis-sentinel-harness-announce-1.{{ .Release.Namespace }}:26379,redis://redis-sentinel-harness-announce-2.{{ .Release.Namespace }}:26379'
+  EVENTS_FRAMEWORK_REDIS_SENTINELS: {{ include "harnesscommon.dbconnection.redisConnection" (dict "context" .Values.global.database.redis) }}
   SHOULD_CONFIGURE_WITH_PMS: "true"
   PMS_TARGET: pipeline-service:12011
   PMS_AUTHORITY: pipeline-service:12011
