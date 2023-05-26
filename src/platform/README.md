@@ -77,7 +77,7 @@ dependencies:
 | global.database.postgres.secretName | string | `""` |  |
 | global.database.postgres.userKey | string | `""` |  |
 | global.database.redis.extraArgs | string | `""` |  |
-| global.database.redis.hosts | list | `["redis:6379"]` | provide default values if redis.installed is set to false |
+| global.database.redis.hosts | list | `["redis-sentinel-harness-announce-0:26379","redis-sentinel-harness-announce-1:26379","redis-sentinel-harness-announce-2:26379"]` | provide default values if redis.installed is set to false |
 | global.database.redis.installed | bool | `true` |  |
 | global.database.redis.passwordKey | string | `"redis-password"` |  |
 | global.database.redis.protocol | string | `"redis"` |  |
