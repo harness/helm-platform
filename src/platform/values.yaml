@@ -335,6 +335,7 @@ redis:
     config_init:
       image:
         tag: 6.2.12-alpine
+        repository: redis
   redis:
     resources:
       limits:
@@ -345,7 +346,7 @@ redis:
         memory: 200Mi
     image:
       tag: 6.2.12-alpine
-      repository: harness/redis
+      repository: redis
       pullPolicy: IfNotPresent
   replicaCount: 3
   sentinel:
@@ -358,7 +359,7 @@ redis:
         memory: 200Mi
     image:
       tag: 6.2.12-alpine
-      repository: harness/redis
+      repository: redis
       pullPolicy: IfNotPresent
   volumeClaimTemplate:
     resources:
