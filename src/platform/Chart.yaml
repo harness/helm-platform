@@ -65,7 +65,7 @@ dependencies:
     repository: "file://../migrator"
   - name: minio
     condition: global.ng.enabled
-    version: 12.6.x
+    version: 12.6.3
     repository: https://charts.bitnami.com/bitnami
   - name: mongodb
     version: 13.1.2

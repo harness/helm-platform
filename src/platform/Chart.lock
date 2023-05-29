@@ -16,10 +16,10 @@ dependencies:
   version: 0.3.1
 - name: harness-manager
   repository: file://../harness-manager
-  version: 0.4.0
+  version: 0.4.1
 - name: delegate-proxy
   repository: file://../delegate-proxy
-  version: 0.3.0
+  version: 0.3.1
 - name: le-nextgen
   repository: file://../le-nextgen
   version: 0.3.0
@@ -34,7 +34,7 @@ dependencies:
   version: 0.3.1
 - name: minio
   repository: https://charts.bitnami.com/bitnami
-  version: 11.9.1
+  version: 12.6.3
 - name: mongodb
   repository: https://charts.bitnami.com/bitnami
   version: 13.1.2
@@ -46,10 +46,10 @@ dependencies:
   version: 0.3.0
 - name: ng-manager
   repository: file://../ng-manager
-  version: 0.3.5
+  version: 0.3.6
 - name: pipeline-service
   repository: file://../pipeline-service
-  version: 0.3.1
+  version: 0.3.3
 - name: platform-service
   repository: file://../platform-service
   version: 0.3.1
@@ -61,7 +61,7 @@ dependencies:
   version: 0.3.0
 - name: template-service
   repository: file://../template-service
-  version: 0.3.0
+  version: 0.3.1
 - name: ti-service
   repository: file://../ti-service
   version: 0.3.1
@@ -74,5 +74,5 @@ dependencies:
 - name: verification-svc
   repository: file://../verification-svc
   version: 0.4.2
-digest: sha256:4cb29c5c799b2915b0b15e864bb6f61ec53f65ac5e27fb92d2c6f19851573ccb
-generated: "2023-05-15T18:00:27.525731-04:00"
+digest: sha256:c89b94d33a958ec1acf8bb2a96bbff1048fcb289398880efd8be4992a3d2499c
+generated: "2023-05-29T11:16:13.989011-04:00"
