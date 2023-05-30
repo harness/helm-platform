@@ -448,7 +448,7 @@ timescaledb:
 ui:
   appLogLevel: INFO
   image:
-    tag: "79201"
+    tag: "79202"
   replicaCount: 1
   resources:
     limits:

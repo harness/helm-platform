@@ -37,7 +37,7 @@ image:
   repository: harness/ui-signed
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "77600"
+  tag: "79202"
   digest: ""
   imagePullSecrets: []
 
