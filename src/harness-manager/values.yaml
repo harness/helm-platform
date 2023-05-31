@@ -235,7 +235,7 @@ featureFlags:
   # -- Licensing flags
   LICENSE: "NG_LICENSES_ENABLED,VIEW_USAGE_ENABLED"
   # -- OPA
-  OPA: "OPA_PIPELINE_GOVERNANCE,OPA_FEATURE_GOVERNANCE,OPA_FF_GOVERNANCE"
+  OPA: ""
   # -- CHAOS Feature Flags
   CHAOS: "CHAOS_ENABLED"
   # -- Additional Feature Flag
