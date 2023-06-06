@@ -177,7 +177,6 @@ service:
 
 resources:
   limits:
-    cpu: 2
     memory: 8192Mi
   requests:
     cpu: 2
