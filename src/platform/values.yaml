@@ -65,7 +65,7 @@ change-data-capture:
   appLogLevel: INFO
   replicaCount: 1
   image:
-    tag: "79229"
+    tag: "79230"
   java:
     memory: 2048
   resources:
@@ -81,7 +81,7 @@ change-data-capture:
 cv-nextgen:
   appLogLevel: INFO
   image:
-    tag: "79229"
+    tag: "79230"
   java:
     memory: 4096
   replicaCount: 1
@@ -135,7 +135,7 @@ harness-manager:
   autoscaling:
     enabled: false
   image:
-    tag: "79229"
+    tag: "79230"
   java:
     memory: "2048"
   replicaCount: 1
@@ -146,7 +146,7 @@ harness-manager:
     requests:
       cpu: 2
       memory: 3000Mi
-  version: 1.0.79229
+  version: 1.0.79230
 
 harness-secrets:
   enabled: true
@@ -284,7 +284,7 @@ ng-auth-ui:
 ng-manager:
   appLogLevel: INFO
   image:
-    tag: "79229"
+    tag: "79230"
   java:
     memory: "4096m"
   replicaCount: 1
@@ -388,7 +388,7 @@ scm-service:
 template-service:
   appLogLevel: INFO
   image:
-    tag: "79229"
+    tag: "79230"
   java:
     memory: "1024m"
   replicaCount: 1
@@ -463,7 +463,7 @@ ui:
 verification-svc:
   appLogInfo: INFO
   image:
-    tag: "79229"
+    tag: "79230"
   java:
     memory: 2048
   replicaCount: 1
