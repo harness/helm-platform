@@ -69,13 +69,13 @@ spec:
           {{- toYaml .Values.resources | nindent 12 }}
         env:
             {{- include "harnesscommon.dbconnection.mongoEnv" . | indent 12 }}
-            {{- include "harnesscommon.dbconnection.timescaleEnv" . | indent 12 }}
             - name: MONGO_URI
               value: {{ include "harnesscommon.dbconnection.mongoConnection" (dict "database" "ng-harness" "context" $) }}
             - name : NOTIFICATION_MONGO_URI
               value: {{ include "harnesscommon.dbconnection.mongoConnection" (dict "database" "notifications" "context" $) }}
             - name: PMS_MONGO_URI
               value: {{ include "harnesscommon.dbconnection.mongoConnection" (dict "database" "pms-harness" "context" $) }}
+            {{- if .Values.global.database.timescaledb.installed }}
             - name : TIMESCALE_PASSWORD
               valueFrom:
                 secretKeyRef:
@@ -85,6 +85,19 @@ spec:
               value: postgres
             - name: TIMESCALE_URI
               value: 'jdbc:postgresql://timescaledb-single-chart.{{ .Release.Namespace }}:5432/harness'
+            {{- else }}
+            {{ include "harnesscommon.dbconnection.dbenvuser" (dict "type" "timescale" "variableName" "TIMESCALEDB_USERNAME" "secret" .Values.global.database.timescaledb.secretName "userKey" .Values.global.database.timescaledb.userKey ) | nindent 12 }}
+            {{ include "harnesscommon.dbconnection.dbenvpassword" (dict "type" "timescale" "variableName" "TIMESCALE_PASSWORD" "secret" .Values.global.database.timescaledb.secretName "passwordKey" .Values.global.database.timescaledb.passwordKey ) | nindent 12 }}
+            - name: TIMESCALE_URI
+              value: 'jdbc:postgresql://{{ index .Values.global.database.timescaledb.hosts 0}}/harness'
+            - name: TIMESCALEDB_SSL_MODE
+              value: "require"
+            - name: TIMESCALEDB_SSL_ROOT_CERT
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.global.database.timescaledb.certName }}
+                  key: {{ .Values.global.database.timescaledb.certKey }}
+            {{- end }}
             {{- if .Values.global.ccm.enabled }}
             - name : CE_AWS_ACCESS_KEY
               valueFrom:

@@ -74,6 +74,7 @@ spec:
           {{- include "harnesscommon.dbconnection.mongoEnv" . | indent 10 }}
           - name: TI_SERVICE_MONGODB_CONN_STR
             value: {{ include "harnesscommon.dbconnection.mongoConnection" (dict "database" "ti-harness" "context" $) }}
+          {{- if .Values.global.database.timescaledb.installed }}
           - name: TI_SERVICE_TIMESCALE_USERNAME
             value: "postgres"
           - name: TI_SERVICE_TIMESCALE_PASSWORD
@@ -81,11 +82,39 @@ spec:
               secretKeyRef:
                 name: {{ .Values.tiServiceTimescaleSecret.password.name }}
                 key: {{ .Values.tiServiceTimescaleSecret.password.key }}
-          - name: TSDB_URL
-            value: 'postgres://postgres:$(TI_SERVICE_TIMESCALE_PASSWORD)@timescaledb-single-chart.{{ .Release.Namespace }}:5432/harnessti?sslmode=disable '
+          - name: TI_SERVICE_TIMESCALE_HOST
+            value: timescaledb-single-chart.{{ .Release.Namespace }}
+          - name: TI_SERVICE_TIMESCALE_PORT
+            value: "5432"
+          {{- else }}
+            {{ include "harnesscommon.dbconnection.dbenvuser" (dict "type" "timescale" "variableName" "TI_SERVICE_TIMESCALE_USERNAME" "secret" .Values.global.database.timescaledb.secretName "userKey" .Values.global.database.timescaledb.userKey ) | nindent 10 }}
+            {{ include "harnesscommon.dbconnection.dbenvpassword" (dict "type" "timescale" "variableName" "TI_SERVICE_TIMESCALE_PASSWORD" "secret" .Values.global.database.timescaledb.secretName "passwordKey" .Values.global.database.timescaledb.passwordKey ) | nindent 10 }}
+          - name: TI_SERVICE_TIMESCALE_HOST
+            value: {{ (split ":" (index .Values.global.database.timescaledb.hosts 0))._0 }}
+          - name: TI_SERVICE_TIMESCALE_PORT
+            value: {{ (split ":" (index .Values.global.database.timescaledb.hosts 0))._1 | quote }}
+          - name: TI_SERVICE_TIMESCALE_ENABLE_SSL
+            value: "true"
+          - name: TI_SERVICE_TIMESCALE_SSL_MODE
+            value: "verify-full"
+          - name: TI_SERVICE_TIMESCALE_SSL_CERT_PATH
+            value: "/opt/harness/svc/timescale_ca.pem"
+          {{- end }}
           envFrom:
           - configMapRef:
               name: ti-service
+      {{- if not .Values.global.database.timescaledb.installed }}
+          volumeMounts:
+          - name: timescaledb-cert
+            mountPath: /opt/harness/svc
+      volumes:
+      - name: timescaledb-cert
+        secret:
+          secretName: {{ .Values.global.database.timescaledb.certName }}
+          items:
+          - key: {{ .Values.global.database.timescaledb.certKey }}
+            path: timescale_ca.pem
+      {{- end }}
       affinity:
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:

@@ -39,6 +39,8 @@ global:
       userKey: ""
       passwordKey: ""
       extraArgs: ""
+      certName: ""
+      certKey: ""
   imagePullSecrets: []
   opa:
     enabled: false

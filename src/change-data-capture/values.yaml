@@ -4,22 +4,6 @@
 global:
   loadbalancerURL: ""
   database:
-    postgres:
-      ## - installed = true if installed within cluster
-      installed: true
-      ## - protocol to use for connection
-      protocol: postgres
-      ## - host array for external
-      hosts:
-        - postgres:5432
-      ## - secret name containing external values
-      secretName: ""
-      ## - key within secret containing username
-      userKey: ""
-      ## - key within secret containing password
-      passwordKey: ""
-      ## - extra arguments set to connection string
-      extraArgs: ""
     mongo:
       installed: true
       protocol: mongodb
@@ -31,14 +15,15 @@ global:
       extraArgs: ""
     timescaledb:
       installed: true
-      protocol: "jdbc:postgresql"
+      protocol: ""
       # --  provide default values if mongo.installed is set to false
-      hosts:
-        - timescaledb-single-chart:5432
+      hosts: []
       secretName: ""
       userKey: ""
       passwordKey: ""
       extraArgs: ""
+      certName: ""
+      certKey: ""
   ha: false
   imagePullSecrets: []
   stackDriverLoggingEnabled: false
