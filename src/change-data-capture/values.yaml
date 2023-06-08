@@ -138,7 +138,6 @@ service:
 
 resources:
   limits:
-    cpu: 1
     memory: 2880Mi
   requests:
     cpu: 1
