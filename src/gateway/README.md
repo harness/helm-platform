@@ -1,6 +1,6 @@
 # gateway
 
-![Version: 0.3.3](https://img.shields.io/badge/Version-0.3.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
+![Version: 0.3.4](https://img.shields.io/badge/Version-0.3.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
 
 A Helm chart for Kubernetes
 
@@ -44,7 +44,13 @@ A Helm chart for Kubernetes
 | global.database.timescaledb.userKey | string | `""` |  |
 | global.ha | bool | `false` |  |
 | global.imagePullSecrets | list | `[]` |  |
-| global.loadbalancerURL | string | `"http://test/abc"` |  |
+| global.ingress | object | `{"enabled":false,"ingressGatewayServiceUrl":"internal-nginx.default.svc.cluster.local","nginx":{"create":true}}` | Ingress controller configuration |
+| global.ingress.enabled | bool | `false` | set to true to install ingress rules |
+| global.ingress.ingressGatewayServiceUrl | string | `"internal-nginx.default.svc.cluster.local"` | set to ingress controller's k8s service FQDN for internal use case. If not set, internal request routing would happen via global.loadbalancerUrl |
+| global.istio | object | `{"enabled":true,"istioGatewayServiceUrl":"internal-istio-gateway.istio-system.svc.cluster.local"}` | Istio configuration |
+| global.istio.enabled | bool | `true` | set to true to install VirtualService manifests |
+| global.istio.istioGatewayServiceUrl | string | `"internal-istio-gateway.istio-system.svc.cluster.local"` | set to istio gateway's k8s service FQDN for internal use case. If not set, internal request routing would happen via global.loadbalancerUrl |
+| global.loadbalancerURL | string | `"http://test/abc"` | URL of the public endpoint to access harness UI |
 | image.digest | string | `""` |  |
 | image.imagePullSecrets | list | `[]` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
