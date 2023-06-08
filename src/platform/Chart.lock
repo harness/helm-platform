@@ -19,7 +19,7 @@ dependencies:
   version: 0.3.6
 - name: delegate-proxy
   repository: file://../delegate-proxy
-  version: 0.3.0
+  version: 0.3.1
 - name: le-nextgen
   repository: file://../le-nextgen
   version: 0.3.0
@@ -49,7 +49,7 @@ dependencies:
   version: 0.3.5
 - name: pipeline-service
   repository: file://../pipeline-service
-  version: 0.3.1
+  version: 0.3.2
 - name: platform-service
   repository: file://../platform-service
   version: 0.3.1
@@ -74,5 +74,5 @@ dependencies:
 - name: verification-svc
   repository: file://../verification-svc
   version: 0.4.2
-digest: sha256:610c303c925690f571e9fc2f49ea4a5365fbf6bbc1fe24f86af0d8ca7516fb92
-generated: "2023-05-24T13:01:02.626698+05:30"
+digest: sha256:d1165876bde44ef305aa4a6b244f104ca5542cedc9ff089b67b1cce66b3b4ed8
+generated: "2023-06-05T17:21:29.717509+05:30"
