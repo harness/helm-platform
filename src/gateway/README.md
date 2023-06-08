@@ -44,12 +44,12 @@ A Helm chart for Kubernetes
 | global.database.timescaledb.userKey | string | `""` |  |
 | global.ha | bool | `false` |  |
 | global.imagePullSecrets | list | `[]` |  |
-| global.ingress | object | `{"enabled":false,"ingressGatewayServiceUrl":"internal-nginx.default.svc.cluster.local","nginx":{"create":true}}` | Ingress controller configuration |
+| global.ingress | object | `{"enabled":false,"ingressGatewayServiceUrl":"","nginx":{"create":false}}` | Ingress controller configuration |
 | global.ingress.enabled | bool | `false` | set to true to install ingress rules |
-| global.ingress.ingressGatewayServiceUrl | string | `"internal-nginx.default.svc.cluster.local"` | set to ingress controller's k8s service FQDN for internal use case. If not set, internal request routing would happen via global.loadbalancerUrl |
-| global.istio | object | `{"enabled":true,"istioGatewayServiceUrl":"internal-istio-gateway.istio-system.svc.cluster.local"}` | Istio configuration |
-| global.istio.enabled | bool | `true` | set to true to install VirtualService manifests |
-| global.istio.istioGatewayServiceUrl | string | `"internal-istio-gateway.istio-system.svc.cluster.local"` | set to istio gateway's k8s service FQDN for internal use case. If not set, internal request routing would happen via global.loadbalancerUrl |
+| global.ingress.ingressGatewayServiceUrl | string | `""` | set to ingress controller's k8s service FQDN for internal use case. eg "internal-nginx.default.svc.cluster.local" If not set, internal request routing would happen via global.loadbalancerUrl |
+| global.istio | object | `{"enabled":false,"istioGatewayServiceUrl":""}` | Istio configuration |
+| global.istio.enabled | bool | `false` | set to true to install VirtualService manifests |
+| global.istio.istioGatewayServiceUrl | string | `""` | set to istio gateway's k8s service FQDN for internal use case. eg "internal-istio-gateway.istio-system.svc.cluster.local" If not set, internal request routing would happen via global.loadbalancerUrl |
 | global.loadbalancerURL | string | `"http://test/abc"` | URL of the public endpoint to access harness UI |
 | image.digest | string | `""` |  |
 | image.imagePullSecrets | list | `[]` |  |

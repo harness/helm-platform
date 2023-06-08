@@ -8,18 +8,18 @@ global:
   ingress:
     # -- set to true to install ingress rules
     enabled: false
-    # -- set to ingress controller's k8s service FQDN for internal use case.
+    # -- set to ingress controller's k8s service FQDN for internal use case. eg "internal-nginx.default.svc.cluster.local"
     # If not set, internal request routing would happen via global.loadbalancerUrl
-    ingressGatewayServiceUrl: "internal-nginx.default.svc.cluster.local"
+    ingressGatewayServiceUrl: ""
     nginx:
-      create: true
+      create: false
   # -- Istio configuration
   istio:
     # -- set to true to install VirtualService manifests
-    enabled: true
-    # -- set to istio gateway's k8s service FQDN for internal use case.
+    enabled: false
+    # -- set to istio gateway's k8s service FQDN for internal use case. eg "internal-istio-gateway.istio-system.svc.cluster.local"
     # If not set, internal request routing would happen via global.loadbalancerUrl
-    istioGatewayServiceUrl: "internal-istio-gateway.istio-system.svc.cluster.local"
+    istioGatewayServiceUrl: ""
   database:
     postgres:
       ## - installed = true if installed within cluster
