@@ -29,7 +29,7 @@ A Helm chart for Kubernetes
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.registry | string | `"docker.io"` |  |
 | image.repository | string | `"harness/delegate-proxy-signed"` |  |
-| image.tag | string | `"76018"` |  |
+| image.tag | string | `"78924"` |  |
 | imagePullSecrets | object | `{}` |  |
 | maxSurge | int | `1` |  |
 | maxUnavailable | int | `0` |  |
