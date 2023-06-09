@@ -124,11 +124,11 @@ resources:
     memory: 512Mi
 
 autoscaling:
-  enabled: true
+  enabled: false
   minReplicas: 1
   maxReplicas: 100
-  targetCPU: "80%"
-  targetMemory: "80%"
+  targetCPU: ""
+  targetMemory: ""
 
 nodeSelector: {}
 
