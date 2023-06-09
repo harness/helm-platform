@@ -1,6 +1,6 @@
 # ng-manager
 
-![Version: 0.3.6](https://img.shields.io/badge/Version-0.3.6-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
+![Version: 0.3.7](https://img.shields.io/badge/Version-0.3.7-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
 
 A Helm chart for Kubernetes
 
@@ -18,10 +18,11 @@ A Helm chart for Kubernetes
 | affinity | object | `{}` |  |
 | allowedOrigins | string | `""` |  |
 | appLogLevel | string | `"INFO"` |  |
-| autoscaling.enabled | bool | `true` |  |
+| autoscaling.enabled | bool | `false` |  |
 | autoscaling.maxReplicas | int | `100` |  |
 | autoscaling.minReplicas | int | `1` |  |
-| autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
+| autoscaling.targetCPU | string | `""` |  |
+| autoscaling.targetMemory | string | `""` |  |
 | ceGcpSetupConfigGcpProjectId | string | `"placeHolderGcpProjectId"` |  |
 | ceSecret.access_key.key | string | `"AWS_ACCESS_KEY"` |  |
 | ceSecret.access_key.name | string | `"nextgen-ce"` |  |
