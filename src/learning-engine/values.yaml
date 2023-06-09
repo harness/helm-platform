@@ -5,6 +5,7 @@
 replicaCount: 1
 
 global:
+  kubeVersion: ""
   imagePullSecrets: []
 
 image:
