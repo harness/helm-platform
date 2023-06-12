@@ -159,10 +159,3 @@ extraVolumeMounts: []
 #   preStop:
 #     exec:
 #       command:
-        
-lifecycleHooks:
-  preStop:
-    exec:
-      command:
-        - touch
-        - shutdown
