@@ -27,6 +27,10 @@ spec:
         {{- include "le-nextgen.selectorLabels" . | nindent 8 }}
     spec:
       {{ include "le-nextgen.pullSecrets" . | nindent 6 }}
+      volumes:
+      {{- if .Values.extraVolumes }}
+      {{- include "harnesscommon.tplvalues.render" ( dict "value" .Values.extraVolumes "context" $ ) | nindent 8 }}
+      {{- end }}
       containers:
         - envFrom:
             - configMapRef:
@@ -42,6 +46,13 @@ spec:
               protocol: TCP
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          {{- if .Values.lifecycleHooks }}
+          lifecycle: {{- include "harnesscommon.tplvalues.render" (dict "value" .Values.lifecycleHooks "context" $) | nindent 12 }}
+          {{- end }}
+          volumeMounts:
+          {{- if .Values.extraVolumeMounts }}
+          {{- include "harnesscommon.tplvalues.render" (dict "value" .Values.extraVolumeMounts "context" $) | nindent 12 }}
+          {{- end }}
       serviceAccountName: {{ include "le-nextgen.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
