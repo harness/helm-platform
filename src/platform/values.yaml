@@ -64,7 +64,6 @@ access-control:
   replicaCount: 1
   resources:
     limits:
-      cpu: 0.5
       memory: 8192Mi
     requests:
       cpu: 0.5
@@ -82,7 +81,6 @@ change-data-capture:
     memory: 2048
   resources:
     limits:
-      cpu: 1
       memory: 2880Mi
     requests:
       cpu: 1
@@ -99,7 +97,6 @@ cv-nextgen:
   replicaCount: 1
   resources:
     limits:
-      cpu: 1
       memory: 6144Mi
     requests:
       cpu: 1
@@ -113,7 +110,6 @@ delegate-proxy:
   replicaCount: 1
   resources:
     limits:
-      cpu: 200m
       memory: 100Mi
     requests:
       cpu: 200m
@@ -127,7 +123,6 @@ gateway:
   replicaCount: 1
   resources:
     limits:
-      cpu: 0.4
       memory: 1024Mi
     requests:
       cpu: 0.2
@@ -153,7 +148,6 @@ harness-manager:
   replicaCount: 1
   resources:
     limits:
-      cpu: 2
       memory: 8192Mi
     requests:
       cpu: 2
@@ -171,7 +165,6 @@ le-nextgen:
   replicaCount: 1
   resources:
     limits:
-      cpu: 1
       memory: 6144Mi
     requests:
       cpu: 1
@@ -185,7 +178,6 @@ learning-engine:
   replicaCount: 1
   resources:
     limits:
-      cpu: 1
       memory: 2048Mi
     requests:
       cpu: 1
@@ -197,7 +189,6 @@ log-service:
   replicaCount: 1
   resources:
     limits:
-      cpu: 1
       memory: 3072Mi
     requests:
       cpu: 1
@@ -223,7 +214,6 @@ migrator:
   replicaCount: 1
   resources:
     limits:
-      cpu: 2
       memory: 8192Mi
     requests:
       cpu: 2
@@ -255,7 +245,6 @@ mongodb:
   podLabels: { app: mongodb-replicaset }
   resources:
     limits:
-      cpu: 4
       memory: 8192Mi
     requests:
       cpu: 4
@@ -269,7 +258,6 @@ next-gen-ui:
   replicaCount: 1
   resources:
     limits:
-      cpu: 0.2
       memory: 200Mi
     requests:
       cpu: 0.2
@@ -283,7 +271,6 @@ ng-auth-ui:
   replicaCount: 1
   resources:
     limits:
-      cpu: 0.5
       memory: 512Mi
     requests:
       cpu: 0.5
@@ -300,7 +287,6 @@ ng-manager:
   replicaCount: 1
   resources:
     limits:
-      cpu: 2
       memory: 8192Mi
     requests:
       cpu: 2
@@ -317,7 +303,6 @@ pipeline-service:
   replicaCount: 1
   resources:
     limits:
-      cpu: 1
       memory: 6144Mi
     requests:
       cpu: 1
@@ -334,7 +319,6 @@ platform-service:
   replicaCount: 1
   resources:
     limits:
-      cpu: 0.5
       memory: 8192Mi
     requests:
       cpu: 0.5
@@ -350,7 +334,6 @@ redis:
   redis:
     resources:
       limits:
-        cpu: 0.1
         memory: 200Mi
       requests:
         cpu: 0.1
@@ -363,7 +346,6 @@ redis:
   sentinel:
     resources:
       limits:
-        cpu: 100m
         memory: 200Mi
       requests:
         cpu: 100m
@@ -386,7 +368,6 @@ scm-service:
   replicaCount: 1
   resources:
     limits:
-      cpu: 0.1
       memory: 512Mi
     requests:
       cpu: 0.1
@@ -403,7 +384,6 @@ template-service:
   replicaCount: 1
   resources:
     limits:
-      cpu: 1
       memory: 1400Mi
     requests:
       cpu: 1
@@ -417,7 +397,6 @@ ti-service:
     tag: "release-167"
   jobresources:
     limits:
-      cpu: 1
       memory: 3072Mi
     requests:
       cpu: 1
@@ -429,7 +408,6 @@ ti-service:
   replicaCount: 1
   resources:
     limits:
-      cpu: 1
       memory: 3072Mi
     requests:
       cpu: 1
@@ -444,7 +422,6 @@ timescaledb:
   replicaCount: 1
   resources:
     limits:
-      cpu: 1
       memory: 2048Mi
     requests:
       cpu: 1
@@ -461,7 +438,6 @@ ui:
   replicaCount: 1
   resources:
     limits:
-      cpu: 500m
       memory: 512Mi
     requests:
       cpu: 500m
@@ -478,7 +454,6 @@ verification-svc:
   replicaCount: 1
   resources:
     limits:
-      cpu: 500m
       memory: 3000Mi
     requests:
       cpu: 500m

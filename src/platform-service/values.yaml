@@ -121,7 +121,6 @@ service:
 
 resources:
   limits:
-    cpu: 0.5
     memory: 8192Mi
   requests:
     cpu: 0.5

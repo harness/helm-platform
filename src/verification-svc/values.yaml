@@ -130,7 +130,6 @@ service:
 
 resources:
   limits:
-    cpu: 500m
     memory: 3000Mi
   requests:
     cpu: 500m
