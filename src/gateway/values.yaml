@@ -2,7 +2,25 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 global:
+  kubeVersion: ""
+  # -- URL of the public endpoint to access harness UI
   loadbalancerURL: "http://test/abc"
+  # -- Ingress controller configuration
+  ingress:
+    # -- set to true to install ingress rules
+    enabled: false
+    # -- set to ingress controller's k8s service FQDN for internal use case. eg "internal-nginx.default.svc.cluster.local"
+    # If not set, internal request routing would happen via global.loadbalancerUrl
+    ingressGatewayServiceUrl: ""
+    nginx:
+      create: false
+  # -- Istio configuration
+  istio:
+    # -- set to true to install VirtualService manifests
+    enabled: false
+    # -- set to istio gateway's k8s service FQDN for internal use case. eg "internal-istio-gateway.istio-system.svc.cluster.local"
+    # If not set, internal request routing would happen via global.loadbalancerUrl
+    istioGatewayServiceUrl: ""
   database:
     postgres:
       ## - installed = true if installed within cluster
@@ -116,11 +134,11 @@ resources:
     memory: 512Mi
 
 autoscaling:
-  enabled: true
+  enabled: false
   minReplicas: 1
   maxReplicas: 100
-  targetCPUUtilizationPercentage: 80
-  # targetMemoryUtilizationPercentage: 80
+  targetCPU: ""
+  targetMemory: ""
 
 nodeSelector: {}
 
