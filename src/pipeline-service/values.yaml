@@ -160,3 +160,30 @@ affinity: {}
 imagePullSecrets: {}
 
 additionalConfigs: {}
+
+# extraVolumes:
+# - name: volume-test
+#   configMap:
+#     name: test-config
+#     readOnly: true
+extraVolumes: []
+
+# extraVolumeMounts:
+#   - name: test-volume-mount
+#     mountPath: /opt/harness/config
+extraVolumeMounts: []
+
+# lifecycleHooks:
+#   postStart:
+#     exec:
+#       command:
+#   preStop:
+#     exec:
+#       command:
+        
+lifecycleHooks:
+  preStop:
+    exec:
+      command:
+        - touch
+        - shutdown
