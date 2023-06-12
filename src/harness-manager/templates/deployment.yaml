@@ -42,7 +42,7 @@ spec:
         args:
           - "pod"
           - "-lapp=mongodb-replicaset"
-      {{- end }}    
+      {{- end }}
       - name: wait-for-timescale
         image: {{ include "common.images.image" (dict "imageRoot" .Values.waitForInitContainer.image "global" .Values.global) }}
         imagePullPolicy: IfNotPresent
@@ -64,6 +64,7 @@ spec:
                 name: smtp-secret
             {{- end }}
           env:
+            {{- include "harnesscommon.dbconnection.redisEnv" (dict "context" .Values.global.database.redis "userVariableName" "EVENTS_FRAMEWORK_REDIS_USERNAME" "passwordVariableName" "EVENTS_FRAMEWORK_REDIS_PASSWORD") | indent 12 }}
             {{- include "harnesscommon.dbconnection.mongoEnv" . | indent 12 }}
             - name : TIMESCALEDB_PASSWORD
               valueFrom:

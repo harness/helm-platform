@@ -1,6 +1,6 @@
 # access-control
 
-![Version: 0.3.2](https://img.shields.io/badge/Version-0.3.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
+![Version: 0.3.4](https://img.shields.io/badge/Version-0.3.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
 
 A Helm chart for Kubernetes
 
@@ -22,13 +22,13 @@ A Helm chart for Kubernetes
 | autoscaling.minReplicas | int | `1` |  |
 | autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
 | fullnameOverride | string | `""` |  |
-| global.database.mongo.extraArgs | string | `""` |  |
-| global.database.mongo.hosts | list | `[]` | provide default values if mongo.installed is set to false |
-| global.database.mongo.installed | bool | `true` |  |
-| global.database.mongo.passwordKey | string | `""` |  |
+| global.database.mongo.extraArgs | string | `"xx"` |  |
+| global.database.mongo.hosts | list | `["h1","h2"]` | provide default values if mongo.installed is set to false |
+| global.database.mongo.installed | bool | `false` |  |
+| global.database.mongo.passwordKey | string | `"xxx"` |  |
 | global.database.mongo.protocol | string | `"mongodb"` |  |
-| global.database.mongo.secretName | string | `""` |  |
-| global.database.mongo.userKey | string | `""` |  |
+| global.database.mongo.secretName | string | `"xx"` |  |
+| global.database.mongo.userKey | string | `"xx"` |  |
 | global.database.postgres.extraArgs | string | `""` |  |
 | global.database.postgres.hosts[0] | string | `"postgres:5432"` |  |
 | global.database.postgres.installed | bool | `true` |  |
@@ -36,6 +36,13 @@ A Helm chart for Kubernetes
 | global.database.postgres.protocol | string | `"postgres"` |  |
 | global.database.postgres.secretName | string | `""` |  |
 | global.database.postgres.userKey | string | `""` |  |
+| global.database.redis.extraArgs | string | `""` |  |
+| global.database.redis.hosts | list | `["redis:6379"]` | provide default values if redis.installed is set to false |
+| global.database.redis.installed | bool | `true` |  |
+| global.database.redis.passwordKey | string | `"redis-password"` |  |
+| global.database.redis.protocol | string | `"redis"` |  |
+| global.database.redis.secretName | string | `"redis-secret"` |  |
+| global.database.redis.userKey | string | `"redis-user"` |  |
 | global.database.timescaledb.extraArgs | string | `""` |  |
 | global.database.timescaledb.hosts | list | `["timescaledb-single-chart:5432"]` | provide default values if mongo.installed is set to false |
 | global.database.timescaledb.installed | bool | `true` |  |
@@ -56,6 +63,8 @@ A Helm chart for Kubernetes
 | java.memory | string | `"512m"` |  |
 | maxSurge | int | `1` |  |
 | maxUnavailable | int | `0` |  |
+| mongoHosts | list | `[]` |  |
+| mongoSSL.enabled | bool | `false` |  |
 | mongoSecrets.password.key | string | `"mongodb-root-password"` |  |
 | mongoSecrets.password.name | string | `"mongodb-replicaset-chart"` |  |
 | mongoSecrets.userName.key | string | `"mongodbUsername"` |  |

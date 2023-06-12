@@ -2,8 +2,7 @@
 
 Helm chart for Harness Platform
 
-![Version: 0.6.19](https://img.shields.io/badge/Version-0.6.19-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.16.1](https://img.shields.io/badge/AppVersion-1.16.1-informational?style=flat-square)
-
+![Version: 0.6.24](https://img.shields.io/badge/Version-0.6.24-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.16.1](https://img.shields.io/badge/AppVersion-1.16.1-informational?style=flat-square)
 
 ## Usage
 
@@ -11,9 +10,9 @@ Use the following dependency to add this chart repository to your Helm installat
 
 ```
 dependencies:
-    - name: platform
+    - name: ccm
       repository: https://harness.github.io/helm-platform
-      version: 0.6.19
+      version: 0.6.24
 ```
 
 ## Values
@@ -77,6 +76,13 @@ dependencies:
 | global.database.postgres.protocol | string | `"postgres"` |  |
 | global.database.postgres.secretName | string | `""` |  |
 | global.database.postgres.userKey | string | `""` |  |
+| global.database.redis.extraArgs | string | `""` |  |
+| global.database.redis.hosts | list | `["redis-sentinel-harness-announce-0:26379","redis-sentinel-harness-announce-1:26379","redis-sentinel-harness-announce-2:26379"]` | provide default values if redis.installed is set to false |
+| global.database.redis.installed | bool | `true` |  |
+| global.database.redis.passwordKey | string | `"redis-password"` |  |
+| global.database.redis.protocol | string | `"redis"` |  |
+| global.database.redis.secretName | string | `"redis-secret"` |  |
+| global.database.redis.userKey | string | `"redis-user"` |  |
 | global.database.timescaledb.extraArgs | string | `""` |  |
 | global.database.timescaledb.hosts | list | `["timescaledb-single-chart:5432"]` | provide default values if mongo.installed is set to false |
 | global.database.timescaledb.installed | bool | `true` |  |
@@ -84,6 +90,7 @@ dependencies:
 | global.database.timescaledb.protocol | string | `"jdbc:postgresql"` |  |
 | global.database.timescaledb.secretName | string | `""` |  |
 | global.database.timescaledb.userKey | string | `""` |  |
+| global.migrator | object | `{"enabled":false}` | enable to install migrator service |
 | global.ng.enabled | bool | `true` |  |
 | harness-manager.autoscaling.enabled | bool | `false` |  |
 | harness-manager.delegate_docker_image.image.repository | string | `"harness/delegate"` |  |
@@ -124,15 +131,15 @@ dependencies:
 | migrator.delegate_docker_image.image.repository | string | `"harness/delegate"` |  |
 | migrator.delegate_docker_image.image.tag | string | `"latest"` |  |
 | migrator.external_graphql_rate_limit | string | `"500"` |  |
-| migrator.image.tag | string | `"100421-000"` |  |
-| migrator.immutable_delegate_docker_image.image.tag | string | `"23.03.78904"` |  |
+| migrator.image.tag | string | `"100440-000"` |  |
+| migrator.immutable_delegate_docker_image.image.tag | string | `"23.04.78918"` |  |
 | migrator.java.memory | string | `"2048"` |  |
 | migrator.replicaCount | int | `1` |  |
 | migrator.resources.limits.cpu | int | `2` |  |
 | migrator.resources.limits.memory | string | `"8192Mi"` |  |
 | migrator.resources.requests.cpu | int | `2` |  |
 | migrator.resources.requests.memory | string | `"3000Mi"` |  |
-| migrator.version | string | `"1.0.100421"` |  |
+| migrator.version | string | `"1.0.100440"` |  |
 | minio.auth.existingSecret | string | `"minio"` |  |
 | minio.defaultBuckets | string | `"logs"` |  |
 | minio.fullnameOverride | string | `"minio"` |  |
