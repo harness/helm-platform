@@ -15,6 +15,8 @@ data:
   LOG_SERVICE_DISABLE_AUTH: "true"
   LOG_SERVICE_GLOBAL_TOKEN: c76e567a-b341-404d-a8dd-d9738714eb82
   LOG_SERVICE_SECRET: IC04LYMBf1lDP5oeY4hupxd4HJhLmN6azUku3xEbeE3SUx5G3ZYzhbiwVtK4i7AmqyU9OZkwB4v8E9qM
+  LOG_SERVICE_REDIS_MASTER_NAME: 'harness-redis'
+  LOG_SERVICE_REDIS_SENTINEL_ADDRS: 'redis-sentinel-harness-announce-0.{{ .Release.Namespace }}:26379,redis://redis-sentinel-harness-announce-1.{{ .Release.Namespace }}:26379,redis://redis-sentinel-harness-announce-2.{{ .Release.Namespace  }}:26379'
   {{- if .Values.additionalConfigs }}
   {{- toYaml .Values.additionalConfigs | nindent 2 }}
   {{- end }}
