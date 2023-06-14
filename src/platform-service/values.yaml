@@ -2,6 +2,7 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 global:
+  kubeVersion: ""
   loadbalancerURL: "http://test/abc"
   imagePullSecrets: []
   smtpCreateSecret:
@@ -128,11 +129,11 @@ resources:
     memory: 512Mi
 
 autoscaling:
-  enabled: true
+  enabled: false
   minReplicas: 1
   maxReplicas: 100
-  targetCPUUtilizationPercentage: 80
-  # targetMemoryUtilizationPercentage: 80
+  targetCPU: ""
+  targetMemory: ""
 
 
 nodeSelector: {}

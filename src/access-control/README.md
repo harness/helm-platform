@@ -1,6 +1,6 @@
 # access-control
 
-![Version: 0.3.4](https://img.shields.io/badge/Version-0.3.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
+![Version: 0.3.5](https://img.shields.io/badge/Version-0.3.5-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
 
 A Helm chart for Kubernetes
 
@@ -17,10 +17,13 @@ A Helm chart for Kubernetes
 | additionalConfigs | object | `{}` |  |
 | affinity | object | `{}` |  |
 | appLogLevel | string | `"INFO"` |  |
-| autoscaling.enabled | bool | `true` |  |
+| autoscaling.enabled | bool | `false` |  |
 | autoscaling.maxReplicas | int | `100` |  |
 | autoscaling.minReplicas | int | `1` |  |
-| autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
+| autoscaling.targetCPU | string | `""` |  |
+| autoscaling.targetMemory | string | `""` |  |
+| extraVolumeMounts | list | `[]` |  |
+| extraVolumes | list | `[]` |  |
 | fullnameOverride | string | `""` |  |
 | global.database.mongo.extraArgs | string | `"xx"` |  |
 | global.database.mongo.hosts | list | `["h1","h2"]` | provide default values if mongo.installed is set to false |
@@ -52,6 +55,7 @@ A Helm chart for Kubernetes
 | global.database.timescaledb.userKey | string | `""` |  |
 | global.ha | bool | `false` |  |
 | global.imagePullSecrets | list | `[]` |  |
+| global.kubeVersion | string | `""` |  |
 | global.loadbalancerURL | string | `""` |  |
 | global.stackDriverLoggingEnabled | bool | `false` |  |
 | image.digest | string | `""` |  |

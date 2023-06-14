@@ -81,12 +81,10 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
-          lifecycle:
-            preStop:
-              exec:
-                command:
-                  - touch
-                  - shutdown
+          {{- if .Values.lifecycleHooks }}
+          lifecycle: {{- include "harnesscommon.tplvalues.render" (dict "value" .Values.lifecycleHooks "context" $) | nindent 12 }}
+          {{- end }}
+          
           livenessProbe:
             failureThreshold: 20
             initialDelaySeconds: 180
@@ -119,8 +117,12 @@ spec:
             - name: mongo-ssl-certs
               mountPath: /mongo
           {{- end }}
+          {{- if .Values.extraVolumeMounts }}
+          {{- include "harnesscommon.tplvalues.render" (dict "value" .Values.extraVolumeMounts "context" $) | nindent 12 }}
+          {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          
       volumes:
         - name: dynamic-iterator-config
           configMap:
@@ -130,6 +132,9 @@ spec:
         - name: mongo-ssl-certs
           secret:
             secretName: mongodb-replicaset-ssl-cert
+      {{- end }}
+      {{- if .Values.extraVolumes }}
+      {{- include "harnesscommon.tplvalues.render" ( dict "value" .Values.extraVolumes "context" $ ) | nindent 8 }}
       {{- end }}
       affinity:
         podAntiAffinity:

@@ -4,7 +4,7 @@ metadata:
   name: gateway
   namespace: {{ .Release.Namespace }}
 data:
-  MANAGER_URL: {{ (default .Values.loadbalancerURL .Values.global.loadbalancerURL) | quote }}
+  MANAGER_URL: {{ include "gateway.managerUrl" . | quote }}
   MANAGER_PUBLIC_URL: {{ (default .Values.loadbalancerURL .Values.global.loadbalancerURL) | quote }}
   MEMORY: {{ .Values.java.memory | quote }}
   DEPLOY_MODE: KUBERNETES_ONPREM
