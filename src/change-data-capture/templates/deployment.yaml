@@ -87,8 +87,8 @@ spec:
           {{- if .Values.lifecycleHooks }}
           lifecycle: {{- include "harnesscommon.tplvalues.render" (dict "value" .Values.lifecycleHooks "context" $) | nindent 12 }}
           {{- end }}
-          volumeMounts:
           {{- if .Values.extraVolumeMounts }}
+          volumeMounts:
           {{- include "harnesscommon.tplvalues.render" (dict "value" .Values.extraVolumeMounts "context" $) | nindent 12 }}
           {{- end }}
       affinity:
@@ -112,8 +112,7 @@ spec:
       nodeSelector:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      
-      volumes:
       {{- if .Values.extraVolumes }}
+      volumes:
       {{- include "harnesscommon.tplvalues.render" ( dict "value" .Values.extraVolumes "context" $ ) | nindent 8 }}
       {{- end }}

@@ -22,8 +22,8 @@ spec:
         {{- include "learning-engine.selectorLabels" . | nindent 8 }}
     spec:
       {{- include "learning-engine.pullSecrets" . | nindent 6 }}
-      volumes:
       {{- if .Values.extraVolumes }}
+      volumes:
       {{- include "harnesscommon.tplvalues.render" ( dict "value" .Values.extraVolumes "context" $ ) | nindent 8 }}
       {{- end }}
       serviceAccountName: {{ include "learning-engine.serviceAccountName" . }}
@@ -49,6 +49,7 @@ spec:
           {{- end }}
           volumeMounts:
           {{- if .Values.extraVolumeMounts }}
+          volumeMounts:
           {{- include "harnesscommon.tplvalues.render" (dict "value" .Values.extraVolumeMounts "context" $) | nindent 12 }}
           {{- end }}
       {{- with .Values.nodeSelector }}
