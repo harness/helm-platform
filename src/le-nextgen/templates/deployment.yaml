@@ -27,8 +27,8 @@ spec:
         {{- include "le-nextgen.selectorLabels" . | nindent 8 }}
     spec:
       {{ include "le-nextgen.pullSecrets" . | nindent 6 }}
-      volumes:
       {{- if .Values.extraVolumes }}
+      volumes:
       {{- include "harnesscommon.tplvalues.render" ( dict "value" .Values.extraVolumes "context" $ ) | nindent 8 }}
       {{- end }}
       containers:
