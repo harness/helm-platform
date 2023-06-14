@@ -65,6 +65,7 @@ spec:
                 name: smtp-secret
             {{- end }}
           env:
+            {{- include "harnesscommon.dbconnection.redisEnv" (dict "context" .Values.global.database.redis "userVariableName" "EVENTS_FRAMEWORK_REDIS_USERNAME" "passwordVariableName" "EVENTS_FRAMEWORK_REDIS_PASSWORD") | indent 12 }}
             {{- include "migrator.mongoEnv" . | nindent 12 }}
             {{- include "harnesscommon.dbconnection.timescaleEnv" . | nindent 12 }}
             - name: MONGO_URI

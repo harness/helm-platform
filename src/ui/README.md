@@ -34,6 +34,7 @@ A Helm chart for Kubernetes
 | global.istio.gateway.create | bool | `false` |  |
 | global.istio.virtualService.gateways | string | `nil` |  |
 | global.istio.virtualService.hosts | string | `nil` |  |
+| global.kubeVersion | string | `""` |  |
 | global.loadbalancerURL | string | `""` |  |
 | image.digest | string | `""` |  |
 | image.imagePullSecrets | list | `[]` |  |

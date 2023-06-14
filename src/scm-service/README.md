@@ -22,13 +22,14 @@ A Helm chart for Kubernetes
 | autoscaling.targetMemory | string | `""` |  |
 | fullnameOverride | string | `""` |  |
 | global.imagePullSecrets | list | `[]` |  |
+| global.kubeVersion | string | `""` |  |
 | global.loadbalancerURL | string | `""` |  |
 | image.digest | string | `""` |  |
 | image.imagePullSecrets | list | `[]` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.registry | string | `"docker.io"` |  |
 | image.repository | string | `"harness/ci-scm-signed"` |  |
-| image.tag | string | `"release-65"` |  |
+| image.tag | string | `"release-150"` |  |
 | imagePullSecrets | object | `{}` |  |
 | maxSurge | int | `1` |  |
 | maxUnavailable | int | `0` |  |

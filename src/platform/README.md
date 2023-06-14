@@ -76,6 +76,13 @@ dependencies:
 | global.database.postgres.protocol | string | `"postgres"` |  |
 | global.database.postgres.secretName | string | `""` |  |
 | global.database.postgres.userKey | string | `""` |  |
+| global.database.redis.extraArgs | string | `""` |  |
+| global.database.redis.hosts | list | `["redis-sentinel-harness-announce-0:26379","redis-sentinel-harness-announce-1:26379","redis-sentinel-harness-announce-2:26379"]` | provide default values if redis.installed is set to false |
+| global.database.redis.installed | bool | `true` |  |
+| global.database.redis.passwordKey | string | `"redis-password"` |  |
+| global.database.redis.protocol | string | `"redis"` |  |
+| global.database.redis.secretName | string | `"redis-secret"` |  |
+| global.database.redis.userKey | string | `"redis-user"` |  |
 | global.database.timescaledb.extraArgs | string | `""` |  |
 | global.database.timescaledb.hosts | list | `["timescaledb-single-chart:5432"]` | provide default values if mongo.installed is set to false |
 | global.database.timescaledb.installed | bool | `true` |  |
@@ -83,6 +90,7 @@ dependencies:
 | global.database.timescaledb.protocol | string | `"jdbc:postgresql"` |  |
 | global.database.timescaledb.secretName | string | `""` |  |
 | global.database.timescaledb.userKey | string | `""` |  |
+| global.kubeVersion | string | `""` |  |
 | global.migrator | object | `{"enabled":false}` | enable to install migrator service |
 | global.ng.enabled | bool | `true` |  |
 | harness-manager.autoscaling.enabled | bool | `false` |  |
@@ -114,7 +122,7 @@ dependencies:
 | learning-engine.resources.requests.cpu | int | `1` |  |
 | learning-engine.resources.requests.memory | string | `"2048Mi"` |  |
 | log-service.autoscaling.enabled | bool | `false` |  |
-| log-service.image.tag | string | `"release-61-ubi"` |  |
+| log-service.image.tag | string | `"release-65-ubi"` |  |
 | log-service.replicaCount | int | `1` |  |
 | log-service.resources.limits.cpu | int | `1` |  |
 | log-service.resources.limits.memory | string | `"3072Mi"` |  |
@@ -216,7 +224,7 @@ dependencies:
 | redis.volumeClaimTemplate.resources.requests.storage | string | `"10Gi"` |  |
 | scm-service.appLogLevel | string | `"INFO"` |  |
 | scm-service.autoscaling.enabled | bool | `false` |  |
-| scm-service.image.tag | string | `"release-127-ubi"` |  |
+| scm-service.image.tag | string | `"release-150-ubi"` |  |
 | scm-service.replicaCount | int | `1` |  |
 | scm-service.resources.limits.cpu | float | `0.1` |  |
 | scm-service.resources.limits.memory | string | `"512Mi"` |  |

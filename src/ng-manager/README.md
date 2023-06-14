@@ -32,6 +32,8 @@ A Helm chart for Kubernetes
 | ceSecret.secret_key.name | string | `"nextgen-ce"` |  |
 | ceSecret.template_url.key | string | `"AWS_TEMPLATE_LINK"` |  |
 | ceSecret.template_url.name | string | `"nextgen-ce"` |  |
+| extraVolumeMounts | list | `[]` |  |
+| extraVolumes | list | `[]` |  |
 | fullnameOverride | string | `""` |  |
 | global.ccm.enabled | bool | `false` |  |
 | global.chaos.enabled | bool | `false` |  |
@@ -49,6 +51,13 @@ A Helm chart for Kubernetes
 | global.database.postgres.protocol | string | `"postgres"` |  |
 | global.database.postgres.secretName | string | `""` |  |
 | global.database.postgres.userKey | string | `""` |  |
+| global.database.redis.extraArgs | string | `""` |  |
+| global.database.redis.hosts | list | `["redis:6379"]` | provide default values if redis.installed is set to false |
+| global.database.redis.installed | bool | `true` |  |
+| global.database.redis.passwordKey | string | `"redis-password"` |  |
+| global.database.redis.protocol | string | `"redis"` |  |
+| global.database.redis.secretName | string | `"redis-secret"` |  |
+| global.database.redis.userKey | string | `"redis-user"` |  |
 | global.database.timescaledb.extraArgs | string | `""` |  |
 | global.database.timescaledb.hosts | list | `["timescaledb-single-chart:5432"]` | provide default values if mongo.installed is set to false |
 | global.database.timescaledb.installed | bool | `true` |  |
@@ -56,6 +65,7 @@ A Helm chart for Kubernetes
 | global.database.timescaledb.protocol | string | `"jdbc:postgresql"` |  |
 | global.database.timescaledb.secretName | string | `""` |  |
 | global.database.timescaledb.userKey | string | `""` |  |
+| global.kubeVersion | string | `""` |  |
 | global.license.cg | string | `""` |  |
 | global.license.ng | string | `""` |  |
 | global.loadbalancerURL | string | `""` |  |

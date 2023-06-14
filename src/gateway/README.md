@@ -21,6 +21,8 @@ A Helm chart for Kubernetes
 | autoscaling.minReplicas | int | `1` |  |
 | autoscaling.targetCPU | string | `""` |  |
 | autoscaling.targetMemory | string | `""` |  |
+| extraVolumeMounts | list | `[]` |  |
+| extraVolumes | list | `[]` |  |
 | fullnameOverride | string | `""` |  |
 | global.database.mongo.extraArgs | string | `""` |  |
 | global.database.mongo.hosts | list | `[]` | provide default values if mongo.installed is set to false |
@@ -51,6 +53,7 @@ A Helm chart for Kubernetes
 | global.istio | object | `{"enabled":false,"istioGatewayServiceUrl":""}` | Istio configuration |
 | global.istio.enabled | bool | `false` | set to true to install VirtualService manifests |
 | global.istio.istioGatewayServiceUrl | string | `""` | set to istio gateway's k8s service FQDN for internal use case. eg "internal-istio-gateway.istio-system.svc.cluster.local" If not set, internal request routing would happen via global.loadbalancerUrl |
+| global.kubeVersion | string | `""` |  |
 | global.loadbalancerURL | string | `"http://test/abc"` | URL of the public endpoint to access harness UI |
 | image.digest | string | `""` |  |
 | image.imagePullSecrets | list | `[]` |  |

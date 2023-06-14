@@ -43,6 +43,18 @@ global:
       userKey: ""
       passwordKey: ""
       extraArgs: ""
+    redis:
+      installed: true
+      protocol: "redis"
+      # --  provide default values if redis.installed is set to false
+      hosts:
+        - redis-sentinel-harness-announce-0:26379
+        - redis-sentinel-harness-announce-1:26379
+        - redis-sentinel-harness-announce-2:26379
+      secretName: "redis-secret"
+      userKey: "redis-user"
+      passwordKey: "redis-password"
+      extraArgs: ""
 
 access-control:
   appLogLevel: INFO
@@ -182,7 +194,7 @@ learning-engine:
 
 log-service:
   image:
-    tag: "release-61-ubi"
+    tag: "release-65-ubi"
   replicaCount: 1
   resources:
     limits:
@@ -374,7 +386,7 @@ redis:
 scm-service:
   appLogLevel: INFO
   image:
-    tag: "release-127-ubi"
+    tag: "release-150-ubi"
   replicaCount: 1
   resources:
     limits:
