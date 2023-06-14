@@ -111,8 +111,8 @@ spec:
         {{- if .Values.lifecycleHooks }}
         lifecycle: {{- include "harnesscommon.tplvalues.render" (dict "value" .Values.lifecycleHooks "context" $) | nindent 12 }}
         {{- end }}
-        {{- if .Values.extraVolumeMounts }}
         volumeMounts:
+        {{- if .Values.extraVolumeMounts }}
         {{- include "harnesscommon.tplvalues.render" (dict "value" .Values.extraVolumeMounts "context" $) | nindent 12 }}
         {{- end }}
         envFrom:
@@ -141,7 +141,7 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       
-      {{- if .Values.extraVolumes }}
       volumes:
+      {{- if .Values.extraVolumes }}
       {{- include "harnesscommon.tplvalues.render" ( dict "value" .Values.extraVolumes "context" $ ) | nindent 8 }}
       {{- end }}
