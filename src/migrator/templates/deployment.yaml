@@ -120,7 +120,6 @@ spec:
               mountPath: /mongo
           {{- end }}
           {{- if .Values.extraVolumeMounts }}
-          volumeMounts:
           {{- include "harnesscommon.tplvalues.render" (dict "value" .Values.extraVolumeMounts "context" $) | nindent 12 }}
           {{- end }}
           resources:
