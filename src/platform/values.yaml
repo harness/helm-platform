@@ -182,7 +182,7 @@ learning-engine:
 
 log-service:
   image:
-    tag: "release-61-ubi"
+    tag: "release-65-ubi"
   replicaCount: 1
   resources:
     limits:
@@ -374,7 +374,7 @@ redis:
 scm-service:
   appLogLevel: INFO
   image:
-    tag: "release-127-ubi"
+    tag: "release-150-ubi"
   replicaCount: 1
   resources:
     limits:
