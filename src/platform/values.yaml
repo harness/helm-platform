@@ -229,7 +229,7 @@ migrator:
     requests:
       cpu: 2
       memory: 3000Mi
-  version: 1.0.100440
+  version: 1.0.100476
 
 minio:
   fullnameOverride: "minio"
