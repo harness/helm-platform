@@ -148,7 +148,9 @@ harness-manager:
   autoscaling:
     enabled: false
   image:
-    tag: "79418"
+    registry: us.gcr.io
+    repository: platform-205701/harness/feature-manager-openjdk-8u242
+    tag: "70087-000"
   java:
     memory: "2048"
   replicaCount: 1
