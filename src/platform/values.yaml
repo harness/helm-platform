@@ -218,7 +218,7 @@ migrator:
   autoscaling:
     enabled: false
   image:
-    tag: "100440-000"
+    tag: "100476-000"
   java:
     memory: "2048"
   replicaCount: 1
