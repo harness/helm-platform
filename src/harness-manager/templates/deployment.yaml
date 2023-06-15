@@ -103,7 +103,7 @@ spec:
             - containerPort: {{.Values.service.grpcport}}
               protocol: TCP
           readinessProbe:
-            failureThreshold: 20
+            failureThreshold: 6
             httpGet:
               path: /api/health
               port: {{.Values.service.port}}
