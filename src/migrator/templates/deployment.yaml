@@ -119,8 +119,14 @@ spec:
             - name: mongo-ssl-certs
               mountPath: /mongo
           {{- end }}
+          {{- if .Values.extraVolumeMounts }}
+          {{- include "harnesscommon.tplvalues.render" (dict "value" .Values.extraVolumeMounts "context" $) | nindent 12 }}
+          {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          {{- if .Values.lifecycleHooks }}
+          lifecycle: {{- include "harnesscommon.tplvalues.render" (dict "value" .Values.lifecycleHooks "context" $) | nindent 12 }}
+          {{- end }}
       volumes:
         - name: dynamic-iterator-config
           configMap:
@@ -132,6 +138,9 @@ spec:
         - name: mongo-ssl-certs
           secret:
             secretName: mongodb-replicaset-ssl-cert
+      {{- end }}
+      {{- if .Values.extraVolumes }}
+      {{- include "harnesscommon.tplvalues.render" ( dict "value" .Values.extraVolumes "context" $ ) | nindent 8 }}
       {{- end }}
       affinity:
         podAntiAffinity:

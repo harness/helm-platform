@@ -1,6 +1,6 @@
 # gateway
 
-![Version: 0.3.3](https://img.shields.io/badge/Version-0.3.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
+![Version: 0.3.4](https://img.shields.io/badge/Version-0.3.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
 
 A Helm chart for Kubernetes
 
@@ -16,10 +16,13 @@ A Helm chart for Kubernetes
 |-----|------|---------|-------------|
 | additionalConfigs | object | `{}` |  |
 | affinity | object | `{}` |  |
-| autoscaling.enabled | bool | `true` |  |
+| autoscaling.enabled | bool | `false` |  |
 | autoscaling.maxReplicas | int | `100` |  |
 | autoscaling.minReplicas | int | `1` |  |
-| autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
+| autoscaling.targetCPU | string | `""` |  |
+| autoscaling.targetMemory | string | `""` |  |
+| extraVolumeMounts | list | `[]` |  |
+| extraVolumes | list | `[]` |  |
 | fullnameOverride | string | `""` |  |
 | global.database.mongo.extraArgs | string | `""` |  |
 | global.database.mongo.hosts | list | `[]` | provide default values if mongo.installed is set to false |
@@ -44,7 +47,14 @@ A Helm chart for Kubernetes
 | global.database.timescaledb.userKey | string | `""` |  |
 | global.ha | bool | `false` |  |
 | global.imagePullSecrets | list | `[]` |  |
-| global.loadbalancerURL | string | `"http://test/abc"` |  |
+| global.ingress | object | `{"enabled":false,"ingressGatewayServiceUrl":"","nginx":{"create":false}}` | Ingress controller configuration |
+| global.ingress.enabled | bool | `false` | set to true to install ingress rules |
+| global.ingress.ingressGatewayServiceUrl | string | `""` | set to ingress controller's k8s service FQDN for internal use case. eg "internal-nginx.default.svc.cluster.local" If not set, internal request routing would happen via global.loadbalancerUrl |
+| global.istio | object | `{"enabled":false,"istioGatewayServiceUrl":""}` | Istio configuration |
+| global.istio.enabled | bool | `false` | set to true to install VirtualService manifests |
+| global.istio.istioGatewayServiceUrl | string | `""` | set to istio gateway's k8s service FQDN for internal use case. eg "internal-istio-gateway.istio-system.svc.cluster.local" If not set, internal request routing would happen via global.loadbalancerUrl |
+| global.kubeVersion | string | `""` |  |
+| global.loadbalancerURL | string | `"http://test/abc"` | URL of the public endpoint to access harness UI |
 | image.digest | string | `""` |  |
 | image.imagePullSecrets | list | `[]` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
