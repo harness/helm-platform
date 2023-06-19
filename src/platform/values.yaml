@@ -122,7 +122,7 @@ delegate-proxy:
 
 gateway:
   image:
-    tag: "10701"
+    tag: "11002"
   java:
     memory: 512
   replicaCount: 1
