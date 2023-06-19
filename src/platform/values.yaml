@@ -168,7 +168,7 @@ le-nextgen:
   autoscaling:
     enabled: false
   image:
-    tag: "67901"
+    tag: "67902"
   replicaCount: 1
   resources:
     limits:
