@@ -76,6 +76,8 @@ spec:
               value: {{ include "harnesscommon.dbconnection.mongoConnection" (dict "database" "change-data-capture" "context" $) }}
             - name: NG_HARNESS_MONGO_URI
               value: {{ include "harnesscommon.dbconnection.mongoConnection" (dict "database" "ng-harness" "context" $) }}
+            - name: CVNG_MONGO_URI
+              value: {{ include "harnesscommon.dbconnection.mongoConnection" (dict "database" "cvng-harness" "context" $) }}
             - name: TIMESCALEDB_URI
               value: 'jdbc:postgresql://timescaledb-single-chart.{{ .Release.Namespace }}:5432/harness'
           envFrom:
