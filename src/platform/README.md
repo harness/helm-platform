@@ -241,12 +241,12 @@ dependencies:
 | template-service.resources.requests.memory | string | `"1400Mi"` |  |
 | ti-service.appLogLevel | string | `"INFO"` |  |
 | ti-service.autoscaling.enabled | bool | `false` |  |
-| ti-service.image.tag | string | `"release-172"` |  |
+| ti-service.image.tag | string | `"release-177"` |  |
 | ti-service.jobresources.limits.cpu | int | `1` |  |
 | ti-service.jobresources.limits.memory | string | `"3072Mi"` |  |
 | ti-service.jobresources.requests.cpu | int | `1` |  |
 | ti-service.jobresources.requests.memory | string | `"3072Mi"` |  |
-| ti-service.jobs.migrate.image.tag | string | `"release-172"` |  |
+| ti-service.jobs.migrate.image.tag | string | `"release-177"` |  |
 | ti-service.replicaCount | int | `1` |  |
 | ti-service.resources.limits.cpu | int | `1` |  |
 | ti-service.resources.limits.memory | string | `"3072Mi"` |  |
