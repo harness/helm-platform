@@ -73,6 +73,7 @@ spec:
             containerPort: {{.Values.service.port}}
             protocol: "TCP"
           env:
+          {{- include "harnesscommon.dbconnection.redisEnv" (dict "context" .Values.global.database.redis "userVariableName" "EVENTS_FRAMEWORK_REDIS_USERNAME" "passwordVariableName" "EVENTS_FRAMEWORK_REDIS_PASSWORD") | indent 10 }}
           {{- include "harnesscommon.dbconnection.mongoEnv" . | indent 10 }}
           - name: TI_SERVICE_MONGODB_CONN_STR
             value: {{ include "harnesscommon.dbconnection.mongoConnection" (dict "database" "ti-harness" "context" $) }}

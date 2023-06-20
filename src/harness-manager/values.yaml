@@ -2,6 +2,7 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 global:
+  kubeVersion: ""
   loadbalancerURL: ""
   database:
     postgres:
@@ -41,6 +42,16 @@ global:
       extraArgs: ""
       certName: ""
       certKey: ""
+    redis:
+      installed: true
+      protocol: "redis"
+      # --  provide default values if redis.installed is set to false
+      hosts:
+        - redis:6379
+      secretName: "redis-secret"
+      userKey: "redis-user"
+      passwordKey: "redis-password"
+      extraArgs: ""
   mongoSSL: false
   license:
     cg: ''
@@ -195,11 +206,11 @@ resources:
     memory: 3000Mi
 
 autoscaling:
-  enabled: true
+  enabled: false
   minReplicas: 1
   maxReplicas: 100
-  targetCPUUtilizationPercentage: 80
-  # targetMemoryUtilizationPercentage: 80
+  targetCPU: ""
+  targetMemory: ""
 
 nodeSelector: {}
 
@@ -219,7 +230,7 @@ featureFlags:
   # -- STO Feature Flags
   CD: ""
   # -- STO Feature Flags
-  CI: "CING_ENABLED,CI_INDIRECT_LOG_UPLOAD,CI_LE_STATUS_REST_ENABLED"
+  CI: "CING_ENABLED,CI_INDIRECT_LOG_UPLOAD"
   # -- STO Feature Flags
   STO: "SECURITY,SECURITY_STAGE,STO_CI_PIPELINE_SECURITY,STO_API_V2"
   # -- SRM Flags
@@ -244,3 +255,30 @@ featureFlags:
   ADDITIONAL: ""
 
 additionalConfigs: {}
+# extraVolumes:
+  # - name: volume-test
+  #   configMap:
+  #     name: test-config
+  #     readOnly: true
+extraVolumes: []
+
+# extraVolumeMounts:
+#   - name: test-volume-mount
+#     mountPath: /opt/harness/config
+extraVolumeMounts: []
+
+# lifecycleHooks:
+#   postStart:
+#     exec:
+#       command:
+#   preStop:
+#     exec:
+#       command:
+        
+lifecycleHooks:
+  preStop:
+    exec:
+      command:
+        - touch
+        - shutdown
+            

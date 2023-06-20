@@ -65,7 +65,6 @@ spec:
                 name: smtp-secret
             {{- end }}
           env:
-            {{- include "harnesscommon.dbconnection.mongoEnv" . | indent 12 }}
             {{- if .Values.global.database.timescaledb.installed }}
             - name : TIMESCALEDB_PASSWORD
               valueFrom:
@@ -89,6 +88,10 @@ spec:
                   name: {{ .Values.global.database.timescaledb.certName }}
                   key: {{ .Values.global.database.timescaledb.certKey }}
             {{- end }}
+            {{- include "harnesscommon.dbconnection.redisEnv" (dict "context" .Values.global.database.redis "userVariableName" "EVENTS_FRAMEWORK_REDIS_USERNAME" "passwordVariableName" "EVENTS_FRAMEWORK_REDIS_PASSWORD") | indent 12 }}
+            {{- include "migrator.mongoEnv" . | nindent 12 }}
+            - name: MONGO_URI
+              value: {{ include "migrator.mongoConnection" . }}
             - name: MONGO_URI
               value: {{ include "harnesscommon.dbconnection.mongoConnection" (dict "database" "harness" "context" $) }}
           image: {{ include "common.images.image" (dict "imageRoot" .Values.image "global" .Values.global) }}
@@ -138,8 +141,14 @@ spec:
             - name: mongo-ssl-certs
               mountPath: /mongo
           {{- end }}
+          {{- if .Values.extraVolumeMounts }}
+          {{- include "harnesscommon.tplvalues.render" (dict "value" .Values.extraVolumeMounts "context" $) | nindent 12 }}
+          {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          {{- if .Values.lifecycleHooks }}
+          lifecycle: {{- include "harnesscommon.tplvalues.render" (dict "value" .Values.lifecycleHooks "context" $) | nindent 12 }}
+          {{- end }}
       volumes:
         - name: dynamic-iterator-config
           configMap:
@@ -151,6 +160,9 @@ spec:
         - name: mongo-ssl-certs
           secret:
             secretName: mongodb-replicaset-ssl-cert
+      {{- end }}
+      {{- if .Values.extraVolumes }}
+      {{- include "harnesscommon.tplvalues.render" ( dict "value" .Values.extraVolumes "context" $ ) | nindent 8 }}
       {{- end }}
       affinity:
         podAntiAffinity:
