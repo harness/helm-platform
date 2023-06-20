@@ -429,7 +429,7 @@ ti-service:
   jobs:
     migrate:
       image:
-        tag: release-172
+        tag: release-177
   replicaCount: 1
   resources:
     limits:
