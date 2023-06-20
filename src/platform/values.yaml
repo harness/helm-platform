@@ -182,7 +182,7 @@ learning-engine:
   autoscaling:
     enabled: false
   image:
-    tag: "67902"
+    tag: "67903"
   replicaCount: 1
   resources:
     limits:
