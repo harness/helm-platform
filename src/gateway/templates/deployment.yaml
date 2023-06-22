@@ -31,11 +31,16 @@ spec:
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       terminationGracePeriodSeconds: 30
-      {{- if .Values.global.mongoSSL }}
+      {{- if or .Values.global.mongoSSL .Values.extraVolumes}}
       volumes:
+      {{- if .Values.global.mongoSSL }}
         - name: mongo-ssl-certs
           secret:
             secretName: mongodb-replicaset-ssl-cert
+      {{- end }}
+      {{- if .Values.extraVolumes }}
+      {{- include "harnesscommon.tplvalues.render" ( dict "value" .Values.extraVolumes "context" $ ) | nindent 8 }}
+      {{- end }}
       {{- end }}
       initContainers:
       {{- if .Values.global.database.mongo.installed }}
@@ -62,15 +67,17 @@ spec:
             httpGet:
               path: /actuator/health
               port: gateway-port
-            initialDelaySeconds: 120
-            periodSeconds: 10
+            initialDelaySeconds: 25
+            periodSeconds: 5
+            failureThreshold: 3
           livenessProbe:
             httpGet:
-              path: /actuator/health
+              path: /api/liveness
               port: gateway-port
-            initialDelaySeconds: 180
-            periodSeconds: 20
-            failureThreshold: 2
+            initialDelaySeconds: 100
+            periodSeconds: 60
+            failureThreshold: 5
+            timeoutSeconds: 10
           ports:
           - name: gateway-port
             containerPort: {{.Values.service.port}}
@@ -84,6 +91,13 @@ spec:
           envFrom:
           - configMapRef:
               name: gateway
+          {{- if .Values.lifecycleHooks }}
+          lifecycle: {{- include "harnesscommon.tplvalues.render" (dict "value" .Values.lifecycleHooks "context" $) | nindent 12 }}
+          {{- end }}
+          {{- if .Values.extraVolumeMounts }}
+          volumeMounts:
+          {{- include "harnesscommon.tplvalues.render" (dict "value" .Values.extraVolumeMounts "context" $) | nindent 12 }}
+          {{- end }}
       affinity:
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:

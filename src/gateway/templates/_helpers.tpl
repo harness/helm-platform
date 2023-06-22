@@ -64,3 +64,13 @@ Create the name of the service account to use
 {{- define "gateway.pullSecrets" -}}
 {{ include "common.images.pullSecrets" (dict "images" (list .Values.image .Values.waitForInitContainer.image) "global" .Values.global ) }}
 {{- end -}}
+
+{{- define "gateway.managerUrl" -}}
+{{- $managerUrl := (default .Values.loadbalancerURL .Values.global.loadbalancerURL) }}
+{{- if .Values.global.ingress.enabled -}}
+{{- $managerUrl = (default $managerUrl .Values.global.ingress.ingressGatewayServiceUrl) -}}
+{{- else -}}
+{{- $managerUrl = (default $managerUrl .Values.global.istio.istioGatewayServiceUrl) -}}
+{{- end -}}
+{{- printf "%s" $managerUrl -}}
+{{- end -}}
