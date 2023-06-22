@@ -40,6 +40,8 @@ global:
       userKey: ""
       passwordKey: ""
       extraArgs: ""
+      certName: ""
+      certKey: ""
   ha: false
   imagePullSecrets: []
   stackDriverLoggingEnabled: false

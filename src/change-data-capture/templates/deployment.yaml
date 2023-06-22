@@ -59,13 +59,8 @@ spec:
               {{- toYaml .Values.securityContext | nindent 12 }}
           env:
             {{- include "harnesscommon.dbconnection.mongoEnv" . | indent 12 }}
-            - name : TIMESCALEDB_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: {{ .Values.timescaleSecret.password.name }}
-                  key: {{ .Values.timescaleSecret.password.key }}
-            - name: TIMESCALEDB_USERNAME
-              value: postgres
+            {{- include "harnesscommon.dbconnection.timescaleEnv" (dict "passwordVariableName" "TIMESCALEDB_PASSWORD" "userVariableName" "TIMESCALEDB_USERNAME" "context" $) | indent 12}}
+            {{- include "harnesscommon.dbconnection.timescaleSslEnv" (dict "sslModeValue" "require" "certVariableName" "TIMESCALEDB_SSL_ROOT_CERT" "context" $ ) | nindent 12 }}
             - name: MONGO_URI
               value: {{ include "harnesscommon.dbconnection.mongoConnection" (dict "database" "harness" "context" $) }}
             - name: EVENTS_MONGO_URI
@@ -77,7 +72,7 @@ spec:
             - name: NG_HARNESS_MONGO_URI
               value: {{ include "harnesscommon.dbconnection.mongoConnection" (dict "database" "ng-harness" "context" $) }}
             - name: TIMESCALEDB_URI
-              value: 'jdbc:postgresql://timescaledb-single-chart.{{ .Release.Namespace }}:5432/harness'
+              value: {{ include "harnesscommon.dbconnection.timescaleConnection" (dict "protocol" "jdbc:postgresql" "database" "harness" "context" $) }}
             {{- if .Values.extraEnvVars }}
             {{- include "harnesscommon.tplvalues.render" (dict "value" .Values.extraEnvVars "context" $) | nindent 12 }}
             {{- end }}
