@@ -42,7 +42,7 @@ spec:
         args:
           - "pod"
           - "-lapp=mongodb-replicaset"
-      {{- end }}    
+      {{- end }}
       - name: wait-for-timescale
         image: {{ include "common.images.image" (dict "imageRoot" .Values.waitForInitContainer.image "global" .Values.global) }}
         imagePullPolicy: IfNotPresent
@@ -68,6 +68,8 @@ spec:
         resources:
           {{- toYaml .Values.resources | nindent 12 }}
         env:
+          {{- include "harnesscommon.dbconnection.redisEnv" (dict "context" .Values.global.database.redis "userVariableName" "EVENTS_FRAMEWORK_REDIS_USERNAME" "passwordVariableName" "EVENTS_FRAMEWORK_REDIS_PASSWORD") | indent 10 }}
+          {{- include "harnesscommon.dbconnection.redisEnv" (dict "context" .Values.global.database.redis "userVariableName" "LOCK_CONFIG_REDIS_USERNAME" "passwordVariableName" "LOCK_CONFIG_REDIS_PASSWORD") | indent 10 }}
           {{- include "harnesscommon.dbconnection.mongoEnv" . | indent 10 }}
           - name : TIMESCALE_PASSWORD
             valueFrom:
@@ -82,6 +84,13 @@ spec:
             value: postgres
           - name: TIMESCALE_URI
             value: 'jdbc:postgresql://timescaledb-single-chart.{{ .Release.Namespace }}:5432/harness'
+        {{- if .Values.lifecycleHooks }}
+        lifecycle: {{- include "harnesscommon.tplvalues.render" (dict "value" .Values.lifecycleHooks "context" $) | nindent 12 }}
+        {{- end }}
+        {{- if .Values.extraVolumeMounts }}
+        volumeMounts:
+        {{- include "harnesscommon.tplvalues.render" (dict "value" .Values.extraVolumeMounts "context" $) | nindent 12 }}
+        {{- end }} 
         envFrom:
         - configMapRef:
             name: pipeline-service
@@ -106,4 +115,8 @@ spec:
       {{- with .Values.tolerations }}
       tolerations:
         {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- if .Values.extraVolumes }}
+      volumes:
+      {{- include "harnesscommon.tplvalues.render" ( dict "value" .Values.extraVolumes "context" $ ) | nindent 8 }}
       {{- end }}
