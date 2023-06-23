@@ -84,6 +84,16 @@ spec:
                 key: {{ .Values.tiServiceTimescaleSecret.password.key }}
           - name: TSDB_URL
             value: 'postgres://postgres:$(TI_SERVICE_TIMESCALE_PASSWORD)@timescaledb-single-chart.{{ .Release.Namespace }}:5432/harnessti?sslmode=disable '
+          {{- if .Values.extraEnvVars }}
+            {{- include "harnesscommon.tplvalues.render" (dict "value" .Values.extraEnvVars "context" $) | nindent 10 }}
+          {{- end }}
+          {{- if .Values.lifecycleHooks }}
+          lifecycle: {{- include "harnesscommon.tplvalues.render" (dict "value" .Values.lifecycleHooks "context" $) | nindent 12 }}
+          {{- end }}
+          {{- if .Values.extraVolumeMounts }}
+          volumeMounts:
+          {{- include "harnesscommon.tplvalues.render" (dict "value" .Values.extraVolumeMounts "context" $) | nindent 10 }}
+          {{- end }} 
           envFrom:
           - configMapRef:
               name: ti-service
@@ -107,4 +117,8 @@ spec:
       {{- with .Values.tolerations }}
       tolerations:
         {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- if .Values.extraVolumes }}
+      volumes:
+      {{- include "harnesscommon.tplvalues.render" ( dict "value" .Values.extraVolumes "context" $ ) | nindent 8 }}
       {{- end }}

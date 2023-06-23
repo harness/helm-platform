@@ -165,3 +165,10 @@ extraVolumeMounts: []
 #   preStop:
 #     exec:
 #       command:
+
+# extraEnvVars:
+# - name: POD_NAME
+#   valueFrom:
+#     fieldRef:
+#       fieldPath: metadata.name
+extraEnvVars: []
