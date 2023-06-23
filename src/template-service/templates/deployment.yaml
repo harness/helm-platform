@@ -82,6 +82,16 @@ spec:
                 key: {{ .Values.timescaleSecret.password.key }}
           - name: MONGO_URI
             value: {{ include "harnesscommon.dbconnection.mongoConnection" (dict "database" "template-harness" "context" $) }}
+          {{- if .Values.extraEnvVars }}
+            {{- include "harnesscommon.tplvalues.render" (dict "value" .Values.extraEnvVars "context" $) | nindent 10 }}
+          {{- end }}
+        {{- if .Values.lifecycleHooks }}
+        lifecycle: {{- include "harnesscommon.tplvalues.render" (dict "value" .Values.lifecycleHooks "context" $) | nindent 10 }}
+        {{- end }}
+        {{- if .Values.extraVolumeMounts }}
+        volumeMounts:
+        {{- include "harnesscommon.tplvalues.render" (dict "value" .Values.extraVolumeMounts "context" $) | nindent 10 }}
+        {{- end }} 
         envFrom:
         - configMapRef:
             name: template-service
@@ -121,4 +131,8 @@ spec:
       {{- with .Values.tolerations }}
       tolerations:
         {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- if .Values.extraVolumes }}
+      volumes:
+      {{- include "harnesscommon.tplvalues.render" ( dict "value" .Values.extraVolumes "context" $ ) | nindent 8 }}
       {{- end }}

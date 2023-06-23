@@ -278,4 +278,11 @@ lifecycleHooks:
       command:
         - touch
         - shutdown
+
+# extraEnvVars:
+# - name: POD_NAME
+#   valueFrom:
+#     fieldRef:
+#       fieldPath: metadata.name
+extraEnvVars: []
             
