@@ -71,7 +71,7 @@ data:
 
 
   # for client
-  ENABLE_ACCESS_CONTROL: 'false'
+  ENABLE_ACCESS_CONTROL: 'true'
   ACCESS_CONTROL_SERVICE_BASE_URL: 'http://access-control.{{ .Release.Namespace }}.svc.cluster.local:9006/api/'
   ENABLE_AUDIT: 'true'
   AUDIT_CLIENT_BASE_URL: 'http://platform-service.{{ .Release.Namespace }}.svc.cluster.local:9005/api/'
