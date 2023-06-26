@@ -4,7 +4,7 @@ dependencies:
   version: 0.3.5
 - name: change-data-capture
   repository: file://../change-data-capture
-  version: 0.3.1
+  version: 0.3.2
 - name: cv-nextgen
   repository: file://../cv-nextgen
   version: 0.3.2
@@ -31,7 +31,7 @@ dependencies:
   version: 0.3.0
 - name: migrator
   repository: file://../migrator
-  version: 0.3.2
+  version: 0.3.3
 - name: minio
   repository: https://charts.bitnami.com/bitnami
   version: 12.6.3
@@ -46,7 +46,7 @@ dependencies:
   version: 0.3.1
 - name: ng-manager
   repository: file://../ng-manager
-  version: 0.3.7
+  version: 0.3.8
 - name: pipeline-service
   repository: file://../pipeline-service
   version: 0.3.4
@@ -55,7 +55,7 @@ dependencies:
   version: 0.3.2
 - name: redis
   repository: https://harness.github.io/helm-redis
-  version: 0.2.7
+  version: 0.2.9
 - name: scm-service
   repository: file://../scm-service
   version: 0.3.1
@@ -67,12 +67,12 @@ dependencies:
   version: 0.3.2
 - name: timescaledb
   repository: https://harness.github.io/helm-timescaledb
-  version: 0.2.20
+  version: 0.2.22
 - name: ui
   repository: file://../ui
   version: 0.4.1
 - name: verification-svc
   repository: file://../verification-svc
   version: 0.4.4
-digest: sha256:062a8265091a4a10507819e1edc588e481a0dd4e26cd71c4ae8addfeeb997178
-generated: "2023-06-15T17:54:37.858968-04:00"
+digest: sha256:1285534589f95264b783391b6a1052437af1c800ed70ef7a5d24ab1c677714e2
+generated: "2023-06-26T16:20:36.018855-04:00"
