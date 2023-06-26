@@ -84,6 +84,9 @@ spec:
             value: postgres
           - name: TIMESCALE_URI
             value: 'jdbc:postgresql://timescaledb-single-chart.{{ .Release.Namespace }}:5432/harness'
+          {{- if .Values.extraEnvVars }}
+            {{- include "harnesscommon.tplvalues.render" (dict "value" .Values.extraEnvVars "context" $) | nindent 12 }}
+          {{- end }}
         {{- if .Values.lifecycleHooks }}
         lifecycle: {{- include "harnesscommon.tplvalues.render" (dict "value" .Values.lifecycleHooks "context" $) | nindent 12 }}
         {{- end }}

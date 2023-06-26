@@ -53,6 +53,9 @@ spec:
               value: {{ include "harnesscommon.dbconnection.mongoConnection" (dict "database" "notifications" "context" $) }}
             - name: PMS_MONGO_URI
               value: {{ include "harnesscommon.dbconnection.mongoConnection" (dict "database" "pms-harness" "context" $) }}
+            {{- if .Values.extraEnvVars }}
+            {{- include "harnesscommon.tplvalues.render" (dict "value" .Values.extraEnvVars "context" $) | nindent 12 }}
+            {{- end }}
           envFrom:
             - configMapRef:
                 name: cv-nextgen
