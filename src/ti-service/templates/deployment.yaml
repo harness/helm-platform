@@ -94,6 +94,18 @@ spec:
           envFrom:
           - configMapRef:
               name: ti-service
+        {{- if not .Values.global.database.timescaledb.installed }}
+          volumeMounts:
+          - name: timescaledb-cert
+            mountPath: /opt/harness/svc
+      volumes:
+      - name: timescaledb-cert
+        secret:
+          secretName: {{ .Values.global.database.timescaledb.certName }}
+          items:
+          - key: {{ .Values.global.database.timescaledb.certKey }}
+            path: timescale_ca.pem
+      {{- end }}
       affinity:
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:

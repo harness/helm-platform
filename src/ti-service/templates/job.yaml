@@ -33,6 +33,18 @@ spec:
             value: {{ include "harnesscommon.dbconnection.timescaleHost" (dict "context" $) }}
           - name: TI_SERVICE_TIMESCALE_PORT
             value: {{ include "harnesscommon.dbconnection.timescalePort" (dict "context" $) | quote }}
+      {{- if not .Values.global.database.timescaledb.installed }}
+        volumeMounts:
+          - name: timescaledb-cert
+            mountPath: /opt/harness/svc
+      volumes:
+      - name: timescaledb-cert
+        secret:
+          secretName: {{ .Values.global.database.timescaledb.certName }}
+          items:
+          - key: {{ .Values.global.database.timescaledb.certKey }}
+            path: timescale_ca.pem
+      {{- end }}  
       restartPolicy: Never
       {{- if .Values.nodeSelector }}
       nodeSelector:
