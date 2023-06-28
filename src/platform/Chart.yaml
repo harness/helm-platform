@@ -106,7 +106,7 @@ dependencies:
     version: 0.3.x
     repository: "file://../ti-service"
   - name: timescaledb
-    condition: global.database.timescaledb.installed
+    condition: timescaledb.enabled
     version: 0.2.x
     repository: "https://harness.github.io/helm-timescaledb"
   - name: ui
