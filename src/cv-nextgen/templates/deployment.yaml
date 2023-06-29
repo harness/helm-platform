@@ -51,8 +51,8 @@ spec:
             - name: TIMESCALEDB_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: { { .Values.timescaleSecret.password.name } }
-                  key: { { .Values.timescaleSecret.password.key } }
+                  name: {{ .Values.timescaleSecret.password.name }}
+                  key: {{ .Values.timescaleSecret.password.key }}
             - name: TIMESCALEDB_USERNAME
               value: postgres
             - name: TIMESCALEDB_URI

@@ -75,6 +75,11 @@ mongoSecrets:
     name: mongodb-replicaset-chart
     key: mongodb-root-password
 
+timescaleSecret:
+  password:
+    name: harness-secrets
+    key: timescaledbPostgresPassword
+
 waitForInitContainer:
   image:
     registry: docker.io
