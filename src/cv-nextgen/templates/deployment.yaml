@@ -55,7 +55,7 @@ spec:
                   key: {{ .Values.timescaleSecret.password.key }}
             - name: TIMESCALEDB_USERNAME
               value: postgres
-            - name: TIMESCALEDB_URI
+            - name: TIMESCALE_URI
               value: 'jdbc:postgresql://timescaledb-single-chart.{{ .Release.Namespace }}:5432/harness'
             - name: MONGO_URI
               value: {{ include "harnesscommon.dbconnection.mongoConnection" (dict "database" "cvng-harness" "context" $) }}
