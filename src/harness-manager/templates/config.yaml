@@ -38,7 +38,7 @@ data:
   REDIS_URL: 'redis://localhost:6379'
   REDIS_MASTER_NAME: 'harness-redis'
   REDIS_SENTINELS: 'redis://redis-sentinel-harness-announce-0.{{ .Release.Namespace }}:26379,redis://redis-sentinel-harness-announce-1.{{ .Release.Namespace }}:26379,redis://redis-sentinel-harness-announce-2.{{ .Release.Namespace }}:26379'
-  REDIS_NETTY_THREADS: "32"
+  REDIS_NETTY_THREADS: {{ .Values.redisConfig.nettyThreads | quote }}
   SERVER_PORT: "9090"
   SERVICE_ACC: /opt/harness/svc/service_acc.json
   VERSION: {{ .Values.version }}
