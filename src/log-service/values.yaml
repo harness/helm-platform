@@ -6,6 +6,15 @@ global:
   loadbalancerURL: ""
   imagePullSecrets: []
 
+redis:
+   endpoint: "test"
+   secretName: ""
+   userKey: "user"
+   passwordKey: "password"
+   certPath: ""
+   sslEnabled: false
+   disableWatcher: false
+
 s3:
   ### Default values are configured to work with Minio, override if you are using own s3 buckets
   endpoint: ""
