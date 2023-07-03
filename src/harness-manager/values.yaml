@@ -166,6 +166,9 @@ upgrader_docker_image:
 
 appLogLevel: INFO
 
+redisConfig:
+  nettyThreads: "32"
+  
 java:
   memory: "2048"
 
