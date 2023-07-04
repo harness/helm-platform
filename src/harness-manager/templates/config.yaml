@@ -34,10 +34,10 @@ data:
   HZ_CLUSTER_NAME: harness-manager
   LOGGING_LEVEL: '{{ .Values.appLogLevel }}'
   MEMORY: {{ .Values.java.memory | quote }}
-  REDIS_SENTINEL: "true"
-  REDIS_URL: 'redis://localhost:6379'
+  REDIS_SENTINEL: {{ .Values.global.database.redis.installed  | quote }}
+  REDIS_URL: {{ include "harnesscommon.dbconnection.redisConnection" (dict "context" .Values.global.database.redis) }}
   REDIS_MASTER_NAME: 'harness-redis'
-  REDIS_SENTINELS: 'redis://redis-sentinel-harness-announce-0.{{ .Release.Namespace }}:26379,redis://redis-sentinel-harness-announce-1.{{ .Release.Namespace }}:26379,redis://redis-sentinel-harness-announce-2.{{ .Release.Namespace }}:26379'
+  REDIS_SENTINELS: {{ include "harnesscommon.dbconnection.redisConnection" (dict "context" .Values.global.database.redis) }}
   REDIS_NETTY_THREADS: {{ .Values.redisConfig.nettyThreads | quote }}
   SERVER_PORT: "9090"
   SERVICE_ACC: /opt/harness/svc/service_acc.json
