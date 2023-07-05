@@ -63,9 +63,9 @@ spec:
             value: {{ .Values.redis.disableWatcher | quote }}
           - name: LOG_SERVICE_REDIS_PASSWORD
             valueFrom:
-            secretKeyRef:
-              name: {{ .Values.redis.secretName }}
-              key: {{ .Values.redis.passwordKey }}
+              secretKeyRef:
+                name: {{ .Values.redis.secretName }}
+                key: {{ .Values.redis.passwordKey }}
           {{- end }}
         livenessProbe:
           httpGet:
