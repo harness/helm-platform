@@ -46,6 +46,7 @@ spec:
               {{- toYaml .Values.securityContext | nindent 12 }}
           env:
             {{- include "harnesscommon.dbconnection.redisEnv" (dict "context" .Values.global.database.redis "userVariableName" "EVENTS_FRAMEWORK_REDIS_USERNAME" "passwordVariableName" "EVENTS_FRAMEWORK_REDIS_PASSWORD") | indent 12 }}
+            {{- include "harnesscommon.dbconnection.redisEnv" (dict "context" .Values.global.database.redis "userVariableName" "LOCK_CONFIG_REDIS_USERNAME" "passwordVariableName" "LOCK_CONFIG_REDIS_PASSWORD") | indent 12 }}
             {{- include "harnesscommon.dbconnection.mongoEnv" . | indent 12 }}
             - name: TIMESCALE_PASSWORD
               valueFrom:
@@ -62,6 +63,9 @@ spec:
               value: {{ include "harnesscommon.dbconnection.mongoConnection" (dict "database" "notifications" "context" $) }}
             - name: PMS_MONGO_URI
               value: {{ include "harnesscommon.dbconnection.mongoConnection" (dict "database" "pms-harness" "context" $) }}
+            {{- if .Values.extraEnvVars }}
+            {{- include "harnesscommon.tplvalues.render" (dict "value" .Values.extraEnvVars "context" $) | nindent 12 }}
+            {{- end }}
           envFrom:
             - configMapRef:
                 name: cv-nextgen

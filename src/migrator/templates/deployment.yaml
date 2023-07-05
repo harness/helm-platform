@@ -73,6 +73,9 @@ spec:
               value: {{ include "migrator.mongoConnection" . }}
             - name: TIMESCALEDB_URI
               value: {{ include "harnesscommon.dbconnection.timescaleConnection" (dict "protocol" "jdbc:postgresql" "database" "harness" "context" $) }}
+            {{- if .Values.extraEnvVars }}
+            {{- include "harnesscommon.tplvalues.render" (dict "value" .Values.extraEnvVars "context" $) | nindent 12 }}
+            {{- end }}
           image: {{ include "common.images.image" (dict "imageRoot" .Values.image "global" .Values.global) }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           securityContext:

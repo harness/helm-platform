@@ -78,6 +78,7 @@ spec:
             protocol: "TCP"
           env:
             {{- include "harnesscommon.dbconnection.redisEnv" (dict "context" .Values.global.database.redis "userVariableName" "EVENTS_CONFIG_REDIS_USERNAME" "passwordVariableName" "EVENTS_CONFIG_REDIS_PASSWORD") | indent 12 }}
+            {{- include "harnesscommon.dbconnection.redisEnv" (dict "context" .Values.global.database.redis "userVariableName" "LOCK_CONFIG_REDIS_USERNAME" "passwordVariableName" "LOCK_CONFIG_REDIS_PASSWORD") | indent 12 }}
             {{- include "harnesscommon.dbconnection.mongoEnv" . | indent 12 }}
             {{- if .Values.global.database.mongo.installed }}
             - name: MONGODB_USER
@@ -110,6 +111,9 @@ spec:
               value: {{ include "harnesscommon.dbconnection.mongoConnection" (dict "database" "accesscontrol" "context" $) }}
             - name: IDENTITY_SERVICE_SECRET
               value: 'HVSKUYqD4e5Rxu12hFDdCJKGM64sxgEynvdDhaOHaTHhwwn0K4Ttr0uoOxSsEVYNrUU='
+            {{- if .Values.extraEnvVars }}
+            {{- include "harnesscommon.tplvalues.render" (dict "value" .Values.extraEnvVars "context" $) | nindent 12 }}
+            {{- end }}
           envFrom:
           - configMapRef:
               name: access-control

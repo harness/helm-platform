@@ -40,6 +40,8 @@ global:
       userKey: ""
       passwordKey: ""
       extraArgs: ""
+      certName: ""
+      certKey: ""
   ha: false
   imagePullSecrets: []
   stackDriverLoggingEnabled: false
@@ -138,7 +140,6 @@ service:
 
 resources:
   limits:
-    cpu: 1
     memory: 2880Mi
   requests:
     cpu: 1
@@ -178,3 +179,10 @@ extraVolumeMounts: []
 #   preStop:
 #     exec:
 #       command:
+
+# extraEnvVars:
+# - name: POD_NAME
+#   valueFrom:
+#     fieldRef:
+#       fieldPath: metadata.name
+extraEnvVars: []

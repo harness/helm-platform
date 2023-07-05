@@ -127,7 +127,6 @@ service:
 
 resources:
   limits:
-    cpu: 1
     memory: 6144Mi
   requests:
     cpu: 1
@@ -167,3 +166,9 @@ extraVolumeMounts: []
 #   preStop:
 #     exec:
 #       command:
+# extraEnvVars:
+# - name: POD_NAME
+#   valueFrom:
+#     fieldRef:
+#       fieldPath: metadata.name
+extraEnvVars: []

@@ -27,15 +27,24 @@ spec:
           {{- include "harnesscommon.dbconnection.mongoEnv" . | indent 10 }}
           - name: TI_SERVICE_MONGODB_CONN_STR
             value: {{ include "harnesscommon.dbconnection.mongoConnection" (dict "database" "ti-harness" "context" $) }}
-          - name: TI_SERVICE_TIMESCALE_USERNAME
-            value: "postgres"
-          - name: TI_SERVICE_TIMESCALE_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: harness-secrets
-                key: "timescaledbPostgresPassword"
-          - name: TSDB_URL
-            value: 'postgres://postgres:$(TI_SERVICE_TIMESCALE_PASSWORD)@timescaledb-single-chart.{{ .Release.Namespace }}:5432/harnessti?sslmode=disable'
+          {{- include "harnesscommon.dbconnection.timescaleEnv" (dict "passwordVariableName" "TI_SERVICE_TIMESCALE_PASSWORD" "userVariableName" "TI_SERVICE_TIMESCALE_USERNAME" "context" $) | indent 10}}
+          {{- include "harnesscommon.dbconnection.timescaleSslEnv" (dict "sslModeVariableName" "TI_SERVICE_TIMESCALE_SSL_MODE" "sslModeValue" "verify-full" "enableSslVariableName" "TI_SERVICE_TIMESCALE_ENABLE_SSL" "certPathVariableName" "TI_SERVICE_TIMESCALE_SSL_CERT_PATH" "certPathValue" "/opt/harness/svc/timescale_ca.pem" "context" $ ) | nindent 10 }}    
+          - name: TI_SERVICE_TIMESCALE_HOST
+            value: {{ include "harnesscommon.dbconnection.timescaleHost" (dict "context" $) }}
+          - name: TI_SERVICE_TIMESCALE_PORT
+            value: {{ include "harnesscommon.dbconnection.timescalePort" (dict "context" $) | quote }}
+      {{- if not .Values.global.database.timescaledb.installed }}
+        volumeMounts:
+          - name: timescaledb-cert
+            mountPath: /opt/harness/svc
+      volumes:
+      - name: timescaledb-cert
+        secret:
+          secretName: {{ .Values.global.database.timescaledb.certName }}
+          items:
+          - key: {{ .Values.global.database.timescaledb.certKey }}
+            path: timescale_ca.pem
+      {{- end }}  
       restartPolicy: Never
       {{- if .Values.nodeSelector }}
       nodeSelector:

@@ -40,6 +40,8 @@ global:
       userKey: ""
       passwordKey: ""
       extraArgs: ""
+      certName: ""
+      certKey: ""
     redis:
       installed: true
       protocol: "redis"
@@ -130,7 +132,6 @@ service:
 
 resources:
   limits:
-    cpu: 1
     memory: 3072Mi
   requests:
     cpu: 1
@@ -138,7 +139,6 @@ resources:
 
 jobresources:
   limits:
-    cpu: 1
     memory: 3072Mi
   requests:
     cpu: 1
@@ -160,3 +160,30 @@ affinity: {}
 useSSL: false
 
 additionalConfigs: {}
+
+# extraVolumes:
+# - name: volume-test
+#   configMap:
+#     name: test-config
+#     readOnly: true
+extraVolumes: []
+
+# extraVolumeMounts:
+#   - name: test-volume-mount
+#     mountPath: /opt/harness/config
+extraVolumeMounts: []
+
+# lifecycleHooks:
+#   postStart:
+#     exec:
+#       command:
+#   preStop:
+#     exec:
+#       command:
+
+# extraEnvVars:
+# - name: POD_NAME
+#   valueFrom:
+#     fieldRef:
+#       fieldPath: metadata.name
+extraEnvVars: []

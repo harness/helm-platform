@@ -40,6 +40,8 @@ global:
       userKey: ""
       passwordKey: ""
       extraArgs: ""
+      certName: ""
+      certKey: ""
     redis:
       installed: true
       protocol: "redis"
@@ -523,7 +525,6 @@ service:
 
 resources:
   limits:
-    cpu: 2
     memory: 8192Mi
   requests:
     cpu: 2
@@ -607,3 +608,10 @@ extraVolumeMounts: []
 #   preStop:
 #     exec:
 #       command:
+
+# extraEnvVars:
+# - name: POD_NAME
+#   valueFrom:
+#     fieldRef:
+#       fieldPath: metadata.name
+extraEnvVars: []
