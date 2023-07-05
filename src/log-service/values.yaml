@@ -14,6 +14,15 @@ s3:
   accessKeyId: ""
   secretAccessKey: ""
 
+redis:
+   endpoint: "test"
+   secretName: ""
+   userKey: "user"
+   passwordKey: "password"
+   certPath: ""
+   sslEnabled: false
+   disableWatcher: false
+
 replicaCount: 1
 maxSurge: 1
 maxUnavailable: 0

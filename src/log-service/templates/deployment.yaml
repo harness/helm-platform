@@ -52,6 +52,21 @@ spec:
                 name: {{ .Values.logServiceS3SecretAccessKey.name }}
                 key: {{ .Values.logServiceS3SecretAccessKey.key }}
           {{- end }}
+          {{- if .Values.redis.endpoint }}
+          - name: LOG_SERVICE_REDIS_ENDPOINT
+            value: {{ .Values.redis.endpoint }}
+          - name: LOG_SERVICE_REDIS_SSL_ENABLED
+            value: {{ .Values.redis.sslEnabled | quote }}
+          - name: LOG_SERVICE_REDIS_SSL_CA_CERT_PATH
+            value: {{ .Values.redis.certPath }}
+          - name: LOG_SERVICE_REDIS_DISABLE_EXPIRY_WATCHER
+            value: {{ .Values.redis.disableWatcher | quote }}
+          - name: LOG_SERVICE_REDIS_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: {{ .Values.redis.secretName }}
+                key: {{ .Values.redis.passwordKey }}
+          {{- end }}
         livenessProbe:
           httpGet:
             path: /healthz
