@@ -91,6 +91,7 @@ mongoSecrets:
 
 java:
   memory: 512
+  advancedFlags: '-Dreactor.netty.ioWorkerCount=1024'
 
 nameOverride: ""
 fullnameOverride: ""
