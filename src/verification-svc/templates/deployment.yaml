@@ -62,6 +62,8 @@ spec:
             {{- include "harnesscommon.dbconnection.mongoEnv" . | indent 12 }}
             - name: MONGO_URI
               value: {{ include "harnesscommon.dbconnection.mongoConnection" (dict "database" "harness" "context" $) }}
+            - name: DMS_MONGO_URI
+              value: {{ include "harnesscommon.dbconnection.mongoConnection" (dict "database" "dms-harness" "context" $) }}
           readinessProbe:
             failureThreshold: 3
             httpGet:
