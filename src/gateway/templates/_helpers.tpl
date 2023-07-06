@@ -74,3 +74,30 @@ Create the name of the service account to use
 {{- end -}}
 {{- printf "%s" $managerUrl -}}
 {{- end -}}
+
+{{- define "gateway.redisPort" -}}
+{{- if .context.installed -}}
+  {{- printf "26379" -}}
+{{- else -}}
+  {{- $firsthost := (index .context.hosts 0) -}}
+  {{- $parts := split ":" $firsthost -}}
+  {{- printf "%s" $parts._1 -}}
+{{- end -}}
+{{- end -}}
+
+{{- define "gateway.redisHost" -}}
+{{- $extraArgs := .context.extraArgs -}}
+{{- if .context.installed -}}
+  {{- $type := "redis" -}}
+  {{- $hosts := list "redis-sentinel-harness-announce-0" "redis-sentinel-harness-announce-1" "redis-sentinel-harness-announce-2" }}
+  {{- include "harnesscommon.dbconnection.connection" (dict "type" $type "hosts" $hosts "protocol" "" "extraArgs" $extraArgs "userVariableName" .context.userVariableName "passwordVariableName" .context.passwordVariableName "connectionType" "list") }}
+{{- else -}}
+  {{- $firsthost := (index .context.hosts 0) -}}
+  {{- $parts := split ":" $firsthost -}}
+  {{- $connectionString := (include "harnesscommon.dbconnection.singleConnectString" (dict "protocol" "" "host" $parts._0 "userVariableName" .context.userVariableName "passwordVariableName" .context.passwordVariableName) ) }}
+  {{- if $extraArgs -}}
+    {{- $connectionString = (printf "%s%s" $connectionString $extraArgs ) -}}
+  {{- end -}}
+  {{- printf "%s" $connectionString -}}
+{{- end -}}
+{{- end -}}

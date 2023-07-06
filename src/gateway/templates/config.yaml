@@ -14,10 +14,11 @@ data:
   CACHE_TYPE: REDIS
   TOKEN_CACHE_TTL: '300'
   JAVA_ADVANCED_FLAGS: {{ .Values.java.advancedFlags | quote }}
-  USE_SENTINEL: 'true'
+  USE_SENTINEL: {{ .Values.global.database.redis.installed  | quote }}
   SENTINEL_MASTER_NAME: 'harness-redis'
-  REDIS_PORT: '26379'
-  REDIS_SENTINELS: 'redis-sentinel-harness-announce-0.{{ .Release.Namespace }},redis-sentinel-harness-announce-1.{{ .Release.Namespace }},redis-sentinel-harness-announce-2.{{ .Release.Namespace }}'
+  REDIS_PORT: {{ include "gateway.redisPort" (dict "context" .Values.global.database.redis) | quote }}
+  REDIS_SENTINELS: {{ include "gateway.redisHost" (dict "context" .Values.global.database.redis) }}
+  REDIS_HOST: {{ include "gateway.redisHost" (dict "context" .Values.global.database.redis) }}
   HARNESS_ENABLE_NG_AUTH_UI : 'true'
   {{- if .Values.global.mongoSSL }}
   MONGO_SSL_CONFIG: "true"
