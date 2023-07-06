@@ -50,12 +50,14 @@ spec:
           - "pod"
           - "-lapp=timescaledb-single-chart"
       {{- end }}
+      {{- if .Values.global.database.redis.installed }}
       - name: wait-for-redis
         image: {{ include "common.images.image" (dict "imageRoot" .Values.waitForInitContainer.image "global" .Values.global) }}
         imagePullPolicy: IfNotPresent
         args:
           - "pod"
           - "-lapp=redis-sentinel"
+      {{- end }}
       containers:
         - envFrom:
             - configMapRef:
