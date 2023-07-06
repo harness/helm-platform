@@ -45,8 +45,9 @@ A Helm chart for Kubernetes
 | featureFlags.OLDGITSYNC | string | `"USE_OLD_GIT_SYNC"` | Disable OLD_GIT_SYNC if ngGitSync is enabled |
 | featureFlags.OPA | string | `""` | OPA |
 | featureFlags.SAMLAutoAccept | string | `"AUTO_ACCEPT_SAML_ACCOUNT_INVITES,PL_NO_EMAIL_FOR_SAML_ACCOUNT_INVITES"` | AutoAccept Feature Flags |
-| featureFlags.SRM | string | `"CVNG_ENABLED,ERROR_TRACKING_ENABLED"` | SRM Flags |
+| featureFlags.SRM | string | `"CVNG_ENABLED"` | SRM Flags |
 | featureFlags.STO | string | `"SECURITY,SECURITY_STAGE,STO_CI_PIPELINE_SECURITY,STO_API_V2"` | STO Feature Flags |
+| featureFlags.CET | string | `"CET_ENABLED,SRM_CODE_ERROR_NOTIFICATIONS,SRM_ET_RESOLVED_EVENTS,SRM_ET_CRITICAL_EVENTS"` | CET Feature Flags |
 | fullnameOverride | string | `""` |  |
 | global.ccm.enabled | bool | `false` |  |
 | global.cd.enabled | bool | `false` |  |
