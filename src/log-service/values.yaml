@@ -15,10 +15,10 @@ s3:
   secretAccessKey: ""
 
 redis:
-   endpoint: "test"
+   endpoint: ""
    secretName: ""
-   userKey: "user"
-   passwordKey: "password"
+   userKey: ""
+   passwordKey: ""
    certPath: ""
    sslEnabled: false
    disableWatcher: false
