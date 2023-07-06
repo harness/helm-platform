@@ -87,6 +87,7 @@ spec:
           resources:
               {{- toYaml .Values.resources | nindent 12 }}
           env:
+            {{- include "harnesscommon.dbconnection.redisEnv" (dict "context" .Values.global.database.redis "userVariableName" "REDIS_USERNAME" "passwordVariableName" "REDIS_PASSWORD") | indent 12 }}
             {{- include "harnesscommon.dbconnection.mongoEnv" . | indent 12 }}
             - name: MONGO_DB_URL
               value: {{ include "harnesscommon.dbconnection.mongoConnection" (dict "database" "gateway" "context" $) }}
