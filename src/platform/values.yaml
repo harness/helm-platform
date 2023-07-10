@@ -236,7 +236,7 @@ mongodb:
   image:
     registry: docker.io
     repository: harness/mongo
-    tag: 4.4.19
+    tag: 4.4.22
   replicaCount: 3
   arbiter:
     enabled: true
