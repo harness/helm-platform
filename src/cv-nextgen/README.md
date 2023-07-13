@@ -1,6 +1,6 @@
 # cv-nextgen
 
-![Version: 0.3.2](https://img.shields.io/badge/Version-0.3.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
+![Version: 0.4.0](https://img.shields.io/badge/Version-0.4.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
 
 A Helm chart for Kubernetes
 
@@ -22,6 +22,7 @@ A Helm chart for Kubernetes
 | autoscaling.minReplicas | int | `1` |  |
 | autoscaling.targetCPU | string | `""` |  |
 | autoscaling.targetMemory | string | `""` |  |
+| extraEnvVars | list | `[]` |  |
 | extraVolumeMounts | list | `[]` |  |
 | extraVolumes | list | `[]` |  |
 | fullnameOverride | string | `""` |  |
@@ -46,6 +47,8 @@ A Helm chart for Kubernetes
 | global.database.redis.protocol | string | `"redis"` |  |
 | global.database.redis.secretName | string | `"redis-secret"` |  |
 | global.database.redis.userKey | string | `"redis-user"` |  |
+| global.database.timescaledb.certKey | string | `""` |  |
+| global.database.timescaledb.certName | string | `""` |  |
 | global.database.timescaledb.extraArgs | string | `""` |  |
 | global.database.timescaledb.hosts | list | `["timescaledb-single-chart:5432"]` | provide default values if mongo.installed is set to false |
 | global.database.timescaledb.installed | bool | `true` |  |
@@ -76,7 +79,6 @@ A Helm chart for Kubernetes
 | podAnnotations | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
 | replicaCount | int | `1` |  |
-| resources.limits.cpu | int | `1` |  |
 | resources.limits.memory | string | `"6144Mi"` |  |
 | resources.requests.cpu | int | `1` |  |
 | resources.requests.memory | string | `"6144Mi"` |  |
@@ -88,6 +90,8 @@ A Helm chart for Kubernetes
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.create | bool | `false` |  |
 | serviceAccount.name | string | `"harness-default"` |  |
+| timescaleSecret.password.key | string | `"timescaledbPostgresPassword"` |  |
+| timescaleSecret.password.name | string | `"harness-secrets"` |  |
 | tolerations | list | `[]` |  |
 | waitForInitContainer.image.digest | string | `""` |  |
 | waitForInitContainer.image.pullPolicy | string | `"IfNotPresent"` |  |
