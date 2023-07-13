@@ -65,20 +65,16 @@ global:
 replicaCount: 1
 maxSurge: 1
 maxUnavailable: 0
-
 allowedOrigins: ""
-
 appLogLevel: "INFO"
-
 image:
   registry: docker.io
   repository: harness/ng-manager-signed
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "76019"
+  tag: "79807"
   digest: ""
   imagePullSecrets: []
-
 initContainer:
   image:
     registry: docker.io
@@ -86,7 +82,6 @@ initContainer:
     tag: "1.35.0"
     digest: ""
     imagePullSecrets: []
-
 waitForInitContainer:
   image:
     registry: docker.io
@@ -95,7 +90,6 @@ waitForInitContainer:
     tag: "latest"
     digest: ""
     imagePullSecrets: []
-
 mongoSecrets:
   userName:
     name: harness-secrets
@@ -103,7 +97,6 @@ mongoSecrets:
   password:
     name: mongodb-replicaset-chart
     key: mongodb-root-password
-
 ceSecret:
   access_key:
     name: nextgen-ce
@@ -117,20 +110,15 @@ ceSecret:
   template_url:
     name: nextgen-ce
     key: AWS_TEMPLATE_LINK
-
 ceGcpSetupConfigGcpProjectId: "placeHolderGcpProjectId"
-
 timescaleSecret:
   password:
     name: harness-secrets
     key: timescaledbPostgresPassword
-
 java:
   memory: "4096m"
-
 nameOverride: ""
 fullnameOverride: ""
-
 serviceAccount:
   # Specifies whether a service account should be created
   create: false
@@ -139,13 +127,10 @@ serviceAccount:
   # The name of the service account to use.
   # If not set and create is true, a name is generated using the fullname template
   name: "harness-default"
-
 podAnnotations: {}
-
 imagePullSecrets: {}
-
 podSecurityContext: {}
-  # fsGroup: 2000
+# fsGroup: 2000
 
 securityContext:
   runAsUser: 65534
@@ -156,7 +141,6 @@ securityContext:
   # readOnlyRootFilesystem: true
   # runAsNonRoot: true
   # runAsUser: 1000
-
 probes:
   readinessProbe:
     httpGet:
@@ -179,49 +163,38 @@ probes:
     timeoutSeconds: 2
     periodSeconds: 10
     failureThreshold: 25
-
 service:
   type: ClusterIP
   protocol: TCP
   port: 7090
   grpcport: 9979
   gitsyncgrpcport: 13002
-
-
 resources:
   limits:
     memory: 8192Mi
   requests:
     cpu: 2
     memory: 200Mi
-
 autoscaling:
   enabled: false
   minReplicas: 1
   maxReplicas: 100
   targetCPU: ""
   targetMemory: ""
-
 nodeSelector: {}
-
 tolerations: []
-
 affinity: {}
-
 additionalConfigs: {}
-
 # extraVolumes:
 # - name: volume-test
 #   configMap:
 #     name: test-config
 #     readOnly: true
 extraVolumes: []
-
 # extraVolumeMounts:
 #   - name: test-volume-mount
 #     mountPath: /opt/harness/config
 extraVolumeMounts: []
-
 # lifecycleHooks:
 #   postStart:
 #     exec:

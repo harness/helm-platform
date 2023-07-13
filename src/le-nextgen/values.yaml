@@ -8,21 +8,17 @@ global:
 replicaCount: 1
 maxSurge: 1
 maxUnavailable: 0
-
 image:
   registry: docker.io
   repository: harness/le-nextgen-signed
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "66501"
+  tag: "68004"
   digest: ""
   imagePullSecrets: []
-
 nameOverride: ""
 fullnameOverride: ""
-
 appLogLevel: INFO
-
 serviceAccount:
   # Specifies whether a service account should be created
   create: false
@@ -31,55 +27,42 @@ serviceAccount:
   # The name of the service account to use.
   # If not set and create is true, a name is generated using the fullname template
   name: "harness-default"
-
 podAnnotations: {}
-
 imagePullSecrets: {}
-
 podSecurityContext: {}
-  # fsGroup: 2000
+# fsGroup: 2000
 
 securityContext:
   runAsNonRoot: true
-
 service:
   type: ClusterIP
   port: 8108
-
 resources:
   limits:
     memory: 6144Mi
   requests:
     cpu: 1
     memory: 6144Mi
-
 autoscaling:
   enabled: false
   minReplicas: 1
   maxReplicas: 100
   targetCPU: ""
   targetMemory: ""
-
 nodeSelector: {}
-
 tolerations: []
-
 affinity: {}
-
 additionalConfigs: {}
-
 # extraVolumes:
 # - name: volume-test
 #   configMap:
 #     name: test-config
 #     readOnly: true
 extraVolumes: []
-
 # extraVolumeMounts:
 #   - name: test-volume-mount
 #     mountPath: /opt/harness/config
 extraVolumeMounts: []
-
 # lifecycleHooks:
 #   postStart:
 #     exec:
