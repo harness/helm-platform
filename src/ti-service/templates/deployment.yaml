@@ -96,7 +96,7 @@ spec:
           envFrom:
           - configMapRef:
               name: ti-service
-        {{- if not .Values.global.database.timescaledb.installed }}
+        {{- if .Values.global.database.timescaledb.sslEnabled }}
           volumeMounts:
           - name: timescaledb-cert
             mountPath: /opt/harness/svc
