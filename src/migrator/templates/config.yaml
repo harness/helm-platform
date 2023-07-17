@@ -15,7 +15,6 @@ data:
   BACKGROUND_SCHEDULER_CLUSTERED: {{ .Values.config.BACKGROUND_SCHEDULER_CLUSTERED | quote }}
   CACHE_BACKEND: {{ .Values.config.CACHE_BACKEND }}
   CAPSULE_JAR: {{ .Values.config.CAPSULE_JAR }}
-  DELEGATE_DOCKER_IMAGE: {{ include "migrator.delegate_docker_image" . }}
   IMMUTABLE_DELEGATE_ENABLED: {{ .Values.config.IMMUTABLE_DELEGATE_ENABLED | default .Values.global.useImmutableDelegate | quote }}
   IMMUTABLE_DELEGATE_DOCKER_IMAGE: {{ include "migrator.immutable_delegate_docker_image" . }}
   UPGRADER_DOCKER_IMAGE: {{ include "migrator.upgrader_docker_image" . }}
