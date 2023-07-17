@@ -5,6 +5,19 @@ global:
   kubeVersion: ""
   loadbalancerURL: ""
   imagePullSecrets: []
+  database:
+    redis:
+      installed: true
+      protocol: "redis"
+      # --  provide default values if redis.installed is set to false
+      hosts:
+        - redis-sentinel-harness-announce-0:26379
+        - redis-sentinel-harness-announce-1:26379
+        - redis-sentinel-harness-announce-2:26379
+      secretName: "redis-secret"
+      userKey: "redis-user"
+      passwordKey: "redis-password"
+      extraArgs: ""
 s3:
   ### Default values are configured to work with Minio, override if you are using own s3 buckets
   endpoint: ""
@@ -13,12 +26,6 @@ s3:
   accessKeyId: ""
   secretAccessKey: ""
 redis:
-  endpoint: ""
-  secretName: ""
-  userKey: ""
-  passwordKey: ""
-  certPath: ""
-  sslEnabled: false
   disableWatcher: false
 replicaCount: 1
 maxSurge: 1

@@ -84,6 +84,8 @@ global:
     enabled: false
   chaos:
     enabled: false
+  cet:
+    enabled: false
   useImmutableDelegate: "true"
   useMinimalDelegateImage: false
   smtpCreateSecret:
