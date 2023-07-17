@@ -78,12 +78,15 @@ dependencies:
 | global.database.redis.protocol | string | `"redis"` |  |
 | global.database.redis.secretName | string | `"redis-secret"` |  |
 | global.database.redis.userKey | string | `"redis-user"` |  |
+| global.database.timescaledb.certKey | string | `""` |  |
+| global.database.timescaledb.certName | string | `""` |  |
 | global.database.timescaledb.extraArgs | string | `""` |  |
 | global.database.timescaledb.hosts | list | `["timescaledb-single-chart:5432"]` | provide default values if mongo.installed is set to false |
 | global.database.timescaledb.installed | bool | `true` |  |
 | global.database.timescaledb.passwordKey | string | `""` |  |
 | global.database.timescaledb.protocol | string | `"jdbc:postgresql"` |  |
 | global.database.timescaledb.secretName | string | `""` |  |
+| global.database.timescaledb.sslEnabled | bool | `false` |  |
 | global.database.timescaledb.userKey | string | `""` |  |
 | global.kubeVersion | string | `""` |  |
 | global.migrator | object | `{"enabled":false}` | enable to install migrator service |

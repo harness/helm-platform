@@ -1,6 +1,6 @@
 # verification-svc
 
-![Version: 0.4.3](https://img.shields.io/badge/Version-0.4.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 22.12.77629](https://img.shields.io/badge/AppVersion-22.12.77629-informational?style=flat-square)
+![Version: 0.5.0](https://img.shields.io/badge/Version-0.5.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 22.12.77629](https://img.shields.io/badge/AppVersion-22.12.77629-informational?style=flat-square)
 
 A Helm chart for Kubernetes
 
@@ -65,7 +65,7 @@ A Helm chart for Kubernetes
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.registry | string | `"docker.io"` |  |
 | image.repository | string | `"harness/verification-service-signed"` |  |
-| image.tag | string | `"77629"` |  |
+| image.tag | string | `"79807"` |  |
 | ingress.annotations | object | `{}` |  |
 | ingress.hosts[0].host | string | `""` |  |
 | ingress.hosts[0].paths[0].path | string | `"/verification"` |  |
@@ -83,7 +83,6 @@ A Helm chart for Kubernetes
 | podAnnotations | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
 | replicaCount | int | `1` |  |
-| resources.limits.cpu | string | `"500m"` |  |
 | resources.limits.memory | string | `"3000Mi"` |  |
 | resources.requests.cpu | string | `"500m"` |  |
 | resources.requests.memory | string | `"3000Mi"` |  |

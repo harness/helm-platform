@@ -1,6 +1,6 @@
 # next-gen-ui
 
-![Version: 0.3.1](https://img.shields.io/badge/Version-0.3.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
+![Version: 0.4.0](https://img.shields.io/badge/Version-0.4.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
 
 A Helm chart for Kubernetes
 
@@ -32,7 +32,7 @@ A Helm chart for Kubernetes
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.registry | string | `"docker.io"` |  |
 | image.repository | string | `"harness/nextgenui-signed"` |  |
-| image.tag | string | `"0.312.15"` |  |
+| image.tag | string | `"0.353.10"` |  |
 | imagePullSecrets | object | `{}` |  |
 | maxSurge | int | `1` |  |
 | maxUnavailable | int | `0` |  |
@@ -53,7 +53,6 @@ A Helm chart for Kubernetes
 | probes.startupProbe.httpGet.port | string | `"ng-ui-port"` |  |
 | probes.startupProbe.periodSeconds | int | `10` |  |
 | replicaCount | int | `1` |  |
-| resources.limits.cpu | float | `0.2` |  |
 | resources.limits.memory | string | `"200Mi"` |  |
 | resources.requests.cpu | float | `0.2` |  |
 | resources.requests.memory | string | `"200Mi"` |  |

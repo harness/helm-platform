@@ -1,6 +1,6 @@
 # ng-manager
 
-![Version: 0.3.7](https://img.shields.io/badge/Version-0.3.7-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
+![Version: 0.4.0](https://img.shields.io/badge/Version-0.4.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
 
 A Helm chart for Kubernetes
 
@@ -32,6 +32,7 @@ A Helm chart for Kubernetes
 | ceSecret.secret_key.name | string | `"nextgen-ce"` |  |
 | ceSecret.template_url.key | string | `"AWS_TEMPLATE_LINK"` |  |
 | ceSecret.template_url.name | string | `"nextgen-ce"` |  |
+| extraEnvVars | list | `[]` |  |
 | extraVolumeMounts | list | `[]` |  |
 | extraVolumes | list | `[]` |  |
 | fullnameOverride | string | `""` |  |
@@ -58,6 +59,8 @@ A Helm chart for Kubernetes
 | global.database.redis.protocol | string | `"redis"` |  |
 | global.database.redis.secretName | string | `"redis-secret"` |  |
 | global.database.redis.userKey | string | `"redis-user"` |  |
+| global.database.timescaledb.certKey | string | `""` |  |
+| global.database.timescaledb.certName | string | `""` |  |
 | global.database.timescaledb.extraArgs | string | `""` |  |
 | global.database.timescaledb.hosts | list | `["timescaledb-single-chart:5432"]` | provide default values if mongo.installed is set to false |
 | global.database.timescaledb.installed | bool | `true` |  |
@@ -76,7 +79,7 @@ A Helm chart for Kubernetes
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.registry | string | `"docker.io"` |  |
 | image.repository | string | `"harness/ng-manager-signed"` |  |
-| image.tag | string | `"76019"` |  |
+| image.tag | string | `"79807"` |  |
 | imagePullSecrets | object | `{}` |  |
 | initContainer.image.digest | string | `""` |  |
 | initContainer.image.imagePullSecrets | list | `[]` |  |
@@ -110,7 +113,6 @@ A Helm chart for Kubernetes
 | probes.startupProbe.periodSeconds | int | `10` |  |
 | probes.startupProbe.timeoutSeconds | int | `2` |  |
 | replicaCount | int | `1` |  |
-| resources.limits.cpu | int | `2` |  |
 | resources.limits.memory | string | `"8192Mi"` |  |
 | resources.requests.cpu | int | `2` |  |
 | resources.requests.memory | string | `"200Mi"` |  |
