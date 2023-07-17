@@ -203,7 +203,7 @@ featureFlags:
   # -- Disable OLD_GIT_SYNC if ngGitSync is enabled
   OLDGITSYNC: "USE_OLD_GIT_SYNC"
   # -- STO Feature Flags
-  CD: ""
+  CD: "CDS_AUTO_APPROVAL"
   # -- STO Feature Flags
   CI: "CING_ENABLED,CI_INDIRECT_LOG_UPLOAD"
   # -- STO Feature Flags
