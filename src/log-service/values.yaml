@@ -26,12 +26,6 @@ s3:
   accessKeyId: ""
   secretAccessKey: ""
 redis:
-  endpoint: ""
-  secretName: ""
-  userKey: ""
-  passwordKey: ""
-  certPath: ""
-  sslEnabled: false
   disableWatcher: false
 replicaCount: 1
 maxSurge: 1

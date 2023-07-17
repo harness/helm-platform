@@ -46,13 +46,7 @@ A Helm chart for Kubernetes
 | nodeSelector | object | `{}` |  |
 | podAnnotations | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
-| redis.certPath | string | `""` |  |
 | redis.disableWatcher | bool | `false` |  |
-| redis.endpoint | string | `""` |  |
-| redis.passwordKey | string | `""` |  |
-| redis.secretName | string | `""` |  |
-| redis.sslEnabled | bool | `false` |  |
-| redis.userKey | string | `""` |  |
 | replicaCount | int | `1` |  |
 | resources.limits.memory | string | `"3072Mi"` |  |
 | resources.requests.cpu | int | `1` |  |
