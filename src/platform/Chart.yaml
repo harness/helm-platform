@@ -91,6 +91,7 @@ dependencies:
     version: 0.3.x
     repository: "file://../platform-service"
   - name: redis
+    condition: global.database.redis.installed
     version: 0.2.x
     repository: "https://harness.github.io/helm-redis"
   - name: scm-service
