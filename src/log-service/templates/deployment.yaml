@@ -53,8 +53,6 @@ spec:
                 key: {{ .Values.logServiceS3SecretAccessKey.key }}
           {{- end }}
           {{- include "harnesscommon.dbconnection.redisEnv" (dict "context" .Values.global.database.redis "userVariableName" "LOG_SERVICE_REDIS_USERNAME" "passwordVariableName" "LOG_SERVICE_REDIS_PASSWORD") | indent 10 }}
-          - name: LOG_SERVICE_REDIS_ENDPOINT
-            value: {{ include "harnesscommon.dbconnection.redisConnection" (dict "context" .Values.global.database.redis) }}
           - name: LOG_SERVICE_REDIS_DISABLE_EXPIRY_WATCHER
             value: {{ .Values.redis.disableWatcher | quote }}
         livenessProbe:
