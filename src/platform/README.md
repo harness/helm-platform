@@ -122,7 +122,7 @@ dependencies:
 | learning-engine.resources.requests.cpu | int | `1` |  |
 | learning-engine.resources.requests.memory | string | `"2048Mi"` |  |
 | log-service.autoscaling.enabled | bool | `false` |  |
-| log-service.image.tag | string | `"release-65-ubi"` |  |
+| log-service.image.tag | string | `"release-91-ubi"` |  |
 | log-service.replicaCount | int | `1` |  |
 | log-service.resources.limits.cpu | int | `1` |  |
 | log-service.resources.limits.memory | string | `"3072Mi"` |  |

@@ -186,7 +186,7 @@ learning-engine:
 
 log-service:
   image:
-    tag: "release-65-ubi"
+    tag: "release-91-ubi"
   replicaCount: 1
   resources:
     limits:
