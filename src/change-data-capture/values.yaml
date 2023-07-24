@@ -2,6 +2,7 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 global:
+  kubeVersion: ""
   loadbalancerURL: ""
   database:
     postgres:
@@ -39,6 +40,8 @@ global:
       userKey: ""
       passwordKey: ""
       extraArgs: ""
+      certName: ""
+      certKey: ""
   ha: false
   imagePullSecrets: []
   stackDriverLoggingEnabled: false
@@ -110,27 +113,26 @@ securityContext:
   # runAsUser: 1000
 
 probes:
-  readinessProbe:
-    httpGet:
-      path: /health
-      port: 8190
-    timeoutSeconds: 2
-    periodSeconds: 10
-    failureThreshold: 5
-  livenessProbe:
-    httpGet:
-      path: /health
-      port: 8190
-    timeoutSeconds: 2
-    periodSeconds: 10
-    failureThreshold: 5
   startupProbe:
     httpGet:
       path: /health
       port: 8190
-    timeoutSeconds: 2
     periodSeconds: 10
-    failureThreshold: 25
+    failureThreshold: 90
+  readinessProbe:
+    httpGet:
+      path: /health
+      port: 8190
+    timeoutSeconds: 10
+    periodSeconds: 10
+    failureThreshold: 2
+  livenessProbe:
+    httpGet:
+      path: /health
+      port: 8190
+    timeoutSeconds: 10
+    periodSeconds: 10
+    failureThreshold: 10
 
 service:
   type: ClusterIP
@@ -138,18 +140,17 @@ service:
 
 resources:
   limits:
-    cpu: 1
     memory: 2880Mi
   requests:
     cpu: 1
     memory: 2880Mi
 
 autoscaling:
-  enabled: true
+  enabled: false
   minReplicas: 1
   maxReplicas: 100
-  targetCPUUtilizationPercentage: 80
-  # targetMemoryUtilizationPercentage: 80
+  targetCPU: ""
+  targetMemory: ""
 
 nodeSelector: {}
 
@@ -158,3 +159,30 @@ tolerations: []
 affinity: {}
 
 additionalConfigs: {}
+
+# extraVolumes:
+# - name: volume-test
+#   configMap:
+#     name: test-config
+#     readOnly: true
+extraVolumes: []
+
+# extraVolumeMounts:
+#   - name: test-volume-mount
+#     mountPath: /opt/harness/config
+extraVolumeMounts: []
+
+# lifecycleHooks:
+#   postStart:
+#     exec:
+#       command:
+#   preStop:
+#     exec:
+#       command:
+
+# extraEnvVars:
+# - name: POD_NAME
+#   valueFrom:
+#     fieldRef:
+#       fieldPath: metadata.name
+extraEnvVars: []

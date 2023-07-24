@@ -1,6 +1,6 @@
 # change-data-capture
 
-![Version: 0.3.1](https://img.shields.io/badge/Version-0.3.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
+![Version: 0.3.2](https://img.shields.io/badge/Version-0.3.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
 
 A Helm chart for Kubernetes
 
@@ -17,10 +17,13 @@ A Helm chart for Kubernetes
 | additionalConfigs | object | `{}` |  |
 | affinity | object | `{}` |  |
 | appLogLevel | string | `"INFO"` |  |
-| autoscaling.enabled | bool | `true` |  |
+| autoscaling.enabled | bool | `false` |  |
 | autoscaling.maxReplicas | int | `100` |  |
 | autoscaling.minReplicas | int | `1` |  |
-| autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
+| autoscaling.targetCPU | string | `""` |  |
+| autoscaling.targetMemory | string | `""` |  |
+| extraVolumeMounts | list | `[]` |  |
+| extraVolumes | list | `[]` |  |
 | fullnameOverride | string | `""` |  |
 | global.database.mongo.extraArgs | string | `""` |  |
 | global.database.mongo.hosts | list | `[]` | provide default values if mongo.installed is set to false |
@@ -45,6 +48,7 @@ A Helm chart for Kubernetes
 | global.database.timescaledb.userKey | string | `""` |  |
 | global.ha | bool | `false` |  |
 | global.imagePullSecrets | list | `[]` |  |
+| global.kubeVersion | string | `""` |  |
 | global.loadbalancerURL | string | `""` |  |
 | global.stackDriverLoggingEnabled | bool | `false` |  |
 | image.digest | string | `""` |  |
@@ -64,21 +68,20 @@ A Helm chart for Kubernetes
 | nodeSelector | object | `{}` |  |
 | podAnnotations | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
-| probes.livenessProbe.failureThreshold | int | `5` |  |
+| probes.livenessProbe.failureThreshold | int | `10` |  |
 | probes.livenessProbe.httpGet.path | string | `"/health"` |  |
 | probes.livenessProbe.httpGet.port | int | `8190` |  |
 | probes.livenessProbe.periodSeconds | int | `10` |  |
-| probes.livenessProbe.timeoutSeconds | int | `2` |  |
-| probes.readinessProbe.failureThreshold | int | `5` |  |
+| probes.livenessProbe.timeoutSeconds | int | `10` |  |
+| probes.readinessProbe.failureThreshold | int | `2` |  |
 | probes.readinessProbe.httpGet.path | string | `"/health"` |  |
 | probes.readinessProbe.httpGet.port | int | `8190` |  |
 | probes.readinessProbe.periodSeconds | int | `10` |  |
-| probes.readinessProbe.timeoutSeconds | int | `2` |  |
-| probes.startupProbe.failureThreshold | int | `25` |  |
+| probes.readinessProbe.timeoutSeconds | int | `10` |  |
+| probes.startupProbe.failureThreshold | int | `90` |  |
 | probes.startupProbe.httpGet.path | string | `"/health"` |  |
 | probes.startupProbe.httpGet.port | int | `8190` |  |
 | probes.startupProbe.periodSeconds | int | `10` |  |
-| probes.startupProbe.timeoutSeconds | int | `2` |  |
 | replicaCount | int | `1` |  |
 | resources.limits.cpu | int | `1` |  |
 | resources.limits.memory | string | `"2880Mi"` |  |

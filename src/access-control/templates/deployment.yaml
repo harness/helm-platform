@@ -42,12 +42,14 @@ spec:
             - "pod"
             - "-lapp=mongodb-replicaset"
         {{- end }}
+        {{- if .Values.global.database.redis.installed }}
         - name: wait-for-redis
           image: {{ include "common.images.image" (dict "imageRoot" .Values.waitForInitContainer.image "global" .Values.global) }}
           imagePullPolicy: IfNotPresent
           args:
             - "pod"
             - "-lapp=redis-sentinel"
+        {{- end }}
       containers:
         - name: access-control
           image: {{ include "common.images.image" (dict "imageRoot" .Values.image "global" .Values.global) }}
@@ -77,6 +79,8 @@ spec:
             containerPort: {{.Values.service.port}}
             protocol: "TCP"
           env:
+            {{- include "harnesscommon.dbconnection.redisEnv" (dict "context" .Values.global.database.redis "userVariableName" "EVENTS_CONFIG_REDIS_USERNAME" "passwordVariableName" "EVENTS_CONFIG_REDIS_PASSWORD") | indent 12 }}
+            {{- include "harnesscommon.dbconnection.redisEnv" (dict "context" .Values.global.database.redis "userVariableName" "LOCK_CONFIG_REDIS_USERNAME" "passwordVariableName" "LOCK_CONFIG_REDIS_PASSWORD") | indent 12 }}
             {{- include "harnesscommon.dbconnection.mongoEnv" . | indent 12 }}
             {{- if .Values.global.database.mongo.installed }}
             - name: MONGODB_USER
@@ -89,6 +93,8 @@ spec:
                 secretKeyRef:
                   name: {{ .Values.mongoSecrets.password.name }}
                   key: {{ .Values.mongoSecrets.password.key }}
+            - name: MONGODB_CONNECTION_PROTOCOL
+              value: "mongodb://"
             {{- else }}
             - name: MONGODB_USER
               valueFrom:
@@ -100,6 +106,8 @@ spec:
                 secretKeyRef:
                   name: {{ .Values.global.database.mongo.secretName }}
                   key: {{ .Values.global.database.mongo.passwordKey }}
+            - name: MONGODB_CONNECTION_PROTOCOL
+              value: '{{ .Values.global.database.mongo.protocol}}://'
             {{- end }}
             - name: MONGODB_HOSTS
               value: {{ include "access-control.mongohosts" . }}
@@ -107,11 +115,23 @@ spec:
               value: {{ include "harnesscommon.dbconnection.mongoConnection" (dict "database" "accesscontrol" "context" $) }}
             - name: OFFSET_STORAGE_FILE_FILENAME
               value: {{ include "harnesscommon.dbconnection.mongoConnection" (dict "database" "accesscontrol" "context" $) }}
+            - name: MONGODB_CONNECTION_URL
+              value: {{ include "access-control.mongoConnectionUrl" (dict "database" "accesscontrol" "context" $) }}
             - name: IDENTITY_SERVICE_SECRET
               value: 'HVSKUYqD4e5Rxu12hFDdCJKGM64sxgEynvdDhaOHaTHhwwn0K4Ttr0uoOxSsEVYNrUU='
+            {{- if .Values.extraEnvVars }}
+            {{- include "harnesscommon.tplvalues.render" (dict "value" .Values.extraEnvVars "context" $) | nindent 12 }}
+            {{- end }}
           envFrom:
           - configMapRef:
               name: access-control
+          {{- if .Values.lifecycleHooks }}
+          lifecycle: {{- include "harnesscommon.tplvalues.render" (dict "value" .Values.lifecycleHooks "context" $) | nindent 12 }}
+          {{- end }}
+          {{- if .Values.extraVolumeMounts }}
+          volumeMounts:
+          {{- include "harnesscommon.tplvalues.render" (dict "value" .Values.extraVolumeMounts "context" $) | nindent 12 }}
+          {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
@@ -132,4 +152,8 @@ spec:
       {{- with .Values.tolerations }}
       tolerations:
         {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- if .Values.extraVolumes }}
+      volumes:
+      {{- include "harnesscommon.tplvalues.render" ( dict "value" .Values.extraVolumes "context" $ ) | nindent 8 }}
       {{- end }}

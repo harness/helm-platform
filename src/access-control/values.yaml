@@ -2,6 +2,7 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 global:
+  kubeVersion: ""
   loadbalancerURL: ""
   database:
     postgres:
@@ -21,16 +22,14 @@ global:
       ## - extra arguments set to connection string
       extraArgs: ""
     mongo:
-      installed: false
+      installed: true
       protocol: mongodb
       # --  provide default values if mongo.installed is set to false
-      hosts:
-      - h1
-      - h2
-      secretName: "xx"
-      userKey: "xx"
-      passwordKey: "xxx"
-      extraArgs: "xx"
+      hosts: []
+      secretName: ""
+      userKey: ""
+      passwordKey: ""
+      extraArgs: ""
     timescaledb:
       installed: true
       protocol: "jdbc:postgresql"
@@ -40,6 +39,16 @@ global:
       secretName: ""
       userKey: ""
       passwordKey: ""
+      extraArgs: ""
+    redis:
+      installed: true
+      protocol: "redis"
+      # --  provide default values if redis.installed is set to false
+      hosts:
+        - redis:6379
+      secretName: "redis-secret"
+      userKey: "redis-user"
+      passwordKey: "redis-password"
       extraArgs: ""
   ha: false
   imagePullSecrets: []
@@ -116,18 +125,17 @@ service:
 
 resources:
   limits:
-    cpu: 0.5
     memory: 8192Mi
   requests:
     cpu: 0.5
     memory: 512Mi
 
 autoscaling:
-  enabled: true
+  enabled: false
   minReplicas: 1
   maxReplicas: 100
-  targetCPUUtilizationPercentage: 80
-  # targetMemoryUtilizationPercentage: 80
+  targetCPU: ""
+  targetMemory: ""
 
 nodeSelector: {}
 
@@ -139,3 +147,30 @@ additionalConfigs: {}
 
 mongoSSL:
   enabled: false
+
+# extraVolumes:
+# - name: volume-test
+#   configMap:
+#     name: test-config
+#     readOnly: true
+extraVolumes: []
+
+# extraVolumeMounts:
+#   - name: test-volume-mount
+#     mountPath: /opt/harness/config
+extraVolumeMounts: []
+
+# lifecycleHooks:
+#   postStart:
+#     exec:
+#       command:
+#   preStop:
+#     exec:
+#       command:
+
+# extraEnvVars:
+# - name: POD_NAME
+#   valueFrom:
+#     fieldRef:
+#       fieldPath: metadata.name
+extraEnvVars: []
