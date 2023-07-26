@@ -49,6 +49,21 @@ global:
   chaos:
     enabled: false
   stackDriverLoggingEnabled: false
+  ingress:
+    # -- create ingress objects
+    enabled: false
+    # -- set ingress object classname
+    className: harness
+    # -- set host of ingressObjects
+    hosts:
+      - my-host.example.org
+    # -- set tls for ingress objects
+    tls:
+      enabled: true
+      secretName: ''
+    # -- add annotations to ingress objects
+    objects:
+      annotations: { }
 replicaCount: 1
 maxSurge: 1
 maxUnavailable: 0
@@ -72,7 +87,7 @@ timescaleSecret:
     key: timescaledbPostgresPassword
 
 java:
-  memory: "768m"
+  memory: "2048m"
 
 nameOverride: ""
 fullnameOverride: ""
@@ -108,18 +123,18 @@ probes:
     httpGet:
       path: /health
       port: dashbrd-port
-    initialDelaySeconds: 200
-    timeoutSeconds: 20
+    initialDelaySeconds: 60
+    timeoutSeconds: 10
     periodSeconds: 10
-    failureThreshold: 40
+    failureThreshold: 10
   livenessProbe:
     httpGet:
       path: /health
       port: dashbrd-port
-    initialDelaySeconds: 200
-    timeoutSeconds: 20
+    initialDelaySeconds: 60
+    timeoutSeconds: 10
     periodSeconds: 10
-    failureThreshold: 40
+    failureThreshold: 3
 
 service:
   type: ClusterIP
@@ -130,17 +145,17 @@ service:
 resources:
   limits:
     cpu: 1
-    memory: 1024Mi
+    memory: 4096Mi
   requests:
     cpu: 1
-    memory: 200Mi
+    memory: 4096Mi
 
 autoscaling:
-  enabled: true
+  enabled: false
   minReplicas: 1
-  maxReplicas: 1
-  targetCPUUtilizationPercentage: 80
-  # targetMemoryUtilizationPercentage: 80
+  maxReplicas: 100
+  targetCPU: ""
+  targetMemory: ""
 
 nodeSelector: {}
 

@@ -53,8 +53,6 @@ spec:
         envFrom:
         - configMapRef:
             name: ng-dashboard-aggregator
-        - secretRef:
-            name: ng-dashboard-aggregator
         {{- toYaml .Values.probes | nindent 8}}
       affinity:
         podAntiAffinity:
