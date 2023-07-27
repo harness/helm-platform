@@ -17,6 +17,7 @@ data:
   SHOULD_CONFIGURE_WITH_NOTIFICATION: "true"
   PORTAL_URL: {{ .Values.global.loadbalancerURL }}
   MANAGER_CLIENT_BASEURL: http://harness-manager.{{ .Release.Namespace }}.svc.cluster.local:9090/
+  ET_SERVICE_BASE_URL: http://et-service.{{ .Release.Namespace }}.svc.cluster.local:9191/api/
   EVENTS_FRAMEWORK_REDIS_URL: {{ include "harnesscommon.dbconnection.redisConnection" (dict "context" .Values.global.database.redis) }}
   EVENTS_FRAMEWORK_USE_SENTINEL: {{ .Values.global.database.redis.installed  | quote }}
   EVENTS_FRAMEWORK_SENTINEL_MASTER_NAME: 'harness-redis'
