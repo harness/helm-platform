@@ -3,6 +3,20 @@ entries:
   access-control:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2023-08-01T05:31:33.33281478Z"
+    dependencies:
+    - name: harness-common
+      repository: https://harness.github.io/helm-common
+      version: 1.x.x
+    description: A Helm chart for Kubernetes
+    digest: acf9cdb1c8b379307d6e3e6e497ba14f678c73ffd21345beec4bdd7102d0d50a
+    name: access-control
+    type: application
+    urls:
+    - https://github.com/harness/helm-platform/releases/download/access-control-0.4.0/access-control-0.4.0.tgz
+    version: 0.4.0
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2023-06-14T18:59:41.369501943Z"
     dependencies:
     - name: harness-common
@@ -74,6 +88,20 @@ entries:
   change-data-capture:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2023-08-01T05:31:33.500514993Z"
+    dependencies:
+    - name: harness-common
+      repository: https://harness.github.io/helm-common
+      version: 1.x.x
+    description: A Helm chart for Kubernetes
+    digest: 4afa04d028c8138ad55290672380548e7ee3deb619a125638418daee34b2166c
+    name: change-data-capture
+    type: application
+    urls:
+    - https://github.com/harness/helm-platform/releases/download/change-data-capture-0.4.0/change-data-capture-0.4.0.tgz
+    version: 0.4.0
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2023-06-30T05:28:02.6516502Z"
     dependencies:
     - name: harness-common
@@ -115,6 +143,20 @@ entries:
     - https://github.com/harness/helm-platform/releases/download/change-data-capture-0.2.12/change-data-capture-0.2.12.tgz
     version: 0.2.12
   cv-nextgen:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2023-08-01T05:31:33.658908576Z"
+    dependencies:
+    - name: harness-common
+      repository: https://harness.github.io/helm-common
+      version: 1.x.x
+    description: A Helm chart for Kubernetes
+    digest: c416bcee9a153ba8a7cbb205c734e7494d8cc4b71b755616df3a527dcef523c5
+    name: cv-nextgen
+    type: application
+    urls:
+    - https://github.com/harness/helm-platform/releases/download/cv-nextgen-0.4.0/cv-nextgen-0.4.0.tgz
+    version: 0.4.0
   - apiVersion: v2
     appVersion: 0.0.1
     created: "2023-06-30T05:28:02.84431478Z"
@@ -174,6 +216,20 @@ entries:
   delegate-proxy:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2023-08-01T05:31:33.821102006Z"
+    dependencies:
+    - name: harness-common
+      repository: https://harness.github.io/helm-common
+      version: 1.x.x
+    description: A Helm chart for Kubernetes
+    digest: d7e01bb457c8c33bac001de7e15e8c5840bb718cce6bc236081189284e872706
+    name: delegate-proxy
+    type: application
+    urls:
+    - https://github.com/harness/helm-platform/releases/download/delegate-proxy-0.4.0/delegate-proxy-0.4.0.tgz
+    version: 0.4.0
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2023-06-14T18:59:41.89551563Z"
     dependencies:
     - name: harness-common
@@ -229,6 +285,20 @@ entries:
     - https://github.com/harness/helm-platform/releases/download/delegate-proxy-0.2.7/delegate-proxy-0.2.7.tgz
     version: 0.2.7
   gateway:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2023-08-01T05:31:34.023280577Z"
+    dependencies:
+    - name: harness-common
+      repository: https://harness.github.io/helm-common
+      version: 1.x.x
+    description: A Helm chart for Kubernetes
+    digest: 28778a66cfb998e642be38af2e0cbd1aad8d98216536d110d722174b7c999eeb
+    name: gateway
+    type: application
+    urls:
+    - https://github.com/harness/helm-platform/releases/download/gateway-0.4.0/gateway-0.4.0.tgz
+    version: 0.4.0
   - apiVersion: v2
     appVersion: 0.0.1
     created: "2023-06-14T18:59:42.08348766Z"
@@ -300,6 +370,20 @@ entries:
     - https://github.com/harness/helm-platform/releases/download/gateway-0.2.11/gateway-0.2.11.tgz
     version: 0.2.11
   harness-manager:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2023-08-01T05:31:34.205751418Z"
+    dependencies:
+    - name: harness-common
+      repository: https://harness.github.io/helm-common
+      version: 1.x.x
+    description: A Helm chart for Kubernetes
+    digest: 2d6dc0aada0f51a848e2f13ed6097c0208ea0a40bde0f91aecf115fe3e28edfa
+    name: harness-manager
+    type: application
+    urls:
+    - https://github.com/harness/helm-platform/releases/download/harness-manager-0.5.0/harness-manager-0.5.0.tgz
+    version: 0.5.0
   - apiVersion: v2
     appVersion: 0.0.1
     created: "2023-06-30T05:28:03.394938472Z"
@@ -485,6 +569,23 @@ entries:
   harness-secrets:
   - apiVersion: v2
     appVersion: 0.0.0
+    created: "2023-08-01T05:31:34.377691225Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      version: 2.x.x
+    - name: harness-common
+      repository: https://harness.github.io/helm-common
+      version: 1.x.x
+    description: A Helm chart to create Harness secrets
+    digest: a96b0716b38558a0f85d6b55ffbe5bb95e22b997c635c5ceb0119e1d10d1ae2c
+    name: harness-secrets
+    type: application
+    urls:
+    - https://github.com/harness/helm-platform/releases/download/harness-secrets-0.4.0/harness-secrets-0.4.0.tgz
+    version: 0.4.0
+  - apiVersion: v2
+    appVersion: 0.0.0
     created: "2023-04-26T16:25:31.465928202Z"
     dependencies:
     - name: common
@@ -531,6 +632,20 @@ entries:
   le-nextgen:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2023-08-01T05:31:34.573484952Z"
+    dependencies:
+    - name: harness-common
+      repository: https://harness.github.io/helm-common
+      version: 1.x.x
+    description: A Helm chart for Kubernetes
+    digest: c6f84d50941bf007befbf1b11afde04dc29d7e03d9e11fd55de1045374f30119
+    name: le-nextgen
+    type: application
+    urls:
+    - https://github.com/harness/helm-platform/releases/download/le-nextgen-0.4.0/le-nextgen-0.4.0.tgz
+    version: 0.4.0
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2023-06-14T18:59:42.63065236Z"
     dependencies:
     - name: harness-common
@@ -572,6 +687,20 @@ entries:
     - https://github.com/harness/helm-platform/releases/download/le-nextgen-0.2.5/le-nextgen-0.2.5.tgz
     version: 0.2.5
   learning-engine:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2023-08-01T05:31:34.727544904Z"
+    dependencies:
+    - name: harness-common
+      repository: https://harness.github.io/helm-common
+      version: 1.x.x
+    description: Helm chart for learning-engine
+    digest: 2414d029f6e40fb3028ac2e76b1262950736783a26da372ffe78fcb3cb9ceebc
+    name: learning-engine
+    type: application
+    urls:
+    - https://github.com/harness/helm-platform/releases/download/learning-engine-0.5.0/learning-engine-0.5.0.tgz
+    version: 0.5.0
   - apiVersion: v2
     appVersion: 0.0.1
     created: "2023-06-14T18:59:42.821997071Z"
@@ -617,6 +746,20 @@ entries:
   log-service:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2023-08-01T05:31:34.874491927Z"
+    dependencies:
+    - name: harness-common
+      repository: https://harness.github.io/helm-common
+      version: 1.x.x
+    description: A Helm chart for Kubernetes
+    digest: f289654f35d7a7d49e0dc6865a68d9a612026ce1f0cac753f4ebd5a5ccd40f90
+    name: log-service
+    type: application
+    urls:
+    - https://github.com/harness/helm-platform/releases/download/log-service-0.4.0/log-service-0.4.0.tgz
+    version: 0.4.0
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2023-04-26T16:25:32.058041128Z"
     dependencies:
     - name: harness-common
@@ -644,6 +787,20 @@ entries:
     - https://github.com/harness/helm-platform/releases/download/log-service-0.2.13/log-service-0.2.13.tgz
     version: 0.2.13
   migrator:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2023-08-01T05:31:35.031472529Z"
+    dependencies:
+    - name: harness-common
+      repository: https://harness.github.io/helm-common
+      version: 1.x.x
+    description: A Helm chart for Kubernetes
+    digest: 6305c7e43b433e980127c742d42da10c10599f4d524db0721567d95b937da4e1
+    name: migrator
+    type: application
+    urls:
+    - https://github.com/harness/helm-platform/releases/download/migrator-0.4.1/migrator-0.4.1.tgz
+    version: 0.4.1
   - apiVersion: v2
     appVersion: 0.0.1
     created: "2023-06-30T05:28:04.299954781Z"
@@ -703,6 +860,20 @@ entries:
   next-gen-ui:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2023-08-01T05:31:35.290412222Z"
+    dependencies:
+    - name: harness-common
+      repository: https://harness.github.io/helm-common
+      version: 1.x.x
+    description: A Helm chart for Kubernetes
+    digest: 14fc67816ce17fc2f626e6ee19130f0df8ae1536a9cda3d9323299e4a50490a5
+    name: next-gen-ui
+    type: application
+    urls:
+    - https://github.com/harness/helm-platform/releases/download/next-gen-ui-0.4.0/next-gen-ui-0.4.0.tgz
+    version: 0.4.0
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2023-06-14T18:59:43.400631336Z"
     dependencies:
     - name: harness-common
@@ -746,6 +917,20 @@ entries:
   ng-auth-ui:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2023-08-01T05:31:35.457558345Z"
+    dependencies:
+    - name: harness-common
+      repository: https://harness.github.io/helm-common
+      version: 1.x.x
+    description: A Helm chart for Kubernetes
+    digest: a2007126427db69a93eb9d43a3b22c24d42fc4a46a1a99e84dda49480a50d0d9
+    name: ng-auth-ui
+    type: application
+    urls:
+    - https://github.com/harness/helm-platform/releases/download/ng-auth-ui-0.4.0/ng-auth-ui-0.4.0.tgz
+    version: 0.4.0
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2023-06-14T18:59:43.587640503Z"
     dependencies:
     - name: harness-common
@@ -787,6 +972,20 @@ entries:
     - https://github.com/harness/helm-platform/releases/download/ng-auth-ui-0.2.4/ng-auth-ui-0.2.4.tgz
     version: 0.2.4
   ng-manager:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2023-08-01T05:31:35.606178338Z"
+    dependencies:
+    - name: harness-common
+      repository: https://harness.github.io/helm-common
+      version: 1.x.x
+    description: A Helm chart for Kubernetes
+    digest: c3933ba2130244388d613a6f3e4941059791981e21ea37b8d280b5ebcd291c9b
+    name: ng-manager
+    type: application
+    urls:
+    - https://github.com/harness/helm-platform/releases/download/ng-manager-0.4.0/ng-manager-0.4.0.tgz
+    version: 0.4.0
   - apiVersion: v2
     appVersion: 0.0.1
     created: "2023-06-30T05:28:04.824582706Z"
@@ -874,6 +1073,20 @@ entries:
   pipeline-service:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2023-08-01T05:31:35.773059417Z"
+    dependencies:
+    - name: harness-common
+      repository: https://harness.github.io/helm-common
+      version: 1.x.x
+    description: A Helm chart for Kubernetes
+    digest: 3992a6d2d8e9883789a7a3b0e4600831ace89cea5c0720b6cf8568a319305bb9
+    name: pipeline-service
+    type: application
+    urls:
+    - https://github.com/harness/helm-platform/releases/download/pipeline-service-0.4.0/pipeline-service-0.4.0.tgz
+    version: 0.4.0
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2023-06-14T18:59:43.938896158Z"
     dependencies:
     - name: harness-common
@@ -929,6 +1142,113 @@ entries:
     - https://github.com/harness/helm-platform/releases/download/pipeline-service-0.2.17/pipeline-service-0.2.17.tgz
     version: 0.2.17
   platform:
+  - apiVersion: v2
+    appVersion: 1.16.1
+    created: "2023-08-01T05:31:36.04265243Z"
+    dependencies:
+    - condition: global.ng.enabled
+      name: access-control
+      repository: file://../access-control
+      version: 0.4.x
+    - condition: global.ng.enabled
+      name: change-data-capture
+      repository: file://../change-data-capture
+      version: 0.4.x
+    - condition: global.ng.enabled
+      name: cv-nextgen
+      repository: file://../cv-nextgen
+      version: 0.4.x
+    - name: gateway
+      repository: file://../gateway
+      version: 0.4.x
+    - condition: harness-secrets.enabled
+      name: harness-secrets
+      repository: file://../secrets
+      version: 0.4.x
+    - name: harness-manager
+      repository: file://../harness-manager
+      version: 0.5.x
+    - name: delegate-proxy
+      repository: file://../delegate-proxy
+      version: 0.4.x
+    - condition: global.ng.enabled
+      name: le-nextgen
+      repository: file://../le-nextgen
+      version: 0.4.x
+    - condition: global.cg.enabled
+      name: learning-engine
+      repository: file://../learning-engine
+      version: 0.5.x
+    - condition: global.ng.enabled
+      name: log-service
+      repository: file://../log-service
+      version: 0.4.x
+    - condition: global.migrator.enabled
+      name: migrator
+      repository: file://../migrator
+      version: 0.4.x
+    - condition: global.ng.enabled
+      name: minio
+      repository: https://charts.bitnami.com/bitnami
+      version: 12.6.3
+    - condition: global.database.mongo.installed
+      name: mongodb
+      repository: https://charts.bitnami.com/bitnami
+      version: 13.1.2
+    - condition: global.ng.enabled
+      name: next-gen-ui
+      repository: file://../next-gen-ui
+      version: 0.4.x
+    - name: ng-auth-ui
+      repository: file://../ng-auth-ui
+      version: 0.4.x
+    - condition: global.ng.enabled
+      name: ng-manager
+      repository: file://../ng-manager
+      version: 0.4.x
+    - condition: global.ng.enabled
+      name: pipeline-service
+      repository: file://../pipeline-service
+      version: 0.4.x
+    - condition: global.ng.enabled
+      name: platform-service
+      repository: file://../platform-service
+      version: 0.4.x
+    - condition: global.database.redis.installed
+      name: redis
+      repository: https://harness.github.io/helm-redis
+      version: 0.2.x
+    - condition: global.ng.enabled
+      name: scm-service
+      repository: file://../scm-service
+      version: 0.4.x
+    - condition: global.ng.enabled
+      name: template-service
+      repository: file://../template-service
+      version: 0.4.x
+    - condition: global.ng.enabled
+      name: ti-service
+      repository: file://../ti-service
+      version: 0.4.x
+    - condition: global.database.timescaledb.installed
+      name: timescaledb
+      repository: https://harness.github.io/helm-timescaledb
+      version: 0.2.x
+    - condition: global.cg.enabled
+      name: ui
+      repository: file://../ui
+      version: 0.5.x
+    - condition: global.cg.enabled
+      name: verification-svc
+      repository: file://../verification-svc
+      version: 0.5.x
+    description: Helm chart for Harness Platform
+    digest: bd7e44b150dfd84d190cd44b193e4fa187206c5cc0f1d5412df7f2fac0d60fd2
+    name: platform
+    type: application
+    urls:
+    - https://github.com/harness/helm-platform/releases/download/platform-0.9.0/platform-0.9.0.tgz
+    version: 0.9.0
   - apiVersion: v2
     appVersion: 1.16.1
     created: "2023-07-07T19:31:22.31007249Z"
@@ -6632,6 +6952,20 @@ entries:
   platform-service:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2023-08-01T05:31:36.241766817Z"
+    dependencies:
+    - name: harness-common
+      repository: https://harness.github.io/helm-common
+      version: 1.x.x
+    description: A Helm chart for Kubernetes
+    digest: 799574e42c37a2754992b645239593bfdcfcbf7af5c52a76e4f282bb43497e53
+    name: platform-service
+    type: application
+    urls:
+    - https://github.com/harness/helm-platform/releases/download/platform-service-0.4.0/platform-service-0.4.0.tgz
+    version: 0.4.0
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2023-06-14T18:59:44.397835652Z"
     dependencies:
     - name: harness-common
@@ -6745,6 +7079,20 @@ entries:
   scm-service:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2023-08-01T05:31:36.412280061Z"
+    dependencies:
+    - name: harness-common
+      repository: https://harness.github.io/helm-common
+      version: 1.x.x
+    description: A Helm chart for Kubernetes
+    digest: b3b2f765c2b919e6a131353463c4d8c6fa885bff73d8dfabc41b979053d956e4
+    name: scm-service
+    type: application
+    urls:
+    - https://github.com/harness/helm-platform/releases/download/scm-service-0.4.0/scm-service-0.4.0.tgz
+    version: 0.4.0
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2023-06-14T18:59:44.563233799Z"
     dependencies:
     - name: harness-common
@@ -6786,6 +7134,20 @@ entries:
     - https://github.com/harness/helm-platform/releases/download/scm-service-0.2.3/scm-service-0.2.3.tgz
     version: 0.2.3
   template-service:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2023-08-01T05:31:36.56780935Z"
+    dependencies:
+    - name: harness-common
+      repository: https://harness.github.io/helm-common
+      version: 1.x.x
+    description: A Helm chart for Kubernetes
+    digest: 4ae0b6f58ef676615774cfe173453642cdacce68c74a8641361d1eaac9c463c1
+    name: template-service
+    type: application
+    urls:
+    - https://github.com/harness/helm-platform/releases/download/template-service-0.4.0/template-service-0.4.0.tgz
+    version: 0.4.0
   - apiVersion: v2
     appVersion: 0.0.1
     created: "2023-06-14T18:59:44.746961909Z"
@@ -6831,6 +7193,20 @@ entries:
   ti-service:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2023-08-01T05:31:36.723761357Z"
+    dependencies:
+    - name: harness-common
+      repository: https://harness.github.io/helm-common
+      version: 1.x.x
+    description: A Helm chart for Kubernetes
+    digest: f9d012d131eb23663d167ef6f501d0b1776d70a49f36d478a8911c0f04b853a3
+    name: ti-service
+    type: application
+    urls:
+    - https://github.com/harness/helm-platform/releases/download/ti-service-0.4.0/ti-service-0.4.0.tgz
+    version: 0.4.0
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2023-06-14T18:59:44.953018654Z"
     dependencies:
     - name: harness-common
@@ -6874,6 +7250,20 @@ entries:
   ui:
   - apiVersion: v2
     appVersion: 22.12.77629
+    created: "2023-08-01T05:31:36.884995971Z"
+    dependencies:
+    - name: harness-common
+      repository: https://harness.github.io/helm-common
+      version: 1.x.x
+    description: A Helm chart for Kubernetes
+    digest: 976581c9c8d280d407e0dc9f34881687ac0b153dd4b3d292dcd16bfd782cdcbd
+    name: ui
+    type: application
+    urls:
+    - https://github.com/harness/helm-platform/releases/download/ui-0.5.0/ui-0.5.0.tgz
+    version: 0.5.0
+  - apiVersion: v2
+    appVersion: 22.12.77629
     created: "2023-06-14T18:59:45.124597071Z"
     dependencies:
     - name: harness-common
@@ -6915,6 +7305,20 @@ entries:
     - https://github.com/harness/helm-platform/releases/download/ui-0.3.0/ui-0.3.0.tgz
     version: 0.3.0
   verification-svc:
+  - apiVersion: v2
+    appVersion: 22.12.77629
+    created: "2023-08-01T05:31:37.053413672Z"
+    dependencies:
+    - name: harness-common
+      repository: https://harness.github.io/helm-common
+      version: 1.x.x
+    description: A Helm chart for Kubernetes
+    digest: 1168e4a5070b6984b08b6b7ab80fe8705d2cdc6d3309c4035c7c47f656e5fc91
+    name: verification-svc
+    type: application
+    urls:
+    - https://github.com/harness/helm-platform/releases/download/verification-svc-0.5.0/verification-svc-0.5.0.tgz
+    version: 0.5.0
   - apiVersion: v2
     appVersion: 22.12.77629
     created: "2023-06-30T05:28:06.333588635Z"
@@ -6985,4 +7389,4 @@ entries:
     urls:
     - https://github.com/harness/helm-platform/releases/download/verification-svc-0.3.0/verification-svc-0.3.0.tgz
     version: 0.3.0
-generated: "2023-07-07T19:31:23.407735894Z"
+generated: "2023-08-01T05:31:37.054350618Z"
