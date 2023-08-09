@@ -145,7 +145,7 @@ immutable_delegate_docker_image:
   image:
     registry: docker.io
     repository: harness/delegate
-    tag: 23.05.78924
+    tag: 23.08.79713
     digest: ""
 upgrader_docker_image:
   image:
@@ -223,7 +223,7 @@ featureFlags:
   # -- Licensing flags
   LICENSE: "NG_LICENSES_ENABLED,VIEW_USAGE_ENABLED"
   # -- OPA
-  OPA: "OPA_PIPELINE_GOVERNANCE"
+  OPA: "OPA_PIPELINE_GOVERNANCE,OPA_GIT_GOVERNANCE"
   # -- CHAOS Feature Flags
   CHAOS: "CHAOS_ENABLED"
   # -- CET Feature Flags

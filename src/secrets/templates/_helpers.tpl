@@ -42,6 +42,10 @@ root-password: {{ randAlphaNum 10 | quote }}
     postgres-password: {{ include "harnesscommon.secrets.passwords.manage" (dict "secret" "postgres" "key" "postgres-password" "providedValues" (list "postgres.postgresPassword") "length" 10 "context" $) }}
 {{- end }}
 
+{{- define "harnesssecrets.generateClickhouseSecrets" }}
+    admin-password: {{ include "harnesscommon.secrets.passwords.manage" (dict "secret" "clickhouse" "key" "admin-password" "providedValues" (list "clickhouse.adminPassword") "length" 10 "context" $) }}
+{{- end }}
+
 {{- define "getDefaultOrRandom" }}
 {{- if .Default }}
 {{- printf "%s" .Default}}
