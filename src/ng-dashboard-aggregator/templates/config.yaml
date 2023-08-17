@@ -8,3 +8,6 @@ data:
   MANAGER_CLIENT_BASEURL: 'http://harness-manager:9090/api/'
   NG_MANAGER_CLIENT_BASEURL: 'http://ng-manager:7090/'
   STACK_DRIVER_LOGGING_ENABLED: {{ .Values.global.stackDriverLoggingEnabled | quote }}
+  {{- if .Values.additionalConfigs }}
+  {{- toYaml .Values.additionalConfigs | nindent 2 }}
+  {{- end }}
