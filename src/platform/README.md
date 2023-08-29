@@ -144,7 +144,7 @@ dependencies:
 | minio.auth.existingSecret | string | `"minio"` |  |
 | minio.defaultBuckets | string | `"logs"` |  |
 | minio.fullnameOverride | string | `"minio"` |  |
-| minio.image.tag | string | `"2023.5.18-debian-11-r2"` |  |
+| minio.image.tag | string | `"2023.7.18-debian-11-r2"` |  |
 | minio.mode | string | `"standalone"` |  |
 | mongodb.arbiter.enabled | bool | `true` |  |
 | mongodb.architecture | string | `"replicaset"` |  |
