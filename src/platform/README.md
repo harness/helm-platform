@@ -2,7 +2,7 @@
 
 Helm chart for Harness Platform
 
-![Version: 0.9.2](https://img.shields.io/badge/Version-0.9.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.16.1](https://img.shields.io/badge/AppVersion-1.16.1-informational?style=flat-square)
+![Version: 0.9.4](https://img.shields.io/badge/Version-0.9.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.16.1](https://img.shields.io/badge/AppVersion-1.16.1-informational?style=flat-square)
 
 ## Usage
 
@@ -12,7 +12,7 @@ Use the following dependency to add this chart repository to your Helm installat
 dependencies:
     - name: ccm
       repository: https://harness.github.io/helm-platform
-      version: 0.9.2
+      version: 0.9.4
 ```
 
 ## Values
@@ -95,7 +95,7 @@ dependencies:
 | harness-manager.delegate_docker_image.image.repository | string | `"harness/delegate"` |  |
 | harness-manager.delegate_docker_image.image.tag | string | `"latest"` |  |
 | harness-manager.external_graphql_rate_limit | string | `"500"` |  |
-| harness-manager.image.tag | string | `"79821"` |  |
+| harness-manager.image.tag | string | `"79822"` |  |
 | harness-manager.immutable_delegate_docker_image.image.tag | string | `"23.08.79713"` |  |
 | harness-manager.java.memory | string | `"2048"` |  |
 | harness-manager.replicaCount | int | `1` |  |
@@ -127,7 +127,6 @@ dependencies:
 | migrator.delegate_docker_image.image.tag | string | `"latest"` |  |
 | migrator.external_graphql_rate_limit | string | `"500"` |  |
 | migrator.image.tag | string | `"100534-000"` |  |
-| migrator.immutable_delegate_docker_image.image.tag | string | `"23.07.79712"` |  |
 | migrator.java.memory | string | `"2048"` |  |
 | migrator.replicaCount | int | `1` |  |
 | migrator.resources.limits.memory | string | `"8192Mi"` |  |
@@ -161,14 +160,14 @@ dependencies:
 | next-gen-ui.resources.requests.cpu | float | `0.2` |  |
 | next-gen-ui.resources.requests.memory | string | `"200Mi"` |  |
 | ng-auth-ui.autoscaling.enabled | bool | `false` |  |
-| ng-auth-ui.image.tag | string | `"1.8.3"` |  |
+| ng-auth-ui.image.tag | string | `"1.8.4"` |  |
 | ng-auth-ui.replicaCount | int | `1` |  |
 | ng-auth-ui.resources.limits.memory | string | `"512Mi"` |  |
 | ng-auth-ui.resources.requests.cpu | float | `0.5` |  |
 | ng-auth-ui.resources.requests.memory | string | `"512Mi"` |  |
 | ng-manager.appLogLevel | string | `"INFO"` |  |
 | ng-manager.autoscaling.enabled | bool | `false` |  |
-| ng-manager.image.tag | string | `"79821"` |  |
+| ng-manager.image.tag | string | `"79822"` |  |
 | ng-manager.java.memory | string | `"4096m"` |  |
 | ng-manager.replicaCount | int | `1` |  |
 | ng-manager.resources.limits.memory | string | `"8192Mi"` |  |

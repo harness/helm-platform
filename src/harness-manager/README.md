@@ -1,6 +1,6 @@
 # harness-manager
 
-![Version: 0.5.2](https://img.shields.io/badge/Version-0.5.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
+![Version: 0.5.3](https://img.shields.io/badge/Version-0.5.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
 
 A Helm chart for Kubernetes
 
@@ -113,7 +113,7 @@ A Helm chart for Kubernetes
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.registry | string | `"docker.io"` |  |
 | image.repository | string | `"harness/manager-signed"` |  |
-| image.tag | string | `"79821"` |  |
+| image.tag | string | `"79822"` |  |
 | immutable_delegate_docker_image.image.digest | string | `""` |  |
 | immutable_delegate_docker_image.image.registry | string | `"docker.io"` |  |
 | immutable_delegate_docker_image.image.repository | string | `"harness/delegate"` |  |
@@ -136,6 +136,12 @@ A Helm chart for Kubernetes
 | nodeSelector | object | `{}` |  |
 | podAnnotations | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
+| proxy.enabled | bool | `false` |  |
+| proxy.host | string | `"localhost"` |  |
+| proxy.password | string | `""` |  |
+| proxy.port | int | `80` |  |
+| proxy.protocol | string | `"http"` |  |
+| proxy.username | string | `""` |  |
 | redisConfig.nettyThreads | string | `"32"` |  |
 | replicaCount | int | `1` |  |
 | resources.limits.memory | string | `"8192Mi"` |  |

@@ -72,7 +72,7 @@ image:
   repository: harness/ng-manager-signed
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "79821"
+  tag: "79822"
   digest: ""
   imagePullSecrets: []
 initContainer:
@@ -131,6 +131,14 @@ podAnnotations: {}
 imagePullSecrets: {}
 podSecurityContext: {}
 # fsGroup: 2000
+
+proxy:
+  enabled: false
+  host: localhost
+  port: 80
+  username: ""
+  password: ""
+  protocol: http
 
 securityContext:
   runAsUser: 65534
