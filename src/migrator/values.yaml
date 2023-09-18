@@ -483,7 +483,7 @@ immutable_delegate_docker_image:
   image:
     registry: docker.io
     repository: harness/delegate
-    tag: 22.12.77617
+    tag: 23.09.79714
     digest: ""
 
 upgrader_docker_image:
