@@ -146,7 +146,7 @@ harness-manager:
   autoscaling:
     enabled: false
   image:
-    tag: "79822"
+    tag: "79823"
   java:
     memory: "2048"
   replicaCount: 1
@@ -156,7 +156,7 @@ harness-manager:
     requests:
       cpu: 2
       memory: 3000Mi
-  version: 1.0.79819
+  version: 1.0.79823
 
 harness-secrets:
   enabled: true
@@ -284,7 +284,7 @@ ng-auth-ui:
 ng-manager:
   appLogLevel: INFO
   image:
-    tag: "79822"
+    tag: "79823"
   java:
     memory: "4096m"
   replicaCount: 1
