@@ -257,7 +257,7 @@ mongodb:
 
 next-gen-ui:
   image:
-    tag: "0.353.10"
+    tag: "0.353.16"
   replicaCount: 1
   resources:
     limits:
