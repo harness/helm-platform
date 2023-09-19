@@ -83,6 +83,14 @@ spec:
             value: {{ include "harnesscommon.dbconnection.timescaleHost" (dict "context" $) }}
           - name: TI_SERVICE_TIMESCALE_PORT
             value: {{ include "harnesscommon.dbconnection.timescalePort" (dict "context" $) | quote }}
+          {{- $args := " "}}
+          {{- if not .Values.global.database.timescaledb.sslEnabled }}
+          {{- $args = "sslmode=disable" }}
+          {{- else }}
+          {{- $args = "sslmode=require" }}
+          {{- end }}
+          - name: TSDB_URL
+            value: '{{ include "harnesscommon.dbconnection.timescaleConnection" (dict "protocol" "postgres" "userVariableName" "TI_SERVICE_TIMESCALE_USERNAME" "passwordVariableName" "TI_SERVICE_TIMESCALE_PASSWORD" "database" "harnessti" "args" $args "context" $) }}'
           {{- if .Values.extraEnvVars }}
             {{- include "harnesscommon.tplvalues.render" (dict "value" .Values.extraEnvVars "context" $) | nindent 10 }}
           {{- end }}
