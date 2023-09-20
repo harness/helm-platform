@@ -386,6 +386,20 @@ entries:
   harness-manager:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2023-09-20T22:23:54.85001447Z"
+    dependencies:
+    - name: harness-common
+      repository: https://harness.github.io/helm-common
+      version: 1.x.x
+    description: A Helm chart for Kubernetes
+    digest: e26e4bfad2a4e0b69678d421e708da38fc7f2398618bc911c170a0ff307a1394
+    name: harness-manager
+    type: application
+    urls:
+    - https://github.com/harness/helm-platform/releases/download/harness-manager-0.5.4/harness-manager-0.5.4.tgz
+    version: 0.5.4
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2023-08-23T05:44:34.567276611Z"
     dependencies:
     - name: harness-common
@@ -1047,6 +1061,20 @@ entries:
   ng-manager:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2023-09-20T22:23:56.407830844Z"
+    dependencies:
+    - name: harness-common
+      repository: https://harness.github.io/helm-common
+      version: 1.x.x
+    description: A Helm chart for Kubernetes
+    digest: 3b92b79e0dc57fc1ebfeada326cabc03e7065cbf862a26759806de055560299d
+    name: ng-manager
+    type: application
+    urls:
+    - https://github.com/harness/helm-platform/releases/download/ng-manager-0.4.2/ng-manager-0.4.2.tgz
+    version: 0.4.2
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2023-08-23T05:44:35.861182203Z"
     dependencies:
     - name: harness-common
@@ -1243,6 +1271,113 @@ entries:
     - https://github.com/harness/helm-platform/releases/download/pipeline-service-0.2.17/pipeline-service-0.2.17.tgz
     version: 0.2.17
   platform:
+  - apiVersion: v2
+    appVersion: 1.16.1
+    created: "2023-09-20T22:23:56.877498575Z"
+    dependencies:
+    - condition: global.ng.enabled
+      name: access-control
+      repository: file://../access-control
+      version: 0.4.x
+    - condition: global.ng.enabled
+      name: change-data-capture
+      repository: file://../change-data-capture
+      version: 0.4.x
+    - condition: global.ng.enabled
+      name: cv-nextgen
+      repository: file://../cv-nextgen
+      version: 0.4.x
+    - name: gateway
+      repository: file://../gateway
+      version: 0.4.x
+    - condition: harness-secrets.enabled
+      name: harness-secrets
+      repository: file://../secrets
+      version: 0.4.x
+    - name: harness-manager
+      repository: file://../harness-manager
+      version: 0.5.x
+    - name: delegate-proxy
+      repository: file://../delegate-proxy
+      version: 0.4.x
+    - condition: global.ng.enabled
+      name: le-nextgen
+      repository: file://../le-nextgen
+      version: 0.4.x
+    - condition: global.cg.enabled
+      name: learning-engine
+      repository: file://../learning-engine
+      version: 0.5.x
+    - condition: global.ng.enabled
+      name: log-service
+      repository: file://../log-service
+      version: 0.4.x
+    - condition: global.migrator.enabled
+      name: migrator
+      repository: file://../migrator
+      version: 0.4.x
+    - condition: global.ng.enabled
+      name: minio
+      repository: https://charts.bitnami.com/bitnami
+      version: 12.6.3
+    - condition: global.database.mongo.installed
+      name: mongodb
+      repository: https://charts.bitnami.com/bitnami
+      version: 13.1.2
+    - condition: global.ng.enabled
+      name: next-gen-ui
+      repository: file://../next-gen-ui
+      version: 0.4.x
+    - name: ng-auth-ui
+      repository: file://../ng-auth-ui
+      version: 0.4.x
+    - condition: global.ng.enabled
+      name: ng-manager
+      repository: file://../ng-manager
+      version: 0.4.x
+    - condition: global.ng.enabled
+      name: pipeline-service
+      repository: file://../pipeline-service
+      version: 0.4.x
+    - condition: global.ng.enabled
+      name: platform-service
+      repository: file://../platform-service
+      version: 0.4.x
+    - condition: global.database.redis.installed
+      name: redis
+      repository: https://harness.github.io/helm-redis
+      version: 0.2.x
+    - condition: global.ng.enabled
+      name: scm-service
+      repository: file://../scm-service
+      version: 0.4.x
+    - condition: global.ng.enabled
+      name: template-service
+      repository: file://../template-service
+      version: 0.4.x
+    - condition: global.ng.enabled
+      name: ti-service
+      repository: file://../ti-service
+      version: 0.4.x
+    - condition: global.database.timescaledb.installed
+      name: timescaledb
+      repository: https://harness.github.io/helm-timescaledb
+      version: 0.2.x
+    - condition: global.cg.enabled
+      name: ui
+      repository: file://../ui
+      version: 0.5.x
+    - condition: global.cg.enabled
+      name: verification-svc
+      repository: file://../verification-svc
+      version: 0.5.x
+    description: Helm chart for Harness Platform
+    digest: 6617650d33f050729d89e42a31337662537726d3b6fcd851b85b134ce2309add
+    name: platform
+    type: application
+    urls:
+    - https://github.com/harness/helm-platform/releases/download/platform-0.9.4/platform-0.9.4.tgz
+    version: 0.9.4
   - apiVersion: v2
     appVersion: 1.16.1
     created: "2023-08-23T05:44:36.282057817Z"
@@ -7508,6 +7643,20 @@ entries:
   ti-service:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2023-09-20T22:23:57.612414864Z"
+    dependencies:
+    - name: harness-common
+      repository: https://harness.github.io/helm-common
+      version: 1.x.x
+    description: A Helm chart for Kubernetes
+    digest: 660ac04159a5b595074b2d30b4881199175b745c80e868f14cf5769355002776
+    name: ti-service
+    type: application
+    urls:
+    - https://github.com/harness/helm-platform/releases/download/ti-service-0.4.1/ti-service-0.4.1.tgz
+    version: 0.4.1
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2023-08-01T05:31:36.723761357Z"
     dependencies:
     - name: harness-common
@@ -7704,4 +7853,4 @@ entries:
     urls:
     - https://github.com/harness/helm-platform/releases/download/verification-svc-0.3.0/verification-svc-0.3.0.tgz
     version: 0.3.0
-generated: "2023-08-23T05:44:37.322891115Z"
+generated: "2023-09-20T22:23:57.995189739Z"
