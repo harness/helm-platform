@@ -1,0 +1,167 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{.Values.name}}
+  labels:
+    app: {{.Values.name}}
+  namespace: {{.Values.namespace.name}}
+spec:
+  progressDeadlineSeconds: 300
+  replicas: {{int .Values.instances}}
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: {{.Values.name}}
+  template:
+    metadata:
+      labels:
+        app: {{.Values.name}}
+        harness-team: PIE
+        harness-module: Platform
+      annotations:
+        cluster-autoscaler.kubernetes.io/safe-to-evict: "true"
+        prometheus.io/scrape: 'true'
+        prometheus.io/port: '8889'
+        prometheus.io/path: '/metrics'
+      {{- if .Values.istioInjectionEnabled}}
+      annotations:
+        sidecar.istio.io/inject: "true"
+      {{- end}}
+    spec:
+      terminationGracePeriodSeconds: 30
+      {{- if .Values.dockercfg}}
+      imagePullSecrets:
+        - name: dockerhub-harness-debezium-svc
+      {{- end}}
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: app
+                    operator: In
+                    values:
+                      - {{.Values.name}}
+              topologyKey: "kubernetes.io/hostname"
+      containers:
+        - name: {{.Values.name}}
+          image: {{.Values.image}}
+          imagePullPolicy: Always
+          lifecycle:
+            postStart:
+              exec:
+                command:
+                  - /bin/sh
+                  - -c
+                  - |
+                    mkdir -p /opt/harness/dumps/${SERVICE_NAME}/${ENV_TYPE}/jfr_dumps/${POD_NAME};
+                    ln -s /opt/harness/dumps/${SERVICE_NAME}/${ENV_TYPE}/jfr_dumps/${POD_NAME} /opt/harness/POD_NAME ;
+                    mkdir -p /opt/harness/dumps/${SERVICE_NAME}/${ENV_TYPE}/crash_dumps/${POD_NAME};
+                    [[ -L /opt/harness/dumps/${SERVICE_NAME}/${ENV_TYPE}/crash_dumps/POD_NAME ]] && unlink /opt/harness/dumps/${SERVICE_NAME}/${ENV_TYPE}/crash_dumps/POD_NAME ;
+                    ln -s /opt/harness/dumps/${SERVICE_NAME}/${ENV_TYPE}/crash_dumps/${POD_NAME} /opt/harness/dumps/${SERVICE_NAME}/${ENV_TYPE}/crash_dumps/POD_NAME ;
+            preStop:
+              exec:
+                command:
+                  - /bin/sh
+                  - -c
+                  - |
+                    touch shutdown
+                    sleep 60;
+                    ts=$(date '+%s')
+                    loc=/opt/harness/dumps/${SERVICE_NAME}/${ENV_TYPE}/$ts/${POD_NAME};
+                    mkdir -p $loc; sleep 1; echo $ts > $loc/restart;echo $TAG > $loc/artifact.version
+                    echo $(date '+%s') > $loc/begin;
+                    PID=$(jps|grep -vi jps|awk '{ print $1}');
+                    
+                    #Copy GC log file
+                    cp mygclogfilename.gc $loc/;
+                    
+                    #Retry 10 times to take thread dump. Unsuccessful attempt has just 1 line with java process id in the output.
+                    for ((n=0;n<10;n++)); do
+                      jcmd $PID Thread.print -e > $loc/thread-dump-attempt-$n.txt;
+                      if [ $(wc -l < $loc/thread-dump-attempt-$n.txt) -gt 1 ]; then break; fi;
+                    done
+                    
+                    #10 retries to take heap histogram. Unsuccessful attempt has just 1 line with java process id in the output.
+                    for ((n=0;n<10;n++)); do
+                      jcmd $PID GC.class_histogram -all > $loc/heap-histogram-attempt-$n.txt;
+                      if [ $(wc -l < $loc/heap-histogram-attempt-$n.txt) -gt 1 ]; then break; fi;
+                    done
+                    
+                    jcmd $PID VM.native_memory  > $loc/native-memory-dump.txt; 
+                    
+                    #Dump latest chunk of JFR recording
+                    jcmd $PID JFR.dump name=jfrRecording filename=/opt/harness/dumps/${SERVICE_NAME}/${ENV_TYPE}/jfr_dumps/${POD_NAME}/container_termination_$(date +%Y_%m_%d_%H_%M_%S).jfr > $loc/jfr_done.txt
+                    
+                    jcmd $PID GC.heap_dump > $loc/heapdump.hprof;
+                    echo $(date '+%s') > $loc/end
+                    kill -15 $PID;
+          ports:
+            - name: debezium-http
+              containerPort: {{.Values.httpServerPort}}
+              protocol: "TCP"
+            - name: metrics
+              containerPort: {{.Values.PROMETHEUS_COLLECTOR_PORT}}
+              protocol: "TCP"
+          resources:
+            limits:
+              memory: {{.Values.podMemory}}
+            requests:
+              memory: {{.Values.podMemory}}
+              cpu: {{.Values.cpu | quote}}
+          envFrom:
+            - configMapRef:
+                name: {{.Values.name}}
+            - secretRef:
+                name: {{.Values.name}}
+          readinessProbe:
+            httpGet:
+              path: /api/health
+              port: {{.Values.httpServerPort}}
+            initialDelaySeconds: 60
+            timeoutSeconds: 10
+            periodSeconds: 10
+            failureThreshold: 20
+          livenessProbe:
+            httpGet:
+              path: /api/health
+              port: {{.Values.httpServerPort}}
+            initialDelaySeconds: 60
+            timeoutSeconds: 10
+            periodSeconds: 10
+            failureThreshold: 20
+          env:
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: SERVICE_NAME
+              value: debezium-service
+            - name: ENV_TYPE
+              value: {{.Values.envType}}
+            - name: TAG
+              value: {{.Values.codeVersion}}
+          volumeMounts:
+            - name: service-account
+              mountPath: /opt/harness/svc
+            - name: dumps
+              mountPath: /opt/harness/dumps
+      tolerations:
+        - key: cloud.google.com/gke-spot
+          operator: Equal
+          value: "true"
+          effect: NoSchedule
+      volumes:
+        - name: service-account
+          secret:
+            secretName: service-accounts-debezium-service
+            items:
+              - key: redis-labs-ca-truststore
+                path: redis_labs_ca_truststore
+              - key: cloud-data-store
+                path: cloud_stackdriver.json
+        - name: dumps
+          hostPath:
+            path: /var/dumps
+            type: DirectoryOrCreate
