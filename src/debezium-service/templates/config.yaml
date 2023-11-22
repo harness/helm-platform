@@ -103,34 +103,34 @@ data:
   POLL_INTERVAL_MS_SSCA: {{.Values.POLL_INTERVAL_MS_SSCA | quote}}
   MONGODB_CONNECTION_STRING_SSCA: {{.Values.MONGODB_CONNECTION_STRING_SSCA | quote}}
   JAVA_17_FLAGS: {{.Values.JAVA_17_FLAGS}}
----
-apiVersion: v1
-kind: Secret
-metadata:
-  name: {{.Values.name}}
-stringData:
-  CF_CLIENT_API_KEY: {{.Values.CF_CLIENT_API_KEY}}
-
-type: Opaque
-
----
-  {{- if .Values.dockercfg}}
-apiVersion: v1
-kind: Secret
-metadata:
-  name: dockerhub-harness-debezium-svc
-  annotations:
-    harness.io/skip-versioning: "true"
-data:
-  .dockercfg: {{.Values.dockercfg}}
-type: kubernetes.io/dockercfg
-  {{- end}}
-
----
-apiVersion: v1
-kind: Secret
-metadata:
-  name: service-accounts-{{.Values.name}}
-data:
-  redis-labs-ca-truststore: {{.Values.redislabsCATruststore}}
-  cloud-data-store: {{.Values.ng_service_account}}
+#---
+#apiVersion: v1
+#kind: Secret
+#metadata:
+#  name: {{.Values.name}}
+#stringData:
+#  CF_CLIENT_API_KEY: {{.Values.CF_CLIENT_API_KEY}}
+#
+#type: Opaque
+#
+#---
+#  {{- if .Values.dockercfg}}
+#apiVersion: v1
+#kind: Secret
+#metadata:
+#  name: dockerhub-harness-debezium-svc
+#  annotations:
+#    harness.io/skip-versioning: "true"
+#data:
+#  .dockercfg: {{.Values.dockercfg}}
+#type: kubernetes.io/dockercfg
+#  {{- end}}
+#
+#---
+#apiVersion: v1
+#kind: Secret
+#metadata:
+#  name: service-accounts-{{.Values.name}}
+#data:
+#  redis-labs-ca-truststore: {{.Values.redislabsCATruststore}}
+#  cloud-data-store: {{.Values.ng_service_account}}

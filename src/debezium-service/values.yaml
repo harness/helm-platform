@@ -2,7 +2,7 @@
 
 ingressClass130: nginx130
 namespace:
-  name: <+infra.namespace>
+#  name: <+infra.namespace>
   annotated: false
 
 name: debezium-service
@@ -15,18 +15,18 @@ maxSurge: 100%
 cpu: 512m
 image: <+artifact.image>
 httpServerPort: 14552
-pathPrefix: /<+infra.namespace>
+#pathPrefix: /<+infra.namespace>
 app_gen: ng
 ingressClass: nginx
 
 DEPLOY_MODE: KUBERNETES
 
-domainPrefix: <+infra.namespace>-
+#domainPrefix: <+infra.namespace>-
 BASE: envSpecific
 
 STACK_DRIVER_LOGGING_ENABLED: true
 
-redislabsCATruststore: <+secrets.getValue("qa_REDISLABS_CA_TRUSTSTORE")>
+#redislabsCATruststore: <+secrets.getValue("qa_REDISLABS_CA_TRUSTSTORE")>
 ng_service_account: envSpecific
 EVENTS_FRAMEWORK_REDIS_SSL_ENABLED: envSpecific
 EVENTS_FRAMEWORK_REDIS_SSL_CA_TRUST_STORE_PATH: envSpecific
